@@ -38,6 +38,8 @@ summary::-webkit-details-marker{display:none}
 .k-acc summary:hover .k-svc-name{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
 .k-faq summary:hover .k-faq-q{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
 .k-row:hover .k-row-title{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.k-route:hover .k-route-title{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.k-route:hover{opacity:1;background:#FFFFFF !important}
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #d89a5c;outline-offset:3px}
 input::placeholder,textarea::placeholder{color:#8d8f94}
 .k-mnav{display:none}
@@ -69,12 +71,12 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
       </a>
       <nav aria-label="主导航" class="k-nav-links" style="display: flex; align-items: center; gap: 30px; font-size: 14px; color: #C9CBCF;">
         <a href="#services" style="text-decoration: none;">服务</a>
-        <a href="#method" style="text-decoration: none;">方法</a>
+        <a href="#sectors" style="text-decoration: none;">资产类型</a>
         <a href="#cases" style="text-decoration: none;">案例</a>
+        <a href="#insights" style="text-decoration: none;">洞察</a>
         <a href="#team" style="text-decoration: none;">团队</a>
-        <a href="#pricing" style="text-decoration: none;">报价</a>
-        <a href="#faq" style="text-decoration: none;">常见问题</a>
-        <a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border: 1px solid #D89A5C; color: #EDEDEA; text-decoration: none; letter-spacing: 0.04em;">预约沟通</a>
+        <a href="#about" style="text-decoration: none;">关于</a>
+        <a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border: 1px solid #D89A5C; color: #EDEDEA; text-decoration: none; letter-spacing: 0.04em;">联系我们</a>
       </nav>
       <details id="mnav" class="k-mnav" style="position: relative;">
         <summary aria-label="打开菜单" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px; border: 1px solid rgba(255,255,255,0.22); font-size: 14px; color: #EDEDEA;">
@@ -83,19 +85,19 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
         </summary>
         <div style="position: absolute; right: 0; top: 54px; z-index: 5; min-width: 200px; display: flex; flex-direction: column; background: #1B1C1F; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 18px 40px rgba(0,0,0,0.45);">
           <a href="#services" style="padding: 14px 18px; text-decoration: none; color: #EDEDEA; font-size: 15px;">服务</a>
-          <a href="#method" style="padding: 14px 18px; text-decoration: none; color: #EDEDEA; font-size: 15px;">方法</a>
+          <a href="#sectors" style="padding: 14px 18px; text-decoration: none; color: #EDEDEA; font-size: 15px;">资产类型</a>
           <a href="#cases" style="padding: 14px 18px; text-decoration: none; color: #EDEDEA; font-size: 15px;">案例</a>
+          <a href="#insights" style="padding: 14px 18px; text-decoration: none; color: #EDEDEA; font-size: 15px;">洞察</a>
           <a href="#team" style="padding: 14px 18px; text-decoration: none; color: #EDEDEA; font-size: 15px;">团队</a>
-          <a href="#pricing" style="padding: 14px 18px; text-decoration: none; color: #EDEDEA; font-size: 15px;">报价</a>
-          <a href="#faq" style="padding: 14px 18px; text-decoration: none; color: #EDEDEA; font-size: 15px;">常见问题</a>
-          <a href="#contact" style="padding: 14px 18px; text-decoration: none; color: #121315; background: #D89A5C; font-size: 15px;">预约沟通</a>
+          <a href="#about" style="padding: 14px 18px; text-decoration: none; color: #EDEDEA; font-size: 15px;">关于</a>
+          <a href="#contact" style="padding: 14px 18px; text-decoration: none; color: #121315; background: #D89A5C; font-size: 15px;">联系我们</a>
         </div>
       </details>
     </div>
   </header>
 
   <div style="position: relative; z-index: 2; flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center;">
-    <div style="max-width: 1280px; width: 100%; margin: 0 auto; padding-block: 120px 72px; padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
+    <div style="max-width: 1280px; width: 100%; margin: 0 auto; padding-block: 112px 64px; padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
       <p style="margin: 0 0 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #D89A5C;">Commercial-to-Spatial · 商业空间决策咨询</p>
       <h1 style="margin: 0; max-width: 820px; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(42px, 6.2vw, 88px); line-height: 1.14; letter-spacing: 0.01em; color: #F4F4F1; text-wrap: balance;">让失活的空间，<br>重新活起来。</h1>
       <p style="margin: 36px 0 0; max-width: 560px; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.75; color: #B9BBBF; text-wrap: pretty;">KYWOO 服务存量商业的业主、运营方与资方：把经营问题拆成可以验证的商业机制，必要时落到空间与改造，再用财务情景检验。每一个决定，都看得见、可比较、能回溯。</p>
@@ -104,38 +106,89 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
           预约一次资产诊断
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         </a>
-        <a href="#method" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border: 1px solid rgba(255,255,255,0.28); color: #EDEDEA; text-decoration: none; font-size: 15px; letter-spacing: 0.04em;">了解我们怎么工作</a>
+        <a href="#route" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border: 1px solid rgba(255,255,255,0.28); color: #EDEDEA; text-decoration: none; font-size: 15px; letter-spacing: 0.04em;">看看我们能帮你做什么</a>
       </div>
     </div>
   </div>
 
   <div style="position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.12);">
-    <div style="max-width: 1280px; margin: 0 auto; padding-block: 26px 34px; padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 20px 40px;">
-      <div style="display: flex; gap: 16px; align-items: baseline;">
-        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #D89A5C;">01</span>
-        <p style="margin: 0; font-size: 14px; line-height: 1.65; color: #B9BBBF;"><strong style="font-weight: 500; color: #EDEDEA;">看见</strong>　九个问题维度，定位经营真正卡在哪里</p>
+    <div style="max-width: 1280px; margin: 0 auto; padding-block: 24px 32px; padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px 40px;">
+      <a href="#insights" style="display: flex; flex-direction: column; gap: 8px; min-height: 44px; text-decoration: none; color: #EDEDEA;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #D89A5C;">洞察 · 每周</span>
+        <span style="font-size: 15px; line-height: 1.6; color: #D6D7DA;">商业不良资产雷达：长三角、珠三角每周的新信号 →</span>
+      </a>
+      <a href="#method" style="display: flex; flex-direction: column; gap: 8px; min-height: 44px; text-decoration: none; color: #EDEDEA;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #D89A5C;">方法</span>
+        <span style="font-size: 15px; line-height: 1.6; color: #D6D7DA;">先找改变财务结果的商业机制，再决定要不要动空间 →</span>
+      </a>
+      <a href="#questions" style="display: flex; flex-direction: column; gap: 8px; min-height: 44px; text-decoration: none; color: #EDEDEA;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #D89A5C;">问题</span>
+        <span style="font-size: 15px; line-height: 1.6; color: #D6D7DA;">出租率 95% 的商场，为什么仍可能需要主动不续租？ →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="route" style="background: #F5F4F1; border-bottom: 1px solid #DAD8D2;">
+  <div style="max-width: 1280px; margin: 0 auto; padding-block: clamp(72px, 8vw, 112px) clamp(72px, 8vw, 112px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px 48px;">
+      <div>
+        <p style="margin: 0 0 22px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E5F63;">我们能帮你做什么</p>
+        <h2 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(30px, 3.6vw, 52px); line-height: 1.25; color: #141517;">你想解决什么问题？</h2>
       </div>
-      <div style="display: flex; gap: 16px; align-items: baseline;">
-        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #D89A5C;">02</span>
-        <p style="margin: 0; font-size: 14px; line-height: 1.65; color: #B9BBBF;"><strong style="font-weight: 500; color: #EDEDEA;">比较</strong>　A / B / C 情景并排，变量现场可调</p>
-      </div>
-      <div style="display: flex; gap: 16px; align-items: baseline;">
-        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #D89A5C;">03</span>
-        <p style="margin: 0; font-size: 14px; line-height: 1.65; color: #B9BBBF;"><strong style="font-weight: 500; color: #EDEDEA;">验证</strong>　每个数字都能回到来源、期间与口径</p>
-      </div>
+      <p style="margin: 0; max-width: 460px; font-size: 16px; line-height: 1.8; color: #4A4B50;">从你手上的问题开始。我们会告诉你需要哪一项服务，或者暂时不需要大动。</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1px; margin-top: 44px; background: #CFCDC6; border: 1px solid #CFCDC6;">
+      <a href="#services" class="k-route" style="display: flex; flex-direction: column; gap: 14px; min-height: 270px; padding: 30px 26px 28px; box-sizing: border-box; background: #F5F4F1; color: #141517; text-decoration: none;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #7D5935;">业主 · 运营方</span>
+        <span class="k-route-title" style="font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-size: 26px; font-weight: 400;">提升经营</span>
+        <span style="font-size: 15px; line-height: 1.75; color: #4A4B50;">有客流却不赚钱，楼层冷清，租户组合老化。</span>
+        <span style="margin-top: auto; display: flex; align-items: center; gap: 8px; font-size: 14px; color: #34353A;">经营—空间诊断 · 收益解锁 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </a>
+      <a href="#services" class="k-route" style="display: flex; flex-direction: column; gap: 14px; min-height: 270px; padding: 30px 26px 28px; box-sizing: border-box; background: #F5F4F1; color: #141517; text-decoration: none;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #7D5935;">业主 · 运营方 · 改造方</span>
+        <span class="k-route-title" style="font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-size: 26px; font-weight: 400;">调改与重新定位</span>
+        <span style="font-size: 15px; line-height: 1.75; color: #4A4B50;">老商场、老百货、历史街区需要重新做，但不确定该改多大。</span>
+        <span style="margin-top: auto; display: flex; align-items: center; gap: 8px; font-size: 14px; color: #34353A;">定位调改冲刺 · 业态与品牌组合 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </a>
+      <a href="#services" class="k-route" style="display: flex; flex-direction: column; gap: 14px; min-height: 270px; padding: 30px 26px 28px; box-sizing: border-box; background: #F5F4F1; color: #141517; text-decoration: none;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #7D5935;">资方 · 收购方</span>
+        <span class="k-route-title" style="font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-size: 26px; font-weight: 400;">收购与投资</span>
+        <span style="font-size: 15px; line-height: 1.75; color: #4A4B50;">值不值得买，最多出多少钱，改造投入怎么分期。</span>
+        <span style="margin-top: auto; display: flex; align-items: center; gap: 8px; font-size: 14px; color: #34353A;">收购决策冲刺 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </a>
+      <a href="#services" class="k-route" style="display: flex; flex-direction: column; gap: 14px; min-height: 270px; padding: 30px 26px 28px; box-sizing: border-box; background: #F5F4F1; color: #141517; text-decoration: none;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #7D5935;">品牌拓展团队</span>
+        <span class="k-route-title" style="font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-size: 26px; font-weight: 400;">拓展选址</span>
+        <span style="font-size: 15px; line-height: 1.75; color: #4A4B50;">手上有几个候选铺位，哪个适合品牌现在这个阶段。</span>
+        <span style="margin-top: auto; display: flex; align-items: center; gap: 8px; font-size: 14px; color: #34353A;">品牌拓展决策包 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </a>
     </div>
   </div>
 </section>
 
 <section id="about" style="background: #ECEBE7;">
-  <div style="max-width: 1280px; margin: 0 auto; padding-block: clamp(96px, 11vw, 160px) clamp(72px, 8vw, 120px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
+  <div style="max-width: 1280px; margin: 0 auto; padding-block: clamp(96px, 11vw, 150px) clamp(96px, 11vw, 150px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
     <p style="margin: 0 0 36px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E5F63;">关于 KYWOO</p>
     <h2 style="margin: 0; max-width: 1120px; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(28px, 3.7vw, 54px); line-height: 1.38; letter-spacing: 0.005em; color: #141517; text-wrap: pretty;">客户买的不是一份报告，而是一个能在会议桌上被修改、比较和确认的<span style="color: #7D5935;">决定</span>。</h2>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 48px 80px; margin-top: clamp(56px, 7vw, 96px); align-items: start;">
-      <div style="display: flex; flex-direction: column; gap: 22px; max-width: 520px;">
-        <p style="margin: 0; font-size: 17px; line-height: 1.85; color: #34353A; text-wrap: pretty;">很多存量商业的问题，不缺一份结论，缺的是一个能被追问的判断：为什么是这个方案？如果条件变了呢？</p>
-        <p style="margin: 0; font-size: 17px; line-height: 1.85; color: #34353A; text-wrap: pretty;">在 KYWOO，业主可以直接问：“如果 CAPEX 从 1.5 亿降到 8000 万呢？”——轻改、中改、重改三套方案会重新比较，并清楚列出放弃了哪些改造动作。</p>
+      <div style="display: flex; flex-direction: column; gap: 22px; max-width: 540px;">
+        <p style="margin: 0; font-size: 17px; line-height: 1.85; color: #34353A; text-wrap: pretty;">很多存量商业的问题，不缺一份结论，缺的是一个能被追问的判断：为什么是这个方案？如果条件变了呢？在 KYWOO，业主可以在会议上直接改条件：</p>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid #CFCDC6;">
+          <li style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-bottom: 1px solid #CFCDC6;">
+            <span style="font-size: 18px; line-height: 1.6; color: #141517;">“如果 CAPEX 从 1.5 亿降到 8000 万呢？”</span>
+            <span style="font-size: 15px; line-height: 1.7; color: #5E5F63;">轻改、中改、重改三套方案重新比较，并列出放弃了哪些改造动作。</span>
+          </li>
+          <li style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-bottom: 1px solid #CFCDC6;">
+            <span style="font-size: 18px; line-height: 1.6; color: #141517;">“不做酒店，把 20% 面积改成服务式公寓呢？”</span>
+            <span style="font-size: 15px; line-height: 1.7; color: #5E5F63;">重新计算业态组合、去化节奏与收益。</span>
+          </li>
+          <li style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-bottom: 1px solid #CFCDC6;">
+            <span style="font-size: 18px; line-height: 1.6; color: #141517;">“只允许动 B1 和 L3。”</span>
+            <span style="font-size: 15px; line-height: 1.7; color: #5E5F63;">诊断结论会重新约束能做的空间动作。</span>
+          </li>
+        </ul>
         <p style="margin: 0; font-size: 17px; line-height: 1.85; color: #34353A; text-wrap: pretty;">我们专注于低效、承压和需要重新定位的存量商业资产。</p>
       </div>
       <div style="overflow-x: auto; border-top: 1px solid #141517;">
@@ -177,30 +230,6 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
-
-  <div style="max-width: 1280px; margin: 0 auto; padding-block: 0 clamp(96px, 11vw, 150px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
-    <p style="margin: 0 0 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E5F63;">我们服务谁</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 48px 40px;">
-      <article style="display: flex; flex-direction: column; gap: 18px; padding-top: 24px; border-top: 1px solid #141517;">
-        <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #7D5935;">业主与运营方</p>
-        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 24px; line-height: 1.5; color: #141517;">“有客流，为什么不赚钱？<br>老商场、老街区还能怎么救？”</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">面向存量商业、低效资产与缺少成熟商管团队的项目。从经营与空间诊断开始，给出调改、招商与运营的路径。</p>
-        <a href="#services" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; color: #141517; text-decoration: none; border-bottom: 1px solid #141517; align-self: flex-start;">诊断、调改与收益解锁 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
-      </article>
-      <article style="display: flex; flex-direction: column; gap: 18px; padding-top: 24px; border-top: 1px solid #141517;">
-        <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #7D5935;">资方与收购方</p>
-        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 24px; line-height: 1.5; color: #141517;">“这个资产值不值得买？<br>最多出多少钱？”</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">把资产、市场、招商、运营与改造投入放在同一张表上，用确定性的财务模型检验出价、分期与风险。</p>
-        <a href="#services" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; color: #141517; text-decoration: none; border-bottom: 1px solid #141517; align-self: flex-start;">收购决策冲刺 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
-      </article>
-      <article style="display: flex; flex-direction: column; gap: 18px; padding-top: 24px; border-top: 1px solid #141517;">
-        <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #7D5935;">品牌拓展团队</p>
-        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 24px; line-height: 1.5; color: #141517;">“手上这几个铺位，<br>哪个真的适合我们？”</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">我们不替你找遍所有铺位，而是帮你判断已经收到的机会：有形条件、品牌契合与空间要求一起看。</p>
-        <a href="#services" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; color: #141517; text-decoration: none; border-bottom: 1px solid #141517; align-self: flex-start;">品牌拓展决策包 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
-      </article>
     </div>
   </div>
 </section>
@@ -314,7 +343,45 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
   </div>
 </section>
 
-<section id="services" style="background: #ECEBE7;">
+<section id="sectors" style="background: #ECEBE7;">
+  <div style="max-width: 1280px; margin: 0 auto; padding-block: clamp(96px, 11vw, 150px) clamp(72px, 8vw, 110px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px 80px; align-items: end;">
+      <div>
+        <p style="margin: 0 0 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E5F63;">资产类型 · Sectors</p>
+        <h2 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(32px, 4.2vw, 60px); line-height: 1.25; color: #141517;">我们关注的<br>商业资产</h2>
+      </div>
+      <p style="margin: 0; max-width: 520px; font-size: 16px; line-height: 1.85; color: #4A4B50; text-wrap: pretty;">不同资产，问题出在不同的地方。我们按资产类型积累案例与判断，同一套方法，换不同的重点。</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr)); gap: 48px 32px; margin-top: clamp(48px, 6vw, 80px);">
+      <article style="display: flex; flex-direction: column; gap: 16px; padding-top: 24px; border-top: 1px solid #141517;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">01</span>
+        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 26px; color: #141517;">购物中心与综合体</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">楼层业态分工、动线与主力店、租户组合与租金结构。</p>
+        <a href="#cases" style="display: inline-flex; align-items: center; min-height: 44px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #34353A; text-decoration: none;">案例：L1–L2 三维招商目录 →</a>
+      </article>
+      <article style="display: flex; flex-direction: column; gap: 16px; padding-top: 24px; border-top: 1px solid #141517;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">02</span>
+        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 26px; color: #141517;">百货楼</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">委托经营、整体调改或更换运营方：改多大、怎么分期、收益能不能撑住。</p>
+        <a href="#cases" style="display: inline-flex; align-items: center; min-height: 44px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #34353A; text-decoration: none;">案例：杭州 · 核心商圈百货楼 →</a>
+      </article>
+      <article style="display: flex; flex-direction: column; gap: 16px; padding-top: 24px; border-top: 1px solid #141517;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">03</span>
+        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 26px; color: #141517;">历史街区与存量街区</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">补齐运营思路，把商业策划转译到街区的空间与节奏里。</p>
+        <a href="#cases" style="display: inline-flex; align-items: center; min-height: 44px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #34353A; text-decoration: none;">案例：苏州 · 同里 →</a>
+      </article>
+      <article style="display: flex; flex-direction: column; gap: 16px; padding-top: 24px; border-top: 1px solid #141517;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">04</span>
+        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 26px; color: #141517;">社区与新区商业</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">周边人口和客群还在成长：招商节奏和业态组合怎么配。</p>
+        <a href="#cases" style="display: inline-flex; align-items: center; min-height: 44px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #34353A; text-decoration: none;">案例：佛山 · 新区购物中心 →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background: #ECEBE7; border-top: 1px solid #DAD8D2;">
   <div style="max-width: 1280px; margin: 0 auto; padding-block: clamp(96px, 11vw, 150px) clamp(72px, 8vw, 110px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px 80px; align-items: end;">
       <div>
@@ -355,7 +422,7 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #5E5F63;">适合</p>
             <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #34353A;">资料还不完整、想先看清问题的业主与运营方。</p>
-            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看报价方式</a></p>
+            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看合作方式</a></p>
           </div>
         </div>
       </details>
@@ -390,7 +457,7 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #5E5F63;">适合</p>
             <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #34353A;">准备调改、更换运营方或接手经营权的资产。</p>
-            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看报价方式</a></p>
+            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看合作方式</a></p>
           </div>
         </div>
       </details>
@@ -424,7 +491,7 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #5E5F63;">适合</p>
             <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #34353A;">出租率不低、客流不差，但租金和 NOI 不增长的项目。</p>
-            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看报价方式</a></p>
+            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看合作方式</a></p>
           </div>
         </div>
       </details>
@@ -458,7 +525,7 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #5E5F63;">适合</p>
             <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #34353A;">准备收购、接手经营权或参与资产处置的资方。</p>
-            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看报价方式</a></p>
+            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看合作方式</a></p>
           </div>
         </div>
       </details>
@@ -490,7 +557,7 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #5E5F63;">适合</p>
             <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #34353A;">面临续约、换租或楼层调整的运营方。</p>
-            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看报价方式</a></p>
+            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看合作方式</a></p>
           </div>
         </div>
       </details>
@@ -523,7 +590,7 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #5E5F63;">适合</p>
             <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #34353A;">正在接洽多个铺位、需要更快做判断的品牌拓展团队。</p>
-            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看报价方式</a></p>
+            <p style="margin: 8px 0 0; font-size: 14px; color: #5E5F63;">周期 [待定]　·　<a href="#pricing" style="color: #7D5935;">查看合作方式</a></p>
           </div>
         </div>
       </details>
@@ -564,45 +631,7 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
   </div>
 </section>
 
-<section id="questions" style="background: #E2E0DA;">
-  <div style="max-width: 1280px; margin: 0 auto; padding-block: clamp(88px, 10vw, 140px) clamp(88px, 10vw, 140px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
-    <p style="margin: 0 0 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E5F63;">如果这是你的资产</p>
-    <h2 style="margin: 0; max-width: 980px; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(32px, 4.2vw, 60px); line-height: 1.25; color: #141517; text-wrap: balance;">你会怎么选？</h2>
-    <p style="margin: 24px 0 0; max-width: 560px; font-size: 16px; line-height: 1.85; color: #4A4B50;">条件一变，答案就会变。我们把每一个这样的问题，做成可以现场调整的情景。</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 16px; margin-top: clamp(48px, 6vw, 72px);">
-      <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
-        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.01</span>
-        <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">一个出租率 95% 的商场，为什么仍然可能需要主动不续租一部分租户？</p>
-      </div>
-      <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
-        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.02</span>
-        <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">一座 18 亿的商场，目标 15% IRR，最多应该出多少钱？</p>
-      </div>
-      <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
-        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.03</span>
-        <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">老商场只有 5000 万 CAPEX，先投空调系统、大堂、业态组合还是动线？</p>
-      </div>
-      <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
-        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.04</span>
-        <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">商场三楼没人，到底是空间问题，还是业态、停留和客群不匹配？</p>
-      </div>
-      <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
-        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.05</span>
-        <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">主力店退租，是找下一个主力店，还是把大铺拆开重新组合？</p>
-      </div>
-      <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
-        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.06</span>
-        <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">1800 万的年客流，为什么 NOI 仍然不增长？</p>
-      </div>
-    </div>
-    <a href="#contact" style="display: inline-flex; align-items: center; gap: 12px; min-height: 52px; margin-top: 48px; padding: 0 26px; background: #141517; color: #F4F4F1; text-decoration: none; font-size: 15px; letter-spacing: 0.04em;">
-      带一个你的问题来
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-    </a>
-  </div>
-</section>
-
-<section id="cases" style="background: #ECEBE7;">
+<section id="cases" style="background: #ECEBE7; border-top: 1px solid #DAD8D2;">
   <div style="max-width: 1280px; margin: 0 auto; padding-block: clamp(96px, 11vw, 160px) clamp(80px, 9vw, 120px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 48px; padding-bottom: 28px; border-bottom: 1px solid #141517;">
       <h2 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(48px, 8vw, 120px); line-height: 1; letter-spacing: -0.01em; color: #141517;">案例</h2>
@@ -616,7 +645,7 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
       <article style="display: flex; flex-direction: column; gap: 22px;">
         <img src="assets/plate-floorstack.svg" alt="示意图：分解的六层楼板，其中一层的铺位以铜色标出" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: #E3E1DC;">
         <div style="display: flex; flex-wrap: wrap; gap: 6px 22px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #5E5F63;">
-          <span>2026</span><span>杭州</span><span>面向资方与承租改造方</span>
+          <span>2026</span><span>杭州</span><span>百货楼</span><span>面向资方与承租改造方</span>
         </div>
         <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.3; color: #141517;">核心商圈百货楼：调改路径与财务情景</h3>
         <p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.8; color: #4A4B50;">一座处于委托经营期的城市核心百货楼。我们从收益关系、物业条件和楼层业态讲起，比较三条调改路径，再把推荐路径的租金、NOI、回收期与保本租金做成随输入联动的情景。</p>
@@ -672,16 +701,6 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
         <span style="flex: 0 0 64px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">洽谈</span>
       </div>
       <div class="k-row" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; padding: 26px 0; border-bottom: 1px solid #CFCDC6;">
-        <span style="flex: 0 0 72px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5E5F63;">2026</span>
-        <span style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
-          <span class="k-row-title" style="font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-size: clamp(20px, 2vw, 26px); color: #141517;">美食广场租金背离复盘</span>
-          <span style="font-size: 14px; line-height: 1.6; color: #5E5F63;">销售上升而租金收入下降时，如何把现象拆成可以逐项验证的机制。</span>
-        </span>
-        <span style="flex: 0 1 180px; font-size: 15px; color: #34353A;">上海</span>
-        <span style="flex: 0 1 200px; font-size: 15px; color: #34353A;">方法示范</span>
-        <span style="flex: 0 0 64px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">研究</span>
-      </div>
-      <div class="k-row" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; padding: 26px 0; border-bottom: 1px solid #CFCDC6;">
         <span style="flex: 0 0 72px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #5E5F63;">[年份]</span>
         <span style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
           <span class="k-row-title" style="font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-size: clamp(20px, 2vw, 26px); color: #8D8B85;">[项目名称]</span>
@@ -692,30 +711,81 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
         <span style="flex: 0 0 64px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #8D8B85;">[状态]</span>
       </div>
     </div>
+  </div>
+</section>
 
-    <div style="margin-top: clamp(80px, 9vw, 128px);">
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px 40px; margin-bottom: 36px;">
-        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(32px, 4vw, 56px); line-height: 1.1; color: #141517;">研究</h3>
-        <p style="margin: 0; max-width: 520px; font-size: 15px; line-height: 1.7; color: #5E5F63;">真实项目之外，我们持续积累可以复用的证据与线索。</p>
+<section id="insights" style="background: #E2E0DA;">
+  <div style="max-width: 1280px; margin: 0 auto; padding-block: clamp(96px, 11vw, 150px) clamp(88px, 10vw, 140px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 48px; padding-bottom: 28px; border-bottom: 1px solid #141517;">
+      <h2 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(48px, 8vw, 120px); line-height: 1; letter-spacing: -0.01em; color: #141517;">洞察</h2>
+      <p style="margin: 0; max-width: 460px; font-size: 16px; line-height: 1.8; color: #4A4B50;">项目之外，我们持续整理可以复用的证据、线索和方法。</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 48px 32px; margin-top: 56px;">
+      <article style="display: flex; flex-direction: column; gap: 18px;">
+        <img src="assets/plate-radar.svg" alt="示意图：同心圆雷达上分布的资产点位，部分以铜色和绿色标出" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: #E3E1DC;">
+        <div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #5E5F63;">
+          <span style="color: #7D5935;">周报</span><span>每周</span><span>长三角 · 珠三角</span>
+        </div>
+        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 24px; line-height: 1.4; color: #141517;">商业不良资产雷达</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">固定扫描上海、广州、深圳，轮换长三角与珠三角城市：公开招租、拍卖与经营权招选信号，至少两个独立来源才列为正式线索。</p>
+      </article>
+      <article style="display: flex; flex-direction: column; gap: 18px;">
+        <img src="assets/plate-matrix.svg" alt="示意图：九列格子矩阵，表示按九个问题维度整理的项目记录" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: #E3E1DC;">
+        <div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #5E5F63;">
+          <span style="color: #7D5935;">研究</span><span>2026</span><span>建设中</span>
+        </div>
+        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 24px; line-height: 1.4; color: #141517;">中国商业项目案例库</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">约 130 个商业项目，按九个问题维度、50 项事实指标逐项取证。每条记录都标注来源与核验状态，未核验的不当作事实使用。</p>
+      </article>
+      <article style="display: flex; flex-direction: column; gap: 18px;">
+        <div aria-hidden="true" style="width: 100%; aspect-ratio: 3 / 2; background: #141517; color: #EDEDEA; display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 0 32px; box-sizing: border-box;">
+          <span style="font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(30px, 3vw, 44px); line-height: 1.2;">销售 ↑</span>
+          <span style="font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(30px, 3vw, 44px); line-height: 1.2; color: #D89A5C;">租金收入 ↓</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #5E5F63;">
+          <span style="color: #7D5935;">方法</span><span>上海</span><span>美食广场复盘</span>
+        </div>
+        <h3 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 24px; line-height: 1.4; color: #141517;">销售上升、租金收入下降：该先查什么？</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">用一份历史材料演示怎样把经营现象拆成可以逐项验证的机制：租约结构、收缴、主力店占比，先核对再下结论。</p>
+      </article>
+    </div>
+
+    <div id="questions" style="margin-top: clamp(80px, 9vw, 130px);">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 48px;">
+        <h3 style="margin: 0; max-width: 760px; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(28px, 3.4vw, 48px); line-height: 1.3; color: #141517; text-wrap: balance;">如果这是你的资产，你会怎么选？</h3>
+        <p style="margin: 0; max-width: 420px; font-size: 15px; line-height: 1.8; color: #4A4B50;">条件一变，答案就会变。我们把每一个这样的问题，做成可以现场调整的情景。</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(480px, 100%), 1fr)); gap: 48px 40px;">
-        <article style="display: flex; flex-direction: column; gap: 20px;">
-          <img src="assets/plate-matrix.svg" alt="示意图：九列格子矩阵，表示按九个问题维度整理的项目记录" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: #E3E1DC;">
-          <div style="display: flex; flex-wrap: wrap; gap: 6px 22px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #5E5F63;">
-            <span>2026</span><span>全国</span><span>建设中</span>
-          </div>
-          <h4 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 26px; line-height: 1.35; color: #141517;">中国商业项目案例库</h4>
-          <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">约 130 个商业项目，按九个问题维度、50 项事实指标逐项取证。每条记录都标注来源与核验状态，未核验的不当作事实使用。</p>
-        </article>
-        <article style="display: flex; flex-direction: column; gap: 20px;">
-          <img src="assets/plate-radar.svg" alt="示意图：同心圆雷达上分布的资产点位，部分以铜色和绿色标出" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: #E3E1DC;">
-          <div style="display: flex; flex-wrap: wrap; gap: 6px 22px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #5E5F63;">
-            <span>每周</span><span>长三角 · 珠三角</span><span>持续更新</span>
-          </div>
-          <h4 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 26px; line-height: 1.35; color: #141517;">商业不良资产雷达</h4>
-          <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4A4B50;">固定扫描上海、广州、深圳，轮换长三角与珠三角城市：公开招租、拍卖与经营权招选信号，至少两个独立来源才列为正式线索。</p>
-        </article>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 16px; margin-top: 40px;">
+        <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.01</span>
+          <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">一个出租率 95% 的商场，为什么仍然可能需要主动不续租一部分租户？</p>
+        </div>
+        <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.02</span>
+          <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">一座 18 亿的商场，目标 15% IRR，最多应该出多少钱？</p>
+        </div>
+        <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.03</span>
+          <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">老商场只有 5000 万 CAPEX，先投空调系统、大堂、业态组合还是动线？</p>
+        </div>
+        <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.04</span>
+          <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">商场三楼没人，到底是空间问题，还是业态、停留和客群不匹配？</p>
+        </div>
+        <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.05</span>
+          <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">主力店退租，是找下一个主力店，还是把大铺拆开重新组合？</p>
+        </div>
+        <div style="background: #F5F4F1; padding: 30px 28px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 180px; box-sizing: border-box;">
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #7D5935;">Q.06</span>
+          <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #141517;">1800 万的年客流，为什么 NOI 仍然不增长？</p>
+        </div>
       </div>
+      <a href="#contact" style="display: inline-flex; align-items: center; gap: 12px; min-height: 52px; margin-top: 48px; padding: 0 26px; background: #141517; color: #F4F4F1; text-decoration: none; font-size: 15px; letter-spacing: 0.04em;">
+        带一个你的问题来
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -779,7 +849,7 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
   <div style="max-width: 1280px; margin: 0 auto; padding-block: clamp(96px, 11vw, 150px) clamp(96px, 11vw, 150px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px 80px; align-items: end;">
       <div>
-        <p style="margin: 0 0 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E5F63;">报价 · Engagement</p>
+        <p style="margin: 0 0 28px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E5F63;">合作方式 · Engagement</p>
         <h2 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(32px, 4.2vw, 60px); line-height: 1.25; color: #141517;">按决策问题报价，<br>不按页数。</h2>
       </div>
       <p style="margin: 0; max-width: 520px; font-size: 16px; line-height: 1.85; color: #4A4B50; text-wrap: pretty;">可以从一次诊断开始，确认值得深入后再进入冲刺。策略方案与招商落地分开报价。</p>
@@ -923,9 +993,9 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
 <section id="contact" style="position: relative; background: #121315; color: #EDEDEA; overflow: hidden;">
   <img src="assets/hero-city.svg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 80% 70%; opacity: 0.35;">
   <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(18,19,21,0.98) 0%, rgba(18,19,21,0.9) 50%, rgba(18,19,21,0.7) 100%);"></div>
-  <div style="position: relative; max-width: 1280px; margin: 0 auto; padding-block: clamp(96px, 11vw, 150px) clamp(96px, 11vw, 150px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 64px 80px;">
+  <div style="position: relative; max-width: 1280px; margin: 0 auto; padding-block: clamp(96px, 11vw, 150px) clamp(64px, 7vw, 96px); padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 64px 80px;">
     <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
-      <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #D89A5C;">预约沟通</p>
+      <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #D89A5C;">联系我们</p>
       <h2 style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: clamp(36px, 4.8vw, 68px); line-height: 1.2; color: #F4F4F1; text-wrap: balance;">带一个真实的问题来。</h2>
       <p style="margin: 0; max-width: 460px; font-size: 16px; line-height: 1.85; color: #A3A5AA;">告诉我们资产在哪里、现在卡在哪里。我们会先判断它需要诊断、冲刺，还是暂时不需要大动。</p>
       <dl style="margin: 20px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 14px 28px; font-size: 15px;">
@@ -969,32 +1039,66 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
       </div>
     </form>
   </div>
+  <div style="position: relative; border-top: 1px solid rgba(255,255,255,0.12);">
+    <div style="max-width: 1280px; margin: 0 auto; padding-block: 40px 48px; padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px;">
+      <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+        <p style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 400; font-size: 22px; color: #F4F4F1;">订阅 KYWOO 洞察</p>
+        <p style="margin: 0; font-size: 14px; line-height: 1.7; color: #A3A5AA;">商业不良资产雷达周报，以及新的案例与方法。</p>
+      </div>
+      <form id="subscribe" aria-label="订阅洞察" novalidate style="flex: 1 1 420px; min-width: 0; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px;">
+        <label style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #A3A5AA;">邮箱
+          <input id="f-email" type="email" name="email" placeholder="you@company.com" style="min-height: 48px; padding: 0 2px; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.28); color: #EDEDEA; font: inherit; font-size: 16px;">
+        </label>
+        <button type="submit" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; background: transparent; color: #EDEDEA; border: 1px solid #D89A5C; font: inherit; font-size: 15px; letter-spacing: 0.04em; cursor: pointer;">订阅</button>
+        <span id="subscribe-note" role="status" style="flex: 1 1 100%; font-size: 13px; color: #8D8F94;">[订阅功能待接通]</span>
+      </form>
+    </div>
+  </div>
 </section>
 
 <footer style="background: #0E0F10; color: #EDEDEA;">
   <div style="max-width: 1280px; margin: 0 auto; padding-block: 72px 36px; padding-left: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px)); box-sizing: border-box; display: flex; flex-direction: column; gap: 56px;">
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 48px;">
-      <div style="display: flex; flex-direction: column; gap: 14px;">
-        <p style="margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: 22px; color: #F4F4F1;">让商业重新发生。</p>
-        <p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #8D8F94;">Make places work.</p>
-      </div>
-      <nav aria-label="页脚导航" style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 14px; color: #B9BBBF;">
-        <a href="#services" style="text-decoration: none; min-height: 32px;">服务</a>
-        <a href="#method" style="text-decoration: none; min-height: 32px;">方法</a>
-        <a href="#cases" style="text-decoration: none; min-height: 32px;">案例</a>
-        <a href="#team" style="text-decoration: none; min-height: 32px;">团队</a>
-        <a href="#pricing" style="text-decoration: none; min-height: 32px;">报价</a>
-        <a href="#faq" style="text-decoration: none; min-height: 32px;">常见问题</a>
-        <a href="#contact" style="text-decoration: none; min-height: 32px;">预约沟通</a>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 40px 32px;">
+      <nav aria-label="我们能帮你做什么" style="display: flex; flex-direction: column; gap: 4px;">
+        <p style="margin: 0 0 12px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #D89A5C;">我们能帮你做什么</p>
+        <a href="#route" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">提升经营</a>
+        <a href="#route" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">调改与重新定位</a>
+        <a href="#route" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">收购与投资</a>
+        <a href="#route" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">拓展选址</a>
+        <a href="#pricing" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">合作方式</a>
       </nav>
+      <nav aria-label="洞察" style="display: flex; flex-direction: column; gap: 4px;">
+        <p style="margin: 0 0 12px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #D89A5C;">洞察</p>
+        <a href="#insights" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">商业不良资产雷达</a>
+        <a href="#insights" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">中国商业项目案例库</a>
+        <a href="#questions" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">如果这是你的资产</a>
+      </nav>
+      <nav aria-label="公司" style="display: flex; flex-direction: column; gap: 4px;">
+        <p style="margin: 0 0 12px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #D89A5C;">公司</p>
+        <a href="#about" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">关于 KYWOO</a>
+        <a href="#method" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">方法</a>
+        <a href="#cases" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">案例</a>
+        <a href="#team" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">团队</a>
+        <a href="#faq" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF; text-decoration: none;">常见问题</a>
+      </nav>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <p style="margin: 0 0 12px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #D89A5C;">联系</p>
+        <p style="margin: 0; display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF;">[联系邮箱]</p>
+        <p style="margin: 0; display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF;">[微信号]</p>
+        <p style="margin: 0; display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #B9BBBF;">[办公城市]</p>
+        <a href="#contact" style="display: flex; align-items: center; min-height: 36px; font-size: 14px; color: #EDEDEA; text-decoration: none;">预约沟通 →</a>
+      </div>
     </div>
     <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 28px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px;">
       <span style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(64px, 15vw, 220px); line-height: 0.9; letter-spacing: 0.08em; color: #EDEDEA;">KYWOO</span>
-      <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: clamp(13px, 1.4vw, 18px); color: #D89A5C;">make space live</span>
+      <span style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: clamp(13px, 1.4vw, 18px); color: #D89A5C;">make space live</span>
+        <span style="font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; font-weight: 300; font-size: 15px; color: #B9BBBF;">让商业重新发生。</span>
+      </span>
     </div>
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #8D8F94;">
       <span>© 2026 KYWOO Studio</span>
-      <span>[备案号 / 公司主体待补充]</span>
+      <span>[隐私政策待补充]　·　[备案号 / 公司主体待补充]</span>
     </div>
   </div>
 </footer>
@@ -1010,6 +1114,15 @@ input::placeholder,textarea::placeholder{color:#8d8f94}
       e.preventDefault();
       note.textContent = '这是预览版网页，在线提交还没有接通。请暂时通过上方的邮箱或微信联系我们。';
       note.style.color = '#D89A5C';
+    });
+  }
+  var sub = document.getElementById('subscribe');
+  var subNote = document.getElementById('subscribe-note');
+  if (sub && subNote) {
+    sub.addEventListener('submit', function (e) {
+      e.preventDefault();
+      subNote.textContent = '订阅功能还没有接通。想收到雷达周报，请先通过邮箱或微信告诉我们。';
+      subNote.style.color = '#D89A5C';
     });
   }
   var menu = document.getElementById('mnav');
