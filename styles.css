@@ -393,3 +393,6 @@ body { font-weight: 300; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Collective practice: text capabilities, without unverified portfolio imagery. */
+.capability-index { padding: 26px 0; border-top: 1px solid var(--line); color: var(--secondary); font: 11px/1.5 var(--mono); letter-spacing: .08em; }
