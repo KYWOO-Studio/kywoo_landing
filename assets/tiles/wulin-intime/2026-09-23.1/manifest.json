@@ -1,0 +1,42 @@
+{
+  "release": "2026-09-23.1",
+  "bbox": [
+    120.139,
+    30.251,
+    120.18,
+    30.292
+  ],
+  "source": "Official Overture GeoParquet via overturemaps Python client; not Explorer PMTiles",
+  "license": "ODbL-1.0",
+  "attribution": "\u00a9 OpenStreetMap contributors, Overture Maps Foundation",
+  "sourceRoot": "s3://overturemaps-us-west-2/release/2026-09-23.1/",
+  "minzoom": 12,
+  "maxzoom": 17,
+  "themes": {
+    "buildings": {
+      "features": {
+        "building": 7482
+      },
+      "tiles": 387,
+      "bytes": 2281316,
+      "sha256": "1be2722d7aa5bafed1f80fa9c6e37adc9fe8b9ea9ada1f3b42364a03f9b8c16e"
+    },
+    "transportation": {
+      "features": {
+        "segment": 3622
+      },
+      "tiles": 401,
+      "bytes": 1302473,
+      "sha256": "6e855386cb6593d2a5baed7b731f548d2c13c6f4639369c3ccc8d5d4af382a2e"
+    },
+    "base": {
+      "features": {
+        "water": 86,
+        "land_use": 628
+      },
+      "tiles": 402,
+      "bytes": 524585,
+      "sha256": "2d9646d32b91434e041781989172a8d82e4c6ef997babd8e36cb52324dbdb8ac"
+    }
+  }
+}

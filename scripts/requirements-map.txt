@@ -1,0 +1,7 @@
+overturemaps==0.18.0
+mapbox-vector-tile==2.2.0
+pmtiles==3.8.1
+mercantile==1.2.1
+numpy==2.0.2
+shapely==2.0.7
+pyarrow==21.0.0

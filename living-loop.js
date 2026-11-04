@@ -1,0 +1,69 @@
+const root = document.querySelector('#approach');
+const buttons = [...root.querySelectorAll('[data-loop-step]')];
+const workspace = root.querySelector('[data-network-workspace]');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+const hover = matchMedia('(hover: hover) and (pointer: fine)');
+const overview = ['数据 / 空间重塑 / 创新运营', '让场所，<br>持续有活力。', '从洞察到空间，再到持续使用。'];
+const content = [
+  ['01 / 数据', '看见问题。', '读懂人、路径与停留。'],
+  ['02 / 空间重塑', '让空间，<br>回应需要。', '把洞察变成动线、节点与空间选择。'],
+  ['03 / 创新运营', '让场所，<br>持续发生。', '用品牌、活动与内容带动参与，再观察调整。']
+];
+const credits = [
+  '真实地理：武林银泰周边 · Overture / OpenStreetMap contributors · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">来源与 ODbL 许可</a> · 地理估计，非实测客流',
+  '参考影像：Fuengirola 商场，西班牙 · Michael Gaylard · <a href="https://commons.wikimedia.org/wiki/File:Shopping_Mall_Interior_(48844005991).jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · 已裁切，非 KYWOO 项目',
+  '参考影像：Powell Street Festival · GoToVan · <a href="https://commons.wikimedia.org/wiki/File:Powell_Street_Festival_2015_(20217347021).jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · 已裁切，非 KYWOO 项目'
+];
+const defaultCredit = root.querySelector('[data-network-credit]').innerHTML;
+let pinned = -1, shown = -1, model, paused = false;
+function show(index) {
+  shown = index;
+  root.querySelector('[data-network-state]').dataset.networkState = index < 0 ? 'overview' : index;
+  const c = index < 0 ? overview : content[index];
+  root.querySelector('[data-loop-number]').textContent = c[0];
+  root.querySelector('[data-loop-title]').innerHTML = c[1];
+  root.querySelector('#anchor-detail').textContent = c[2];
+  root.querySelector('[data-network-credit]').innerHTML = index < 0 ? defaultCredit : credits[index];
+  root.querySelectorAll('[data-network-image]').forEach(image => image.classList.toggle('is-visible', image.dataset.networkImage === (index < 0 ? 'overview' : String(index))));
+  buttons.forEach((button, i) => {button.setAttribute('aria-pressed', String(pinned === i));button.classList.toggle('is-preview', i === index);});
+  root.querySelector('[data-triangle-overview]').setAttribute('aria-pressed', String(index < 0));
+
+  const link = root.querySelector('[data-network-case]');
+  link.href = index === 0 ? '#site-study' : '#projects';
+  link.textContent = index === 0 ? '看真实场地 ↓' : '看研究案例 ↓';
+  model?.setState(index);
+}
+buttons.forEach((button, index) => {
+  button.addEventListener('pointerenter', event => {if(event.pointerType === 'mouse' && hover.matches)show(index);});
+  button.addEventListener('focus', () => {if(button.matches(':focus-visible'))show(index);});
+  button.addEventListener('blur', () => show(pinned));
+  button.addEventListener('click', () => {pinned = pinned === index ? -1 : index;show(pinned);});
+});
+workspace.addEventListener('pointerleave', () => show(pinned));
+root.querySelector('[data-triangle-overview]').addEventListener('click', () => {pinned=-1;show(-1);});
+root.addEventListener('keydown', event => {if(event.key === 'Escape'){pinned=-1;show(-1);}});
+const motion = root.querySelector('[data-network-motion]');
+function updateMotion() {
+  root.dataset.motionState = paused || reduce.matches ? 'paused' : 'running';
+  motion.disabled = reduce.matches;
+  motion.setAttribute('aria-pressed', String(paused || reduce.matches));
+  motion.textContent = reduce.matches ? '已减少动态' : paused ? '继续动效 ▷' : '暂停动效 Ⅱ';
+  model?.setPaused(paused || reduce.matches);
+}
+motion.addEventListener('click', () => {paused=!paused;updateMotion();});
+reduce.addEventListener('change', updateMotion);
+updateMotion();
+function updateHint() {root.querySelector('.network-heading > p').textContent = hover.matches ? '移动鼠标，走近一个方向。' : '轻点节点，探索一个方向。';}
+hover.addEventListener('change', updateHint);updateHint();
+const observer = new IntersectionObserver(async entries => {
+  if(!entries.some(entry=>entry.isIntersecting))return;
+  observer.disconnect();
+  try {
+    const {createNetwork}=await import('./living-loop-scene.js');
+    model=createNetwork(root, reduce, index => {const next=index < 0 ? pinned : index;if(next!==shown)show(next);});
+    model.setState(shown);updateMotion();
+  } catch {
+    root.dataset.networkRenderer='fallback';
+  }
+},{rootMargin:'250px'});
+observer.observe(workspace);
