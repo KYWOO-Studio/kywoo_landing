@@ -8,6 +8,7 @@ const loadButton = document.querySelector('[data-site-load]');
 const status = document.querySelector('[data-site-status]');
 const reset = document.querySelector('[data-site-reset]');
 const flat = document.querySelector('[data-site-flat]');
+const resume = document.querySelector('[data-site-resume]');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 let map, protocol, live = false, error = false;
 // Independently built from official GeoParquet. Keep the local review guard.
@@ -15,12 +16,25 @@ let map, protocol, live = false, error = false;
 // /assets/tiles/wulin-intime/2026-09-23.1/{buildings,transportation,base}.pmtiles
 const base = new URL('./assets/tiles/wulin-intime/2026-09-23.1', import.meta.url).href;
 const isLocalPrototype = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+const siteStudy = document.querySelector('#site-study');
+siteStudy.dataset.siteMode = isLocalPrototype ? 'interactive' : 'static';
+root.dataset.state = isLocalPrototype ? 'preview' : 'static';
+loadButton.hidden = !isLocalPrototype;
+reset.hidden = !isLocalPrototype;
+flat.hidden = !isLocalPrototype;
+if (isLocalPrototype) {
+  document.querySelector('[data-site-mode-note]').textContent = '本机研究地图 · 近似公共定位，非测绘边界。';
+  root.setAttribute('aria-label', '武林银泰周边真实地理研究地图');
+  root.querySelector('.site-placeholder').textContent = '真实地理预览 · 正在准备本机研究地图。';
+  status.textContent = '地理预览 · 等待载入本机研究地图';
+  document.querySelector('[data-site-help]').textContent = '城市章节的本机研究地图可自动载入；公开版保留静态地理预览。';
+}
 const attribution = '© Overture Maps Foundation · © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> · <a href="https://opendatacommons.org/licenses/odbl/">ODbL</a>';
 const camera = () => ({center, zoom:15.6, bearing:-18, pitch:flat.getAttribute('aria-pressed') === 'true' ? 0 : 52, duration:reduced.matches ? 0 : 500});
 function loadSite() {
   if (!isLocalPrototype) {
-    status.textContent = '本机研究预览：已使用独立图砖，尚未批准公开发布。';
-    root.dataset.state = 'prototype-only';
+    status.textContent = '静态地理预览 · 交互地图仅在本机研究版提供。';
+    root.dataset.state = 'static';
     return;
   }
   if (map) { map.remove(); map = undefined; }
@@ -56,13 +70,13 @@ function loadSite() {
       const roads = map.queryRenderedFeatures({layers:['roads']});
       if(buildings.length && roads.length) {
         live = true; root.dataset.state = 'ready'; root.dataset.buildings = String(buildings.length); root.dataset.roads = String(roads.length);
-        status.textContent = '本机图砖已载入 · 滚动导览／拖动自由查看'; loadButton.textContent = '重新加载地图'; loadButton.disabled = false; reset.disabled = false; flat.disabled = false;
+        status.textContent = '真实地理资料 · 可拖动查看'; loadButton.textContent = '重新加载地图'; loadButton.disabled = false; reset.disabled = false; flat.disabled = false;
       }
     });
     map.on('error', event => {
       error = true; root.dataset.state = 'error'; status.textContent = `地图数据加载失败：${event.error?.message || '网络或图层不可用'}。请重新加载。`;loadButton.disabled = false;loadButton.textContent = '重试加载地图';
     });
-    map.on('load',()=> {reset.disabled=false;flat.disabled=false;bindMapTour(map);});
+    map.on('load',()=> {reset.disabled=false;flat.disabled=false;bindMapInteraction(map);});
     window.setTimeout(()=>{if(!live&&!error){status.textContent='场地数据仍未就绪，请检查网络后重试。';loadButton.disabled=false;loadButton.textContent='重试加载地图';}},15000);
   } catch(e) {root.dataset.state='error';status.textContent=`地图未能加载：${e.message}`;loadButton.disabled=false;loadButton.textContent='重试加载地图';}
 
@@ -78,48 +92,31 @@ reset.addEventListener('click',()=>map?.easeTo(camera()));
 flat.addEventListener('click',()=>{const value=flat.getAttribute('aria-pressed')!=='true';flat.setAttribute('aria-pressed',String(value));flat.textContent=value?'返回 3D':'平面视图';map?.easeTo({pitch:value?0:52,duration:reduced.matches?0:400});});
 window.addEventListener('pagehide',()=>map?.remove(),{once:true});
 
-// Same bounded 3-part pacing as the previous scene; camera follows actual geography.
-const tourTrack = document.querySelector('[data-site-track]');
-const tourButtons = [...document.querySelectorAll('[data-site-step]')];
-const resume = document.querySelector('[data-site-resume]');
-const desktop = matchMedia('(min-width: 901px)');
-const tourViews = [
- {zoom:15.2,pitch:38,bearing:-28,center:[120.161,30.273]},
- {zoom:16.35,pitch:60,bearing:-12,center},
- {zoom:16.65,pitch:52,bearing:14,center:[120.1601,30.2715]}
-];
-const tourCopy = [
- ['01 / 城市关系','先看街区，<br>再走近商场。','从真实道路与建筑，理解场所所在的城市关系。'],
- ['02 / 场所定位','把问题，<br>放回真实位置。','高亮公共定位，观察周边路径；它不是测绘边界或实际入口。'],
- ['03 / 介入与验证','轻量介入，<br>持续验证。','讨论动线、停留与活动节点，再用现场观察验证。这里不生成客流或收益。']
-];
-let manualMap=false,selectedMapStep=0,tourFrame=0,tourProgress=0;
-function setMapCopy(index){
- selectedMapStep=index;
- const c=tourCopy[index]; document.querySelector('[data-site-chapter]').textContent=c[0];document.querySelector('[data-site-title]').innerHTML=c[1];document.querySelector('[data-site-story]').textContent=c[2];
- tourButtons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
+// The merged chapter controller owns scroll progression for both visual layers.
+let manualMap = false, chapterProgress = 0;
+function followMap() {
+  if (!map || !map.loaded() || manualMap) return;
+  const progress = Math.max(0, Math.min(1, chapterProgress * 3));
+  map.jumpTo({center, zoom:15.15 + progress * 1.15, bearing:-25 + progress * 13, pitch:flat.getAttribute('aria-pressed') === 'true' ? 0 : 38 + progress * 20});
 }
-function mapScroll(){
- tourFrame=0;if(!map||!map.loaded()||manualMap||!desktop.matches||reduced.matches)return;
- const rect=tourTrack.getBoundingClientRect();if(rect.bottom<0||rect.top>innerHeight)return;
- const t=Math.max(0,Math.min(1,-rect.top/Math.max(1,tourTrack.offsetHeight-innerHeight+78)));
- tourProgress=t; const segment=Math.min(1,Math.floor(t*2)),u=Math.min(1,t*2-segment),blend=u*u*(3-2*u),a=tourViews[segment],b=tourViews[segment+1];
- const lerp=(x,y)=>x+(y-x)*blend;
- map.jumpTo({zoom:lerp(a.zoom,b.zoom),pitch:lerp(a.pitch,b.pitch),bearing:lerp(a.bearing,b.bearing),center:[lerp(a.center[0],b.center[0]),lerp(a.center[1],b.center[1])]});
- setMapCopy(Math.min(2,Math.floor(t*3)));root.dataset.tourProgress=t.toFixed(3);
+function holdMap() {
+  manualMap = true; resume.hidden = false;
+  window.dispatchEvent(new CustomEvent('kywoo:map-manual'));
 }
-function requestMapScroll(){if(!tourFrame)tourFrame=requestAnimationFrame(mapScroll);}
-function pauseMapTour(){manualMap=true;resume.hidden=!desktop.matches||reduced.matches;root.dataset.tourMode='manual';}
-function bindMapTour(instance){
- instance.on('dragstart',e=>{if(e.originalEvent)pauseMapTour()});instance.on('zoomstart',e=>{if(e.originalEvent)pauseMapTour()});instance.on('rotatestart',e=>{if(e.originalEvent)pauseMapTour()});
- instance.getCanvas().addEventListener('keydown',event=>{if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','+','-','='].includes(event.key))pauseMapTour()});
- document.querySelectorAll('.maplibregl-ctrl-zoom-in,.maplibregl-ctrl-zoom-out').forEach(button=>button.addEventListener('click',pauseMapTour));
- instance.jumpTo(tourViews[0]);requestMapScroll();
+function bindMapInteraction(instance) {
+  ['dragstart','zoomstart','rotatestart'].forEach(name => instance.on(name,event => {if(event.originalEvent)holdMap();}));
+  instance.getCanvas().addEventListener('keydown', event => {if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','+','-','='].includes(event.key))holdMap();});
+  followMap();
 }
-tourButtons.forEach((button,index)=>button.addEventListener('click',()=>{pauseMapTour();setMapCopy(index);map?.easeTo({...tourViews[index],duration:reduced.matches?0:700});}));
-resume.addEventListener('click',()=>{manualMap=false;resume.hidden=true;root.dataset.tourMode='scroll';if(desktop.matches&&!reduced.matches)requestMapScroll();else map?.easeTo({...tourViews[selectedMapStep],duration:0});});
-flat.addEventListener('click',pauseMapTour);
-reset.addEventListener('click',()=>{pauseMapTour();setMapCopy(1)});
-window.addEventListener('scroll',requestMapScroll,{passive:true});
-window.addEventListener('resize',()=>{resume.hidden=!manualMap||!desktop.matches||reduced.matches;requestMapScroll();},{passive:true});
-reduced.addEventListener('change',()=>{resume.hidden=!manualMap||!desktop.matches||reduced.matches;if(reduced.matches)map?.stop();else requestMapScroll();});
+reset.addEventListener('click', holdMap);
+flat.addEventListener('click', holdMap);
+resume.addEventListener('click', () => {
+  manualMap = false; resume.hidden = true;
+  window.dispatchEvent(new CustomEvent('kywoo:map-resume'));
+  followMap();
+});
+window.addEventListener('kywoo:chapterchange', event => {
+  chapterProgress = event.detail.progress;
+  if(event.detail.step !== 0) {map?.stop();return;}
+  requestAnimationFrame(() => {map?.resize();followMap();});
+});

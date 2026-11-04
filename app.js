@@ -110,7 +110,7 @@ const floorButtons = [...document.querySelectorAll('[data-floor]')];
 const floorName = document.querySelector('[data-floor-name]');
 const returnTour = document.querySelector('[data-return-tour]');
 const captions = [
-  'DISTRICT → SUBJECT → CATCHMENT',
+  'REAL GEOGRAPHY / ESTIMATED LOCATION',
   'FLOOR PLATES → PROGRAM → SELECTION',
   'BASELINE → SCENARIO → LIMITATIONS'
 ];
@@ -123,14 +123,23 @@ let sceneOnScreen = false;
 let activeStep = 0;
 let scrollProgress = 0;
 let manualFloor = false;
+let manualGeography = false;
 let pendingFloor = -1;
 
-// Scroll-linked motion remains available with reduced motion: it is user-driven,
-// while autonomous smoothing and Hero autoplay stay disabled.
-const isScrollDriven = () => desktopMode.matches;
+// Reduced motion and small screens use explicit chapter selection.
+const isScrollDriven = () => desktopMode.matches && !reducedMotion.matches;
+const genericProgress = () => clamp((scrollProgress - 1/3) * 1.5);
+const story = document.querySelector('.merged-story');
+function announceChapter() {
+  story.dataset.storyStep = String(activeStep);
+  document.querySelector('[data-geography-layer]').inert = activeStep !== 0;
+  document.querySelector('[data-story-provenance]').textContent = activeStep === 0 ? '真实地理资料 · 武林银泰周边' : '通用方法示范 · 非武林银泰实际建筑／楼层';
+  window.dispatchEvent(new CustomEvent('kywoo:chapterchange', {detail:{step:activeStep,progress:scrollProgress}}));
+  syncSceneVisibility();
+}
 
 function syncSceneVisibility() {
-  scene?.setVisible(sceneOnScreen && !document.hidden);
+  scene?.setVisible(sceneOnScreen && !document.hidden && activeStep > 0);
 }
 
 function setActiveStep(index, { moveScene = true } = {}) {
@@ -144,8 +153,9 @@ function setActiveStep(index, { moveScene = true } = {}) {
   methodCounter.textContent = `0${activeStep + 1} / 03`;
   viewCaption.textContent = captions[activeStep];
   document.body.dataset.activeStep = String(activeStep + 1);
+  announceChapter();
   if (moveScene && !manualFloor) {
-    if (isScrollDriven()) scene?.setScrollProgress(scrollProgress);
+    if (isScrollDriven()) scene?.setScrollProgress(genericProgress());
     else scene?.setStep(activeStep, { immediate: true });
   }
 }
@@ -157,13 +167,23 @@ function updateScrollScene() {
   scrollProgress = clamp(-rect.top / distance);
   sceneContainer.dataset.scrollProgress = scrollProgress.toFixed(3);
   methodProgress.style.transform = `scaleX(${scrollProgress})`;
+  if (manualFloor || manualGeography) return;
   const nextStep = Math.min(2, Math.floor(scrollProgress * 3 + 0.00001));
   if (nextStep !== activeStep) setActiveStep(nextStep, { moveScene: false });
-  if (!manualFloor) scene?.setScrollProgress(scrollProgress);
+  if (!manualFloor) scene?.setScrollProgress(genericProgress());
+  announceChapter();
 }
 
 function scrollToStep(index, { immediate = false } = {}) {
   manualFloor = false;
+  manualGeography = false;
+  pendingFloor = -1;
+  floorButtons.forEach((button) => {
+    const selected = button.dataset.floor === '-1';
+    button.classList.toggle('is-selected', selected);
+    button.setAttribute('aria-pressed', String(selected));
+  });
+  floorName.textContent = '全栋 / ALL LEVELS';
   returnTour.hidden = true;
   scene?.setFloor(-1);
   if (isScrollDriven()) {
@@ -199,7 +219,7 @@ floorButtons.forEach((button) => {
     scene?.setFloor(index);
     if (index < 0) {
       manualFloor = false;
-      if (isScrollDriven()) scene?.setScrollProgress(scrollProgress);
+      if (isScrollDriven()) scene?.setScrollProgress(genericProgress());
       else scene?.setStep(activeStep);
     }
   });
@@ -216,7 +236,7 @@ returnTour.addEventListener('click', () => {
   });
   floorName.textContent = '全栋 / ALL LEVELS';
   scene?.setFloor(-1);
-  if (isScrollDriven()) scene?.setScrollProgress(scrollProgress);
+  if (isScrollDriven()) scene?.setScrollProgress(genericProgress());
   else scene?.setStep(activeStep);
 });
 
@@ -237,7 +257,7 @@ async function loadScene() {
       },
       onError: () => showSceneFallback()
     });
-    if (isScrollDriven()) scene.setScrollProgress(scrollProgress, { immediate: true });
+    if (isScrollDriven()) scene.setScrollProgress(genericProgress(), { immediate: true });
     else scene.setStep(activeStep, { immediate: true });
     if (pendingFloor >= 0) scene.setFloor(pendingFloor);
     syncSceneVisibility();
@@ -304,6 +324,14 @@ if (/^#method-0[123]$/.test(window.location.hash)) {
   setActiveStep(0);
   updateScrollScene();
 }
+
+window.addEventListener('kywoo:map-manual', () => {manualGeography = true;});
+window.addEventListener('kywoo:map-resume', () => {manualGeography = false; updateScrollScene();});
+function resolveStoryHash() {
+  if(location.hash === '#site-study') scrollToStep(0, {immediate:true});
+}
+window.addEventListener('hashchange', resolveStoryHash);
+if(location.hash === '#site-study') window.addEventListener('load', resolveStoryHash, {once:true});
 
 // Native dialog gives the disclosure a keyboard-accessible, no-dependency pattern.
 const disclosure = document.querySelector('[data-disclosure]');

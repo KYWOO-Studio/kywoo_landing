@@ -107,46 +107,32 @@
           <small>地理研究示例 · 定位非边界 · 非委托实绩。</small>
         </article>
       </div>
-      <figure class="site-study" id="site-study">
-        <div class="site-heading"><div><h3>城市关系，从真实场地开始。</h3><p>杭州武林银泰 · 延安路530–546号</p><p>本机研究预览 · 图砖由官方 GeoParquet 独立生成，非 Explorer 服务。</p></div><button type="button" class="site-load" data-site-load>打开真实 3D 地图</button></div>
-        <div class="site-scroll-track" data-site-track><div class="site-scroll-sticky">
-        <div id="overture-site" class="overture-site" aria-label="杭州武林银泰与周边 Overture 地图"><p class="site-placeholder">真实地理预览 · 接近本区域时自动载入交互地图，也可点击上方按钮重试。</p></div>
-        <div class="site-story-layer"><p data-site-chapter>01 / 城市关系</p><h4 data-site-title>先看街区，<br>再走近商场。</h4><p data-site-story>从真实道路与建筑，理解场所所在的城市关系。</p><div class="site-view-steps" role="group" aria-label="场地导览章节"><button type="button" data-site-step="0" aria-pressed="true">街区</button><button type="button" data-site-step="1" aria-pressed="false">商场</button><button type="button" data-site-step="2" aria-pressed="false">介入</button></div><button type="button" data-site-resume hidden>返回滚动导览</button></div>
-        <div class="site-toolbar"><p data-site-status role="status">真实地理预览 · 等待载入交互地图</p><button type="button" data-site-reset disabled>回到商场</button><button type="button" data-site-flat disabled aria-pressed="false">平面视图</button></div>
-        </div></div>
-        <figcaption>本机独立图砖 · <a href="assets/tiles/wulin-intime/2026-09-23.1/manifest.json">数据清单</a> · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">来源与许可</a> · <a href="assets/tiles/wulin-intime/2026-09-23.1/source/building.geojson">建筑来源摘录</a>。底图：<a href="https://docs.overturemaps.org/attribution/">Overture Maps / OpenStreetMap contributors · ODbL</a>，2026-09-23.1。建筑高度为来源记录；缺失高度不推算。建筑几何与高度为开放数据估计，未作现场测绘。高亮点由公共 POI 近似转换为 WGS84，非测绘边界、入口或人流数据。<a href="https://www.amap.com/place/B023B0934P">定位来源</a>。</figcaption>
-      </figure>
       <p class="case-note">两项展示聚焦前端研究。空间设计、品牌与活动策划的过往项目图片及参与角色，待获授权材料后补充。</p>
-    </section>
-
-    <details class="optional-demo"><summary>深入了解空间比较 <span>通用 3D 方法示范 · 非上述商场</span></summary><section class="method" id="method" aria-label="通用空间比较方法示范">
+    <section class="method merged-story" id="method" data-story-step="0" aria-label="从城市关系到空间选择的三步研究故事">
       <div class="method-track" data-method-track>
         <div class="method-sticky">
           <div class="method-copy">
             <div class="method-topline">
-              <span>METHOD / SHARED VIEW</span>
+              <span>城市 → 空间 → 验证</span>
               <span data-method-counter>01 / 03</span>
             </div>
 
             <div class="method-panels">
               <article class="method-panel is-active" id="method-01" data-step-panel="0" aria-labelledby="method-01-title">
                 <p class="step-number">01</p>
-                <p class="step-label">SITE / 看清资产</p>
-                <h2 id="method-01-title">先看城市，<br>再看一栋建筑。</h2>
-                <p class="step-description">从城市与街区关系出发，理解交通、周边节点与场所条件，为目标人群和品牌定位提出研究问题。滚动可查看片区与建筑的关系；图中圈层仅为比例示意。</p>
-                <dl class="fact-grid">
-                  <div><dt>模型性质</dt><dd>通用示意</dd></div>
-                  <div><dt>实际边界</dt><dd>Unknown</dd></div>
-                  <div><dt>观察年份</dt><dd>Unknown</dd></div>
-                  <div><dt>圈层数值</dt><dd>比例逻辑示意</dd></div>
-                </dl>
+                <p class="step-label">SITE / 数据读懂场所</p>
+                <h2 id="method-01-title">先看街区，<br>再走近商场。</h2>
+                <p class="step-description">用真实道路、水系与建筑，理解武林银泰周边的城市关系。</p>
+                <p class="story-boundary" data-site-mode-note>公开版显示静态地理预览；交互地图仅在本机研究版提供。</p>
+                <dl class="fact-grid"><div><dt>地理来源</dt><dd>Overture / OSM</dd></div><div><dt>商场定位</dt><dd>近似公共 POI · 非边界</dd></div></dl>
+                <p class="story-next-note">下一步切换为通用楼层示范，非该商场真实模型。</p>
               </article>
 
               <article class="method-panel" id="method-02" data-step-panel="1" aria-labelledby="method-02-title">
                 <p class="step-number">02</p>
-                <p class="step-label">BUILDING / 比较选择</p>
-                <h2 id="method-02-title">拆开楼层，<br>看见配置差异。</h2>
-                <p class="step-description">把品牌方向转为空间问题：功能如何配置、动线如何连接、哪些节点适合停留与活动。示意楼层可独立查看，帮助讨论配置选择；点击“返回导览”恢复连续镜头。</p>
+                <p class="step-label">BUILDING / 空间重塑</p>
+                <h2 id="method-02-title">从空间，<br>比较介入选择。</h2>
+                <p class="step-description">用楼层、动线与功能配色，讨论不同位置的使用可能。</p><p class="story-boundary">通用建筑示意 · 不是武林银泰实际楼层。</p>
                 <div class="floor-control" data-floor-control>
                   <div class="floor-buttons" role="group" aria-label="选择示意楼层">
                     <button type="button" data-floor="-1" class="is-selected" aria-pressed="true">全栋</button>
@@ -167,16 +153,11 @@
 
               <article class="method-panel" id="method-03" data-step-panel="2" aria-labelledby="method-03-title">
                 <p class="step-number">03</p>
-                <p class="step-label">DECISION / 支持决策</p>
-                <h2 id="method-03-title">保留依据，<br>也保留限制。</h2>
-                <p class="step-description">把品牌、空间与活动的建议放回场所目标，讨论介入次序与验证方式。实际执行范围、合作分工与评估指标按项目另行确认。</p>
-                <div class="decision-grid">
-                  <div><h3>BASELINE</h3><p>以通用体量作为视图起点。</p></div>
-                  <div><h3>SCENARIO</h3><p>示范楼层与新体量的比较方式。</p></div>
-                  <div><h3>DIFFERENCE</h3><p>只呈现空间关系，不推算收益。</p></div>
-                  <div><h3>LIMITATIONS</h3><p>面积、租金、回报均为 Unknown。</p></div>
-                </div>
-                <a class="text-link" href="#projects">前往项目索引 <span aria-hidden="true">↘</span></a>
+                <p class="step-label">DECISION / 创新运营与验证</p>
+                <h2 id="method-03-title">让空间被使用，<br>再观察调整。</h2>
+                <p class="step-description">比较候选空间与使用情景，再确定试点和观察方式。</p><p class="story-boundary">方法情景，非已实施方案；不推算客流或收益。</p>
+                <div class="decision-grid"><div><h3>选择</h3><p>哪些位置值得试？</p></div><div><h3>验证</h3><p>观察谁来、怎样用。</p></div></div>
+                <a class="text-link" href="#team">讨论合作方式 <span aria-hidden="true">↘</span></a>
               </article>
             </div>
 
@@ -184,6 +165,11 @@
           </div>
 
           <div class="method-stage" data-scene-container data-scene-status="fallback">
+            <div class="merged-geography" id="site-study" data-site-mode="static" data-geography-layer>
+              <div id="overture-site" class="overture-site" aria-label="武林银泰周边静态地理预览"><p class="site-placeholder">真实地理 · 静态预览，非实测客流。</p></div>
+              <div class="merged-map-toolbar"><p data-site-status role="status">静态地理预览 · 不提供在线地图操作</p><button type="button" data-site-load hidden>加载本机地图</button><button type="button" data-site-reset hidden disabled>回到商场</button><button type="button" data-site-flat hidden disabled aria-pressed="false">平面视图</button><button type="button" data-site-resume hidden>返回滚动导览</button></div>
+              <p class="merged-map-credit">© Overture / OpenStreetMap contributors · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">ODbL／来源</a> · 公共定位非边界</p>
+            </div>
             <div class="scene-fallback" data-scene-fallback aria-hidden="true">
               <svg viewBox="0 0 900 900" role="img" aria-label="通用建筑模型静态示意">
                 <defs>
@@ -217,24 +203,26 @@
             </div>
             <div class="scene-canvas" data-scene-canvas aria-label="可随连续滚动推近的通用三维建筑模型"></div>
             <div class="stage-topline">
-              <span>GENERIC 3D / NOT A REAL PROJECT</span>
+              <span data-story-provenance>真实地理资料 · 武林银泰周边</span>
               <span data-scene-status-label>STATIC PREVIEW</span>
             </div>
             <div class="stage-axis" aria-hidden="true"><span>N</span><i></i><small>ILLUSTRATIVE SCALE</small></div>
             <div class="stage-bottom">
-              <div class="view-tabs" role="group" aria-label="切换三维视图">
-                <button type="button" data-goto-step="0" class="is-active" aria-pressed="true"><span>01</span> 资产</button>
-                <button type="button" data-goto-step="1" aria-pressed="false"><span>02</span> 楼层</button>
+              <div class="view-tabs" role="group" aria-label="切换城市、空间与决策章节">
+                <button type="button" data-goto-step="0" class="is-active" aria-pressed="true"><span>01</span> 城市</button>
+                <button type="button" data-goto-step="1" aria-pressed="false"><span>02</span> 空间</button>
                 <button type="button" data-goto-step="2" aria-pressed="false"><span>03</span> 决策</button>
               </div>
-              <p data-view-caption>DISTRICT → SUBJECT → CATCHMENT</p>
+              <p data-view-caption>REAL GEOGRAPHY / ESTIMATED LOCATION</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    </details>
+      <details class="merged-sources page-gutter"><summary>来源与数据边界</summary><p>地理数据与来源 · <a href="assets/tiles/wulin-intime/2026-09-23.1/manifest.json">数据清单</a> · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">来源与许可</a> · <a href="assets/tiles/wulin-intime/2026-09-23.1/source/building.geojson">建筑来源摘录</a>。底图：<a href="https://docs.overturemaps.org/attribution/">Overture Maps / OpenStreetMap contributors · ODbL</a>，2026-09-23.1。建筑高度为来源记录；缺失高度不推算。建筑几何与高度为开放数据估计，未作现场测绘。本机研究地图中的高亮点由公共 POI 近似转换为 WGS84，非测绘边界、入口或人流数据。<a href="https://www.amap.com/place/B023B0934P">定位来源</a>。</p><p>城市画面来自真实地理资料；后续建筑与楼层为通用方法示范，不对应武林银泰。缺少同一项目的核实楼层、入口与方案资料，不能视为连续实景或已批准改造。</p></details>
+    </section>
+
 
     <section class="team page-gutter" id="team" aria-labelledby="team-title">
       <p class="section-kicker reveal">04 / 如何一起工作 <span>从一个问题开始</span></p>
@@ -275,11 +263,11 @@
         <div class="faq-list reveal">
           <details open>
             <summary><span>01</span><strong>这个页面展示的是真实项目吗？</strong><i aria-hidden="true"></i></summary>
-            <div class="faq-answer"><p>真实场地地图使用 Overture 建筑与道路，并标出武林银泰的公共定位。后面的楼层动画仍是通用 DEMO，不是商场实际楼层。首屏为杭州城市街景，非项目实景。</p></div>
+            <div class="faq-answer"><p>静态地理预览使用 Overture 建筑与道路；本机研究地图另含武林银泰的近似公共定位。后面的楼层动画仍是通用 DEMO，不是商场实际楼层。首屏为杭州城市街景，非项目实景。</p></div>
           </details>
           <details>
             <summary><span>02</span><strong>三角图与 3D 示范怎样操作？</strong><i aria-hidden="true"></i></summary>
-            <div class="faq-answer"><p>移动鼠标可走近节点并预览内容，点击可固定；按「返回总览」或 Escape 回到全图。「暂停动效」可停止漂浮和粒子；手机通过点选操作。真实场地地图接近时自动载入，也可按按钮重试并手动探索；另有可展开的通用楼层示范，可选楼层及返回导览。手机与减少动态模式以手动切换为主。</p></div>
+            <div class="faq-answer"><p>移动鼠标可走近节点并预览内容，点击可固定；按「返回总览」或 Escape 回到全图。「暂停动效」可停止漂浮和粒子；手机通过点选操作。<span data-site-help>公开版为静态地理预览；交互地图仅在本机研究版提供。</span>城市、空间、决策在同一导览中切换；空间章节为通用楼层示范，可选楼层及返回导览。手机与减少动态模式以手动切换为主。</p></div>
           </details>
           <details>
             <summary><span>03</span><strong>数据、空间重塑、创新运营如何连动？</strong><i aria-hidden="true"></i></summary>

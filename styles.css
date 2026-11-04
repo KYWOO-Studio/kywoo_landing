@@ -635,3 +635,69 @@ body { font-weight: 400; }
 @media(max-width:1000px){.network-copy{min-height:0}.network-copy #anchor-detail{min-height:0}}
 #approach[data-motion-state="paused"] .network-background{transition:none;transform:none}
 #approach[data-motion-state="paused"] .network-node{transition:none}
+/* Public geography is a static preview; local research controls are opt-in. */
+[data-site-mode="static"] .site-load,[data-site-mode="static"] .site-view-steps,[data-site-mode="static"] .site-toolbar button,[data-site-mode="static"] [data-site-resume]{display:none}
+[data-site-mode="static"] .site-scroll-track{height:auto}
+[data-site-mode="static"] .site-scroll-sticky{position:relative;top:auto;height:560px;min-height:0}
+@media(max-width:900px){[data-site-mode="static"] .site-scroll-sticky{height:auto}}
+
+/* One case narrative, with an explicit real-data / generic-demo handoff. */
+.merged-story{margin-top:60px}
+.merged-story .method-track{height:330svh}
+.merged-story .method-stage{isolation:isolate}
+.merged-geography{position:absolute;inset:0;z-index:3;opacity:1;visibility:visible;transition:opacity .5s}
+.merged-geography .overture-site{height:100%;border:0;border-radius:0;background:#c4cfc0 url('./assets/method/wulin-data.svg') center/cover no-repeat}
+.merged-geography .site-placeholder{inset:auto 24px 180px;max-width:29em;font-size:12px}
+.merged-story:not([data-story-step="0"]) .merged-geography{opacity:0;visibility:hidden;pointer-events:none}
+.merged-story[data-story-step="0"] .scene-canvas,.merged-story[data-story-step="0"] .scene-fallback,.merged-story[data-story-step="0"] .stage-axis{visibility:hidden;pointer-events:none}
+.merged-story .stage-topline,.merged-story .stage-bottom{z-index:5}
+.merged-story .stage-topline{line-height:1.6;gap:20px;pointer-events:none}
+.merged-story .stage-topline>span:first-child{background:#f3f0e7e8;padding:8px 12px;border-radius:20px;max-width:31em}
+.merged-story[data-story-step="0"] [data-scene-status-label]{display:none}
+.merged-map-toolbar{position:absolute;left:24px;right:24px;bottom:150px;z-index:4;display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--forest)}
+.merged-map-toolbar p{font-size:11px;line-height:1.7;background:#f3f0e7ed;border-radius:10px;padding:10px 14px}
+.merged-map-toolbar button{border:1px solid #52675b;background:#f3f0e7ed;border-radius:99px;color:var(--forest);padding:9px 13px;min-height:44px;font-size:11px;cursor:pointer}
+.merged-map-toolbar button[hidden]{display:none}
+.merged-map-credit{position:absolute;left:24px;right:24px;bottom:116px;z-index:4;font-size:10px;line-height:1.8;color:#203e34;background:#f3f0e7ed;padding:5px 10px;width:fit-content;max-width:calc(100% - 48px);border-radius:8px}
+.merged-map-credit a{text-decoration:underline;text-underline-offset:3px}
+.merged-geography .maplibregl-ctrl-top-right{top:140px;right:14px}
+.merged-geography .maplibregl-ctrl-bottom-right,.merged-geography .maplibregl-ctrl-bottom-left{bottom:220px}
+.story-boundary{font-size:12px;line-height:1.8;margin-top:20px;padding:12px 14px;border-left:2px solid #52675b;background:#e5e9df}
+.story-next-note{font-size:11px;line-height:1.8;margin-top:25px;color:var(--secondary)}
+.merged-story .fact-grid{margin-top:28px}
+.merged-story .decision-grid{margin-top:30px}
+.merged-sources{padding-top:25px;padding-bottom:35px;background:var(--ivory);color:var(--forest)}
+.merged-sources summary{font-size:13px;cursor:pointer;min-height:44px;padding:12px 0}
+.merged-sources p{font-size:12px;line-height:1.85;margin:12px 0;max-width:80em}
+.merged-story button:focus-visible,.merged-sources summary:focus-visible{outline:3px solid #52675b;outline-offset:3px}
+@media(max-width:900px),(prefers-reduced-motion:reduce){
+ .merged-story .method-track{height:auto}
+ .merged-story .method-sticky{position:relative;top:auto;height:auto;min-height:0;display:flex;flex-direction:column;overflow:visible}
+ .merged-story .method-stage{order:-1;height:64svh;min-height:480px}
+ .merged-story .method-copy{padding:0;border:0}
+ .merged-story .method-panels{height:auto}
+ .js .merged-story .method-panel{display:none}
+ .js .merged-story .method-panel.is-active{display:block;position:relative;inset:auto;opacity:1;visibility:visible;transform:none;min-height:0;padding:90px var(--gutter) 45px;pointer-events:auto}
+ .merged-story .method-topline{top:30px}
+ .merged-story .method-progress{display:none}
+ .merged-story .stage-topline{top:28px;font-size:9px}
+ .merged-story .method-panel h2{font-size:clamp(38px,6vw,62px)}
+ .merged-story .step-number{top:80px}
+ .merged-map-toolbar{bottom:140px;left:18px;right:18px}
+ .merged-map-credit{bottom:102px;left:18px;right:18px;max-width:calc(100% - 36px)}
+ .merged-geography .site-placeholder{display:none}
+}
+@media(prefers-reduced-motion:reduce){.merged-geography{transition:none}}
+@media(max-width:600px){.merged-story{margin-top:35px}.merged-story .stage-topline{left:15px;right:15px}.merged-story .method-stage{height:60svh;min-height:460px}.merged-map-toolbar p{width:100%}.merged-map-toolbar{bottom:146px}.merged-map-credit{font-size:9px;bottom:101px}.merged-story .floor-control{margin-top:30px}}
+.case-stories{overflow:visible}
+.merged-story{width:calc(100% + 2 * var(--gutter));margin-left:calc(-1 * var(--gutter));color:var(--forest)}
+.merged-story .method-panel h2{color:var(--forest);font-size:clamp(34px,3.8vw,56px);line-height:1.25}
+.merged-story .story-boundary,.merged-story .fact-grid dd{color:var(--forest)}
+.merged-story .view-tabs button:not(.is-active),.merged-story .floor-buttons button:not(.is-selected){color:var(--forest)}
+.merged-story .view-tabs button.is-active,.merged-story .floor-buttons button.is-selected{color:var(--ivory)}
+.merged-sources{margin-left:calc(-1 * var(--gutter));width:calc(100% + 2 * var(--gutter))}
+body:not(.js) .merged-story .method-track{height:auto}
+body:not(.js) .merged-story .method-sticky{position:relative;height:auto;display:flex;flex-direction:column;overflow:visible}
+body:not(.js) .merged-story .method-stage{height:500px;order:-1}
+body:not(.js) .merged-story .method-panels{height:auto}
+body:not(.js) .merged-story .method-panel{position:relative;inset:auto;opacity:1;visibility:visible;transform:none;padding:80px var(--gutter) 35px;min-height:0;pointer-events:auto}
