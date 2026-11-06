@@ -1,0 +1,16 @@
+// Album adapter only: one retained KYWOO graph, no old page/panel structure.
+const root=document.querySelector('#triangle'),workspace=root.querySelector('[data-network-workspace]'),buttons=[...root.querySelectorAll('[data-loop-step]')];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)'),fine=matchMedia('(hover: hover) and (pointer: fine)');
+let pinned=-1,shown=-1,model=null,route='home',paused=false,creates=0;
+const chapterNode={data:0,wulin:0,space:1,operations:2,zhujia:2};
+const descriptions=['以数据与现场观察理解资产、使用需求和空间问题。','比较动线、功能与空间介入方向，让既有场所回应新的使用需求。','从品牌、活动与日常使用出发，比较运营选项，并用观察反馈调整方向。'];
+function copy(index){const el=document.querySelector('#triangle-copy');el.innerHTML=index<0?'悬停节点，了解数据、空间与运营的关系。':'<strong>'+['数据','空间重塑','创新运营'][index]+'</strong><p>'+descriptions[index]+'</p>'; }
+window.addEventListener('kywoo-triangle-leave',()=>{pinned=-1;show(-1,true);});
+function show(index,notify=false){copy(index);shown=index;root.dataset.selection=String(index);buttons.forEach((b,i)=>{b.setAttribute('aria-pressed',String(i===pinned));b.classList.toggle('is-preview',i===index);});model?.setState(index);if(notify)window.KywooQA?.centerNode(index);}
+function motion(){const state=window.KywooQA?.centerMotion;paused=state?.paused||reduce.matches;route=state?.route||route;model?.setPaused(paused||!['home','method'].includes(route));root.dataset.motion=paused||!['home','method'].includes(route)?'paused':'running';}
+buttons.forEach((b,i)=>{b.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&fine.matches)show(i,true);});b.addEventListener('focus',()=>{if(b.matches(':focus-visible'))show(i,true);});b.addEventListener('blur',()=>show(pinned,true));b.addEventListener('click',()=>{pinned=pinned===i?-1:i;show(pinned,true);window.dispatchEvent(new CustomEvent('kywoo-node-pin',{detail:pinned}));});});
+workspace.addEventListener('pointerleave',()=>{if(!root.classList.contains('viewport-stage'))show(pinned,true);});root.querySelector('.triangle-reset').onclick=()=>{pinned=-1;show(-1,true);window.dispatchEvent(new CustomEvent('kywoo-node-pin',{detail:-1}));};root.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();pinned=-1;show(-1,true);window.dispatchEvent(new CustomEvent('kywoo-node-pin',{detail:-1}));}});
+window.addEventListener('kywoo-preview',e=>{if(e.detail.origin==='triangle')return;const item=e.detail.item;if(item)show(chapterNode[item.chapter]??-1);else show(pinned,pinned>=0);});window.addEventListener('kywoo-motion',motion);window.addEventListener('kywoo-route',motion);reduce.addEventListener('change',motion);
+window.addEventListener('kywoo-triangle-state',e=>{pinned=e.detail;show(pinned,true);});
+window.KywooTriangle={getStatus(){return{creates,pinned,shown,renderer:root.dataset.networkRenderer,model:model?.getStatus()||null};}};
+try{const{createNetwork}=await import('./triangle-scene.js?v=20261107-envelope');creates++;model=createNetwork(root,reduce,i=>{const index=i<0?pinned:i;if(index!==shown)show(index,true);});const method=window.KywooQA?.scene;if(method?.scene==='method')pinned=method.node;const initial=window.KywooQA?.centerPreview;show(method?.scene==='method'?pinned:initial?(chapterNode[initial.chapter]??-1):shown);motion();}catch{root.dataset.networkRenderer='fallback';motion();}

@@ -35,3 +35,9 @@ python3 scripts/serve-preview.py
 网上参考影像为CC BY2.0，非KYWOO项目或客户背书。当前场景下方显示对应作者、来源、许可和裁切说明；完整记录见assets/reference-photos/CREDITS.md。页面使用裁切和视觉遮罩。
 
 简体内容基准见docs/landing-content-2026-11-04.md。真实项目图片、参与角色、公司资料和正式联系方式仍待确认；研究、参考影像及通用示意各自标示。
+
+## 备选首页：交互相册
+
+`alternative.html` 是独立备选首页，运行资源位于 `alternative/`，无需构建。原首页首屏的「体验交互相册」可进入，备选页提供返回原首页的链接。Vercel 的 cleanUrls 配置将该页面呈现为 `/alternative`。本地静态预览访问 `/alternative.html`。
+
+包含四边混排缩图、全屏悬停三角、项目与研究内容及已确认邮箱。摄影来源与许可见 `alternative/SOURCES.md`；图片仅作为场所背景，不代表团队作品摄影。
