@@ -231,7 +231,7 @@ body { font-weight: 300; }
 .hero h1 { max-width: none; font-family: var(--sans); font-size: clamp(72px, 10.4vw, 166px); font-weight: 200; line-height: 1.04; letter-spacing: -.075em; }
 .hero h1 br { display: none; }
 .hero-intro { max-width: 650px; margin: 28px auto 0; display: flex; flex-direction: column; align-items: center; gap: 26px; }
-.hero-intro > p { max-width: 560px; font-size: clamp(15px, 1.35vw, 20px); font-weight: 300; line-height: 1.65; }
+.hero-intro > p { max-width: 560px; font-size: clamp(15px, 1.35vw, 20px); font-weight: 300; line-height: 1.65; text-wrap: pretty; }
 .hero-actions { justify-content: center; }
 .button { min-height: 50px; border-radius: 999px; padding: 0 24px; }
 .button-ghost { border-color: rgba(243,240,231,.45); background: rgba(32,62,52,.12); backdrop-filter: blur(10px); }
@@ -462,7 +462,7 @@ body { font-weight: 400; }
  .site-toolbar p { flex-basis: 100%; }
 }
 @media (max-width: 600px) {
- .hero h1 { font-size: clamp(48px, 14vw, 70px); }
+ .hero h1 { font-size: clamp(38px, 12vw, 64px); }
  .intro h2, .projects h2, .team h2, .faq h2 { font-size: 36px; }
  .anchor-intro, #anchor-detail { font-size: 16px; }
  .anchor-controls button { font-size: 14px; }
