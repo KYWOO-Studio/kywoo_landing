@@ -18,7 +18,10 @@ export function createNetwork(root, reduce, onExplore) {
   scene.add(new THREE.HemisphereLight(0xe1f5ff, 0x1b392f, 3));
   const light = new THREE.PointLight(0xb9d7e6, 60);
   light.position.set(0,4,5); scene.add(light);
-  const rest = [new THREE.Vector3(0,2.65,-1.1), new THREE.Vector3(-3,-1.7,1.5), new THREE.Vector3(3,-1.5,-.5)];
+  // Equilateral triangle on the z=0 plane, facing the camera. SIDE is the edge length;
+  // CENTER_Y lifts the centroid so the circles hanging below the lower corners still fit.
+  const SIDE = 5.6, HEIGHT = SIDE*Math.sqrt(3)/2, CENTER_Y = 1;
+  const rest = [new THREE.Vector3(0,CENTER_Y+HEIGHT*2/3,0), new THREE.Vector3(-SIDE/2,CENTER_Y-HEIGHT/3,0), new THREE.Vector3(SIDE/2,CENTER_Y-HEIGHT/3,0)];
   const vertices = rest.map(v => v.clone());
   const anchors = rest.map(() => ({x:0,y:0}));
   const weights = [0,0,0];
@@ -36,8 +39,8 @@ export function createNetwork(root, reduce, onExplore) {
     const line = new THREE.Line(geometry,new THREE.LineBasicMaterial({color:0xa8d6d4,transparent:true,opacity:.8}));
     network.add(line);return line;
   });
-  const inner = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.OctahedronGeometry(.7)),new THREE.LineBasicMaterial({color:0xb9d7e6,transparent:true,opacity:.45}));network.add(inner);
-  const ring = new THREE.Mesh(new THREE.TorusGeometry(1.13,.008,6,100),new THREE.MeshBasicMaterial({color:0xb9d7e6,transparent:true,opacity:.4}));ring.rotation.x=.55;network.add(ring);
+  const inner = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.OctahedronGeometry(.7)),new THREE.LineBasicMaterial({color:0xb9d7e6,transparent:true,opacity:.45}));inner.position.y=CENTER_Y;network.add(inner);
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(1.13,.008,6,100),new THREE.MeshBasicMaterial({color:0xb9d7e6,transparent:true,opacity:.4}));ring.rotation.x=.55;ring.position.y=CENTER_Y;network.add(ring);
   const count=120, positions=new Float32Array(count*3), geometry=new THREE.BufferGeometry();
   geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
   network.add(new THREE.Points(geometry,new THREE.PointsMaterial({color:0xe0f6ff,size:.035,transparent:true,opacity:.9})));
@@ -71,7 +74,7 @@ export function createNetwork(root, reduce, onExplore) {
     cameraTarget.set((staticMode?0:pointerX*1.6)+(focus?focus.x*.3*amount:0), (staticMode?0:-pointerY*1.1)+(focus?focus.y*.22*amount:0), distance-amount*1.65);
     lookDestination.set((staticMode?0:pointerX*.35)+(focus?focus.x*.12*amount:0), (staticMode?0:-pointerY*.25)+(focus?focus.y*.1*amount:0),0);
     camera.position.lerp(cameraTarget,blend);lookTarget.lerp(lookDestination,blend);camera.lookAt(lookTarget);
-    network.rotation.set(-.1+(staticMode?0:Math.sin(time*.4)*.035),staticMode?0:Math.sin(time*.25)*.045,.025);
+    network.rotation.set(staticMode?0:Math.sin(time*.4)*.035,staticMode?0:Math.sin(time*.25)*.045,0);
     network.position.y=staticMode?0:Math.sin(time*.6)*.045;
     vertices.forEach((v,i)=>{
       v.copy(rest[i]);
@@ -80,7 +83,7 @@ export function createNetwork(root, reduce, onExplore) {
       materials[i].emissiveIntensity=.4+weights[i]*1.1;
     });
     curves.forEach((curve,i)=>{
-      curve.v0.copy(vertices[i]);curve.v2.copy(vertices[(i+1)%3]);curve.v1.copy(curve.v0).lerp(curve.v2,.5);curve.v1.z+=.5;
+      curve.v0.copy(vertices[i]);curve.v2.copy(vertices[(i+1)%3]);curve.v1.copy(curve.v0).lerp(curve.v2,.5);
       const positions=connections[i].geometry.attributes.position;
       for(let j=0;j<49;j++){curve.getPoint(j/48,point);positions.setXYZ(j,point.x,point.y,point.z);}
       positions.needsUpdate=true;
