@@ -701,3 +701,31 @@ body:not(.js) .merged-story .method-sticky{position:relative;height:auto;display
 body:not(.js) .merged-story .method-stage{height:500px;order:-1}
 body:not(.js) .merged-story .method-panels{height:auto}
 body:not(.js) .merged-story .method-panel{position:relative;inset:auto;opacity:1;visibility:visible;transform:none;padding:80px var(--gutter) 35px;min-height:0;pointer-events:auto}
+
+
+/* Case photos: real-scene photo carousel on each case card (2026-11-08) */
+.case-photos{margin:0 0 28px}
+.cp-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#17302a;cursor:pointer;touch-action:pan-y;-webkit-tap-highlight-color:transparent}
+.cp-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity 1.1s var(--ease)}
+.cp-slide.is-active{opacity:1}
+@keyframes cp-push{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(var(--kb-x,0),var(--kb-y,0),0)}}
+@keyframes cp-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:no-preference){
+  .case-photos.is-playing .cp-slide.is-active{animation:cp-push 7.2s linear both}
+  .case-photos.is-single .cp-slide.is-active{animation:cp-push 14s ease-in-out infinite alternate}
+  .case-photos.is-playing .cp-bars button.is-current i::after{animation:cp-fill 5.5s linear both}
+}
+.case-photos:not(.is-playing) .cp-bars button.is-current i::after{transform:scaleX(1)}
+.cp-bar{display:flex;align-items:center;gap:14px;margin-top:12px}
+.cp-caption{flex:1;min-width:0;margin:0;font-size:13px;line-height:1.6;color:var(--sage)}
+.cp-bars{display:flex;gap:4px}
+.cp-bars button{display:grid;place-items:center;width:30px;height:40px;padding:0;border:0;background:none;cursor:pointer}
+.cp-bars i{position:relative;display:block;width:22px;height:2px;background:rgba(243,240,231,.25);overflow:hidden;border-radius:2px}
+.cp-bars i::after{content:"";position:absolute;inset:0;background:var(--ivory);transform:scaleX(0);transform-origin:left}
+.case-photos.is-single .cp-bars{display:none}
+.cp-pause{min-height:40px;padding:0 14px;border:1px solid rgba(189,200,181,.45);border-radius:999px;background:transparent;color:var(--ivory);font:500 13px/1 var(--sans);cursor:pointer;white-space:nowrap}
+.cp-pause:hover{border-color:var(--ivory)}
+.case-photos.is-single .cp-pause{display:none}
+.cp-bars button:focus-visible,.cp-pause:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.cp-credit{margin-top:8px;font-size:12px;line-height:1.7;color:var(--sage)}
+.cp-credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}
