@@ -3,8 +3,8 @@ const root=document.querySelector('#triangle'),workspace=root.querySelector('[da
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'),fine=matchMedia('(hover: hover) and (pointer: fine)');
 let pinned=-1,shown=-1,model=null,route='home',paused=false,creates=0;
 const chapterNode={data:0,wulin:0,space:1,operations:2,zhujia:2};
-const descriptions=['以数据与现场观察理解资产、使用需求和空间问题。','比较动线、功能与空间介入方向，让既有场所回应新的使用需求。','从品牌、活动与日常使用出发，比较运营选项，并用观察反馈调整方向。'];
-function copy(index){const el=document.querySelector('#triangle-copy');el.innerHTML=index<0?'悬停节点，了解数据、空间与运营的关系。':'<strong>'+['数据','空间重塑','创新运营'][index]+'</strong><p>'+descriptions[index]+'</p>'; }
+const descriptions=['以数据与现场观察理解资产、使用需求和空间问题。','比较动线、功能与空间介入方向，让既有场所回应新的使用需求。','从品牌、活动与日常使用出发，比较活动方案，并用观察反馈调整方向。'];
+function copy(index){const el=document.querySelector('#triangle-copy');el.innerHTML=index<0?'悬停节点，了解数据、空间与活动的关系。':'<strong>'+['数据','空间','活动'][index]+'</strong><p>'+descriptions[index]+'</p>'; }
 window.addEventListener('kywoo-triangle-leave',()=>{pinned=-1;show(-1,true);});
 function show(index,notify=false){copy(index);shown=index;root.dataset.selection=String(index);buttons.forEach((b,i)=>{b.setAttribute('aria-pressed',String(i===pinned));b.classList.toggle('is-preview',i===index);});model?.setState(index);if(notify)window.KywooQA?.centerNode(index);}
 function motion(){const state=window.KywooQA?.centerMotion;paused=state?.paused||reduce.matches;route=state?.route||route;model?.setPaused(paused||!['home','method'].includes(route));root.dataset.motion=paused||!['home','method'].includes(route)?'paused':'running';}

@@ -5,7 +5,7 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)'), touch=matchMedia('(
 const chapters=[
  {id:'data',name:'数据',title:'DATA',type:'方法示意',intro:'从观察出发，读懂人、路径与停留。',note:'方法图解不是实测模型，不代表已完成委托。'},
  {id:'space',name:'空间',title:'SPACE',type:'方法示意',intro:'把洞察变成动线、节点与空间选择。',note:'通用楼层与空间示意，非具体项目的真实建筑。'},
- {id:'operations',name:'运营',title:'LIVE',type:'资料待补',intro:'让场所持续发生，让使用成为日常。',note:'真实运营项目、参与角色、成果与授权照片待补。'},
+ {id:'operations',name:'活动',title:'ACTIVITY',type:'资料待补',intro:'让场所持续发生，让使用成为日常。',note:'真实活动项目、参与角色、成果与授权照片待补。'},
  {id:'wulin',name:'武林',title:'WULIN',type:'地理研究',intro:'先看周边，如何走到这里？',note:'武林银泰周边地理研究；近似公共 POI，非委托实绩或实测客流。'},
  {id:'zhujia',name:'朱家角',title:'STREETS',type:'古镇研究',intro:'活动，应该落在哪些节点？',note:'研究示例，非已实施项目；对应照片尚未获核实。'},
  {id:'notes',name:'场所笔记',title:'NOTES',type:'相册说明',intro:'从一个场所，走向生活。',note:'本地概念原型。图片为研究图解、方法示意或明确占位，不是已完成项目相册。'}
@@ -16,7 +16,7 @@ const assets=[
  {id:'map',chapter:'wulin',src:'alternative/assets/wulin-data.svg',name:'武林银泰周边',type:'地理研究',alt:'武林银泰周边道路、水系与建筑的地理图解',position:'50% 50%',note:'Overture / OpenStreetMap contributors · ODbL 1.0。线性投影图解，不是项目照片。'},
  {id:'floor',chapter:'space',src:'alternative/assets/plate-floorstack.svg',name:'空间层次',type:'方法示意',alt:'通用楼层叠层方法示意',note:'来自 KYWOO 仓库的通用示意，非实际项目建筑。'},
  {id:'matrix',chapter:'data',src:'alternative/assets/plate-matrix.svg',name:'观察与比较',type:'方法示意',alt:'数据比较矩阵方法示意',note:'方法演示，不是经核实的项目成果或真实测量。'},
- {id:'ops',chapter:'operations',name:'运营照片待补',type:'待补照片',placeholder:'LIVE\nTOGETHER',note:'占位。真实项目名称、参与角色、成果及授权照片待补。'},
+ {id:'ops',chapter:'operations',name:'活动照片待补',type:'待补照片',placeholder:'LIVE\nTOGETHER',note:'占位。真实项目名称、参与角色、成果及授权照片待补。'},
  {id:'roads',chapter:'wulin',src:'alternative/assets/wulin-data.svg',name:'街区连接',type:'地理研究',alt:'同一武林周边地理图解的街区裁切',position:'15% 50%',note:'同一地理研究图的裁切；不是另一项项目。Overture / OSM，ODbL 1.0。'},
  {id:'units',chapter:'space',src:'alternative/assets/plate-units.svg',name:'使用与单元',type:'方法示意',alt:'通用空间单元方法示意',note:'通用功能单元示意，不是实际项目平面。'},
  {id:'zhujia',chapter:'zhujia',name:'朱家角研究',type:'文字封面',placeholder:'STREETS\n& STORIES',note:'研究示例，非已实施委托。无获核实项目照片，以文字封面代替。'},
@@ -50,7 +50,7 @@ function updateHomeBackground(item){
 }
 updateHomeBackground(null);
 function select(b,item){selected=b;velocity=0;preview(item);$$('.thumb').forEach(el=>el.classList.toggle('selected',el===b));}
-function preview(item,origin='ring'){updateHomeBackground(item);centerPreviewItem=item;const ch=item?chapters.find(c=>c.id===item.chapter):null;setWord(ch?ch.title:'KYWOO');$('#center-kicker').textContent=ch?`CH.${String(chapters.indexOf(ch)+1).padStart(2,'0')} / ${ch.name}`:'01 / 我们做什么';$('#center-subtitle').textContent=ch?(touch.matches?'再点缩图，或进入章节':ch.intro):'让空间，连接生活。';$('#center-title').textContent=ch?ch.title:'KYWOO';enter.hidden=!ch;$('#home-actions').hidden=!!ch;enter.textContent=ch?(ch.project?`查看${ch.name}项目 →`:ch.id==='wulin'||ch.id==='zhujia'?`查看${ch.name}研究 →`:ch.id==='notes'?'了解如何一起工作 →':`了解${ch.name}方法 →`):'进入场景 →';enter.dataset.chapter=ch?.id||'';$('.center-locations').hidden=!!ch;$('#hint').hidden=!!ch;particleColor='#203e34';const token=++previewToken;particleSource=null;if(item){imageLab.load(item).then(source=>{if(token!==previewToken)return;particleSource=source;canvas.dataset.colorSource=item.id;canvas.dataset.palette=source.palette.map(c=>c.hex).join(',');sound.effect('hover');if(reduce.matches)drawParticles(1,true);}).catch(()=>{canvas.dataset.colorSource='unavailable';});}else{canvas.dataset.colorSource='brand';delete canvas.dataset.palette;}if(reduce.matches)drawParticles(1,true);window.dispatchEvent(new CustomEvent('kywoo-preview',{detail:{item,origin}}));}
+function preview(item,origin='ring'){updateHomeBackground(item);centerPreviewItem=item;const ch=item?chapters.find(c=>c.id===item.chapter):null;setWord(ch?ch.title:'KYWOO');$('#center-kicker').textContent=ch?`CH.${String(chapters.indexOf(ch)+1).padStart(2,'0')} / ${ch.name}`:'01 / 我们做什么';$('#center-subtitle').textContent=ch?(touch.matches?'再点缩图，或进入章节':ch.intro):'让冷清的空间，重新有人气。';$('#center-title').textContent=ch?ch.title:'KYWOO';enter.hidden=!ch;$('#home-actions').hidden=!!ch;enter.textContent=ch?(ch.project?`查看${ch.name}项目 →`:ch.id==='wulin'||ch.id==='zhujia'?`查看${ch.name}研究 →`:ch.id==='notes'?'了解如何一起工作 →':`了解${ch.name}方法 →`):'进入场景 →';enter.dataset.chapter=ch?.id||'';$('.center-locations').hidden=!!ch;$('#hint').hidden=!!ch;particleColor='#203e34';const token=++previewToken;particleSource=null;if(item){imageLab.load(item).then(source=>{if(token!==previewToken)return;particleSource=source;canvas.dataset.colorSource=item.id;canvas.dataset.palette=source.palette.map(c=>c.hex).join(',');sound.effect('hover');if(reduce.matches)drawParticles(1,true);}).catch(()=>{canvas.dataset.colorSource='unavailable';});}else{canvas.dataset.colorSource='brand';delete canvas.dataset.palette;}if(reduce.matches)drawParticles(1,true);window.dispatchEvent(new CustomEvent('kywoo-preview',{detail:{item,origin}}));}
 enter.onclick=()=>{returnTile=selected||hovered||document.querySelector('.triangle-node[aria-pressed="true"]')||enter;goChapter(enter.dataset.chapter);};
 let stageAmount=0,stageBlocked=false,stageBase=null,stageHover=false;
 const stageRoot=$('#triangle');
@@ -143,7 +143,7 @@ function routePage(){
  window.dispatchEvent(new CustomEvent('kywoo-route',{detail:route}));
  const changed=previous!==(next?.key||route)||was!==route;
  if(changed){transition();if(route==='home'){layout();if(returnTile?.isConnected)returnTile.focus({preventScroll:true});}else if(legacy)$('#chapter-title').focus({preventScroll:true});else KywooScenes.heading.focus({preventScroll:true});}
- document.title=next?`KYWOO — ${KywooScenes.sceneList.find(x=>x[0]===next.scene)[1]}`:legacy?'KYWOO — 图像资料':'KYWOO — 让空间，连接生活。';
+ document.title=next?`KYWOO — ${KywooScenes.sceneList.find(x=>x[0]===next.scene)[1]}`:legacy?'KYWOO — 图像资料':'KYWOO — 让冷清的空间，重新有人气。';
 }
 window.addEventListener('hashchange',routePage);window.addEventListener('resize',layout);$('.curtain').addEventListener('animationend',()=>$('.curtain').classList.remove('play'));
 const index=$('#index'),viewer=$('#viewer');$('#index-list').innerHTML=KywooScenes.sceneList.map(([id,name,n])=>`<a class="scene-index-link" href="${id==='home'?'#/':'#/'+id}"><span>${n} / ${name}</span><small>直接进入 ↗</small></a>`).join('')+`<details><summary>图像资料 · 研究、示意与待补</summary>${chapters.map(c=>`<a href="#/ch/${c.id}">${c.name}<small>${c.type} ↗</small></a>`).join('')}</details>`;
