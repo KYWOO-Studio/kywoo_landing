@@ -1,6 +1,6 @@
 # KYWOO · Make Space Live
 
-静态落地页，无构建步骤。定位：Evidence-based Placemaking（循证的场所营造），连接数据、空间重塑与创新运营。
+静态落地页，无构建步骤。定位：Evidence-based Placemaking（循证的场所营造），以数据、空间、活动三个方向工作。
 
 ## 页面结构
 

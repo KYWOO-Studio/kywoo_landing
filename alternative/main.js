@@ -5,7 +5,7 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)'), touch=matchMedia('(
 const chapters=[
  {id:'data',name:'数据',title:'DATA',type:'方法示意',intro:'从观察出发，读懂人、路径与停留。',note:'方法图解不是实测模型，不代表已完成委托。'},
  {id:'space',name:'空间',title:'SPACE',type:'方法示意',intro:'把洞察变成动线、节点与空间选择。',note:'通用楼层与空间示意，非具体项目的真实建筑。'},
- {id:'operations',name:'运营',title:'LIVE',type:'资料待补',intro:'让场所持续发生，让使用成为日常。',note:'真实运营项目、参与角色、成果与授权照片待补。'},
+ {id:'operations',name:'活动',title:'ACTIVITY',type:'资料待补',intro:'让场所持续发生，让使用成为日常。',note:'真实活动项目、参与角色、成果与授权照片待补。'},
  {id:'wulin',name:'武林',title:'WULIN',type:'地理研究',intro:'先看周边，如何走到这里？',note:'武林银泰周边地理研究；近似公共 POI，非委托实绩或实测客流。'},
  {id:'zhujia',name:'朱家角',title:'STREETS',type:'古镇研究',intro:'活动，应该落在哪些节点？',note:'研究示例，非已实施项目；对应照片尚未获核实。'},
  {id:'notes',name:'场所笔记',title:'NOTES',type:'相册说明',intro:'从一个场所，走向生活。',note:'本地概念原型。图片为研究图解、方法示意或明确占位，不是已完成项目相册。'}
@@ -16,7 +16,7 @@ const assets=[
  {id:'map',chapter:'wulin',src:'alternative/assets/wulin-data.svg',name:'武林银泰周边',type:'地理研究',alt:'武林银泰周边道路、水系与建筑的地理图解',position:'50% 50%',note:'Overture / OpenStreetMap contributors · ODbL 1.0。线性投影图解，不是项目照片。'},
  {id:'floor',chapter:'space',src:'alternative/assets/plate-floorstack.svg',name:'空间层次',type:'方法示意',alt:'通用楼层叠层方法示意',note:'来自 KYWOO 仓库的通用示意，非实际项目建筑。'},
  {id:'matrix',chapter:'data',src:'alternative/assets/plate-matrix.svg',name:'观察与比较',type:'方法示意',alt:'数据比较矩阵方法示意',note:'方法演示，不是经核实的项目成果或真实测量。'},
- {id:'ops',chapter:'operations',name:'运营照片待补',type:'待补照片',placeholder:'LIVE\nTOGETHER',note:'占位。真实项目名称、参与角色、成果及授权照片待补。'},
+ {id:'ops',chapter:'operations',name:'活动照片待补',type:'待补照片',placeholder:'LIVE\nTOGETHER',note:'占位。真实项目名称、参与角色、成果及授权照片待补。'},
  {id:'roads',chapter:'wulin',src:'alternative/assets/wulin-data.svg',name:'街区连接',type:'地理研究',alt:'同一武林周边地理图解的街区裁切',position:'15% 50%',note:'同一地理研究图的裁切；不是另一项项目。Overture / OSM，ODbL 1.0。'},
  {id:'units',chapter:'space',src:'alternative/assets/plate-units.svg',name:'使用与单元',type:'方法示意',alt:'通用空间单元方法示意',note:'通用功能单元示意，不是实际项目平面。'},
  {id:'zhujia',chapter:'zhujia',name:'朱家角研究',type:'文字封面',placeholder:'STREETS\n& STORIES',note:'研究示例，非已实施委托。无获核实项目照片，以文字封面代替。'},

@@ -3,11 +3,11 @@ const buttons = [...root.querySelectorAll('[data-loop-step]')];
 const workspace = root.querySelector('[data-network-workspace]');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)');
 const hover = matchMedia('(hover: hover) and (pointer: fine)');
-const overview = ['数据 / 空间重塑 / 创新运营', '让场所，<br>持续有活力。', '从洞察到空间，再到持续使用。'];
+const overview = ['数据 / 空间 / 活动', '让场所，<br>持续有活力。', '从洞察到空间，再到持续使用。'];
 const content = [
   ['01 / 数据', '看见问题。', '读懂人、路径与停留。'],
-  ['02 / 空间重塑', '让空间，<br>回应需要。', '把洞察变成动线、节点与空间选择。'],
-  ['03 / 创新运营', '让场所，<br>持续发生。', '用品牌、活动与内容带动参与，再观察调整。']
+  ['02 / 空间', '让空间，<br>回应需要。', '把洞察变成动线、节点与空间选择。'],
+  ['03 / 活动', '让场所，<br>持续发生。', '用活动、品牌与内容带动参与，再观察调整。']
 ];
 const credits = [
   '真实地理：武林银泰周边 · Overture / OpenStreetMap contributors · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">来源与 ODbL 许可</a> · 地理估计，非实测客流',
