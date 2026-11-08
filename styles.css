@@ -727,3 +727,5 @@ body:not(.js) .merged-story .method-panel{position:relative;inset:auto;opacity:1
 .cp-pause:hover{border-color:var(--ivory)}
 .case-photos.is-single .cp-pause{display:none}
 .cp-bars button:focus-visible,.cp-pause:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.cp-credit{margin-top:8px;font-size:12px;line-height:1.7;color:var(--sage)}
+.cp-credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}
