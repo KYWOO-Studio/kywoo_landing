@@ -16,6 +16,7 @@
   <link rel="preload" href="https://images.pexels.com/videos/40138161/pictures/preview-0.jpg" as="image">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23203e34'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial' font-size='38' font-weight='700' fill='%23f3f0e7'%3EK%3C/text%3E%3C/svg%3E">
   <script type="module" src="./app.js"></script>
+  <script type="module" src="./case-visuals.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要内容</a>
@@ -94,6 +95,16 @@
       <h2 id="projects-title">从具体问题，<br>理解我们的方法。</h2>
       <div class="case-grid">
         <article class="case-story">
+          <figure class="case-visual" data-case-visual="zhujiajiao" data-src="assets/cases/zhujiajiao-nodes.json">
+            <div class="cv-canvas" role="img" aria-label="朱家角古镇街巷图：新增节点逐个出现，步行 150 米覆盖范围随之扩大"><canvas aria-hidden="true"></canvas></div>
+            <div class="cv-bar">
+              <p class="cv-readout">新增 <b data-cv-count>0</b> 个节点 · 覆盖 <b data-cv-cov>48</b>%</p>
+              <button type="button" class="cv-pause" data-cv-pause aria-pressed="false">暂停 Ⅱ</button>
+            </div>
+            <input class="cv-range" type="range" min="0" max="10" step="1" value="0" data-cv-range aria-label="新增节点数量">
+            <p class="cv-legend"><span><i style="--c:#bdc8b5"></i>现有景点已覆盖</span><span><i style="--c:#b9d7e6"></i>新增节点覆盖</span><span>线越粗越好穿行</span></p>
+            <figcaption>覆盖＝步行 150 米内有内容，按穿行潜力加权；由街巷格局推算，未用实测人流校准。路网 © OpenStreetMap 贡献者（ODbL）。</figcaption>
+          </figure>
           <p class="case-type">古镇 / 研究示例</p><h3>朱家角</h3>
           <p class="case-question">活动，应该落在哪些节点？</p>
           <p>读懂街巷与节点，讨论活动选点。</p>
@@ -101,6 +112,19 @@
           <small>研究示例 · 需访问密码 · 非已实施项目。</small>
         </article>
         <article class="case-story">
+          <figure class="case-visual" data-case-visual="wulin" data-src="assets/cases/wulin-walk.json">
+            <div class="cv-canvas" role="img" aria-label="武林银泰周边真实路网：从商场沿道路向外点亮 5、10、15 分钟步行范围，小点沿最短路线走向商场"><canvas aria-hidden="true"></canvas></div>
+            <div class="cv-bar">
+              <p class="cv-readout"><b data-cv-label>从商场出发</b></p>
+              <button type="button" class="cv-pause" data-cv-pause aria-pressed="false">暂停 Ⅱ</button>
+            </div>
+            <div class="cv-seg" role="group" aria-label="选择步行时间">
+              <button type="button" data-cv-min="5" aria-pressed="false"><i style="--c:#f3f0e7"></i>5 分钟</button>
+              <button type="button" data-cv-min="10" aria-pressed="false"><i style="--c:#8fc0da"></i>10 分钟</button>
+              <button type="button" data-cv-min="15" aria-pressed="false"><i style="--c:#5e8f9b"></i>15 分钟</button>
+            </div>
+            <figcaption>小点沿最短步行路线走向商场；虚线为地铁。按每分钟 80 米、从商场近似定位起算，非实测客流。© Overture Maps / OpenStreetMap 贡献者（ODbL）。</figcaption>
+          </figure>
           <p class="case-type">商场 / 城市关系示例</p><h3>杭州武林银泰</h3>
           <p class="case-question">先看周边，如何走到这里？</p>
           <p>从真实道路与建筑，理解城市连接。</p>
