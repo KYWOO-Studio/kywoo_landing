@@ -14,7 +14,7 @@
     var map = { method: 'approach', ch: 'approach', work: 'strategies', contact: 'faq', about: 'about' };
     var target = '';
     if (h[0] === 'cases') {
-      var known = ['wong-tai-sin', 'whampoa', 'songping', 'grand-lisboa', 'columbia-circle', 'seoullo-7017'];
+      var known = ['wong-tai-sin', 'grand-lisboa', 'columbia-circle', 'seoullo-7017'];
       target = known.indexOf(h[1]) >= 0 ? 'project-' + h[1] : 'cases';
     } else if (map[h[0]]) {
       target = map[h[0]];
