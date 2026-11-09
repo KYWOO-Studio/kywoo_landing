@@ -348,3 +348,20 @@ disclosure.addEventListener('click', (event) => {
   if (outside) disclosure.close();
 });
 disclosure.addEventListener('close', () => document.body.classList.remove('dialog-open'));
+
+// Contact: copy the conversation outline (merged from the album page). Nothing is sent anywhere.
+const briefButton = document.querySelector('[data-copy-brief]');
+if (briefButton) {
+  const status = document.querySelector('[data-brief-status]');
+  const fallback = document.querySelector('[data-brief-fallback]');
+  briefButton.addEventListener('click', async () => {
+    const text = document.querySelector('[data-brief-text]').textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = '已复制对话提纲，可贴到邮件里填写。本页没有收集或发送资料。';
+    } catch {
+      status.textContent = '无法自动复制，请从下方提纲手动复制。';
+      fallback.open = true;
+    }
+  });
+}

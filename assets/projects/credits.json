@@ -7,7 +7,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
     "description": "Temple Mall North (Oct 2015)",
     "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Temple_Mall_North_201510.jpg/1920px-Temple_Mall_North_201510.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "bytes": 538456
+    "thumb": "assets/projects/wong-tai-sin-480.jpg",
+    "note": "Resized from the Commons 1920px thumbnail to 1280px and 480px widths."
   },
   {
     "id": "whampoa",
@@ -17,7 +18,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
     "description": "Wonderful Worlds of Whampoa Treasure World",
     "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Wonderful_Worlds_of_Whampoa_Treasure_World_Entrance_201108.jpg/1920px-Wonderful_Worlds_of_Whampoa_Treasure_World_Entrance_201108.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "bytes": 784850
+    "thumb": "assets/projects/whampoa-480.jpg",
+    "note": "Resized from the Commons 1920px thumbnail to 1280px and 480px widths."
   },
   {
     "id": "grand-lisboa",
@@ -27,7 +29,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "description": "Grand Lisboa",
     "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Grand_Lisboa_22.jpg/1920px-Grand_Lisboa_22.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "bytes": 564305
+    "thumb": "assets/projects/grand-lisboa-480.jpg",
+    "note": "Resized from the Commons 1920px thumbnail to 1280px and 480px widths."
   },
   {
     "id": "columbia-circle",
@@ -37,7 +40,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "description": "​上生新所园区随拍",
     "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Columbia_Circle_07.jpg/1920px-Columbia_Circle_07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "bytes": 629789
+    "thumb": "assets/projects/columbia-circle-480.jpg",
+    "note": "Resized from the Commons 1920px thumbnail to 1280px and 480px widths."
   },
   {
     "id": "seoullo-7017",
@@ -47,6 +51,7 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "description": "Seoullo 7017, ehemaliger Highway nahe Seoul Station.",
     "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Seoullo_7017_Overview_%284%29.jpg/1920px-Seoullo_7017_Overview_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "bytes": 619931
+    "thumb": "assets/projects/seoullo-7017-480.jpg",
+    "note": "Resized from the Commons 1920px thumbnail to 1280px and 480px widths."
   }
 ]

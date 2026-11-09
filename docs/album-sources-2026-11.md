@@ -1,3 +1,5 @@
+> 存档：交互相册（alternative.html）已于 2026-11-09 并入首页。本文件为原相册的来源与许可说明，其中 `alternative/` 路径已不存在；项目照片现位于 `assets/projects/`。
+
 # Sources, permissions and content boundaries
 
 This is a new, independently authored local KYWOO album prototype. The latest center update reuses only the authorized original KYWOO triangle scene/semantics, with new album-specific sizing and paper colors. The old page structure, panel and cards are not imported. The prior prototype and host repository remain separate and unchanged.

@@ -5,9 +5,16 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)');
 const hover = matchMedia('(hover: hover) and (pointer: fine)');
 const overview = ['数据 / 空间 / 活动', '让场所，<br>持续有活力。', '从洞察到空间，再到持续使用。'];
 const content = [
-  ['01 / 数据', '看见问题。', '读懂人、路径与停留。'],
-  ['02 / 空间', '让空间，<br>回应需要。', '把洞察变成动线、节点与空间选择。'],
-  ['03 / 活动', '让场所，<br>持续发生。', '用活动、品牌与内容带动参与，再观察调整。']
+  ['01 / 数据', '看见问题。', '读懂场所与人，让资料和观察支持空间选择。'],
+  ['02 / 空间', '让空间，<br>回应需要。', '让动线、节点与功能回应场所需要。'],
+  ['03 / 活动', '让场所，<br>持续发生。', '以品牌、活动与持续使用安排邀请参与，再把观察带回问题判断。']
+];
+// [question, tags] per direction; the overview shows the brand line and how the three connect
+const overviewDetail = ['品牌贯穿三个方向：帮助判断为谁服务、如何表达，以及让人持续参与。', '洞察支持设计 · 空间承载活动 · 使用观察回馈数据'];
+const detail = [
+  ['具体问题：人从哪里来，在哪些节点停留？', '人 / 路径 / 停留 · 洞察支持设计'],
+  ['具体问题：哪些位置能承载日常使用与内容活动？', '动线 / 节点 / 使用 · 空间承载活动'],
+  ['具体问题：一次小试点后，怎样记录参与和停留？', '品牌 / 活动 / 内容 · 使用观察回馈数据']
 ];
 const credits = [
   '真实地理：武林银泰周边 · Overture / OpenStreetMap contributors · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">来源与 ODbL 许可</a> · 地理估计，非实测客流',
@@ -23,6 +30,9 @@ function show(index) {
   root.querySelector('[data-loop-number]').textContent = c[0];
   root.querySelector('[data-loop-title]').innerHTML = c[1];
   root.querySelector('#anchor-detail').textContent = c[2];
+  const d = index < 0 ? overviewDetail : detail[index];
+  root.querySelector('[data-loop-question]').textContent = d[0];
+  root.querySelector('[data-loop-tags]').textContent = d[1];
   root.querySelector('[data-network-credit]').innerHTML = index < 0 ? defaultCredit : credits[index];
   root.querySelectorAll('[data-network-image]').forEach(image => image.classList.toggle('is-visible', image.dataset.networkImage === (index < 0 ? 'overview' : String(index))));
   buttons.forEach((button, i) => {button.setAttribute('aria-pressed', String(pinned === i));button.classList.toggle('is-preview', i === index);});
