@@ -1,4 +1,6 @@
 import './living-loop.js';
+const EN = document.documentElement.lang === 'en';
+const L = (zh, en) => (EN ? en : zh);
 
 // WGS84 display reference derived from Amap POI B023B0934P.
 // This point never assigns the nearest footprint or asserts a mall boundary.
@@ -23,25 +25,25 @@ loadButton.hidden = !isLocalPrototype;
 reset.hidden = !isLocalPrototype;
 flat.hidden = !isLocalPrototype;
 if (isLocalPrototype) {
-  document.querySelector('[data-site-mode-note]').textContent = '本机研究地图 · 近似公共定位，非测绘边界。';
-  root.setAttribute('aria-label', '武林银泰周边真实地理研究地图');
-  root.querySelector('.site-placeholder').textContent = '真实地理预览 · 正在准备本机研究地图。';
-  status.textContent = '地理预览 · 等待载入本机研究地图';
-  document.querySelector('[data-site-help]').textContent = '城市章节的本机研究地图可自动载入；公开版保留静态地理预览。';
+  document.querySelector('[data-site-mode-note]').textContent = L('本机研究地图 · 近似公共定位，非测绘边界。', 'Local research map · approximate public location, not a surveyed boundary.');
+  root.setAttribute('aria-label', L('武林银泰周边真实地理研究地图', 'Research map of the real geography around Wulin Intime'));
+  root.querySelector('.site-placeholder').textContent = L('真实地理预览 · 正在准备本机研究地图。', 'Real geography preview · preparing the local research map.');
+  status.textContent = L('地理预览 · 等待载入本机研究地图', 'Geography preview · waiting for the local research map');
+  document.querySelector('[data-site-help]').textContent = L('城市章节的本机研究地图可自动载入；公开版保留静态地理预览。', 'The local research map can load in the city chapter; the public site keeps a static geography preview.');
 }
 const attribution = '© Overture Maps Foundation · © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> · <a href="https://opendatacommons.org/licenses/odbl/">ODbL</a>';
 const camera = () => ({center, zoom:15.6, bearing:-18, pitch:flat.getAttribute('aria-pressed') === 'true' ? 0 : 52, duration:reduced.matches ? 0 : 500});
 function loadSite() {
   if (!isLocalPrototype) {
-    status.textContent = '静态地理预览 · 交互地图仅在本机研究版提供。';
+    status.textContent = L('静态地理预览 · 交互地图仅在本机研究版提供。', 'Static geography preview · the interactive map is only available in the local research version.');
     root.dataset.state = 'static';
     return;
   }
   if (map) { map.remove(); map = undefined; }
   live = false; error = false;
-  loadButton.disabled = true; status.textContent = '正在加载 Overture 场地数据…'; root.dataset.state = 'loading';
+  loadButton.disabled = true; status.textContent = L('正在加载 Overture 场地数据…', 'Loading Overture site data…'); root.dataset.state = 'loading';
   try {
-    if (!window.maplibregl || !window.pmtiles) throw new Error('地图运行库未能加载');
+    if (!window.maplibregl || !window.pmtiles) throw new Error(L('地图运行库未能加载', 'Map library failed to load'));
     protocol ||= new window.pmtiles.Protocol();
     window.maplibregl.addProtocol('pmtiles', protocol.tile);
     root.replaceChildren();
@@ -60,25 +62,25 @@ function loadSite() {
     map.addControl(new window.maplibregl.NavigationControl({showCompass:false}), 'top-right');
     map.addControl(new window.maplibregl.AttributionControl({compact:false}), 'bottom-right');
     map.addControl(new window.maplibregl.ScaleControl({maxWidth:90}), 'bottom-left');
-    const marker = document.createElement('button'); marker.type = 'button'; marker.className = 'mall-marker'; marker.textContent = '武林银泰'; marker.setAttribute('aria-label','武林银泰公共定位，查看范围说明');
-    const popup = new window.maplibregl.Popup({offset:22,closeButton:true}).setText('公共 POI 参考 · 不是经营边界、入口或实际客流。');
+    const marker = document.createElement('button'); marker.type = 'button'; marker.className = 'mall-marker'; marker.textContent = L('武林银泰', 'Wulin Intime'); marker.setAttribute('aria-label',L('武林银泰公共定位，查看范围说明', 'Wulin Intime public location; see scope note'));
+    const popup = new window.maplibregl.Popup({offset:22,closeButton:true}).setText(L('公共 POI 参考 · 不是经营边界、入口或实际客流。', 'Public POI reference · not the trading boundary, entrances or actual footfall.'));
     new window.maplibregl.Marker({element:marker,anchor:'bottom'}).setLngLat(center).setPopup(popup).addTo(map);
-    marker.setAttribute('aria-label','武林银泰公共定位，查看范围说明');
+    marker.setAttribute('aria-label',L('武林银泰公共定位，查看范围说明', 'Wulin Intime public location; see scope note'));
     map.on('idle', () => {
       if(error) return;
       const buildings = map.queryRenderedFeatures({layers:['footprints']});
       const roads = map.queryRenderedFeatures({layers:['roads']});
       if(buildings.length && roads.length) {
         live = true; root.dataset.state = 'ready'; root.dataset.buildings = String(buildings.length); root.dataset.roads = String(roads.length);
-        status.textContent = '真实地理资料 · 可拖动查看'; loadButton.textContent = '重新加载地图'; loadButton.disabled = false; reset.disabled = false; flat.disabled = false;
+        status.textContent = L('真实地理资料 · 可拖动查看', 'Real geography · drag to explore'); loadButton.textContent = L('重新加载地图', 'Reload map'); loadButton.disabled = false; reset.disabled = false; flat.disabled = false;
       }
     });
     map.on('error', event => {
-      error = true; root.dataset.state = 'error'; status.textContent = `地图数据加载失败：${event.error?.message || '网络或图层不可用'}。请重新加载。`;loadButton.disabled = false;loadButton.textContent = '重试加载地图';
+      error = true; root.dataset.state = 'error'; status.textContent = (EN ? `Map data failed to load: ${event.error?.message || 'network or layer unavailable'}. Please reload.` : `地图数据加载失败：${event.error?.message || '网络或图层不可用'}。请重新加载。`);loadButton.disabled = false;loadButton.textContent = L('重试加载地图', 'Retry map');
     });
     map.on('load',()=> {reset.disabled=false;flat.disabled=false;bindMapInteraction(map);});
-    window.setTimeout(()=>{if(!live&&!error){status.textContent='场地数据仍未就绪，请检查网络后重试。';loadButton.disabled=false;loadButton.textContent='重试加载地图';}},15000);
-  } catch(e) {root.dataset.state='error';status.textContent=`地图未能加载：${e.message}`;loadButton.disabled=false;loadButton.textContent='重试加载地图';}
+    window.setTimeout(()=>{if(!live&&!error){status.textContent=L('场地数据仍未就绪，请检查网络后重试。', 'Site data is still not ready. Check your connection and retry.');loadButton.disabled=false;loadButton.textContent=L('重试加载地图', 'Retry map');}},15000);
+  } catch(e) {root.dataset.state='error';status.textContent=(EN ? `Map failed to load: ${e.message}` : `地图未能加载：${e.message}`);loadButton.disabled=false;loadButton.textContent=L('重试加载地图', 'Retry map');}
 
 }
 loadButton.addEventListener('click', loadSite);
@@ -89,7 +91,7 @@ const mapLoader = new IntersectionObserver(entries => {
 }, {rootMargin:'120px'});
 mapLoader.observe(root);
 reset.addEventListener('click',()=>map?.easeTo(camera()));
-flat.addEventListener('click',()=>{const value=flat.getAttribute('aria-pressed')!=='true';flat.setAttribute('aria-pressed',String(value));flat.textContent=value?'返回 3D':'平面视图';map?.easeTo({pitch:value?0:52,duration:reduced.matches?0:400});});
+flat.addEventListener('click',()=>{const value=flat.getAttribute('aria-pressed')!=='true';flat.setAttribute('aria-pressed',String(value));flat.textContent=value?L('返回 3D', 'Back to 3D'):L('平面视图', 'Flat view');map?.easeTo({pitch:value?0:52,duration:reduced.matches?0:400});});
 window.addEventListener('pagehide',()=>map?.remove(),{once:true});
 
 // The merged chapter controller owns scroll progression for both visual layers.

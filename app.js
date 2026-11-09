@@ -1,4 +1,6 @@
 document.body.classList.add('js');
+const EN = document.documentElement.lang === 'en';
+const L = (zh, en) => (EN ? en : zh);
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const desktopMode = window.matchMedia('(min-width: 901px)');
@@ -59,7 +61,7 @@ const story = document.querySelector('.merged-story');
 function announceChapter() {
   story.dataset.storyStep = String(activeStep);
   document.querySelector('[data-geography-layer]').inert = activeStep !== 0;
-  document.querySelector('[data-story-provenance]').textContent = activeStep === 0 ? '真实地理资料 · 武林银泰周边' : '通用方法示范 · 非武林银泰实际建筑／楼层';
+  document.querySelector('[data-story-provenance]').textContent = activeStep === 0 ? L('真实地理资料 · 武林银泰周边', 'Real geography · around Wulin Intime') : L('通用方法示范 · 非武林银泰实际建筑／楼层', 'Generic method demo · not the actual Wulin Intime building or floors');
   window.dispatchEvent(new CustomEvent('kywoo:chapterchange', {detail:{step:activeStep,progress:scrollProgress}}));
   syncSceneVisibility();
 }
@@ -109,7 +111,7 @@ function scrollToStep(index, { immediate = false } = {}) {
     button.classList.toggle('is-selected', selected);
     button.setAttribute('aria-pressed', String(selected));
   });
-  floorName.textContent = '全栋 / ALL LEVELS';
+  floorName.textContent = L('全栋 / ALL LEVELS', 'All levels / ALL LEVELS');
   returnTour.hidden = true;
   scene?.setFloor(-1);
   if (isScrollDriven()) {
@@ -139,7 +141,7 @@ floorButtons.forEach((button) => {
       item.classList.toggle('is-selected', selected);
       item.setAttribute('aria-pressed', String(selected));
     });
-    floorName.textContent = index < 0 ? '全栋 / ALL LEVELS' : `楼层 L0${index + 1} / SELECTED`;
+    floorName.textContent = index < 0 ? L('全栋 / ALL LEVELS', 'All levels / ALL LEVELS') : (EN ? `Level L0${index + 1} / SELECTED` : `楼层 L0${index + 1} / SELECTED`);
     returnTour.hidden = index < 0;
     scene?.setStep(1);
     scene?.setFloor(index);
@@ -160,7 +162,7 @@ returnTour.addEventListener('click', () => {
     button.classList.toggle('is-selected', selected);
     button.setAttribute('aria-pressed', String(selected));
   });
-  floorName.textContent = '全栋 / ALL LEVELS';
+  floorName.textContent = L('全栋 / ALL LEVELS', 'All levels / ALL LEVELS');
   scene?.setFloor(-1);
   if (isScrollDriven()) scene?.setScrollProgress(genericProgress());
   else scene?.setStep(activeStep);
@@ -284,9 +286,9 @@ if (briefButton) {
     const text = document.querySelector('[data-brief-text]').textContent;
     try {
       await navigator.clipboard.writeText(text);
-      status.textContent = '已复制对话提纲，可贴到邮件里填写。本页没有收集或发送资料。';
+      status.textContent = L('已复制对话提纲，可贴到邮件里填写。本页没有收集或发送资料。', 'Outline copied. Paste it into your email. This page does not collect or send anything.');
     } catch {
-      status.textContent = '无法自动复制，请从下方提纲手动复制。';
+      status.textContent = L('无法自动复制，请从下方提纲手动复制。', 'Could not copy automatically. Please copy the outline below.');
       fallback.open = true;
     }
   });

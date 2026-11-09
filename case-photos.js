@@ -5,7 +5,8 @@
    changes when the visitor asks. Photos that fail to load are dropped. */
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-const HOLD = 5500;      // ms each photo stays before the next one
+const HOLD = 5500;
+const EN = document.documentElement.lang === 'en';      // ms each photo stays before the next one
 
 document.querySelectorAll('[data-case-photos]').forEach(fig => {
   const frame = fig.querySelector('.cp-frame');
@@ -25,7 +26,7 @@ document.querySelectorAll('[data-case-photos]').forEach(fig => {
       img.style.setProperty('--kb-y', drift[k % drift.length][1]);
       const b = document.createElement('button');
       b.type = 'button';
-      b.setAttribute('aria-label', `第 ${k + 1} 张，共 ${slides.length} 张：${img.alt}`);
+      b.setAttribute('aria-label', EN ? `Photo ${k + 1} of ${slides.length}: ${img.alt}` : `第 ${k + 1} 张，共 ${slides.length} 张：${img.alt}`);
       b.addEventListener('click', () => go(k));
       b.append(document.createElement('i'));
       bars.append(b);
@@ -63,8 +64,8 @@ document.querySelectorAll('[data-case-photos]').forEach(fig => {
   function setPlaying(on) {
     playing = on;
     pause.setAttribute('aria-pressed', String(!on));
-    pause.setAttribute('aria-label', on ? '暂停照片轮播' : '播放照片轮播');
-    pause.textContent = on ? '暂停 Ⅱ' : '播放 ▶';
+    pause.setAttribute('aria-label', EN ? (on ? 'Pause photos' : 'Play photos') : (on ? '暂停照片轮播' : '播放照片轮播'));
+    pause.textContent = EN ? (on ? 'Pause Ⅱ' : 'Play ▶') : (on ? '暂停 Ⅱ' : '播放 ▶');
     schedule();
   }
 
