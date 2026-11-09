@@ -22,80 +22,6 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
-// Poster-first Hero. The source is attached only when needed.
-const hero = document.querySelector('.hero');
-const video = document.querySelector('[data-hero-video]');
-const videoButton = document.querySelector('[data-video-toggle]');
-const videoIcon = document.querySelector('[data-video-icon]');
-const videoLabel = document.querySelector('[data-video-label]');
-let videoAttached = false;
-let userPaused = reducedMotion.matches;
-let heroVisible = true;
-
-function updateVideoButton() {
-  const paused = video.paused || !videoAttached;
-  videoIcon.textContent = paused ? '▶' : 'Ⅱ';
-  videoLabel.textContent = paused ? '播放视频' : '暂停视频';
-  videoButton.setAttribute('aria-label', paused ? '播放背景视频' : '暂停背景视频');
-  videoButton.setAttribute('aria-pressed', String(!paused));
-}
-
-function attachVideo() {
-  if (videoAttached) return;
-  video.src = video.dataset.src;
-  videoAttached = true;
-  video.load();
-}
-
-async function playVideo() {
-  attachVideo();
-  try {
-    await video.play();
-  } catch {
-    // Autoplay can be blocked; the poster and explicit play control remain usable.
-  }
-  updateVideoButton();
-}
-
-function primeVideo() {
-  if (reducedMotion.matches) {
-    updateVideoButton();
-    return;
-  }
-  window.setTimeout(() => {
-    if (heroVisible && !userPaused) playVideo();
-  }, 500);
-}
-
-if ('requestIdleCallback' in window) window.requestIdleCallback(primeVideo, { timeout: 1800 });
-else window.addEventListener('load', primeVideo, { once: true });
-
-videoButton.addEventListener('click', () => {
-  if (!videoAttached || video.paused) {
-    userPaused = false;
-    playVideo();
-  } else {
-    userPaused = true;
-    video.pause();
-  }
-  updateVideoButton();
-});
-video.addEventListener('play', updateVideoButton);
-video.addEventListener('pause', updateVideoButton);
-video.addEventListener('error', () => {
-  videoLabel.textContent = '静态封面';
-  videoIcon.textContent = '—';
-  videoButton.disabled = true;
-});
-
-new IntersectionObserver(([entry]) => {
-  heroVisible = entry.isIntersecting;
-  if (!videoAttached) return;
-  if (!heroVisible) video.pause();
-  else if (!userPaused && !reducedMotion.matches) playVideo();
-}, { threshold: 0.05 }).observe(hero);
-updateVideoButton();
-
 // One shared scene, driven by the bounded desktop scroll region.
 const track = document.querySelector('[data-method-track]');
 const sceneContainer = document.querySelector('[data-scene-container]');
@@ -348,3 +274,20 @@ disclosure.addEventListener('click', (event) => {
   if (outside) disclosure.close();
 });
 disclosure.addEventListener('close', () => document.body.classList.remove('dialog-open'));
+
+// Contact: copy the conversation outline (merged from the album page). Nothing is sent anywhere.
+const briefButton = document.querySelector('[data-copy-brief]');
+if (briefButton) {
+  const status = document.querySelector('[data-brief-status]');
+  const fallback = document.querySelector('[data-brief-fallback]');
+  briefButton.addEventListener('click', async () => {
+    const text = document.querySelector('[data-brief-text]').textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = '已复制对话提纲，可贴到邮件里填写。本页没有收集或发送资料。';
+    } catch {
+      status.textContent = '无法自动复制，请从下方提纲手动复制。';
+      fallback.open = true;
+    }
+  });
+}
