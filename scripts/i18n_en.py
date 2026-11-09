@@ -412,4 +412,7 @@ EN = {
     '理论方法 · 我们看的数': 'Theory and method · What we measure',
     '「过往经验」里，「项目经验」是过往项目介绍，参与角色与项目状态待补充；「城市更新参考」是他人完成的公开案例。两者的照片都是公开授权的场所背景照片，非团队作品摄影。「当前项目」朱家角与武林银泰处于前期研究阶段（朱家角研究汇报需访问密码），不是已交付的委托。武林银泰地理图使用 Overture 建筑与道路数据，楼层动画是通用 DEMO。首屏照片为有人气的参考场所，来源见“素材与披露”。':
         'Under "Past experience", "Project experience" describes past projects; roles and status are still to be added. "Urban renewal references" are published projects by others. Photos for both are openly licensed pictures of the places, not the team\'s own photography. The "Current projects", Zhujiajiao and Wulin Intime, are at the early research stage (the Zhujiajiao report needs a password), not delivered commissions. The Wulin Intime map uses Overture building and road data; the floor animation is a generic demo. The hero photos show lively reference places; see "Sources and disclosures".',
+    # 2026-11-09: new hero title
+    '让城市中失去人气的空间，': "Bring the city's quiet places",
+    '重新充满活力！': 'back to life!',
 }
