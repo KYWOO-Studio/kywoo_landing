@@ -56,12 +56,13 @@ function show(index) {
 
   const link = root.querySelector('[data-network-case]');
   // each direction points to where it shows up further down the page
+  // the method sits below projects and services, so these links point back up the page
   const links = [
-    ['#site-study', L('看真实场地 ↓', 'See the real site ↓')],
-    ['#services', L('我们的服务 ↓', 'Our services ↓')],
-    ['#projects', L('看项目 ↓', 'See projects ↓')]
+    ['#site-study', L('看真实场地 ↑', 'See the real site ↑')],
+    ['#service-list', L('服务内容 ↑', 'What we offer ↑')],
+    ['#experience', L('看过往经验 ↑', 'See past experience ↑')]
   ];
-  [link.href, link.textContent] = index < 0 ? ['#projects', L('看项目 ↓', 'See projects ↓')] : links[index];
+  [link.href, link.textContent] = index < 0 ? ['#projects', L('看项目 ↑', 'See projects ↑')] : links[index];
   model?.setState(index);
 }
 buttons.forEach((button, index) => {

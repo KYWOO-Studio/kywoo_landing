@@ -389,4 +389,27 @@ EN = {
 '/ Pexels，': '/ Pexels, ',
 '。': '.',
 '公开版为静态地理预览；交互地图仅在本机研究版提供。': 'The public site shows a static geography preview; the interactive map is only available in the local research version.',
+    # 2026-11-09: two groups, 项目 / 服务
+    '当前项目': 'Current projects',
+    '过往经验': 'Past experience',
+    '关于我们': 'About us',
+    '服务内容': 'What we offer',
+    '理论方法': 'Theory and method',
+    '朱家角 · 杭州武林银泰': 'Zhujiajiao · Wulin Intime, Hangzhou',
+    '项目经验 · 城市更新参考': 'Project experience · Urban renewal references',
+    '朱家角 · 杭州武林银泰 · 前期研究': 'Zhujiajiao · Wulin Intime, Hangzhou · Early-stage research',
+    '走进两个场所。': 'step into two places.',
+    '古镇文旅 / 前期研究': 'Historic town / Early-stage research',
+    '前期研究 · 需访问密码 · 非已实施项目。': 'Early-stage research · password required · not a delivered project.',
+    '商业空间 / 前期研究': 'Commercial space / Early-stage research',
+    '两个当前项目均处于前期研究阶段，非已实施委托。': 'Both current projects are at the early research stage; neither is commissioned work.',
+    '定位与三类空间': 'Who we are and the places we work in',
+    '五件事 · 如何一起工作': 'Five services · How we work together',
+    '数据 · 空间 · 活动 · 我们看的数': 'Data · Space · Activity · What we measure',
+    'KYWOO STUDIO 是一家场所营造工作室。我们面向既有的城市公共空间、商业空间与古镇文旅空间，从一个具体问题开始，融合数据、空间与活动的研究和洞察，用小步试点让场所重新有人气。':
+        'KYWOO STUDIO is a placemaking studio. We work with existing urban public spaces, commercial spaces and historic-town cultural tourism destinations, starting from one concrete question and blending data, spatial and activity research to bring places back to life through small pilots.',
+    '看项目 ↑': 'See projects ↑',
+    '理论方法 · 我们看的数': 'Theory and method · What we measure',
+    '「过往经验」里，「项目经验」是过往项目介绍，参与角色与项目状态待补充；「城市更新参考」是他人完成的公开案例。两者的照片都是公开授权的场所背景照片，非团队作品摄影。「当前项目」朱家角与武林银泰处于前期研究阶段（朱家角研究汇报需访问密码），不是已交付的委托。武林银泰地理图使用 Overture 建筑与道路数据，楼层动画是通用 DEMO。首屏照片为有人气的参考场所，来源见“素材与披露”。':
+        'Under "Past experience", "Project experience" describes past projects; roles and status are still to be added. "Urban renewal references" are published projects by others. Photos for both are openly licensed pictures of the places, not the team\'s own photography. The "Current projects", Zhujiajiao and Wulin Intime, are at the early research stage (the Zhujiajiao report needs a password), not delivered commissions. The Wulin Intime map uses Overture building and road data; the floor animation is a generic demo. The hero photos show lively reference places; see "Sources and disclosures".',
 }

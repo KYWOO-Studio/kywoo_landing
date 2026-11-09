@@ -2,7 +2,7 @@
    in a dialog. Each card carries its own full description in a hidden block,
    so the content is in the page even without this script. */
 
-const section = document.querySelector('#projects');
+const section = document.querySelector('#experience');
 if (section) {
   const cards = [...section.querySelectorAll('.project-card')];
   const filters = [...section.querySelectorAll('[data-filter]')];
@@ -55,7 +55,7 @@ if (section) {
   dialog.addEventListener('click', e => { if (e.target === dialog) close(); });   // backdrop
   dialog.addEventListener('close', () => {
     if (location.hash && document.getElementById(location.hash.slice(1))?.classList.contains('project-card')) {
-      history.replaceState(null, '', location.pathname + location.search + '#projects');
+      history.replaceState(null, '', location.pathname + location.search + '#experience');
     }
     opener?.focus({ preventScroll: true });
   });

@@ -967,9 +967,48 @@ body:not(.js) .merged-story .method-panel{position:relative;inset:auto;opacity:1
   .site-header { column-gap: 6px; }
   .wordmark small { display: none; }
   .lang-switch { min-width: 34px; min-height: 34px; padding: 0 8px; font-size: 11px; }
-  .main-nav a { padding: 9px 10px; }
-  html[lang="en"] .main-nav a { padding: 9px 6px; font-size: 10.5px; letter-spacing: 0; }
 }
-@media (max-width: 380px) {
-  html[lang="en"] .main-nav a[href="#approach"], html[lang="en"] .main-nav a[href="#services"] { display: none; }
+
+/* Two groups: 项目 / 服务 (2026-11-09).
+   The header has two larger items; each opens a small menu of its sections on
+   hover or keyboard focus. Touch screens go straight to the group overview. */
+.main-nav { gap: 4px; padding: 5px; }
+.nav-group { position: relative; }
+.main-nav .nav-top { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 128px; padding: 11px 26px; font-size: 16px; font-weight: 500; letter-spacing: .08em; }
+.nav-top i { font-style: normal; font-size: 10px; opacity: .65; transition: transform .3s var(--ease); }
+.nav-sub { position: absolute; top: calc(100% + 12px); left: 50%; z-index: 2; min-width: 210px; display: grid; gap: 2px; padding: 8px; border-radius: 20px; background: var(--ivory); color: var(--forest); box-shadow: 0 20px 44px rgba(16,44,36,.2); opacity: 0; visibility: hidden; transform: translate(-50%, -6px); transition: opacity .25s, transform .25s, visibility .25s; }
+.nav-sub::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+.nav-group:hover .nav-sub { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-group:has(:focus-visible) .nav-sub { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-group:hover .nav-top i { transform: rotate(180deg); }
+.main-nav .nav-sub a { min-width: 0; display: flex; justify-content: space-between; align-items: baseline; gap: 18px; padding: 13px 16px; border-radius: 14px; text-align: left; font-size: 15px; font-weight: 500; letter-spacing: .04em; color: var(--forest); }
+.nav-sub a small { font: 10px/1 var(--mono); letter-spacing: .12em; color: #5c6f66; }
+.main-nav .nav-sub a:hover, .site-header.is-scrolled .main-nav .nav-sub a:hover { color: var(--forest); background: rgba(32,62,52,.08); }
+@media (hover: none) { .nav-sub, .nav-top i { display: none; } }
+@media (max-width: 600px) {
+  .main-nav .nav-top { min-width: 0; padding: 9px 18px; font-size: 14px; }
+  .nav-sub, .nav-top i { display: none; }
 }
+
+/* section labels: larger and easier to read */
+.eyebrow, .section-kicker { font-size: 12.5px; letter-spacing: .12em; }
+.section-kicker > span { letter-spacing: .1em; }
+@media (max-width: 600px) { .section-kicker { font-size: 11px; } .eyebrow { font-size: 10px; letter-spacing: .1em; } }
+
+/* group overview: a big title and the sections inside it */
+.group-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 24px 6vw; align-items: end; padding-top: clamp(100px, 11vw, 170px); padding-bottom: clamp(56px, 6vw, 96px); color: var(--forest); background: var(--ivory); }
+.group-index { grid-column: 1 / -1; display: flex; justify-content: space-between; margin: 0; padding-bottom: 18px; border-bottom: 1px solid rgba(32,62,52,.18); font: 12.5px/1.5 var(--mono); letter-spacing: .14em; color: #5c6f66; }
+.group-title { margin: 0; font: 600 clamp(84px, 12vw, 190px)/.95 var(--serif); letter-spacing: -.04em; }
+html[lang="en"] .group-title { font-size: clamp(64px, 9vw, 150px); }
+.group-units { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(32,62,52,.18); }
+.group-units li { border-bottom: 1px solid rgba(32,62,52,.18); }
+.group-units a { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; grid-template-areas: "num name arrow" "num desc arrow"; column-gap: 18px; align-items: center; padding: 22px 6px; transition: background .3s, padding .3s; }
+.group-units a:hover { background: rgba(32,62,52,.05); padding-left: 14px; }
+.unit-num { grid-area: num; align-self: start; padding-top: 10px; font: 12px/1 var(--mono); letter-spacing: .1em; color: #5c6f66; }
+.group-units strong { grid-area: name; font: 600 clamp(26px, 2.6vw, 40px)/1.25 var(--serif); letter-spacing: -.01em; }
+.group-units small { grid-area: desc; margin-top: 4px; font-size: 14px; color: #3d564c; }
+.group-units i { grid-area: arrow; font-style: normal; font-size: 22px; }
+#services.group-intro { border-top: 1px solid rgba(32,62,52,.12); }
+@media (max-width: 860px) { .group-intro { grid-template-columns: 1fr; } }
+
+.about-lead { max-width: 46em; margin: 22px 0 0; font-size: 17px; line-height: 1.9; color: #3d564c; }
