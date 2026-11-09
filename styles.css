@@ -806,12 +806,9 @@ body:not(.js) .merged-story .method-panel{position:relative;inset:auto;opacity:1
 .contact-actions .button-primary{color:var(--forest)}
 
 /* ===== Gehl-style structure (2026-11-09) ===== */
-/* header sits on a light hero now */
-.site-header { color: var(--forest); }
-.site-header .main-nav { border-color: rgba(32,62,52,.22); background: rgba(255,255,255,.35); }
-.site-header .main-nav a:hover { color: var(--ivory); background: var(--forest); }
-.header-contact { justify-self: end; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 999px; background: var(--forest); color: var(--ivory); font: 500 12px/1 var(--sans); letter-spacing: .04em; }
-.header-contact:hover { background: var(--blue); color: var(--forest); }
+.header-contact { justify-self: end; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 999px; background: var(--ivory); color: var(--forest); font: 500 12px/1 var(--sans); letter-spacing: .04em; }
+.header-contact:hover { background: var(--blue); }
+.site-header.is-scrolled .header-contact { background: var(--forest); color: var(--ivory); }
 
 /* light-section defaults */
 .statements, .statement-image, .projects-grid-section, .audiences, .services, .closing-quote { color: var(--forest); background: var(--ivory); }
@@ -952,3 +949,27 @@ body:not(.js) .merged-story .method-panel{position:relative;inset:auto;opacity:1
 .hero-ring .ring-tile.is-text { background: var(--forest); color: var(--ivory); }
 .hero-ring .ring-tile.is-text span { color: var(--sage); }
 @media (max-width: 760px) { .header-contact { display: none; } }
+
+/* hero: full-bleed photos of lively places + the slogan (Gehl-style), 2026-11-09 */
+.hero-photos { position: relative; margin: 0; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; color: var(--ivory); background: #1b332b; isolation: isolate; }
+.hero-photos .hero-photo-frame { position: absolute; inset: 0; z-index: -2; aspect-ratio: auto; border-radius: 0; background: #1b332b; }
+.hero-photos .hero-shade { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(16,38,31,.55) 0%, rgba(16,38,31,0) 24%, rgba(16,38,31,0) 42%, rgba(16,38,31,.72) 78%, rgba(16,38,31,.88) 100%); }
+.hero-photo-content { position: relative; padding-bottom: 28px; pointer-events: none; }
+.hero-photo-content a, .hero-photo-content button { pointer-events: auto; }
+.hero-photos .hero-eyebrow { margin: 0; color: rgba(243,240,231,.82); }
+.hero-photos h1 { margin: 18px 0 0; max-width: 12em; font: 600 clamp(48px, 7.4vw, 124px)/1.08 var(--serif); letter-spacing: -.035em; text-wrap: balance; text-shadow: 0 2px 24px rgba(0,0,0,.25); }
+.hero-photos .hero-lead { max-width: 38em; margin: 22px 0 0; font-size: 15px; line-height: 1.85; color: rgba(243,240,231,.9); text-wrap: pretty; }
+.hero-photos .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.hero-photo-bar { position: relative; margin: 0; padding-top: 14px; padding-bottom: 22px; border-top: 1px solid rgba(243,240,231,.22); }
+.hero-photo-bar .cp-caption { color: rgba(243,240,231,.78); font-size: 12px; }
+.hero-photo-bar .cp-pause { color: var(--ivory); border-color: rgba(243,240,231,.45); }
+@media (max-width: 760px) {
+  .hero-photos { min-height: 92svh; }
+  .hero-photos h1 { font-size: clamp(40px, 11.5vw, 56px); }
+  .hero-photos .hero-lead { font-size: 14px; }
+  .hero-photo-bar { flex-wrap: wrap; }
+  .hero-photo-bar .cp-caption { flex-basis: 100%; }
+}
+.hero-photos .hero-actions { justify-content: flex-start; }
+.hero-photos .hero-shade { background: linear-gradient(180deg, rgba(16,38,31,.5) 0%, rgba(16,38,31,0) 18%, rgba(16,38,31,.28) 38%, rgba(16,38,31,.8) 70%, rgba(16,38,31,.92) 100%), linear-gradient(90deg, rgba(16,38,31,.5), rgba(16,38,31,0) 62%); }
+.hero-photos .hero-eyebrow, .hero-photos .hero-lead { text-shadow: 0 1px 12px rgba(0,0,0,.35); }

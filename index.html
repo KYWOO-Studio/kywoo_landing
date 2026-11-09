@@ -16,7 +16,6 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23203e34'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial' font-size='38' font-weight='700' fill='%23f3f0e7'%3EK%3C/text%3E%3C/svg%3E">
   <script type="module" src="./app.js"></script>
   <script type="module" src="./case-photos.js"></script>
-  <script type="module" src="./project-ring.js"></script>
   <script type="module" src="./projects.js"></script>
 </head>
 <body>
@@ -36,21 +35,23 @@
   </header>
 
   <main id="main">
-    <section class="hero-ring" id="top" aria-labelledby="hero-title">
-      <div class="project-ring hero-frame" data-project-ring>
-        <div class="ring-track" data-ring-track></div>
-        <div class="ring-center hero-center">
-          <p class="eyebrow hero-eyebrow">KYWOO STUDIO · EVIDENCE-BASED PLACEMAKING</p>
-          <h1 id="hero-title">让冷清的空间，<br>重新有人气。</h1>
-          <p class="hero-lead">面向既有商场与古镇，我们用到访、停留与消费数据找出人气不足的原因，比较空间改造与活动的做法，以小范围试点后，紧盯数据再分期调整。</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#about">我们做什么 <span aria-hidden="true">↓</span></a>
-            <a class="button button-line" href="#projects">看项目 <span aria-hidden="true">→</span></a>
-          </div>
-          <p class="ring-caption" data-ring-caption aria-live="polite">四周是我们的项目与研究场所，指向或点选一张查看。</p>
-        </div>
-        <button type="button" class="ring-pause" data-ring-pause aria-pressed="false">暂停 Ⅱ</button>
+    <section class="hero-photos case-photos" id="top" data-case-photos aria-labelledby="hero-title">
+      <div class="cp-frame hero-photo-frame">
+        <img class="cp-slide" src="assets/hero/seoullo-7017.jpg" srcset="assets/hero/seoullo-7017-1080.jpg 1080w, assets/hero/seoullo-7017.jpg 1920w" sizes="100vw" alt="首尔路 7017 步行花园上来往与停留的人群" data-caption="首尔路 7017，首尔 · 原设计 MVRDV · 照片由团队提供，摄影署名待补" decoding="async" fetchpriority="high">
+        <img class="cp-slide" src="https://images.pexels.com/photos/38003117/pexels-photo-38003117.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920" srcset="https://images.pexels.com/photos/38003117/pexels-photo-38003117.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1080 1080w, https://images.pexels.com/photos/38003117/pexels-photo-38003117.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920 1920w" sizes="100vw" alt="朱家角古镇石拱桥上的游人" data-caption="朱家角古镇 · 摄影 Yudi Ding / Pexels" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+        <img class="cp-slide" src="https://images.pexels.com/videos/40138161/pictures/preview-0.jpg" alt="杭州西湖边热闹的街景" data-caption="杭州西湖边街景 · LayG Traveller / Pexels 视频截图 · 非武林银泰现场" loading="lazy" decoding="async" referrerpolicy="no-referrer">
       </div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-photo-content page-gutter">
+        <p class="eyebrow hero-eyebrow">KYWOO STUDIO · EVIDENCE-BASED PLACEMAKING</p>
+        <h1 id="hero-title">让冷清的空间，<br>重新有人气。</h1>
+        <p class="hero-lead">面向既有商场与古镇，我们用到访、停留与消费数据找出人气不足的原因，比较空间改造与活动的做法，以小范围试点后，紧盯数据再分期调整。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#about">我们做什么 <span aria-hidden="true">↓</span></a>
+          <a class="button button-ghost" href="#projects">看项目 <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="cp-bar hero-photo-bar page-gutter"><p class="cp-caption"></p><div class="cp-bars" role="group" aria-label="选择首屏照片"></div><button type="button" class="cp-pause" data-cp-pause>暂停 Ⅱ</button></div>
     </section>
 
     <section class="statements page-gutter" id="about" aria-labelledby="about-title">
@@ -415,7 +416,7 @@
           </details>
           <details>
             <summary><span>03</span><strong>页面上哪些是真实项目？</strong><i aria-hidden="true"></i></summary>
-            <div class="faq-answer"><p>「项目经验」是过往项目介绍，参与角色与项目状态待补充；「城市更新参考」是他人完成的公开案例。两者的照片都是公开授权的场所背景照片，非团队作品摄影。朱家角与武林银泰是研究示例（朱家角研究汇报需访问密码），不是已交付的委托。研究区的武林银泰地理图使用 Overture 建筑与道路数据，楼层动画是通用 DEMO。首屏四周的照片即上述项目与研究场所。</p></div>
+            <div class="faq-answer"><p>「项目经验」是过往项目介绍，参与角色与项目状态待补充；「城市更新参考」是他人完成的公开案例。两者的照片都是公开授权的场所背景照片，非团队作品摄影。朱家角与武林银泰是研究示例（朱家角研究汇报需访问密码），不是已交付的委托。研究区的武林银泰地理图使用 Overture 建筑与道路数据，楼层动画是通用 DEMO。首屏照片为有人气的参考场所，来源见“素材与披露”。</p></div>
           </details>
           <details>
             <summary><span>04</span><strong>数据、空间、活动如何连动？</strong><i aria-hidden="true"></i></summary>
@@ -465,7 +466,7 @@
     <h2 id="disclosure-title">素材与披露</h2>
     <div class="disclosure-body">
       <section><h3>3D 模型</h3><p>城市关系地图使用 Overture Maps 2026-09-23.1 的真实地理数据。另有一个程序化生成的通用楼层场景。楼层、体量、圈层、节点与配色均为界面示意，不是项目实景、测绘成果或已批准方案。</p></section>
-      <section><h3>首屏照片环</h3><p>首屏四周的照片即「项目」中各项目与研究示例的照片，来源与许可同下文；深圳松坪村与武林银泰未配现场照片，以文字方块代替。</p></section>
+      <section><h3>首屏照片</h3><p>首屏轮播的是有人气的场所：首尔路 7017（原设计 MVRDV，照片由团队提供，摄影署名待补）、朱家角古镇（Yudi Ding / Pexels）、杭州西湖边街景（LayG Traveller / Pexels 视频截图，非武林银泰现场）。均非 KYWOO 项目摄影，不代表作者、场所或设计方的背书。</p></section>
       <section><h3>公开范围</h3><p>这是品牌与交互设计预览，不连接私人数据库，不展示未授权项目素材，也不提供财务计算。缺失资料显示 Unknown。</p></section>
       <section><h3>项目经验与参考</h3><p>「项目经验」为过往项目介绍，参与角色与项目状态待补充；「城市更新参考」为他人完成的公开案例。照片来自 Wikimedia Commons，均为公开授权的场所背景照片（作者与许可列在各项目照片下方，记录见 assets/projects/credits.json），非团队作品摄影，不代表作者、场所或业主的背书。页面不展示个人姓名、照片或履历。</p></section>
       <section><h3>案例照片</h3><p>朱家角与杭州的案例照片来自 Pexels、Unsplash 免费图库（作者见照片下方），由图库直接加载。朱家角照片均标注拍摄地为朱家角；杭州照片为城市实景，不是武林银泰现场。均非 KYWOO 项目摄影，不代表作者或场所的背书。</p></section>
