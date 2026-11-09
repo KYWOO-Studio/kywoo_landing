@@ -1,16 +1,13 @@
 /* Case overview: one horizontal row of project cards, current projects first,
-   then past experience. Tabs narrow the row to one group; arrows, drag (mouse),
-   swipe, trackpad and keyboard all move it. Each card opens a dialog built
+   then past experience. Arrows, drag (mouse), swipe, trackpad and keyboard all
+   move it; the menu links #cases-current / #cases-past slide it to that group. Each card opens a dialog built
    from its own hidden description, so the content is in the page even
    without this script. */
 
 const section = document.querySelector('#cases');
 if (section) {
-  const EN = document.documentElement.lang === 'en';
   const track = section.querySelector('[data-case-track]');
   const cards = [...track.querySelectorAll('.project-card')];
-  const tabs = [...section.querySelectorAll('[data-case-filter]')];
-  const count = section.querySelector('[data-project-count]');
   const prev = section.querySelector('[data-case-prev]');
   const next = section.querySelector('[data-case-next]');
   const bar = section.querySelector('[data-case-progress]');
@@ -19,24 +16,22 @@ if (section) {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   let opener = null;
 
-  /* ---- groups ---- */
-  function filter(group) {
-    let shown = 0;
-    cards.forEach(card => {
-      const on = group === 'all' || card.dataset.group === group;
-      card.hidden = !on;
-      if (on) shown++;
-    });
-    tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.caseFilter === group)));
-    count.textContent = EN ? `${shown} projects` : `共 ${shown} 项`;
-    track.scrollTo({ left: 0, behavior: 'auto' });
-    update();
+  /* ---- groups: bring the section into view and slide the row to the group's first card ---- */
+  function showGroup(group) {
+    const first = cards.find(c => c.dataset.group === group);
+    section.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth' });
+    if (first) track.scrollTo({ left: first.offsetLeft - track.offsetLeft, behavior: reduce.matches ? 'auto' : 'smooth' });
   }
-  tabs.forEach(b => b.addEventListener('click', () => filter(b.dataset.caseFilter)));
+  document.querySelectorAll('a[href="#cases-current"], a[href="#cases-past"]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    history.replaceState(null, '', '#' + id);
+    showGroup(id.slice(6));
+  }));
 
   /* ---- moving the row ---- */
   const step = () => {
-    const card = cards.find(c => !c.hidden);
+    const card = cards[0];
     const gap = parseFloat(getComputedStyle(track).columnGap) || 24;
     return card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
   };
@@ -117,19 +112,18 @@ if (section) {
     opener?.focus({ preventScroll: true });
   });
 
-  /* ---- links: #project-xxx opens a dialog, #cases-current / #cases-past pick a group ---- */
+  /* ---- links: #project-xxx opens a dialog, #cases-current / #cases-past slide to a group ---- */
   const fromHash = () => {
     const id = location.hash.slice(1);
-    if (id === 'cases-current' || id === 'cases-past') { filter(id.slice(6)); return; }
+    if (id === 'cases-current' || id === 'cases-past') { showGroup(id.slice(6)); return; }
     const card = id ? document.getElementById(id) : null;
     if (card?.classList.contains('project-card') && !dialog.open) {
-      filter('all');
       track.scrollLeft = card.offsetLeft - track.offsetLeft;
       open(id);
     }
   };
   addEventListener('hashchange', fromHash);
-  filter('all');
+  update();
   fromHash();
 
   window.KywooProjects = { open };
