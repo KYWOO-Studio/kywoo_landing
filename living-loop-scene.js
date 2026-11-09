@@ -19,9 +19,11 @@ export function createNetwork(root, reduce, onExplore) {
   const light = new THREE.PointLight(0xb9d7e6, 60);
   light.position.set(0,4,5); scene.add(light);
   // Equilateral triangle on the z=0 plane, facing the camera. SIDE is the edge length;
-  // CENTER_Y lifts the centroid so the circles hanging below the lower corners still fit.
-  const SIDE = 5.6, HEIGHT = SIDE*Math.sqrt(3)/2, CENTER_Y = 1;
-  const rest = [new THREE.Vector3(0,CENTER_Y+HEIGHT*2/3,0), new THREE.Vector3(-SIDE/2,CENTER_Y-HEIGHT/3,0), new THREE.Vector3(SIDE/2,CENTER_Y-HEIGHT/3,0)];
+  // centerY (set on resize) lifts the triangle so the round labels hanging under the corners are centred.
+  const SIDE = 5.6, HEIGHT = SIDE*Math.sqrt(3)/2;
+  let centerY = 1;
+  const OFFSETS = [new THREE.Vector3(0,HEIGHT*2/3,0), new THREE.Vector3(-SIDE/2,-HEIGHT/3,0), new THREE.Vector3(SIDE/2,-HEIGHT/3,0)];
+  const rest = OFFSETS.map(o => o.clone().setY(o.y+centerY));
   const vertices = rest.map(v => v.clone());
   const anchors = rest.map(() => ({x:0,y:0}));
   const weights = [0,0,0];
@@ -39,8 +41,8 @@ export function createNetwork(root, reduce, onExplore) {
     const line = new THREE.Line(geometry,new THREE.LineBasicMaterial({color:0xa8d6d4,transparent:true,opacity:.8}));
     network.add(line);return line;
   });
-  const inner = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.OctahedronGeometry(.7)),new THREE.LineBasicMaterial({color:0xb9d7e6,transparent:true,opacity:.45}));inner.position.y=CENTER_Y;network.add(inner);
-  const ring = new THREE.Mesh(new THREE.TorusGeometry(1.13,.008,6,100),new THREE.MeshBasicMaterial({color:0xb9d7e6,transparent:true,opacity:.4}));ring.rotation.x=.55;ring.position.y=CENTER_Y;network.add(ring);
+  const inner = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.OctahedronGeometry(.7)),new THREE.LineBasicMaterial({color:0xb9d7e6,transparent:true,opacity:.45}));inner.position.y=centerY;network.add(inner);
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(1.13,.008,6,100),new THREE.MeshBasicMaterial({color:0xb9d7e6,transparent:true,opacity:.4}));ring.rotation.x=.55;ring.position.y=centerY;network.add(ring);
   const count=120, positions=new Float32Array(count*3), geometry=new THREE.BufferGeometry();
   geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
   network.add(new THREE.Points(geometry,new THREE.PointsMaterial({color:0xe0f6ff,size:.035,transparent:true,opacity:.9})));
@@ -56,7 +58,7 @@ export function createNetwork(root, reduce, onExplore) {
     vertices.forEach((vertex,i) => {
       const p = network.localToWorld(vertex.clone()).project(camera);
       const retreat = selected >= 0 ? weights[selected] : 0;
-      const scale = 1 + weights[i]*.28 - (selected >= 0 && selected !== i ? retreat*.1 : 0);
+      const scale = 1 + weights[i]*.14 - (selected >= 0 && selected !== i ? retreat*.06 : 0);
       const half = labels[i].offsetWidth*scale/2+6;
       const x = THREE.MathUtils.clamp((p.x*.5+.5)*width,half,width-half);
       const y = THREE.MathUtils.clamp((-p.y*.5+.5)*height,12,Math.max(12,height-labels[i].offsetHeight*scale-76));
@@ -71,14 +73,14 @@ export function createNetwork(root, reduce, onExplore) {
     const focus=selected>=0?rest[selected]:null;
     weights.forEach((_,i)=>weights[i]=THREE.MathUtils.lerp(weights[i],!staticMode&&selected===i?1:0,blend));
     const amount=selected>=0?weights[selected]:0;
-    cameraTarget.set((staticMode?0:pointerX*1.6)+(focus?focus.x*.3*amount:0), (staticMode?0:-pointerY*1.1)+(focus?focus.y*.22*amount:0), distance-amount*1.65);
-    lookDestination.set((staticMode?0:pointerX*.35)+(focus?focus.x*.12*amount:0), (staticMode?0:-pointerY*.25)+(focus?focus.y*.1*amount:0),0);
+    cameraTarget.set((staticMode?0:pointerX*1.6)+(focus?focus.x*.1*amount:0), (staticMode?0:-pointerY*1.1)+(focus?(focus.y-centerY)*.08*amount:0), distance-amount*.7);
+    lookDestination.set((staticMode?0:pointerX*.35)+(focus?focus.x*.05*amount:0), (staticMode?0:-pointerY*.25)+(focus?(focus.y-centerY)*.04*amount:0),0);
     camera.position.lerp(cameraTarget,blend);lookTarget.lerp(lookDestination,blend);camera.lookAt(lookTarget);
     network.rotation.set(staticMode?0:Math.sin(time*.4)*.035,staticMode?0:Math.sin(time*.25)*.045,0);
     network.position.y=staticMode?0:Math.sin(time*.6)*.045;
     vertices.forEach((v,i)=>{
       v.copy(rest[i]);
-      v.z+=weights[i]*1.8-(selected>=0&&selected!==i?amount*2.5:0);
+      v.z+=weights[i]*.9-(selected>=0&&selected!==i?amount*1.2:0);
       nodes[i].position.copy(v);nodes[i].scale.setScalar(1+weights[i]*.6-(selected>=0&&selected!==i?amount*.14:0));
       materials[i].emissiveIntensity=.4+weights[i]*1.1;
     });
@@ -98,7 +100,14 @@ export function createNetwork(root, reduce, onExplore) {
   function refresh(instant=false){if(raf)cancelAnimationFrame(raf);raf=0;last=0;draw(.016,instant||paused||reduce.matches);if(!disposed&&!lost&&visible&&!paused&&!reduce.matches)raf=requestAnimationFrame(tick);}
   const resize=new ResizeObserver(()=>{
     const size=host.getBoundingClientRect();width=size.width;height=size.height;if(!width||!height)return;
-    renderer.setSize(width,height,false);camera.aspect=width/height;distance=width<500?Math.max(15.7,12.4/camera.aspect):12.8;
+    renderer.setSize(width,height,false);camera.aspect=width/height;
+    // keep the triangle small enough for the ring of six strategies around it: circumradius ≈ 19–21% of the shorter side
+    const circumradius=SIDE/Math.sqrt(3), target=Math.min(width,height)*(width<500?.19:.16);
+    distance=circumradius*height/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*target);
+    const pxPerUnit=height/(2*distance*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)));
+    const drop=parseFloat(getComputedStyle(labels[0]).getPropertyValue('--node-drop'))||22;
+    centerY=(drop+labels[0].offsetHeight/2)/pxPerUnit;
+    rest.forEach((v,i)=>v.copy(OFFSETS[i]).setY(OFFSETS[i].y+centerY));inner.position.y=centerY;ring.position.y=centerY;
     camera.updateProjectionMatrix();neutralCamera.copy(camera);neutralCamera.position.set(0,0,distance);neutralCamera.lookAt(0,0,0);neutralCamera.updateMatrixWorld();
     rest.forEach((v,i)=>{const p=v.clone().project(neutralCamera);anchors[i]={x:(p.x*.5+.5)*width,y:(-p.y*.5+.5)*height};});
     refresh(true);
@@ -106,12 +115,14 @@ export function createNetwork(root, reduce, onExplore) {
   const visibility=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;refresh();});visibility.observe(workspace);
   workspace.addEventListener('pointermove',event=>{
     if(event.pointerType==='touch'||paused||reduce.matches)return;
+    if(event.target.closest('[data-strategy]')){if(near!==-2){near=-2;}return;}
     const r=workspace.getBoundingClientRect(),x=event.clientX-r.left,y=event.clientY-r.top;
     pointerX=x/r.width-.5;pointerY=y/r.height-.5;
     const distances=anchors.map(a=>Math.hypot(x-a.x,y-a.y));
     let next=distances.indexOf(Math.min(...distances));
     if(near>=0&&distances[near]<distances[next]+28)next=near;
-    if(distances[next]>Math.min(width,height)*.6)next=-1;
+    const cx=(anchors[0].x+anchors[1].x+anchors[2].x)/3,cy=(anchors[0].y+anchors[1].y+anchors[2].y)/3;
+    if(distances[next]>Math.hypot(anchors[0].x-cx,anchors[0].y-cy)*.95)next=-1;
     if(next!==near){near=next;onExplore(next);}
   });
   workspace.addEventListener('pointerleave',()=>{pointerX=0;pointerY=0;near=-1;onExplore(-1);});
@@ -119,5 +130,5 @@ export function createNetwork(root, reduce, onExplore) {
   root.querySelector('[data-network-fallback]').hidden=true;root.dataset.networkRenderer='webgl';
   renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;if(raf)cancelAnimationFrame(raf);host.hidden=true;root.querySelector('[data-network-fallback]').hidden=false;labels.forEach(label=>{label.style.left='';label.style.top='';label.style.removeProperty('--node-scale');});root.dataset.networkRenderer='fallback';});
   window.addEventListener('pagehide',()=>{disposed=true;if(raf)cancelAnimationFrame(raf);resize.disconnect();visibility.disconnect();scene.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});renderer.dispose();},{once:true});
-  return {setState(index){if(selected===index)return;selected=index;near=index;refresh();},setPaused(value){paused=value;refresh();}};
+  return {setState(index){if(selected===index)return;selected=index;near=index;refresh();},setPaused(value){paused=value;refresh();},anchors:()=>anchors};
 }
