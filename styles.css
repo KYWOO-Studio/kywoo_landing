@@ -1198,3 +1198,8 @@ html[lang="en"] .strategy-node strong { font-size: 13.5px; }
   html[lang="en"] .strategy-node small { font-size: 9.5px; }
   .strategy-node-num { font-size: 10px; }
 }
+/* summary sentence leads straight into the diagram; photo, principles and team follow it (2026-11-09) */
+#about { padding-bottom: clamp(60px, 7vw, 110px); }
+.about-more { padding-top: 0; }
+.about-more .about-photo { margin-top: 0; }
+.about-more .about-photo img { height: clamp(300px, 42vw, 620px); }
