@@ -19,7 +19,10 @@ if (section) {
       if (on) shown++;
     });
     filters.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === dir)));
-    count.textContent = dir === 'all' ? `共 ${shown} 项` : `涉及${filters.find(b => b.dataset.filter === dir).textContent}：${shown} 项`;
+    const label = filters.find(b => b.dataset.filter === dir).textContent;
+    count.textContent = document.documentElement.lang === 'en'
+      ? (dir === 'all' ? `${shown} projects` : `${label}: ${shown} projects`)
+      : (dir === 'all' ? `共 ${shown} 项` : `涉及${label}：${shown} 项`);
   }
   filters.forEach(b => b.addEventListener('click', () => filter(b.dataset.filter)));
   // if a card photo cannot load (e.g. a blocked image host), show the project's title block instead

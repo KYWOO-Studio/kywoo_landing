@@ -811,9 +811,9 @@ body:not(.js) .merged-story .method-panel{position:relative;inset:auto;opacity:1
 .site-header.is-scrolled .header-contact { background: var(--forest); color: var(--ivory); }
 
 /* light-section defaults */
-.statements, .statement-image, .projects-grid-section, .audiences, .services, .closing-quote { color: var(--forest); background: var(--ivory); }
-.statements .section-kicker, .projects-grid-section .section-kicker, .audiences .section-kicker, .services .section-kicker { color: #5c6f66; border-color: rgba(32,62,52,.18); }
-.statements h2, .projects-grid-section h2, .indicators h2, .audiences h2, .services h2 { margin: 18px 0 0; font: 600 clamp(36px, 4.1vw, 64px)/1.3 var(--serif); letter-spacing: -.025em; text-wrap: balance; }
+.statement-image, .projects-grid-section, .audiences, .services, .closing-quote { color: var(--forest); background: var(--ivory); }
+.projects-grid-section .section-kicker, .audiences .section-kicker, .services .section-kicker { color: #5c6f66; border-color: rgba(32,62,52,.18); }
+.projects-grid-section h2, .indicators h2, .audiences h2, .services h2 { margin: 18px 0 0; font: 600 clamp(36px, 4.1vw, 64px)/1.3 var(--serif); letter-spacing: -.025em; text-wrap: balance; }
 .button-line { border-color: rgba(32,62,52,.45); color: var(--forest); background: transparent; }
 .button-line:hover { background: var(--forest); color: var(--ivory); }
 
@@ -838,19 +838,6 @@ body:not(.js) .merged-story .method-panel{position:relative;inset:auto;opacity:1
   .hero-ring h1 { font-size: clamp(36px, 10.5vw, 48px); }
   .hero-lead { font-size: 14px; }
 }
-
-/* three statements: data / space / activity */
-.statements { padding-top: clamp(90px, 10vw, 150px); padding-bottom: clamp(70px, 8vw, 120px); }
-.statements-head { margin-bottom: clamp(40px, 5vw, 70px); }
-.statement { display: grid; grid-template-columns: minmax(140px, 1fr) minmax(0, 2fr) minmax(0, 2fr); gap: 24px 5vw; align-items: start; padding: 34px 0; border-top: 1px solid rgba(32,62,52,.16); }
-.statement:last-child { border-bottom: 1px solid rgba(32,62,52,.16); }
-.statement-mark { display: flex; align-items: center; gap: 14px; }
-.statement-mark p { margin: 0; font: 10px/1.5 var(--mono); letter-spacing: .14em; color: #5c6f66; }
-.statement-tri { width: 46px; height: 42px; color: var(--forest); flex: none; }
-.statement h3 { margin: 0; font: 600 clamp(28px, 3vw, 46px)/1.25 var(--serif); letter-spacing: -.02em; }
-.statement-copy p { margin: 4px 0 0; font-size: 15px; line-height: 1.85; color: #3d564c; }
-.statement-copy .text-link { margin-top: 16px; }
-@media (max-width: 860px) { .statement { grid-template-columns: 1fr; gap: 14px; } }
 
 /* statement with image */
 .statement-image { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 6vw; align-items: center; padding-top: clamp(80px, 9vw, 140px); padding-bottom: clamp(60px, 7vw, 100px); }
@@ -973,3 +960,25 @@ body:not(.js) .merged-story .method-panel{position:relative;inset:auto;opacity:1
 .hero-photos .hero-actions { justify-content: flex-start; }
 .hero-photos .hero-shade { background: linear-gradient(180deg, rgba(16,38,31,.5) 0%, rgba(16,38,31,0) 18%, rgba(16,38,31,.28) 38%, rgba(16,38,31,.8) 70%, rgba(16,38,31,.92) 100%), linear-gradient(90deg, rgba(16,38,31,.5), rgba(16,38,31,0) 62%); }
 .hero-photos .hero-eyebrow, .hero-photos .hero-lead { text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+
+/* language switch + 3 audiences (2026-11-09) */
+.header-actions { justify-self: end; display: flex; align-items: center; gap: 10px; }
+.lang-switch { display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; min-width: 40px; min-height: 40px; padding: 0 12px; border: 1px solid currentColor; border-radius: 999px; font: 600 12px/1 var(--sans); letter-spacing: .06em; opacity: .9; }
+.lang-switch:hover { opacity: 1; background: rgba(243,240,231,.18); }
+.audience-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .audience-grid { grid-template-columns: 1fr; } }
+
+/* Phone and tablet header: keep the language switch on the same row as the logo and menu. */
+@media (max-width: 900px) {
+  .site-header { grid-template-columns: 1fr auto auto; column-gap: 10px; }
+}
+@media (max-width: 600px) {
+  .site-header { column-gap: 6px; }
+  .wordmark small { display: none; }
+  .lang-switch { min-width: 34px; min-height: 34px; padding: 0 8px; font-size: 11px; }
+  .main-nav a { padding: 9px 10px; }
+  html[lang="en"] .main-nav a { padding: 9px 6px; font-size: 10.5px; letter-spacing: 0; }
+}
+@media (max-width: 380px) {
+  html[lang="en"] .main-nav a[href="#approach"], html[lang="en"] .main-nav a[href="#services"] { display: none; }
+}
