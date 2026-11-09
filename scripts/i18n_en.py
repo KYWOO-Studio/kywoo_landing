@@ -507,4 +507,14 @@ EN = {
     '「案例总览」里，「当前项目」朱家角与武林银泰处于前期研究阶段（朱家角研究汇报需访问密码），不是已交付的委托。「过往经验」中，「项目经验」是过往项目介绍，参与角色与项目状态待补充；「JOA 建筑项目」来自 JOA（justopenarch.com），KYWOO 团队成员的参与角色待补充；「城市更新参考」是他人完成的公开案例。图片均非 KYWOO 项目摄影，来源见各项目说明与“素材与披露”。武林银泰地理图使用 Overture 建筑与道路数据，楼层动画是通用 DEMO。': 'In "Cases", the current projects, Zhujiajiao and Wulin Intime, are at the early research stage (the Zhujiajiao report needs a password); they are not delivered commissions. Under past experience, "Project experience" describes past projects, with roles and status still to be added; "JOA architecture projects" come from JOA (justopenarch.com), with the KYWOO team member\'s role still to be added; "Urban renewal references" are published projects by others. No image is KYWOO project photography; see each project and "Sources and disclosures". The Wulin Intime map uses Overture building and road data; the floor animation is a generic demo.',
     'JOA 建筑项目的方案图与资料来自 justopenarch.com 各项目页，由该网站直接加载；KYWOO 团队成员的参与角色待补充，正式使用前需确认授权。': "Design images and details for JOA architecture projects come from the project pages on justopenarch.com and load directly from that site. The KYWOO team member's role is still to be added; confirm permission before formal use.",
     '数据 × 空间 × 活动': 'Data × Space × Activity',
+    # 2026-11-09: about us
+    '上海上生·新所：历史建筑前的公共广场上走过的人': 'Columbia Circle, Shanghai: people crossing the public square in front of the historic buildings',
+    'KYWOO 是一家循证的场所营造工作室：我们找出既有城市公共空间、商业空间与古镇文旅空间冷清的原因，并从研究诊断、定位策略、空间设计，到内容活化与成效评估，让它们重新有人气。': 'KYWOO is an evidence-based placemaking studio. We find out why existing urban public spaces, commercial spaces and historic-town destinations have gone quiet, and bring them back to life through research and diagnosis, positioning, spatial design, programming and impact evaluation.',
+    '我们能做什么': 'What we can do',
+    '上海上生·新所 · 2018年 · WQL · CC BY-SA 4.0 ·': 'Columbia Circle, Shanghai · 2018 · WQL · CC BY-SA 4.0 ·',
+    '· 城市更新参考，非 KYWOO 项目': '· Urban renewal reference, not a KYWOO project',
+    '跨专业协作。': 'Across disciplines.',
+    '建筑与城市设计、商业策略与品牌、数据研究与内容策划一起工作；按项目问题组队，先明确范围与分工，再一起推进。': 'Architecture and urban design, commercial strategy and brand, data research and programming work side by side. Teams form around the problem, agree scope and roles first, then move together.',
+    '团队成员的过往经历包括香港与澳门的商场和酒店更新、深圳城市更新规划，以及 JOA 的建筑设计项目（参与角色待补充）。': "Team members' past experience includes mall and hotel renewal in Hong Kong and Macau, urban renewal planning in Shenzhen, and architecture projects with JOA (roles still to be added).",
+    '看过往经验': 'See past experience',
 }
