@@ -550,4 +550,5 @@ EN = {
     '互动图解怎样操作？': 'How does the interactive diagram work?',
     '移动鼠标可走近三角的一个方向或外圈的一个方法，点击可固定，右侧面板会列出相连的方向或方法；按「返回总览」或 Escape 回到全图。「暂停动效」可停止漂浮和粒子；手机通过点选操作。': 'Move towards a direction of the triangle or a strategy around it; click to pin it, and the panel lists what it connects to. "Back to overview" or Escape returns to the full diagram. "Pause motion" stops the floating and particles; on phones, tap to select.',
     '「我们做什么」中的 3D 三角为方法图解，不是实测模型。「数据」方向的背景为武林银泰周边的地理示意，依据 Overture Maps／OpenStreetMap 开放数据，非实测客流。': 'The 3D triangle in "What we do" illustrates the method; it is not a measured model. The background for "Data" is a geographic sketch of the area around Wulin Intime, based on open Overture Maps / OpenStreetMap data, not measured footfall.',
+    'KYWOO 是一家依靠数据运算的场所营造工作室：我们找出既有城市公共空间、商业空间与古镇文旅空间缺乏人气的原因，并从研究诊断、定位策略、空间设计，到内容活化与成效评估，让它们重新充满活力！': 'KYWOO is a placemaking studio powered by data analysis. We find out why existing urban public spaces, commercial spaces and historic-town destinations lack people, and make them vibrant again through research and diagnosis, positioning, spatial design, programming and impact evaluation!',
 }
