@@ -137,9 +137,7 @@ function show(state) {
   root.querySelector('[data-triangle-overview]').setAttribute('aria-pressed', String(state.kind === 'overview'));
 
   const link = root.querySelector('[data-network-case]');
-  [link.href, link.textContent] = dir === 0
-    ? ['#site-study', L('看数据化示范 ↓', 'See the data demo ↓')]
-    : ['#cases', L('看案例 ↓', 'See cases ↓')];
+  [link.href, link.textContent] = ['#cases', L('看案例 ↓', 'See cases ↓')];
   model?.setState(dir >= 0 ? dir : st && st.dirs.length === 1 ? st.dirs[0] : -1);
 }
 

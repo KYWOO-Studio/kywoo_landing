@@ -537,4 +537,17 @@ EN = {
     '六大方法全文': 'All six strategies in full',
     '＋': '+',
     '三个方向，六个方法': 'Three directions, six strategies',
+    # 2026-11-09: about polish, principles renamed, data demo removed
+    '方法原则': 'Principles',
+    '数据先行': 'Data first',
+    '我们关注存量空间': 'We focus on existing places',
+    '从轻小改造试点，': 'Start with light, small pilots,',
+    '持续复盘': 'keep reviewing',
+    '数据、空间、活动': 'Data, space and activity',
+    '三者联动': 'working as one',
+    '跨专业协作': 'Across disciplines',
+    '「案例总览」里，「当前项目」朱家角与武林银泰处于前期研究阶段（朱家角研究汇报需访问密码），不是已交付的委托。「过往经验」中，「项目经验」是过往项目介绍，参与角色与项目状态待补充；「JOA 建筑项目」来自 JOA（justopenarch.com），KYWOO 团队成员的参与角色待补充；「城市更新参考」是他人完成的公开案例。图片均非 KYWOO 项目摄影，来源见各项目说明与“素材与披露”。': 'In "Cases", the current projects, Zhujiajiao and Wulin Intime, are at the early research stage (the Zhujiajiao report needs a password); they are not delivered commissions. Under past experience, "Project experience" describes past projects, with roles and status still to be added; "JOA architecture projects" come from JOA (justopenarch.com), with the KYWOO team member\'s role still to be added; "Urban renewal references" are published projects by others. No image is KYWOO project photography; see each project and "Sources and disclosures".',
+    '互动图解怎样操作？': 'How does the interactive diagram work?',
+    '移动鼠标可走近三角的一个方向或外圈的一个方法，点击可固定，右侧面板会列出相连的方向或方法；按「返回总览」或 Escape 回到全图。「暂停动效」可停止漂浮和粒子；手机通过点选操作。': 'Move towards a direction of the triangle or a strategy around it; click to pin it, and the panel lists what it connects to. "Back to overview" or Escape returns to the full diagram. "Pause motion" stops the floating and particles; on phones, tap to select.',
+    '「我们做什么」中的 3D 三角为方法图解，不是实测模型。「数据」方向的背景为武林银泰周边的地理示意，依据 Overture Maps／OpenStreetMap 开放数据，非实测客流。': 'The 3D triangle in "What we do" illustrates the method; it is not a measured model. The background for "Data" is a geographic sketch of the area around Wulin Intime, based on open Overture Maps / OpenStreetMap data, not measured footfall.',
 }
