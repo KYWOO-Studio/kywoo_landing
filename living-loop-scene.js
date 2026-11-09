@@ -102,7 +102,7 @@ export function createNetwork(root, reduce, onExplore) {
     const size=host.getBoundingClientRect();width=size.width;height=size.height;if(!width||!height)return;
     renderer.setSize(width,height,false);camera.aspect=width/height;
     // keep the triangle small enough for the ring of six strategies around it: circumradius ≈ 19–21% of the shorter side
-    const circumradius=SIDE/Math.sqrt(3), target=Math.min(width,height)*(width<500?.19:.16);
+    const circumradius=SIDE/Math.sqrt(3), target=Math.min(width,height)*(width<500?.21:.2);
     distance=circumradius*height/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*target);
     const pxPerUnit=height/(2*distance*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)));
     const drop=parseFloat(getComputedStyle(labels[0]).getPropertyValue('--node-drop'))||22;

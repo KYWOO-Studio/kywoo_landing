@@ -536,4 +536,5 @@ EN = {
     '看案例 ↓': 'See cases ↓',
     '六大方法全文': 'All six strategies in full',
     '＋': '+',
+    '三个方向，六个方法': 'Three directions, six strategies',
 }

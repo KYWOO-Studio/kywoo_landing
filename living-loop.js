@@ -156,7 +156,7 @@ function cornerCentres() {
     });
   }
   // no 3D scene (not loaded yet, or WebGL unavailable): place the three corners ourselves
-  const r = Math.min(box.width, box.height) * (box.width < 500 ? .19 : .16);
+  const r = Math.min(box.width, box.height) * (box.width < 500 ? .21 : .2);
   const cx = box.width / 2, cy = box.height / 2;
   return buttons.map((b, i) => {
     const a = (90 + i * 120) * Math.PI / 180;
@@ -252,8 +252,6 @@ function updateMotion() {
 motion.addEventListener('click', () => {paused=!paused;updateMotion();});
 reduce.addEventListener('change', updateMotion);
 updateMotion();
-function updateHint() {root.querySelector('.network-heading > p').textContent = hover.matches ? L('移动鼠标，走近一个方向或方法。', 'Move towards a direction or a strategy.') : L('轻点三角或外圈的方法，看它们怎样相连。', 'Tap the triangle or a strategy to see how they connect.');}
-hover.addEventListener('change', updateHint);updateHint();
 const observer = new IntersectionObserver(async entries => {
   if(!entries.some(entry=>entry.isIntersecting))return;
   observer.disconnect();
