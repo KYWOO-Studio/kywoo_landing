@@ -517,4 +517,8 @@ EN = {
     '建筑与城市设计、商业策略与品牌、数据研究与内容策划一起工作；按项目问题组队，先明确范围与分工，再一起推进。': 'Architecture and urban design, commercial strategy and brand, data research and programming work side by side. Teams form around the problem, agree scope and roles first, then move together.',
     '团队成员的过往经历包括香港与澳门的商场和酒店更新、深圳城市更新规划，以及 JOA 的建筑设计项目（参与角色待补充）。': "Team members' past experience includes mall and hotel renewal in Hong Kong and Macau, urban renewal planning in Shenzhen, and architecture projects with JOA (roles still to be added).",
     '看过往经验': 'See past experience',
+    '城市广场草坪上一座爬满葡萄藤的木构凉亭，人们坐在台阶上休息，孩子们在草地上玩耍': 'A timber pavilion covered in grapevines on the lawn of a town square, with people resting on its steps and children playing on the grass',
+    '场所营造效果图 · 图片由团队提供': 'Placemaking visualisation · image supplied by the team',
+    '关于我们配图': 'About us image',
+    '「关于我们」的配图为场所营造效果图，由团队提供；对应项目与作者待补充。': 'The image in "About us" is a placemaking visualisation supplied by the team; the project and author are still to be added.',
 }
