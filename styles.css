@@ -1203,3 +1203,21 @@ html[lang="en"] .strategy-node strong { font-size: 13.5px; }
 .about-more { padding-top: 0; }
 .about-more .about-photo { margin-top: 0; }
 .about-more .about-photo img { height: clamp(300px, 42vw, 620px); }
+
+/* Bigger diagram, no heading or hint above it (2026-11-09) */
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+#approach .network-experience { grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); margin-top: 18px; }
+#approach .network-workspace { height: 800px; }
+#approach .network-node { width: 116px; height: 116px; }
+#approach .network-node strong { font-size: 23px; }
+.strategy-node { width: 168px; padding: 13px 14px 14px; }
+.strategy-node strong { font-size: 15.5px; }
+html[lang="en"] .strategy-node { width: 184px; }
+@media (max-width: 1000px) { #approach .network-experience { grid-template-columns: 1fr; } #approach .network-workspace { height: 720px; } }
+@media (max-width: 600px) {
+  #approach .network-workspace { height: 520px; }
+  #approach .network-node { width: 80px; height: 80px; }
+  #approach .network-node strong { font-size: 17px; }
+  .strategy-node { width: 60px; height: 60px; padding: 0; }
+  html[lang="en"] .strategy-node { width: 66px; height: 66px; }
+}
