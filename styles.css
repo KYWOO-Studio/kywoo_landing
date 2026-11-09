@@ -1221,3 +1221,23 @@ html[lang="en"] .strategy-node { width: 184px; }
   .strategy-node { width: 60px; height: 60px; padding: 0; }
   html[lang="en"] .strategy-node { width: 66px; height: 66px; }
 }
+
+/* About polish (2026-11-09): centred summary, larger section labels, larger principle numbers */
+#about { text-align: center; }
+#about > .section-kicker { text-align: left; }
+.about-summary { max-width: 24em; margin-left: auto; margin-right: auto; text-align: center; }
+html[lang="en"] .about-summary { max-width: 28em; }
+#about > .section-kicker,
+#approach .network-content > .section-kicker,
+.about-principles > .about-label { align-items: baseline; font: 600 clamp(22px, 2vw, 30px)/1.3 var(--serif); letter-spacing: .06em; text-transform: none; }
+#about > .section-kicker { color: var(--forest); }
+#approach .network-content > .section-kicker { color: var(--ivory); }
+.about-principles > .about-label { color: var(--forest); }
+#about > .section-kicker > span,
+#approach .network-content > .section-kicker > span { font: 400 12.5px/1.5 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+#about > .section-kicker > span { color: #5c6f66; }
+#approach .network-content > .section-kicker > span { color: var(--sage); }
+.principle { grid-template-columns: 120px minmax(0, 1.1fr) minmax(0, 1fr); }
+.principle-num { padding-top: 0; font: 600 clamp(40px, 4vw, 64px)/1 var(--serif); letter-spacing: -.02em; color: #8aa396; }
+@media (max-width: 860px) { .principle { grid-template-columns: 1fr; } .principle-num { font-size: 40px; } }
+.principle h3 { font-size: clamp(30px, 3.6vw, 54px); text-wrap: balance; }
