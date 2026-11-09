@@ -1245,3 +1245,6 @@ html[lang="en"] .about-summary { max-width: 28em; }
 .principle-num { padding-top: 0; font: 600 clamp(40px, 4vw, 64px)/1 var(--serif); letter-spacing: -.02em; color: #8aa396; }
 @media (max-width: 860px) { .principle { grid-template-columns: 1fr; } .principle-num { font-size: 40px; } }
 .principle h3 { font-size: clamp(30px, 3.6vw, 54px); text-wrap: balance; }
+
+/* Big statement: break lines only after punctuation so phrases like 在哪里停留 stay whole (2026-11-10) */
+.scroll-statement { word-break: keep-all; line-break: strict; }

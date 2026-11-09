@@ -378,8 +378,8 @@ EN = {
 '商场、公共空间与活动照片为 CC BY 2.0 网上参考影像，作者分别为 Michael Gaylard、ajay_suresh、GoToVan。方法场景下方随当前背景列出来源、许可及裁切说明；不属于 KYWOO 项目，不代表作者、场所或活动方的背书。':
     'The mall, public space and event photos are CC BY 2.0 reference images by Michael Gaylard, ajay_suresh and GoToVan. Source, licence and cropping notes appear under the method scene for the current background. They are not KYWOO projects and imply no endorsement by the photographers, places or organisers.',
 '待补内容': 'Still to come',
-'项目参与角色、团队作品摄影、公司信息及武林银泰现场照片仍待补充。项目联络：openkai@kywoo.com。财务计算未连接，页面不会生成回报率或租金增长。':
-    'Project roles, the team\'s own photography, company details and site photos of Wulin Intime are still to be added. Contact: openkai@kywoo.com. No financial calculation is connected; the page does not generate returns or rent growth.',
+'项目参与角色、团队作品摄影及公司信息仍待补充。项目联络：openkai@kywoo.com。财务计算未连接，页面不会生成回报率或租金增长。':
+    'Project roles, the team\'s own photography and company details are still to be added. Contact: openkai@kywoo.com. No financial calculation is connected; the page does not generate returns or rent growth.',
 '技术素材': 'Technical credits',
 'Three.js r170，MIT License；部署版通过公共 CDN 加载。': 'Three.js r170, MIT License, loaded from a public CDN.',
 'JavaScript 未启用：3D 与视频以静态内容替代，页面文字仍可阅读。': 'JavaScript is off: 3D and video fall back to static content; all text is still readable.',
@@ -444,7 +444,7 @@ EN = {
     '数据 × 空间 × 活动。': 'Data × Space × Activity.',
     '三者一起发力：数据看见问题，空间回应需要，活动让场所持续发生。品牌贯穿其中，帮助判断为谁服务、如何表达。': 'The three work together: data shows the problem, space answers the need, activity keeps the place alive. Brand runs through all three, shaping who the place is for and how it speaks.',
     '看三角动图': 'See the triangle',
-    '我们关心的，是人为什么来、在哪里停留、会不会再来。': 'What we care about is why people come, where they stay, and whether they come back.',
+    '我们关心的，是人为什么来、在哪里停留、如何消费、会不会再来。': 'What we care about is why people come, where they stay, how they spend, and whether they come back.',
     '案例总览': 'Cases',
     '当前项目 · 过往经验': 'Current projects · Past experience',
     '从一个节点，': 'From a single node',
