@@ -19,6 +19,7 @@
   <script type="module" src="./app.js"></script>
   <script type="module" src="./case-photos.js"></script>
   <script type="module" src="./projects.js"></script>
+  <script type="module" src="./scroll-fx.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要内容</a>
@@ -29,12 +30,12 @@
     </a>
     <nav class="main-nav" aria-label="主要导航">
       <div class="nav-group">
-        <a class="nav-top" href="#projects">项目 <i aria-hidden="true">▾</i></a>
-        <div class="nav-sub"><a href="#current">当前项目 <small>01</small></a><a href="#experience">过往经验 <small>02</small></a></div>
+        <a class="nav-top" href="#cases">项目 <i aria-hidden="true">▾</i></a>
+        <div class="nav-sub"><a href="#cases-current">当前项目 <small>01</small></a><a href="#cases-past">过往经验 <small>02</small></a></div>
       </div>
       <div class="nav-group">
-        <a class="nav-top" href="#services">服务 <i aria-hidden="true">▾</i></a>
-        <div class="nav-sub"><a href="#about">关于我们 <small>01</small></a><a href="#service-list">服务内容 <small>02</small></a><a href="#approach">理论方法 <small>03</small></a></div>
+        <a class="nav-top" href="#strategies">服务 <i aria-hidden="true">▾</i></a>
+        <div class="nav-sub"><a href="#principles">关于我们 <small>01</small></a><a href="#strategies">服务内容 <small>02</small></a><a href="#approach">理论方法 <small>03</small></a></div>
       </div>
       <div class="nav-group">
         <a class="nav-top nav-contact" href="#faq">联系我们</a>
@@ -59,53 +60,201 @@
       <div class="cp-bar hero-photo-bar page-gutter"><p class="cp-caption"></p><div class="cp-bars" role="group" aria-label="选择首屏照片"></div><button type="button" class="cp-pause" data-cp-pause>暂停 Ⅱ</button></div>
     </section>
 
-    <section class="group-intro page-gutter" id="projects" aria-labelledby="projects-title">
-      <p class="group-index"><span>01</span><span>PROJECTS</span></p>
-      <h2 class="group-title" id="projects-title">项目</h2>
-      <ol class="group-units">
-        <li><a href="#current"><span class="unit-num">1.1</span><strong>当前项目</strong><small>朱家角 · 杭州武林银泰</small><i aria-hidden="true">↓</i></a></li>
-        <li><a href="#experience"><span class="unit-num">1.2</span><strong>过往经验</strong><small>项目经验 · 城市更新参考</small><i aria-hidden="true">↓</i></a></li>
+    <section class="principles page-gutter" id="principles" aria-labelledby="principles-title">
+      <h2 class="section-kicker reveal" id="principles-title">我们的原则 <span>关于我们</span></h2>
+      <article class="principle reveal">
+        <p class="principle-num">01</p>
+        <h3>循证先行。</h3>
+        <div class="principle-copy"><p>先读懂场所与人，再决定改哪里。研究区位、客群、空间使用与经营表现，并区分事实、假设和证据缺口。</p><a class="text-link" href="#strategies">六大方法策略 <span aria-hidden="true">↓</span></a></div>
+      </article>
+      <article class="principle reveal">
+        <p class="principle-num">02</p>
+        <h3>从既有空间出发。</h3>
+        <div class="principle-copy"><p>面向既有的城市公共空间、商业空间与古镇文旅空间，先用好已有的街巷、节点与资源，不大拆大建。</p>
+          <ul class="space-types"><li><strong>城市公共空间</strong><span>街道、广场、公园与滨水空间</span></li><li><strong>城市商业空间</strong><span>商场与商业街区</span></li><li><strong>古镇文旅空间</strong><span>古镇街巷、节点与文旅目的地</span></li></ul></div>
+      </article>
+      <article class="principle reveal">
+        <p class="principle-num">03</p>
+        <h3>小步试点，<br>持续复盘。</h3>
+        <div class="principle-copy"><p>用局部、灵活、可测试的介入，把策略变成人们能体验的改变；试点前后对照观察，再决定保留、调整或停止。</p><a class="text-link" href="#team">如何一起工作 <span aria-hidden="true">↓</span></a></div>
+      </article>
+      <article class="principle reveal">
+        <p class="principle-num">04</p>
+        <h3>数据 × 空间 × 活动。</h3>
+        <div class="principle-copy"><p>三者一起发力：数据看见问题，空间回应需要，活动让场所持续发生。品牌贯穿其中，帮助判断为谁服务、如何表达。</p><a class="text-link" href="#approach">看三角动图 <span aria-hidden="true">↓</span></a></div>
+      </article>
+    </section>
+
+    <section class="statement-band page-gutter" aria-label="我们关心的事">
+      <p class="scroll-statement" data-scroll-statement>我们关心的，是人为什么来、在哪里停留、会不会再来。</p>
+    </section>
+
+    <section class="cases page-gutter" id="cases" aria-labelledby="cases-title">
+      <div class="cases-head">
+        <p class="section-kicker reveal">案例总览 <span>当前项目 · 过往经验</span></p>
+        <h2 id="cases-title" class="reveal">从一个节点，<br>到一座城市目的地。</h2>
+        <p class="reveal">左右滑动浏览。「当前项目」处于前期研究阶段；「过往经验」包括项目经验、JOA 建筑项目与城市更新参考，参与角色待补充。图片均非 KYWOO 项目摄影，来源见各项目说明。</p>
+      </div>
+      <div class="case-controls">
+        <div class="case-tabs" role="group" aria-label="按类别查看案例">
+          <button type="button" data-case-filter="all" aria-pressed="true">全部</button>
+          <button type="button" id="cases-current" data-case-filter="current" aria-pressed="false">当前项目</button>
+          <button type="button" id="cases-past" data-case-filter="past" aria-pressed="false">过往经验</button>
+          <span class="project-count" data-project-count aria-live="polite"></span>
+        </div>
+        <div class="case-arrows"><button type="button" data-case-prev aria-label="向左浏览">←</button><button type="button" data-case-next aria-label="向右浏览">→</button></div>
+      </div>
+      <div class="case-track" data-case-track role="region" aria-label="案例列表，可左右滑动" tabindex="0">
+          <article class="project-card reveal" style="--d:0s" id="project-zhujiajiao" data-group="current" data-type="当前项目 · 古镇文旅" data-title="朱家角" data-dirs="data space activity">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb case-photos" data-case-photos="auto"><span class="cp-frame"><img class="cp-slide" src="https://images.pexels.com/photos/19979862/pexels-photo-19979862.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="朱家角河道边的临水老屋与船只" loading="lazy" decoding="async" referrerpolicy="no-referrer"><img class="cp-slide" src="https://images.pexels.com/photos/38003117/pexels-photo-38003117.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="朱家角古镇石拱桥上的游人" loading="lazy" decoding="async" referrerpolicy="no-referrer"><img class="cp-slide" src="https://images.unsplash.com/photo-1715905387094-9ce34cd4e38a?auto=format&amp;fit=crop&amp;q=70&amp;w=800" alt="雨天沿河街巷里打伞走过的游人" loading="lazy" decoding="async" referrerpolicy="no-referrer"><img class="cp-slide" src="https://images.pexels.com/photos/37031585/pexels-photo-37031585.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="朱家角河道上的石桥" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span></span><span class="project-meta"><span class="project-kind">当前项目 · 古镇文旅</span><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">朱家角</span><span class="project-sub">活动，应该落在哪些节点？</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="https://images.pexels.com/photos/38003117/pexels-photo-38003117.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280" alt="朱家角古镇石拱桥上的游人" loading="lazy" decoding="async" referrerpolicy="no-referrer"><figcaption>照片：<a href="https://www.pexels.com/photo/a-building-in-a-town-19979862/">jefe king</a>、<a href="https://www.pexels.com/photo/tourists-on-historic-stone-arch-bridge-38003117/">Yudi Ding</a>、<a href="https://www.pexels.com/photo/charming-bridge-in-zhujiajiao-water-town-china-37031585/">Relaxing Journeys</a> / Pexels，<a href="https://unsplash.com/photos/TK980EPuE-Q">Alicja Ziajowska</a> / Unsplash。免费图库实景，非 KYWOO 项目摄影。</figcaption></figure><div class="project-detail-body"><p class="project-kind">当前项目 · 古镇文旅</p><h3>朱家角</h3><p class="project-sub">活动，应该落在哪些节点？</p><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>读懂街巷与节点，讨论活动选点。</p><a class="text-link" href="https://kywoo-zhujiajiao.vercel.app/">查看研究汇报 <span aria-hidden="true">↗</span></a><p class="project-note">前期研究 · 需访问密码 · 非已实施项目。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.08s" id="project-wulin" data-group="current" data-type="当前项目 · 商业空间" data-title="杭州武林银泰" data-dirs="data space">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb case-photos" data-case-photos="auto"><span class="cp-frame"><img class="cp-slide" src="https://images.pexels.com/photos/32166559/pexels-photo-32166559.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="杭州街边小公园里休息的市民" loading="lazy" decoding="async" referrerpolicy="no-referrer"><img class="cp-slide" src="https://images.pexels.com/photos/30326900/pexels-photo-30326900.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="杭州高楼之间的城市公园与水面" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span></span><span class="project-meta"><span class="project-kind">当前项目 · 商业空间</span><span class="project-dirs" aria-label="涉及：数据、空间"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span></span><span class="project-name">杭州武林银泰</span><span class="project-sub">先看周边，如何走到这里？</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="https://images.pexels.com/photos/32166559/pexels-photo-32166559.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280" alt="杭州街边小公园里休息的市民" loading="lazy" decoding="async" referrerpolicy="no-referrer"><figcaption>照片：<a href="https://www.pexels.com/photo/relaxed-urban-scene-in-hangzhou-street-park-32166559/">JUNLIN ZOU</a>、<a href="https://www.pexels.com/photo/urban-park-in-hangzhou-with-skyscrapers-30326900/">Nadine K</a> / Pexels。杭州城市实景，未找到可授权的武林银泰现场照片；非 KYWOO 项目摄影。</figcaption></figure><div class="project-detail-body"><p class="project-kind">当前项目 · 商业空间</p><h3>杭州武林银泰</h3><p class="project-sub">先看周边，如何走到这里？</p><span class="project-dirs" aria-label="涉及：数据、空间"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span><p>从真实道路与建筑，理解城市连接。</p><a class="text-link" href="#data-demo">看数据化示范 <span aria-hidden="true">↓</span></a><p class="project-note">地理研究示例 · 定位非边界 · 非委托实绩。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.16s" data-group="past" id="project-wong-tai-sin" data-type="项目经验" data-name="黄大仙中心" data-subtitle="商业资产提升与品牌重塑" data-summary="从既有商场研究与品牌重塑出发，重新建立商场的场所形象与使用体验。" data-thumb="assets/projects/wong-tai-sin-480.jpg" data-position="50% 65%" data-title="TEMPLE" data-dirs="data space activity">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="assets/projects/wong-tai-sin.jpg" srcset="assets/projects/wong-tai-sin-480.jpg 480w, assets/projects/wong-tai-sin.jpg 1280w" sizes="(max-width: 760px) 92vw, 30vw" alt="黄大仙中心北馆外观（2015年）" loading="lazy" decoding="async" style="object-position:50% 65%"></span><span class="project-meta"><span class="project-kind">项目经验</span><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">黄大仙中心</span><span class="project-sub">商业资产提升与品牌重塑</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="assets/projects/wong-tai-sin.jpg" alt="黄大仙中心北馆外观（2015年）" loading="lazy" decoding="async" style="object-position:50% 65%"><figcaption>场所背景照片 · 2015年 · Pp0912 · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Temple_Mall_North_201510.jpg">来源</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">许可</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">项目经验</p><h3>黄大仙中心</h3><p class="project-sub">商业资产提升与品牌重塑</p><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>从既有商场研究与品牌重塑出发，整合内部布局、建筑立面及设施更新，重新建立商场的场所形象与使用体验。通过设计、招标及施工阶段的协调，将资产提升策略转化为具体空间改善。</p><p class="project-note">参与角色与项目状态待补充；照片为公开授权的场所背景照片，非团队作品摄影。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.24s" data-group="past" id="project-whampoa" data-type="项目经验" data-name="黄埔商场" data-subtitle="品牌重塑与零售空间更新" data-summary="结合商场研究、品牌形象与空间设计，整合公共通道、店面、外墙及照明更新。" data-thumb="assets/projects/whampoa-480.jpg" data-position="center" data-title="WHAMPOA" data-dirs="data space activity">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="assets/projects/whampoa.jpg" srcset="assets/projects/whampoa-480.jpg 480w, assets/projects/whampoa.jpg 1280w" sizes="(max-width: 760px) 92vw, 30vw" alt="黄埔新天地聚宝坊入口（2011年）" loading="lazy" decoding="async" style="object-position:center"></span><span class="project-meta"><span class="project-kind">项目经验</span><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">黄埔商场</span><span class="project-sub">品牌重塑与零售空间更新</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="assets/projects/whampoa.jpg" alt="黄埔新天地聚宝坊入口（2011年）" loading="lazy" decoding="async" style="object-position:center"><figcaption>场所背景照片 · 2011年 · Wing1990hk · CC BY 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Wonderful_Worlds_of_Whampoa_Treasure_World_Entrance_201108.jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/3.0">许可</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">项目经验</p><h3>黄埔商场</h3><p class="project-sub">品牌重塑与零售空间更新</p><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>结合商场研究、品牌形象与空间设计，整合公共通道、店面、外墙及照明更新。以连贯的视觉语言与更具吸引力的零售环境，支持既有商业资产的价值提升。</p><p class="project-note">参与角色与项目状态待补充；照片为公开授权的场所背景照片，非团队作品摄影。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.32s" data-group="past" id="project-songping" data-type="项目经验" data-name="深圳松坪村" data-subtitle="城市更新与综合发展规划" data-summary="从区位、交通及周边产业与生活需求出发，研究片区的更新潜力。" data-thumb="" data-position="center" data-title="SONGPING" data-dirs="data space activity">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb project-thumb-text" aria-hidden="true"><b>SONGPING</b><small>未配现场照片</small></span><span class="project-meta"><span class="project-kind">项目经验</span><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">深圳松坪村</span><span class="project-sub">城市更新与综合发展规划</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><div class="project-detail-media project-thumb-text" aria-hidden="true"><b>SONGPING</b><small>未配现场照片</small></div><div class="project-detail-body"><p class="project-kind">项目经验</p><h3>深圳松坪村</h3><p class="project-sub">城市更新与综合发展规划</p><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>从区位、交通及周边产业与生活需求出发，研究片区的更新潜力。通过功能分区、塔楼布局、立体步行连接及公共景观的方案比较，整合商业、居住与社区活动，形成兼顾开发需求与场所品质的概念规划。</p><p class="project-note">参与角色与项目状态待补充；照片为公开授权的场所背景照片，非团队作品摄影。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.40s" data-group="past" id="project-grand-lisboa" data-type="项目经验" data-name="澳门新葡京" data-subtitle="既有酒店空间更新" data-summary="以既有酒店的空间更新为切入点，探索延续场所特色与提升宾客体验的设计方向。" data-thumb="assets/projects/grand-lisboa-480.jpg" data-position="center" data-title="LISBOA" data-dirs="space">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="assets/projects/grand-lisboa.jpg" srcset="assets/projects/grand-lisboa-480.jpg 480w, assets/projects/grand-lisboa.jpg 1280w" sizes="(max-width: 760px) 92vw, 30vw" alt="澳门新葡京酒店外观" loading="lazy" decoding="async" style="object-position:center"></span><span class="project-meta"><span class="project-kind">项目经验</span><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span></span><span class="project-name">澳门新葡京</span><span class="project-sub">既有酒店空间更新</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="assets/projects/grand-lisboa.jpg" alt="澳门新葡京酒店外观" loading="lazy" decoding="async" style="object-position:center"><figcaption>场所背景照片 · variationblogr · CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Grand_Lisboa_22.jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/2.0">许可</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">项目经验</p><h3>澳门新葡京</h3><p class="project-sub">既有酒店空间更新</p><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span><p>以既有酒店的空间更新为切入点，探索延续场所特色与提升宾客体验的设计方向，为酒店资产注入新的吸引力。</p><p class="project-note">参与角色与项目状态待补充；照片为公开授权的场所背景照片，非团队作品摄影。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.48s" data-group="past" id="project-joa-nanjing" data-type="JOA 建筑项目" data-title="JOA" data-dirs="space activity">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="https://www.justopenarch.com/wp-content/uploads/2022/12/head-2-scaled.jpg" alt="南京文化中心方案图" loading="lazy" decoding="async"></span><span class="project-meta"><span class="project-kind">JOA 建筑项目</span><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">南京文化中心</span><span class="project-sub">闲置停车场变为滨河公共节点</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="https://www.justopenarch.com/wp-content/uploads/2022/12/head-2-scaled.jpg" alt="南京文化中心方案图" loading="lazy" decoding="async"><figcaption>方案图 · JOA · <a href="https://www.justopenarch.com/nanjing-culture-center/">来源</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">JOA 建筑项目</p><h3>南京文化中心</h3><p class="project-sub">闲置停车场变为滨河公共节点</p><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>把秦淮河支流旁一处闲置的停车场，变成连接对岸与北部街区的公共节点，三个方向都可进入；体量沿历史街巷的十字网格展开，形成九个相连的空间。</p><p class="project-by">南京 · 2022 · 概念方案 · 4,447 m²</p><a class="text-link" href="https://www.justopenarch.com/nanjing-culture-center/">JOA 项目页 <span aria-hidden="true">↗</span></a><p class="project-note">来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充，图片由 JOA 网站直接加载。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.48s" data-group="past" id="project-joa-tartu" data-type="JOA 建筑项目" data-title="JOA" data-dirs="space activity">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="https://www.justopenarch.com/wp-content/uploads/2023/11/tartu.jpg" alt="塔尔图市中心文化中心方案图" loading="lazy" decoding="async"></span><span class="project-meta"><span class="project-kind">JOA 建筑项目</span><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">塔尔图市中心文化中心</span><span class="project-sub">考古遗存、城市公园与新图书馆</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="https://www.justopenarch.com/wp-content/uploads/2023/11/tartu.jpg" alt="塔尔图市中心文化中心方案图" loading="lazy" decoding="async"><figcaption>方案图 · JOA · <a href="https://www.justopenarch.com/tarku-culture-center/">来源</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">JOA 建筑项目</p><h3>塔尔图市中心文化中心</h3><p class="project-sub">考古遗存、城市公园与新图书馆</p><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>把地下的考古遗存、地面的路径与城市公园的植被三个层次连在一起，新的中心图书馆从中生长，让人在日常活动中接触城市历史。</p><p class="project-by">爱沙尼亚塔尔图 · 2023 · 概念方案 · 总体规划与图书馆 · 18,246 m²</p><a class="text-link" href="https://www.justopenarch.com/tarku-culture-center/">JOA 项目页 <span aria-hidden="true">↗</span></a><p class="project-note">来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充，图片由 JOA 网站直接加载。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.48s" data-group="past" id="project-joa-foshan" data-type="JOA 建筑项目" data-title="JOA" data-dirs="space">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="https://www.justopenarch.com/wp-content/uploads/2022/12/foshan-hongwang-hq-12.jpg" alt="佛山宏旺总部方案图" loading="lazy" decoding="async"></span><span class="project-meta"><span class="project-kind">JOA 建筑项目</span><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span></span><span class="project-name">佛山宏旺总部</span><span class="project-sub">中庭、峡谷庭院与垂直花园</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="https://www.justopenarch.com/wp-content/uploads/2022/12/foshan-hongwang-hq-12.jpg" alt="佛山宏旺总部方案图" loading="lazy" decoding="async"><figcaption>方案图 · JOA · <a href="https://www.justopenarch.com/foshan-hongwang-headquarters/">来源</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">JOA 建筑项目</p><h3>佛山宏旺总部</h3><p class="project-sub">中庭、峡谷庭院与垂直花园</p><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span><p>以中庭和峡谷般的庭院把城市生活与自然连在一起，访客可穿行阶梯式口袋公园；南立面的垂直花园形成有遮阴的工作环境。</p><p class="project-by">佛山 · 2021 · 总部、商业与办公 · 约 4.1 万 m²</p><a class="text-link" href="https://www.justopenarch.com/foshan-hongwang-headquarters/">JOA 项目页 <span aria-hidden="true">↗</span></a><p class="project-note">来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充，图片由 JOA 网站直接加载。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.48s" data-group="past" id="project-joa-yaan" data-type="JOA 建筑项目" data-title="JOA" data-dirs="space">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="https://www.justopenarch.com/wp-content/uploads/2023/08/3.A3%E6%B1%87%E6%8A%A5%E6%96%87%E6%9C%AC-BZH0209_page-0028.jpg" alt="雅安艺术展览中心方案图" loading="lazy" decoding="async"></span><span class="project-meta"><span class="project-kind">JOA 建筑项目</span><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span></span><span class="project-name">雅安艺术展览中心</span><span class="project-sub">光线、湖景与感官体验</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="https://www.justopenarch.com/wp-content/uploads/2023/08/3.A3%E6%B1%87%E6%8A%A5%E6%96%87%E6%9C%AC-BZH0209_page-0028.jpg" alt="雅安艺术展览中心方案图" loading="lazy" decoding="async"><figcaption>方案图 · JOA · <a href="https://www.justopenarch.com/sichuan-yaan-art-exhibition-center/">来源</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">JOA 建筑项目</p><h3>雅安艺术展览中心</h3><p class="project-sub">光线、湖景与感官体验</p><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span><p>借场地的光线与湖景组织参观：从幽暗的通道进入半开放的中央聚集空间，再到冥想室，把湖面的景色引入室内。</p><p class="project-by">四川雅安 · 2023 · 概念方案 · 1,248 m²</p><a class="text-link" href="https://www.justopenarch.com/sichuan-yaan-art-exhibition-center/">JOA 项目页 <span aria-hidden="true">↗</span></a><p class="project-note">来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充，图片由 JOA 网站直接加载。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.48s" data-group="past" id="project-joa-zhoushan" data-type="JOA 建筑项目" data-title="JOA" data-dirs="space">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="https://www.justopenarch.com/wp-content/uploads/2023/09/%E7%AC%AC3%E9%A1%B5-21-scaled.jpg" alt="舟山湖畔餐厅方案图" loading="lazy" decoding="async"></span><span class="project-meta"><span class="project-kind">JOA 建筑项目</span><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span></span><span class="project-name">舟山湖畔餐厅</span><span class="project-sub">一片薄屋顶下的湖岸餐厅</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="https://www.justopenarch.com/wp-content/uploads/2023/09/%E7%AC%AC3%E9%A1%B5-21-scaled.jpg" alt="舟山湖畔餐厅方案图" loading="lazy" decoding="async"><figcaption>方案图 · JOA · <a href="https://www.justopenarch.com/boundless-distance-restaurant/">来源</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">JOA 建筑项目</p><h3>舟山湖畔餐厅</h3><p class="project-sub">一片薄屋顶下的湖岸餐厅</p><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span><p>在庙子湖岸边用一片覆满石块的薄屋顶，留出头顶的天空，模糊边界与距离，让人在风景前放慢下来。</p><p class="project-by">浙江舟山 · 2023 · 餐厅 · 300 m²</p><a class="text-link" href="https://www.justopenarch.com/boundless-distance-restaurant/">JOA 项目页 <span aria-hidden="true">↗</span></a><p class="project-note">来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充，图片由 JOA 网站直接加载。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.48s" data-group="past" id="project-columbia-circle" data-type="城市更新参考" data-name="上海上生·新所" data-subtitle="历史街区活化与复合使用" data-summary="将原本封闭的园区转化为对公众开放的文化街区。" data-thumb="assets/projects/columbia-circle-480.jpg" data-position="center" data-title="COLUMBIA" data-dirs="space activity">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="assets/projects/columbia-circle.jpg" srcset="assets/projects/columbia-circle-480.jpg 480w, assets/projects/columbia-circle.jpg 1280w" sizes="(max-width: 760px) 92vw, 30vw" alt="上海上生·新所历史建筑与公共广场（2018年）" loading="lazy" decoding="async" style="object-position:center"></span><span class="project-meta"><span class="project-kind">城市更新参考</span><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">上海上生·新所</span><span class="project-sub">历史街区活化与复合使用</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="assets/projects/columbia-circle.jpg" alt="上海上生·新所历史建筑与公共广场（2018年）" loading="lazy" decoding="async" style="object-position:center"><figcaption>场所背景照片 · 2018年 · WQL · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Columbia_Circle_07.jpg">来源</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">许可</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">城市更新参考</p><h3>上海上生·新所</h3><p class="project-sub">历史街区活化与复合使用</p><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>从历史建筑与既有工业空间的保留、修缮及再利用出发，将原本封闭的园区转化为对公众开放的文化街区。通过书店、餐饮、展览与活动，以及街巷、广场和公共空间的连接，让既有场所承载多元日常使用。</p><a class="text-link" href="https://www.shcn.gov.cn/col3991/20241008/1269200.html">上海长宁官方介绍 <span aria-hidden="true">↗</span></a><p class="project-note">他人完成的公开案例，用来说明思路，不是 KYWOO 的项目。</p></div></div>
+          </article>
+          <article class="project-card reveal" style="--d:0.48s" data-group="past" id="project-seoullo-7017" data-type="城市更新参考" data-name="首尔路 7017" data-subtitle="基础设施再利用与公共空间连接" data-summary="将首尔站旁的既有高架道路转化为步行花园，重新连接周边街区。" data-thumb="assets/projects/seoullo-7017-480.jpg" data-position="65% 50%" data-title="SEOULLO" data-dirs="space activity">
+            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="assets/projects/seoullo-7017.jpg" srcset="assets/projects/seoullo-7017-480.jpg 480w, assets/projects/seoullo-7017.jpg 1280w" sizes="(max-width: 760px) 92vw, 30vw" alt="首尔路7017步行花园与首尔站周边（2017年）" loading="lazy" decoding="async" style="object-position:65% 50%"></span><span class="project-meta"><span class="project-kind">城市更新参考</span><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">首尔路 7017</span><span class="project-sub">基础设施再利用与公共空间连接</span><span class="project-more">查看项目 →</span></button>
+            <div class="project-detail" hidden><figure class="project-detail-media"><img src="assets/projects/seoullo-7017.jpg" alt="首尔路7017步行花园与首尔站周边（2017年）" loading="lazy" decoding="async" style="object-position:65% 50%"><figcaption>场所背景照片 · 2017年 · Christian Bolz · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Seoullo_7017_Overview_(4).jpg">来源</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">许可</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">城市更新参考</p><h3>首尔路 7017</h3><p class="project-sub">基础设施再利用与公共空间连接</p><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>将首尔站旁的既有高架道路转化为步行花园，通过绿化、停留节点与多处楼梯、升降机及步行连桥，重新连接周边街区。项目呈现既有基础设施如何转化为日常公共空间，连接步行、休憩与城市活动。</p><p class="project-by">原设计：MVRDV</p><a class="text-link" href="https://www.mvrdv.com/projects/208/pressroom">MVRDV 项目资料 <span aria-hidden="true">↗</span></a><p class="project-note">他人完成的公开案例，用来说明思路，不是 KYWOO 的项目。</p></div></div>
+          </article>
+      </div>
+      <div class="case-progress" aria-hidden="true"><span data-case-progress></span></div>
+      <dialog class="project-dialog" data-project-dialog aria-labelledby="project-dialog-title">
+        <button type="button" class="project-dialog-close" data-project-close aria-label="关闭项目说明">关闭 ×</button>
+        <div data-project-dialog-body></div>
+      </dialog>
+    </section>
+
+    <section class="intro page-gutter" id="approach" aria-labelledby="intro-title">
+      <div class="network-backgrounds" aria-hidden="true">
+        <img class="network-background is-visible" data-network-image="overview" src="assets/reference-photos/space-1280.jpg" alt="" loading="lazy">
+        <img class="network-background" data-network-image="0" src="assets/method/wulin-data.svg" alt="" loading="lazy">
+        <img class="network-background" data-network-image="1" src="assets/reference-photos/mall-1280.jpg" alt="" loading="lazy">
+        <img class="network-background" data-network-image="2" src="assets/reference-photos/activity-1280.jpg" alt="" loading="lazy">
+      </div>
+      <div class="network-shade" aria-hidden="true"></div>
+      <div class="network-content">
+        <p class="section-kicker">数据化表达 <span>数据 × 空间 × 活动</span></p>
+        <div class="network-heading"><h2 id="intro-title">连接，<br>让场所持续生长。</h2><p>移动鼠标，走近一个方向。</p></div>
+        <div class="network-experience" data-network-state="overview">
+          <div class="network-workspace" data-network-workspace>
+            <div class="network-fallback" data-network-fallback aria-hidden="true"><svg viewBox="0 0 700 560"><path d="M350 60 160 389.1 540 389.1Z" fill="#b9d7e60a" stroke="#b9d7e6" stroke-width="2"/><circle cx="350" cy="279.4" r="64" fill="none" stroke="#bdc8b580"/><text x="350" y="288" text-anchor="middle" fill="#f3f0e7" font-size="25">场所活力</text></svg></div>
+            <div class="network-canvas" data-network-canvas aria-hidden="true"></div>
+            <div class="network-nodes" role="group" aria-label="探索数据、空间和活动">
+              <button class="network-node network-node-0" type="button" data-loop-step="0" aria-pressed="false" aria-controls="anchor-detail"><span>01 / DATA</span><strong>数据</strong><small>看见问题</small></button>
+              <button class="network-node network-node-1" type="button" data-loop-step="1" aria-pressed="false" aria-controls="anchor-detail"><span>02 / SPACE</span><strong>空间</strong><small>回应需要</small></button>
+              <button class="network-node network-node-2" type="button" data-loop-step="2" aria-pressed="false" aria-controls="anchor-detail"><span>03 / ACTIVITY</span><strong>活动</strong><small>持续发生</small></button>
+            </div>
+            <div class="network-workspace-footer"><span>场所活力 / 三者共同的目标</span></div>
+          </div>
+          <div class="network-copy"><p class="network-index" data-loop-number>数据 / 空间 / 活动</p><h3 data-loop-title>让场所，<br>持续有活力。</h3><p id="anchor-detail" aria-live="polite">从洞察到空间，再到持续使用。</p><p class="network-question" data-loop-question>品牌贯穿三个方向：帮助判断为谁服务、如何表达，以及让人持续参与。</p><p class="network-tags" data-loop-tags>洞察支持设计 · 空间承载活动 · 使用观察回馈数据</p><p class="network-strategies" data-loop-strategies>六大方法策略：01–06</p><div class="network-copy-actions"><button type="button" data-triangle-overview aria-pressed="true">返回总览 ↗</button><a href="#strategies" data-network-case>六大方法策略 ↓</a></div></div>
+        </div>
+        <div class="network-footer"><p data-network-credit>参考影像：Bryant Park，纽约 · ajay_suresh · <a href="https://commons.wikimedia.org/wiki/File:Bryant_Park_-_NYC_(51494551468).jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · 已裁切，非 KYWOO 项目</p><button type="button" data-network-motion aria-pressed="false">暂停动效 Ⅱ</button></div>
+        <p class="network-scope">3D 网络为方法图解，不是实测模型；背景参考影像与真实地理数据分别标示。具体执行与活动分工按项目确认。</p>
+      </div>
+    </section>
+
+    <section class="strategies page-gutter" id="strategies" aria-labelledby="strategies-title">
+      <div class="strategies-head">
+        <p class="section-kicker reveal">六大方法策略 <span>与数据 × 空间 × 活动对应</span></p>
+        <h2 id="strategies-title" class="reveal">六个方法，<br>从研究到持续优化。</h2>
+        <p class="reveal">在上方三角中选一个方向，对应的方法会亮起；每个方法右上角的小三角标出它连着哪些方向。</p>
+      </div>
+      <ol class="strategy-grid">
+        <li class="strategy reveal" style="--d:0.00s" id="strategy-01" data-dirs="data space">
+          <div class="strategy-top"><span class="strategy-num">01</span><svg class="strategy-tri" viewBox="0 0 60 54" aria-hidden="true"><path d="M30 4 4 49h52Z" fill="none" stroke="currentColor" stroke-opacity=".35"/><circle cx="30" cy="4" r="6" fill="currentColor" stroke="currentColor"/><circle cx="4" cy="49" r="6" fill="currentColor" stroke="currentColor"/><circle cx="56" cy="49" r="3.5" fill="none" stroke="currentColor"/></svg></div>
+          <h3>场所研究与诊断</h3>
+          <p class="strategy-en" lang="en">Place Research &amp; Diagnostics</p>
+          <p>理解场所为什么表现不佳，以及哪些问题应优先解决。研究区位、商圈、客群、竞争、经营表现、空间使用、入口与动线，并区分事实、假设和证据缺口。</p>
+          <p class="strategy-out"><strong>主要成果</strong>场所诊断、问题优先级、机会识别及研究依据。</p>
+          <span class="project-dirs" aria-label="涉及：数据、空间"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span>
+        </li>
+        <li class="strategy reveal" style="--d:0.08s" id="strategy-02" data-dirs="data activity">
+          <div class="strategy-top"><span class="strategy-num">02</span><svg class="strategy-tri" viewBox="0 0 60 54" aria-hidden="true"><path d="M30 4 4 49h52Z" fill="none" stroke="currentColor" stroke-opacity=".35"/><circle cx="30" cy="4" r="6" fill="currentColor" stroke="currentColor"/><circle cx="4" cy="49" r="3.5" fill="none" stroke="currentColor"/><circle cx="56" cy="49" r="6" fill="currentColor" stroke="currentColor"/></svg></div>
+          <h3>场所定位与商业策略</h3>
+          <p class="strategy-en" lang="en">Place Strategy &amp; Commercial Positioning</p>
+          <p>确定场所服务谁、提供什么独特价值，以及如何形成可持续的商业路径。涵盖目标客群、场所定位、业态与功能组合、商业机制及分期策略。</p>
+          <p class="strategy-out"><strong>主要成果</strong>定位与价值主张、业态策略、商业机制和实施路线；在数据条件允许时，加入成本、租金、空置率和 NOI 等情景测算。</p>
+          <span class="project-dirs" aria-label="涉及：数据、活动"><i data-dir="data">数据</i><i data-dir="space" class="is-off">空间</i><i data-dir="activity">活动</i></span>
+        </li>
+        <li class="strategy reveal" style="--d:0.16s" id="strategy-03" data-dirs="space activity">
+          <div class="strategy-top"><span class="strategy-num">03</span><svg class="strategy-tri" viewBox="0 0 60 54" aria-hidden="true"><path d="M30 4 4 49h52Z" fill="none" stroke="currentColor" stroke-opacity=".35"/><circle cx="30" cy="4" r="3.5" fill="none" stroke="currentColor"/><circle cx="4" cy="49" r="6" fill="currentColor" stroke="currentColor"/><circle cx="56" cy="49" r="6" fill="currentColor" stroke="currentColor"/></svg></div>
+          <h3>场所营造与轻量介入</h3>
+          <p class="strategy-en" lang="en">Placemaking &amp; Tactical Interventions</p>
+          <p>通过局部、灵活且可测试的空间介入，将策略转化为人们可以体验的改变。例如入口和街道界面改善、停留节点、临时设施与公共空间试点。</p>
+          <p class="strategy-out"><strong>主要成果</strong>场所营造策略、重点节点概念、轻量试点与分期建议。</p>
+          <span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span>
+        </li>
+        <li class="strategy reveal" style="--d:0.00s" id="strategy-04" data-dirs="activity">
+          <div class="strategy-top"><span class="strategy-num">04</span><svg class="strategy-tri" viewBox="0 0 60 54" aria-hidden="true"><path d="M30 4 4 49h52Z" fill="none" stroke="currentColor" stroke-opacity=".35"/><circle cx="30" cy="4" r="3.5" fill="none" stroke="currentColor"/><circle cx="4" cy="49" r="3.5" fill="none" stroke="currentColor"/><circle cx="56" cy="49" r="6" fill="currentColor" stroke="currentColor"/></svg></div>
+          <h3>内容策划与场所活化</h3>
+          <p class="strategy-en" lang="en">Programming &amp; Activation Strategy</p>
+          <p>围绕人们为什么来、停留和再次到访，策划与场所定位相符的日常使用、文化内容、活动和品牌协同，而不只依赖一次性活动。</p>
+          <p class="strategy-out"><strong>主要成果</strong>活化主题、内容与活动框架、试点计划及合作建议。</p>
+          <span class="project-dirs" aria-label="涉及：活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space" class="is-off">空间</i><i data-dir="activity">活动</i></span>
+        </li>
+        <li class="strategy reveal" style="--d:0.08s" id="strategy-05" data-dirs="data">
+          <div class="strategy-top"><span class="strategy-num">05</span><svg class="strategy-tri" viewBox="0 0 60 54" aria-hidden="true"><path d="M30 4 4 49h52Z" fill="none" stroke="currentColor" stroke-opacity=".35"/><circle cx="30" cy="4" r="6" fill="currentColor" stroke="currentColor"/><circle cx="4" cy="49" r="3.5" fill="none" stroke="currentColor"/><circle cx="56" cy="49" r="3.5" fill="none" stroke="currentColor"/></svg></div>
+          <h3>成效评估与持续优化</h3>
+          <p class="strategy-en" lang="en">Impact Evaluation &amp; Learning</p>
+          <p>在介入前建立基线，结合客流、停留、空间使用、空置率及商业表现等适用指标，评估变化并支持下一轮决策。区分指标相关性与可以证明的因果影响。</p>
+          <p class="strategy-out"><strong>主要成果</strong>基线与阶段性评估、试点复盘及优化建议。</p>
+          <span class="project-dirs" aria-label="涉及：数据"><i data-dir="data">数据</i><i data-dir="space" class="is-off">空间</i><i data-dir="activity" class="is-off">活动</i></span>
+        </li>
+        <li class="strategy reveal" style="--d:0.16s" id="strategy-06" data-dirs="space">
+          <div class="strategy-top"><span class="strategy-num">06</span><svg class="strategy-tri" viewBox="0 0 60 54" aria-hidden="true"><path d="M30 4 4 49h52Z" fill="none" stroke="currentColor" stroke-opacity=".35"/><circle cx="30" cy="4" r="3.5" fill="none" stroke="currentColor"/><circle cx="4" cy="49" r="6" fill="currentColor" stroke="currentColor"/><circle cx="56" cy="49" r="3.5" fill="none" stroke="currentColor"/></svg></div>
+          <h3>城市、商业与文旅空间设计</h3>
+          <p class="strategy-en" lang="en">Urban, Commercial &amp; Cultural Destination Design</p>
+          <p>面向城市街区、商业综合体、古镇和文旅目的地，组织建筑、景观、公共空间、步行动线和体验节点之间的关系，让商业活动、文化体验与公共生活共同发生。</p>
+          <p class="strategy-out"><strong>主要成果</strong>总体空间概念、公共空间与动线策略、功能布局及重点节点设计。</p>
+          <span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span>
+        </li>
       </ol>
     </section>
 
-    <section class="projects research case-stories page-gutter" id="current" aria-labelledby="current-title">
-      <p class="section-kicker">当前项目 <span>朱家角 · 杭州武林银泰 · 前期研究</span></p>
-      <h2 id="current-title">从具体问题，<br>走进两个场所。</h2>
-      <div class="case-grid">
-        <article class="case-story">
-          <figure class="case-photos" data-case-photos aria-label="朱家角实景照片">
-            <div class="cp-frame">
-              <img class="cp-slide" src="https://images.pexels.com/photos/19979862/pexels-photo-19979862.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280" srcset="https://images.pexels.com/photos/19979862/pexels-photo-19979862.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=640 640w, https://images.pexels.com/photos/19979862/pexels-photo-19979862.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280 1280w" sizes="(max-width: 800px) 92vw, 46vw" alt="朱家角河道边的临水老屋与船只" data-caption="朱家角 · 临水老屋与河道" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-              <img class="cp-slide" src="https://images.pexels.com/photos/38003117/pexels-photo-38003117.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280" srcset="https://images.pexels.com/photos/38003117/pexels-photo-38003117.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=640 640w, https://images.pexels.com/photos/38003117/pexels-photo-38003117.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280 1280w" sizes="(max-width: 800px) 92vw, 46vw" alt="朱家角古镇石拱桥上的游人" data-caption="朱家角 · 石拱桥上的游人" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-              <img class="cp-slide" src="https://images.unsplash.com/photo-1715905387094-9ce34cd4e38a?auto=format&amp;fit=crop&amp;q=70&amp;w=1280" srcset="https://images.unsplash.com/photo-1715905387094-9ce34cd4e38a?auto=format&amp;fit=crop&amp;q=70&amp;w=640 640w, https://images.unsplash.com/photo-1715905387094-9ce34cd4e38a?auto=format&amp;fit=crop&amp;q=70&amp;w=1280 1280w" sizes="(max-width: 800px) 92vw, 46vw" alt="雨天沿河街巷里打伞走过的游人" data-caption="朱家角 · 雨天沿河街巷" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-              <img class="cp-slide" src="https://images.pexels.com/photos/37031585/pexels-photo-37031585.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280" srcset="https://images.pexels.com/photos/37031585/pexels-photo-37031585.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=640 640w, https://images.pexels.com/photos/37031585/pexels-photo-37031585.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280 1280w" sizes="(max-width: 800px) 92vw, 46vw" alt="朱家角河道上的石桥" data-caption="朱家角 · 河上石桥" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-            </div>
-            <div class="cp-bar"><p class="cp-caption"></p><div class="cp-bars" role="group" aria-label="选择照片"></div><button type="button" class="cp-pause" data-cp-pause>暂停 Ⅱ</button></div>
-            <figcaption class="cp-credit">照片：<a href="https://www.pexels.com/photo/a-building-in-a-town-19979862/">jefe king</a>、<a href="https://www.pexels.com/photo/tourists-on-historic-stone-arch-bridge-38003117/">Yudi Ding</a>、<a href="https://www.pexels.com/photo/charming-bridge-in-zhujiajiao-water-town-china-37031585/">Relaxing Journeys</a> / Pexels，<a href="https://unsplash.com/photos/TK980EPuE-Q">Alicja Ziajowska</a> / Unsplash。免费图库实景，非 KYWOO 项目摄影。</figcaption>
-          </figure>
-          <p class="case-type">古镇文旅 / 前期研究</p><h3>朱家角</h3>
-          <p class="case-question">活动，应该落在哪些节点？</p>
-          <p>读懂街巷与节点，讨论活动选点。</p>
-          <a class="text-link" href="https://kywoo-zhujiajiao.vercel.app/">查看研究汇报 <span aria-hidden="true">↗</span></a>
-          <small>前期研究 · 需访问密码 · 非已实施项目。</small>
-        </article>
-        <article class="case-story">
-          <figure class="case-photos" data-case-photos aria-label="杭州城市实景照片">
-            <div class="cp-frame">
-              <img class="cp-slide" src="https://images.pexels.com/photos/32166559/pexels-photo-32166559.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280" srcset="https://images.pexels.com/photos/32166559/pexels-photo-32166559.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=640 640w, https://images.pexels.com/photos/32166559/pexels-photo-32166559.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280 1280w" sizes="(max-width: 800px) 92vw, 46vw" alt="杭州街边小公园里休息的市民" data-caption="杭州 · 街边小公园（非武林银泰现场）" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-              <img class="cp-slide" src="https://images.pexels.com/photos/30326900/pexels-photo-30326900.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280" srcset="https://images.pexels.com/photos/30326900/pexels-photo-30326900.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=640 640w, https://images.pexels.com/photos/30326900/pexels-photo-30326900.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280 1280w" sizes="(max-width: 800px) 92vw, 46vw" alt="杭州高楼之间的城市公园与水面" data-caption="杭州 · 高楼间的城市公园（非武林银泰现场）" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-            </div>
-            <div class="cp-bar"><p class="cp-caption"></p><div class="cp-bars" role="group" aria-label="选择照片"></div><button type="button" class="cp-pause" data-cp-pause>暂停 Ⅱ</button></div>
-            <figcaption class="cp-credit">照片：<a href="https://www.pexels.com/photo/relaxed-urban-scene-in-hangzhou-street-park-32166559/">JUNLIN ZOU</a>、<a href="https://www.pexels.com/photo/urban-park-in-hangzhou-with-skyscrapers-30326900/">Nadine K</a> / Pexels。杭州城市实景，未找到可授权的武林银泰现场照片；非 KYWOO 项目摄影。</figcaption>
-          </figure>
-          <p class="case-type">商业空间 / 前期研究</p><h3>杭州武林银泰</h3>
-          <p class="case-question">先看周边，如何走到这里？</p>
-          <p>从真实道路与建筑，理解城市连接。</p>
-          <a class="text-link" href="#site-study">查看真实场地 <span aria-hidden="true">↓</span></a>
-          <small>地理研究示例 · 定位非边界 · 非委托实绩。</small>
-        </article>
-      </div>
-      <p class="case-note">两个当前项目均处于前期研究阶段，非已实施委托。</p>
+    <section class="projects research case-stories page-gutter" id="data-demo" aria-labelledby="data-demo-title">
+      <p class="section-kicker">数据化示范 <span>杭州武林银泰 · 前期研究</span></p>
+      <h2 id="data-demo-title">用真实地理，<br>读懂一个场所。</h2>
     <section class="method merged-story" id="method" data-story-step="0" aria-label="从城市关系到空间选择的三步研究故事">
       <div class="method-track" data-method-track>
         <div class="method-sticky">
@@ -221,86 +370,17 @@
       <details class="merged-sources page-gutter"><summary>来源与数据边界</summary><p>地理数据与来源 · <a href="assets/tiles/wulin-intime/2026-09-23.1/manifest.json">数据清单</a> · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">来源与许可</a> · <a href="assets/tiles/wulin-intime/2026-09-23.1/source/building.geojson">建筑来源摘录</a>。底图：<a href="https://docs.overturemaps.org/attribution/">Overture Maps / OpenStreetMap contributors · ODbL</a>，2026-09-23.1。建筑高度为来源记录；缺失高度不推算。建筑几何与高度为开放数据估计，未作现场测绘。本机研究地图中的高亮点由公共 POI 近似转换为 WGS84，非测绘边界、入口或人流数据。<a href="https://www.amap.com/place/B023B0934P">定位来源</a>。</p><p>城市画面来自真实地理资料；后续建筑与楼层为通用方法示范，不对应武林银泰。缺少同一项目的核实楼层、入口与方案资料，不能视为连续实景或已批准改造。</p></details>
     </section>
 
-    <section class="projects-grid-section page-gutter" id="experience" aria-labelledby="experience-title">
-      <div class="projects-head">
-        <p class="section-kicker">过往经验 <span>项目经验 · 城市更新参考</span></p>
-        <h2 id="experience-title">从做过的项目，<br>看数据、空间与活动。</h2>
-        <p>每个项目标出它涉及数据、空间还是活动。项目经验的参与角色与项目状态待补充；城市更新参考为他人完成的公开案例；照片为公开授权的场所背景照片，非团队作品摄影。</p>
+    <section class="indicators page-gutter" aria-labelledby="indicators-title">
+      <div class="indicators-head">
+        <p class="section-kicker">我们看的数 <span>到访 · 停留 · 消费</span></p>
+        <h2 id="indicators-title">先看清三件事。</h2>
       </div>
-      <div class="project-filters" role="group" aria-label="按方向筛选项目">
-        <button type="button" data-filter="all" aria-pressed="true">全部</button>
-        <button type="button" data-filter="data" aria-pressed="false">数据</button>
-        <button type="button" data-filter="space" aria-pressed="false">空间</button>
-        <button type="button" data-filter="activity" aria-pressed="false">活动</button>
-        <span class="project-count" data-project-count aria-live="polite"></span>
+      <div class="indicator-grid">
+        <div><strong>到访</strong><p>人从哪里来、什么时候来。</p></div>
+        <div><strong>停留</strong><p>在哪些节点停下、停多久。</p></div>
+        <div><strong>消费</strong><p>在哪里花钱、会不会再来。</p></div>
       </div>
-      <div class="project-grid">
-          <article class="project-card" id="project-wong-tai-sin" data-ring-item data-type="项目经验" data-name="黄大仙中心" data-subtitle="商业资产提升与品牌重塑" data-summary="从既有商场研究与品牌重塑出发，重新建立商场的场所形象与使用体验。" data-thumb="assets/projects/wong-tai-sin-480.jpg" data-position="50% 65%" data-title="TEMPLE" data-dirs="data space activity">
-            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="assets/projects/wong-tai-sin.jpg" srcset="assets/projects/wong-tai-sin-480.jpg 480w, assets/projects/wong-tai-sin.jpg 1280w" sizes="(max-width: 760px) 92vw, 30vw" alt="黄大仙中心北馆外观（2015年）" loading="lazy" decoding="async" style="object-position:50% 65%"></span><span class="project-meta"><span class="project-kind">项目经验</span><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">黄大仙中心</span><span class="project-sub">商业资产提升与品牌重塑</span><span class="project-more">查看项目 →</span></button>
-            <div class="project-detail" hidden><figure class="project-detail-media"><img src="assets/projects/wong-tai-sin.jpg" alt="黄大仙中心北馆外观（2015年）" loading="lazy" decoding="async" style="object-position:50% 65%"><figcaption>场所背景照片 · 2015年 · Pp0912 · CC BY-SA 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Temple_Mall_North_201510.jpg">来源</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">许可</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">项目经验</p><h3>黄大仙中心</h3><p class="project-sub">商业资产提升与品牌重塑</p><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>从既有商场研究与品牌重塑出发，整合内部布局、建筑立面及设施更新，重新建立商场的场所形象与使用体验。通过设计、招标及施工阶段的协调，将资产提升策略转化为具体空间改善。</p><p class="project-note">参与角色与项目状态待补充；照片为公开授权的场所背景照片，非团队作品摄影。</p></div></div>
-          </article>
-          <article class="project-card" id="project-whampoa" data-ring-item data-type="项目经验" data-name="黄埔商场" data-subtitle="品牌重塑与零售空间更新" data-summary="结合商场研究、品牌形象与空间设计，整合公共通道、店面、外墙及照明更新。" data-thumb="assets/projects/whampoa-480.jpg" data-position="center" data-title="WHAMPOA" data-dirs="data space activity">
-            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="assets/projects/whampoa.jpg" srcset="assets/projects/whampoa-480.jpg 480w, assets/projects/whampoa.jpg 1280w" sizes="(max-width: 760px) 92vw, 30vw" alt="黄埔新天地聚宝坊入口（2011年）" loading="lazy" decoding="async" style="object-position:center"></span><span class="project-meta"><span class="project-kind">项目经验</span><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">黄埔商场</span><span class="project-sub">品牌重塑与零售空间更新</span><span class="project-more">查看项目 →</span></button>
-            <div class="project-detail" hidden><figure class="project-detail-media"><img src="assets/projects/whampoa.jpg" alt="黄埔新天地聚宝坊入口（2011年）" loading="lazy" decoding="async" style="object-position:center"><figcaption>场所背景照片 · 2011年 · Wing1990hk · CC BY 3.0 · <a href="https://commons.wikimedia.org/wiki/File:Wonderful_Worlds_of_Whampoa_Treasure_World_Entrance_201108.jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/3.0">许可</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">项目经验</p><h3>黄埔商场</h3><p class="project-sub">品牌重塑与零售空间更新</p><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>结合商场研究、品牌形象与空间设计，整合公共通道、店面、外墙及照明更新。以连贯的视觉语言与更具吸引力的零售环境，支持既有商业资产的价值提升。</p><p class="project-note">参与角色与项目状态待补充；照片为公开授权的场所背景照片，非团队作品摄影。</p></div></div>
-          </article>
-          <article class="project-card" id="project-songping" data-ring-item data-type="项目经验" data-name="深圳松坪村" data-subtitle="城市更新与综合发展规划" data-summary="从区位、交通及周边产业与生活需求出发，研究片区的更新潜力。" data-thumb="" data-position="center" data-title="SONGPING" data-dirs="data space activity">
-            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb project-thumb-text" aria-hidden="true"><b>SONGPING</b><small>未配现场照片</small></span><span class="project-meta"><span class="project-kind">项目经验</span><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">深圳松坪村</span><span class="project-sub">城市更新与综合发展规划</span><span class="project-more">查看项目 →</span></button>
-            <div class="project-detail" hidden><div class="project-detail-media project-thumb-text" aria-hidden="true"><b>SONGPING</b><small>未配现场照片</small></div><div class="project-detail-body"><p class="project-kind">项目经验</p><h3>深圳松坪村</h3><p class="project-sub">城市更新与综合发展规划</p><span class="project-dirs" aria-label="涉及：数据、空间、活动"><i data-dir="data">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>从区位、交通及周边产业与生活需求出发，研究片区的更新潜力。通过功能分区、塔楼布局、立体步行连接及公共景观的方案比较，整合商业、居住与社区活动，形成兼顾开发需求与场所品质的概念规划。</p><p class="project-note">参与角色与项目状态待补充；照片为公开授权的场所背景照片，非团队作品摄影。</p></div></div>
-          </article>
-          <article class="project-card" id="project-grand-lisboa" data-ring-item data-type="项目经验" data-name="澳门新葡京" data-subtitle="既有酒店空间更新" data-summary="以既有酒店的空间更新为切入点，探索延续场所特色与提升宾客体验的设计方向。" data-thumb="assets/projects/grand-lisboa-480.jpg" data-position="center" data-title="LISBOA" data-dirs="space">
-            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="assets/projects/grand-lisboa.jpg" srcset="assets/projects/grand-lisboa-480.jpg 480w, assets/projects/grand-lisboa.jpg 1280w" sizes="(max-width: 760px) 92vw, 30vw" alt="澳门新葡京酒店外观" loading="lazy" decoding="async" style="object-position:center"></span><span class="project-meta"><span class="project-kind">项目经验</span><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span></span><span class="project-name">澳门新葡京</span><span class="project-sub">既有酒店空间更新</span><span class="project-more">查看项目 →</span></button>
-            <div class="project-detail" hidden><figure class="project-detail-media"><img src="assets/projects/grand-lisboa.jpg" alt="澳门新葡京酒店外观" loading="lazy" decoding="async" style="object-position:center"><figcaption>场所背景照片 · variationblogr · CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Grand_Lisboa_22.jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/2.0">许可</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">项目经验</p><h3>澳门新葡京</h3><p class="project-sub">既有酒店空间更新</p><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span><p>以既有酒店的空间更新为切入点，探索延续场所特色与提升宾客体验的设计方向，为酒店资产注入新的吸引力。</p><p class="project-note">参与角色与项目状态待补充；照片为公开授权的场所背景照片，非团队作品摄影。</p></div></div>
-          </article>
-          <article class="project-card" id="project-columbia-circle" data-ring-item data-type="城市更新参考" data-name="上海上生·新所" data-subtitle="历史街区活化与复合使用" data-summary="将原本封闭的园区转化为对公众开放的文化街区。" data-thumb="assets/projects/columbia-circle-480.jpg" data-position="center" data-title="COLUMBIA" data-dirs="space activity">
-            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="assets/projects/columbia-circle.jpg" srcset="assets/projects/columbia-circle-480.jpg 480w, assets/projects/columbia-circle.jpg 1280w" sizes="(max-width: 760px) 92vw, 30vw" alt="上海上生·新所历史建筑与公共广场（2018年）" loading="lazy" decoding="async" style="object-position:center"></span><span class="project-meta"><span class="project-kind">城市更新参考</span><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">上海上生·新所</span><span class="project-sub">历史街区活化与复合使用</span><span class="project-more">查看项目 →</span></button>
-            <div class="project-detail" hidden><figure class="project-detail-media"><img src="assets/projects/columbia-circle.jpg" alt="上海上生·新所历史建筑与公共广场（2018年）" loading="lazy" decoding="async" style="object-position:center"><figcaption>场所背景照片 · 2018年 · WQL · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Columbia_Circle_07.jpg">来源</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">许可</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">城市更新参考</p><h3>上海上生·新所</h3><p class="project-sub">历史街区活化与复合使用</p><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>从历史建筑与既有工业空间的保留、修缮及再利用出发，将原本封闭的园区转化为对公众开放的文化街区。通过书店、餐饮、展览与活动，以及街巷、广场和公共空间的连接，让既有场所承载多元日常使用。</p><a class="text-link" href="https://www.shcn.gov.cn/col3991/20241008/1269200.html">上海长宁官方介绍 <span aria-hidden="true">↗</span></a><p class="project-note">他人完成的公开案例，用来说明思路，不是 KYWOO 的项目。</p></div></div>
-          </article>
-          <article class="project-card" id="project-seoullo-7017" data-ring-item data-type="城市更新参考" data-name="首尔路 7017" data-subtitle="基础设施再利用与公共空间连接" data-summary="将首尔站旁的既有高架道路转化为步行花园，重新连接周边街区。" data-thumb="assets/projects/seoullo-7017-480.jpg" data-position="65% 50%" data-title="SEOULLO" data-dirs="space activity">
-            <button class="project-open" type="button" aria-haspopup="dialog"><span class="project-thumb"><img src="assets/projects/seoullo-7017.jpg" srcset="assets/projects/seoullo-7017-480.jpg 480w, assets/projects/seoullo-7017.jpg 1280w" sizes="(max-width: 760px) 92vw, 30vw" alt="首尔路7017步行花园与首尔站周边（2017年）" loading="lazy" decoding="async" style="object-position:65% 50%"></span><span class="project-meta"><span class="project-kind">城市更新参考</span><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></span><span class="project-name">首尔路 7017</span><span class="project-sub">基础设施再利用与公共空间连接</span><span class="project-more">查看项目 →</span></button>
-            <div class="project-detail" hidden><figure class="project-detail-media"><img src="assets/projects/seoullo-7017.jpg" alt="首尔路7017步行花园与首尔站周边（2017年）" loading="lazy" decoding="async" style="object-position:65% 50%"><figcaption>场所背景照片 · 2017年 · Christian Bolz · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Seoullo_7017_Overview_(4).jpg">来源</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">许可</a></figcaption></figure><div class="project-detail-body"><p class="project-kind">城市更新参考</p><h3>首尔路 7017</h3><p class="project-sub">基础设施再利用与公共空间连接</p><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span><p>将首尔站旁的既有高架道路转化为步行花园，通过绿化、停留节点与多处楼梯、升降机及步行连桥，重新连接周边街区。项目呈现既有基础设施如何转化为日常公共空间，连接步行、休憩与城市活动。</p><p class="project-by">原设计：MVRDV</p><a class="text-link" href="https://www.mvrdv.com/projects/208/pressroom">MVRDV 项目资料 <span aria-hidden="true">↗</span></a><p class="project-note">他人完成的公开案例，用来说明思路，不是 KYWOO 的项目。</p></div></div>
-          </article>
-      </div>
-      <dialog class="project-dialog" data-project-dialog aria-labelledby="project-dialog-title">
-        <button type="button" class="project-dialog-close" data-project-close aria-label="关闭项目说明">关闭 ×</button>
-        <div data-project-dialog-body></div>
-      </dialog>
-    </section>
-
-    <section class="group-intro page-gutter" id="services" aria-labelledby="services-title">
-      <p class="group-index"><span>02</span><span>SERVICES</span></p>
-      <h2 class="group-title" id="services-title">服务</h2>
-      <ol class="group-units">
-        <li><a href="#about"><span class="unit-num">2.1</span><strong>关于我们</strong><small>定位与三类空间</small><i aria-hidden="true">↓</i></a></li>
-        <li><a href="#service-list"><span class="unit-num">2.2</span><strong>服务内容</strong><small>五件事 · 如何一起工作</small><i aria-hidden="true">↓</i></a></li>
-        <li><a href="#approach"><span class="unit-num">2.3</span><strong>理论方法</strong><small>数据 · 空间 · 活动 · 我们看的数</small><i aria-hidden="true">↓</i></a></li>
-      </ol>
-    </section>
-
-    <section class="audiences page-gutter" id="about" aria-labelledby="audiences-title">
-      <div class="audiences-head">
-        <p class="section-kicker">关于我们 <span>公共空间 · 商业空间 · 古镇文旅</span></p>
-        <h2 id="audiences-title">三类既有空间，<br>都可以重新有人气。</h2>
-        <p class="about-lead">KYWOO STUDIO 是一家场所营造工作室。我们面向既有的城市公共空间、商业空间与古镇文旅空间，从一个具体问题开始，融合数据、空间与活动的研究和洞察，用小步试点让场所重新有人气。</p>
-      </div>
-      <div class="audience-grid">
-        <article><p class="audience-who">政府与公共空间管理方</p><h3>城市公共空间</h3><p>街道、广场、公园与滨水空间：用到访与停留读懂人怎样使用，让日常活动多起来。</p></article>
-        <article><p class="audience-who">业主与运营方</p><h3>城市商业空间</h3><p>商场与商业街区人气不足时，先从到访与停留找原因，再决定改哪里、怎么试。</p></article>
-        <article><p class="audience-who">管理方与运营方</p><h3>古镇文旅空间</h3><p>用数据读懂街巷与节点，用小空间和活动让它更好。</p></article>
-      </div>
-    </section>
-
-    <section class="services page-gutter" id="service-list" aria-labelledby="service-list-title">
-      <div class="services-head">
-        <p class="section-kicker">服务内容 <span>我们做五件事</span></p>
-        <h2 id="service-list-title">我们做五件事。</h2>
-      </div>
-      <div class="service-grid">
-        <article class="service-card"><p class="service-num">01</p><h3>读懂空间</h3><p>用街巷格局、到访与停留资料，找出人气不足的原因。</p><span class="project-dirs" aria-label="涉及：数据"><i data-dir="data">数据</i><i data-dir="space" class="is-off">空间</i><i data-dir="activity" class="is-off">活动</i></span></article>
-        <article class="service-card"><p class="service-num">02</p><h3>选点轻改</h3><p>先做微改与临时设施，挑几个最值得试的节点，不大拆大建。</p><span class="project-dirs" aria-label="涉及：空间"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity" class="is-off">活动</i></span></article>
-        <article class="service-card"><p class="service-num">03</p><h3>品牌导视</h3><p>从地方故事提炼名字、色彩与导视，让人认得出、走得到。</p><span class="project-dirs" aria-label="涉及：空间、活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space">空间</i><i data-dir="activity">活动</i></span></article>
-        <article class="service-card"><p class="service-num">04</p><h3>活动与资源</h3><p>按季节与客群安排活动，找到能一起运营的主理人与伙伴。</p><span class="project-dirs" aria-label="涉及：活动"><i data-dir="data" class="is-off">数据</i><i data-dir="space" class="is-off">空间</i><i data-dir="activity">活动</i></span></article>
-        <article class="service-card"><p class="service-num">05</p><h3>测量复盘</h3><p>试点前后计数与观察停留，决定保留、调整或停止。</p><span class="project-dirs" aria-label="涉及：数据"><i data-dir="data">数据</i><i data-dir="space" class="is-off">空间</i><i data-dir="activity" class="is-off">活动</i></span></article>
-      </div>
+      <p class="indicator-note">试点前后对照观察这三件事，再决定保留、调整或停止；不承诺客流、租金或收益增长。</p>
     </section>
 
     <section class="team page-gutter" id="team" aria-labelledby="team-title">
@@ -329,48 +409,6 @@
           <p class="team-lead">用观察决定，下一步怎么走。</p><p class="team-description">先定观察方法，再根据使用线索与执行记录复盘，讨论保留、调整或停止。</p><dl class="team-terms"><div><dt>可讨论交付</dt><dd>后续调整建议</dd></div><div><dt>可讨论分工</dt><dd>记录汇总、结果解释及后续安排</dd></div></dl>
         </article>
       </div>
-    </section>
-
-    <section class="intro page-gutter" id="approach" aria-labelledby="intro-title">
-      <div class="network-backgrounds" aria-hidden="true">
-        <img class="network-background is-visible" data-network-image="overview" src="assets/reference-photos/space-1280.jpg" alt="" loading="lazy">
-        <img class="network-background" data-network-image="0" src="assets/method/wulin-data.svg" alt="" loading="lazy">
-        <img class="network-background" data-network-image="1" src="assets/reference-photos/mall-1280.jpg" alt="" loading="lazy">
-        <img class="network-background" data-network-image="2" src="assets/reference-photos/activity-1280.jpg" alt="" loading="lazy">
-      </div>
-      <div class="network-shade" aria-hidden="true"></div>
-      <div class="network-content">
-        <p class="section-kicker">理论方法 <span>数据 · 空间 · 活动</span></p>
-        <div class="network-heading"><h2 id="intro-title">连接，<br>让场所持续生长。</h2><p>移动鼠标，走近一个方向。</p></div>
-        <div class="network-experience" data-network-state="overview">
-          <div class="network-workspace" data-network-workspace>
-            <div class="network-fallback" data-network-fallback aria-hidden="true"><svg viewBox="0 0 700 560"><path d="M350 60 160 389.1 540 389.1Z" fill="#b9d7e60a" stroke="#b9d7e6" stroke-width="2"/><circle cx="350" cy="279.4" r="64" fill="none" stroke="#bdc8b580"/><text x="350" y="288" text-anchor="middle" fill="#f3f0e7" font-size="25">场所活力</text></svg></div>
-            <div class="network-canvas" data-network-canvas aria-hidden="true"></div>
-            <div class="network-nodes" role="group" aria-label="探索数据、空间和活动">
-              <button class="network-node network-node-0" type="button" data-loop-step="0" aria-pressed="false" aria-controls="anchor-detail"><span>01 / DATA</span><strong>数据</strong><small>看见问题</small></button>
-              <button class="network-node network-node-1" type="button" data-loop-step="1" aria-pressed="false" aria-controls="anchor-detail"><span>02 / SPACE</span><strong>空间</strong><small>回应需要</small></button>
-              <button class="network-node network-node-2" type="button" data-loop-step="2" aria-pressed="false" aria-controls="anchor-detail"><span>03 / ACTIVITY</span><strong>活动</strong><small>持续发生</small></button>
-            </div>
-            <div class="network-workspace-footer"><span>场所活力 / 三者共同的目标</span></div>
-          </div>
-          <div class="network-copy"><p class="network-index" data-loop-number>数据 / 空间 / 活动</p><h3 data-loop-title>让场所，<br>持续有活力。</h3><p id="anchor-detail" aria-live="polite">从洞察到空间，再到持续使用。</p><p class="network-question" data-loop-question>品牌贯穿三个方向：帮助判断为谁服务、如何表达，以及让人持续参与。</p><p class="network-tags" data-loop-tags>洞察支持设计 · 空间承载活动 · 使用观察回馈数据</p><div class="network-copy-actions"><button type="button" data-triangle-overview aria-pressed="true">返回总览 ↗</button><a href="#projects" data-network-case>看项目 ↑</a></div></div>
-        </div>
-        <div class="network-footer"><p data-network-credit>参考影像：Bryant Park，纽约 · ajay_suresh · <a href="https://commons.wikimedia.org/wiki/File:Bryant_Park_-_NYC_(51494551468).jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · 已裁切，非 KYWOO 项目</p><button type="button" data-network-motion aria-pressed="false">暂停动效 Ⅱ</button></div>
-        <p class="network-scope">3D 网络为方法图解，不是实测模型；背景参考影像与真实地理数据分别标示。具体执行与活动分工按项目确认。</p>
-      </div>
-    </section>
-
-    <section class="indicators page-gutter" aria-labelledby="indicators-title">
-      <div class="indicators-head">
-        <p class="section-kicker">理论方法 · 我们看的数 <span>到访 · 停留 · 消费</span></p>
-        <h2 id="indicators-title">先看清三件事。</h2>
-      </div>
-      <div class="indicator-grid">
-        <div><strong>到访</strong><p>人从哪里来、什么时候来。</p></div>
-        <div><strong>停留</strong><p>在哪些节点停下、停多久。</p></div>
-        <div><strong>消费</strong><p>在哪里花钱、会不会再来。</p></div>
-      </div>
-      <p class="indicator-note">试点前后对照观察这三件事，再决定保留、调整或停止；不承诺客流、租金或收益增长。</p>
     </section>
 
     <section class="closing-quote page-gutter" aria-label="KYWOO 口号">
@@ -406,7 +444,7 @@
           </details>
           <details>
             <summary><span>03</span><strong>页面上哪些是真实项目？</strong><i aria-hidden="true"></i></summary>
-            <div class="faq-answer"><p>「过往经验」里，「项目经验」是过往项目介绍，参与角色与项目状态待补充；「城市更新参考」是他人完成的公开案例。两者的照片都是公开授权的场所背景照片，非团队作品摄影。「当前项目」朱家角与武林银泰处于前期研究阶段（朱家角研究汇报需访问密码），不是已交付的委托。武林银泰地理图使用 Overture 建筑与道路数据，楼层动画是通用 DEMO。首屏照片为有人气的参考场所，来源见“素材与披露”。</p></div>
+            <div class="faq-answer"><p>「案例总览」里，「当前项目」朱家角与武林银泰处于前期研究阶段（朱家角研究汇报需访问密码），不是已交付的委托。「过往经验」中，「项目经验」是过往项目介绍，参与角色与项目状态待补充；「JOA 建筑项目」来自 JOA（justopenarch.com），KYWOO 团队成员的参与角色待补充；「城市更新参考」是他人完成的公开案例。图片均非 KYWOO 项目摄影，来源见各项目说明与“素材与披露”。武林银泰地理图使用 Overture 建筑与道路数据，楼层动画是通用 DEMO。</p></div>
           </details>
           <details>
             <summary><span>04</span><strong>数据、空间、活动如何连动？</strong><i aria-hidden="true"></i></summary>
@@ -436,8 +474,8 @@
       <a class="text-link" href="#top">返回页首 ↑</a>
     </div>
     <div class="footer-columns">
-      <nav aria-label="项目"><p>项目</p><a href="#current">当前项目</a><a href="#experience">过往经验</a><a href="https://kywoo-zhujiajiao.vercel.app/">朱家角研究汇报 ↗</a></nav>
-      <nav aria-label="服务"><p>服务</p><a href="#about">关于我们</a><a href="#service-list">服务内容</a><a href="#team">如何一起工作</a><a href="#approach">理论方法</a></nav>
+      <nav aria-label="项目"><p>项目</p><a href="#cases-current">当前项目</a><a href="#cases-past">过往经验</a><a href="https://kywoo-zhujiajiao.vercel.app/">朱家角研究汇报 ↗</a></nav>
+      <nav aria-label="服务"><p>服务</p><a href="#principles">关于我们</a><a href="#strategies">服务内容</a><a href="#approach">理论方法</a><a href="#team">如何一起工作</a></nav>
       <div><p>联系</p><a href="mailto:openkai@kywoo.com">openkai@kywoo.com</a><a href="#faq">常见问题</a><a href="./en" hreflang="en" lang="en">English</a></div>
     </div>
     <div class="footer-bottom">
@@ -458,6 +496,7 @@
       <section><h3>首屏照片</h3><p>首屏轮播的是有人气的场所：首尔路 7017（原设计 MVRDV，照片由团队提供，摄影署名待补）、朱家角古镇（Yudi Ding / Pexels）、杭州西湖边街景（LayG Traveller / Pexels 视频截图，非武林银泰现场）。均非 KYWOO 项目摄影，不代表作者、场所或设计方的背书。</p></section>
       <section><h3>公开范围</h3><p>这是品牌与交互设计预览，不连接私人数据库，不展示未授权项目素材，也不提供财务计算。缺失资料显示 Unknown。</p></section>
       <section><h3>项目经验与参考</h3><p>「项目经验」为过往项目介绍，参与角色与项目状态待补充；「城市更新参考」为他人完成的公开案例。照片来自 Wikimedia Commons，均为公开授权的场所背景照片（作者与许可列在各项目照片下方，记录见 assets/projects/credits.json），非团队作品摄影，不代表作者、场所或业主的背书。页面不展示个人姓名、照片或履历。</p></section>
+      <section><h3>JOA 建筑项目</h3><p>JOA 建筑项目的方案图与资料来自 justopenarch.com 各项目页，由该网站直接加载；KYWOO 团队成员的参与角色待补充，正式使用前需确认授权。</p></section>
       <section><h3>案例照片</h3><p>朱家角与杭州的案例照片来自 Pexels、Unsplash 免费图库（作者见照片下方），由图库直接加载。朱家角照片均标注拍摄地为朱家角；杭州照片为城市实景，不是武林银泰现场。均非 KYWOO 项目摄影，不代表作者或场所的背书。</p></section>
       <section><h3>参考照片</h3><p>商场、公共空间与活动照片为 CC BY 2.0 网上参考影像，作者分别为 Michael Gaylard、ajay_suresh、GoToVan。方法场景下方随当前背景列出来源、许可及裁切说明；不属于 KYWOO 项目，不代表作者、场所或活动方的背书。</p></section>
       <section><h3>待补内容</h3><p>项目参与角色、团队作品摄影、公司信息及武林银泰现场照片仍待补充。项目联络：openkai@kywoo.com。财务计算未连接，页面不会生成回报率或租金增长。</p></section>

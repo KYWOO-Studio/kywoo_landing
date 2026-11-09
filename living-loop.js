@@ -38,6 +38,8 @@ const credits = L([
   'Reference image: Powell Street Festival · GoToVan · <a href="https://commons.wikimedia.org/wiki/File:Powell_Street_Festival_2015_(20217347021).jpg">Source</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · Cropped; not a KYWOO project'
 ]);
 const defaultCredit = root.querySelector('[data-network-credit]').innerHTML;
+const strategies = document.querySelector('#strategies');
+const strategyItems = strategies ? [...strategies.querySelectorAll('.strategy')] : [];
 let pinned = -1, shown = -1, model, paused = false;
 function show(index) {
   shown = index;
@@ -55,14 +57,20 @@ function show(index) {
   root.querySelector('[data-triangle-overview]').setAttribute('aria-pressed', String(index < 0));
 
   const link = root.querySelector('[data-network-case]');
-  // each direction points to where it shows up further down the page
-  // the method sits below projects and services, so these links point back up the page
-  const links = [
-    ['#site-study', L('看真实场地 ↑', 'See the real site ↑')],
-    ['#service-list', L('服务内容 ↑', 'What we offer ↑')],
-    ['#experience', L('看过往经验 ↑', 'See past experience ↑')]
-  ];
-  [link.href, link.textContent] = index < 0 ? ['#projects', L('看项目 ↑', 'See projects ↑')] : links[index];
+  [link.href, link.textContent] = index === 0
+    ? ['#site-study', L('看数据化示范 ↓', 'See the data demo ↓')]
+    : ['#strategies', index < 0 ? L('六大方法策略 ↓', 'Six strategies ↓') : L('对应方法策略 ↓', 'Related strategies ↓')];
+
+  // the six strategies below: name the ones linked to this direction and light them up
+  const dir = ['data', 'space', 'activity'][index] || '';
+  const related = strategyItems.filter(item => !dir || item.dataset.dirs.split(' ').includes(dir));
+  root.querySelector('[data-loop-strategies]').textContent = dir
+    ? L('对应方法：', 'Related strategies: ') + related.map(item => `${item.id.slice(-2)} ${item.querySelector('h3').textContent}`).join(' · ')
+    : L('六大方法策略：01–06', 'Six strategies: 01–06');
+  if (strategies) {
+    if (dir) strategies.dataset.activeDir = dir; else delete strategies.dataset.activeDir;
+    strategyItems.forEach(item => item.classList.toggle('is-related', Boolean(dir) && related.includes(item)));
+  }
   model?.setState(index);
 }
 buttons.forEach((button, index) => {
