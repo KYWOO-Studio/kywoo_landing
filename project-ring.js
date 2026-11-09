@@ -11,16 +11,13 @@ if (ring) {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const track = ring.querySelector('[data-ring-track]');
   const pauseBtn = ring.querySelector('[data-ring-pause]');
-  const out = {
-    type: ring.querySelector('[data-ring-type]'), name: ring.querySelector('[data-ring-name]'),
-    summary: ring.querySelector('[data-ring-summary]'), link: ring.querySelector('[data-ring-link]')
-  };
-  const idle = { type: out.type.textContent, name: out.name.textContent, summary: out.summary.textContent, link: out.link.innerHTML, href: out.link.getAttribute('href') };
+  const caption = ring.querySelector('[data-ring-caption]');
+  const idle = caption.innerHTML;
   const items = [...document.querySelectorAll('[data-ring-item]')].map(el => ({
     id: el.id, type: el.dataset.type, name: el.dataset.name, subtitle: el.dataset.subtitle,
-    summary: el.dataset.summary, thumb: el.dataset.thumb, position: el.dataset.position, title: el.dataset.title,
-    number: el.querySelector('.project-num')?.textContent.split('/')[0].trim() || ''
+    thumb: el.dataset.thumb, position: el.dataset.position, title: el.dataset.title, href: el.dataset.href || ''
   }));
+  const touch = matchMedia('(hover: none)');
 
   let tiles = [], mode = '', W = 0, H = 0, T = 0, GAP = 10, offset = 0, velocity = 0;
   let playing = !reduce.matches, visible = false, hover = false, raf = 0, last = 0;
@@ -29,7 +26,7 @@ if (ring) {
   ring.tabIndex = 0;
   ring.setAttribute('role', 'region');
   ring.setAttribute('aria-roledescription', '照片环');
-  ring.setAttribute('aria-label', '项目照片环：左右方向键切换项目，Enter 查看项目说明');
+  ring.setAttribute('aria-label', '项目与研究照片环：左右方向键切换，Enter 打开');
 
   function tile(item) {
     const b = document.createElement('button');
@@ -37,9 +34,11 @@ if (ring) {
     b.className = 'ring-tile' + (item.thumb ? '' : ' is-text');
     b.tabIndex = -1;
     b.setAttribute('aria-hidden', 'true');
-    b.innerHTML = item.thumb
-      ? `<img src="${item.thumb}" alt="" loading="lazy" decoding="async" draggable="false" style="object-position:${item.position}"><span>${item.name}</span>`
-      : `<b>${item.title}</b><span>${item.name}</span>`;
+    const asText = () => { b.classList.add('is-text'); b.innerHTML = `<b>${item.title}</b><span>${item.name}</span>`; };
+    if (item.thumb) {
+      b.innerHTML = `<img src="${item.thumb}" alt="" loading="lazy" decoding="async" draggable="false" referrerpolicy="no-referrer" style="object-position:${item.position}"><span>${item.name}</span>`;
+      b.querySelector('img').addEventListener('error', asText, { once: true });   // e.g. a blocked image host
+    } else asText();
     return b;
   }
 
@@ -108,18 +107,27 @@ if (ring) {
   function show(idx) {
     previewed = idx;
     const item = items[idx];
-    if (!item) {
-      out.type.textContent = idle.type; out.name.textContent = idle.name; out.summary.textContent = idle.summary;
-      out.link.innerHTML = idle.link; out.link.setAttribute('href', idle.href);
-    } else {
-      out.type.textContent = `${item.type} · ${item.number}`;
-      out.name.textContent = item.name;
-      out.summary.textContent = `${item.subtitle}。${item.summary}`;
-      out.link.innerHTML = '查看项目 <span aria-hidden="true">↓</span>';
-      out.link.setAttribute('href', '#' + item.id);
+    if (!item) caption.innerHTML = idle;
+    else {
+      const href = item.href || '#' + item.id;
+      caption.innerHTML = `<span>${item.type}</span> <b>${item.name}</b> · ${item.subtitle} <a href="${href}" data-ring-open="${idx}">${item.href ? '查看研究' : '查看项目'} →</a>`;
     }
     mark();
   }
+
+  // open a project: its dialog when the projects grid offers one, otherwise jump to it
+  function open(idx) {
+    const item = items[idx];
+    if (!item) return;
+    if (!item.href && window.KywooProjects) window.KywooProjects.open(item.id);
+    else location.hash = item.href || item.id;
+  }
+  caption.addEventListener('click', e => {
+    const a = e.target.closest('[data-ring-open]');
+    if (!a) return;
+    e.preventDefault();
+    open(+a.dataset.ringOpen);
+  });
 
   function select(idx) { selected = idx; show(idx); }
 
@@ -188,7 +196,10 @@ if (ring) {
     const t = e.target.closest('.ring-tile');
     if (!t) return;
     if (suppressClick) { suppressClick = false; return; }
-    select(+t.dataset.item);
+    const idx = +t.dataset.item;
+    // touch: first tap shows the project in the centre, a second tap opens it
+    if (touch.matches && selected !== idx) select(idx);
+    else { select(idx); open(idx); }
   });
 
   ring.addEventListener('keydown', e => {
@@ -201,7 +212,7 @@ if (ring) {
       place();
     } else if (e.key === 'Enter' && selected >= 0) {
       e.preventDefault();
-      location.hash = items[selected].id;
+      open(selected);
     } else if (e.key === 'Escape') {
       selected = -1; show(-1);
     }
