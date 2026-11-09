@@ -1012,3 +1012,24 @@ html[lang="en"] .group-title { font-size: clamp(64px, 9vw, 150px); }
 @media (max-width: 860px) { .group-intro { grid-template-columns: 1fr; } }
 
 .about-lead { max-width: 46em; margin: 22px 0 0; font-size: 17px; line-height: 1.9; color: #3d564c; }
+
+/* 联系我们: third item in the header, filled so it reads as the call to action */
+.main-nav .nav-contact { background: var(--ivory); color: var(--forest); }
+.main-nav .nav-contact:hover { background: var(--blue); color: var(--forest); }
+.site-header.is-scrolled .main-nav .nav-contact { background: var(--forest); color: var(--ivory); }
+.site-header.is-scrolled .main-nav .nav-contact:hover { background: var(--forest-2, #2c4d41); color: var(--ivory); }
+@media (max-width: 600px) {
+  .main-nav { gap: 2px; }
+  .main-nav .nav-top { padding: 9px 12px; font-size: 13.5px; letter-spacing: .04em; }
+  html[lang="en"] .main-nav .nav-top { padding: 9px 10px; font-size: 13px; letter-spacing: 0; }
+}
+@media (max-width: 380px) {
+  .site-header { column-gap: 4px; }
+  .wordmark span { font-size: 21px; }
+  .main-nav { padding: 3px; }
+  .main-nav .nav-top { padding: 8px 9px; font-size: 12.5px; }
+  html[lang="en"] .main-nav .nav-top { padding: 8px 7px; font-size: 12px; }
+  .lang-switch { min-width: 30px; min-height: 30px; padding: 0 6px; font-size: 10.5px; }
+}
+.main-nav .nav-top { white-space: nowrap; }
+@media (max-width: 340px) { .site-header { padding: 0 14px; } }

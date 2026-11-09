@@ -8,7 +8,7 @@ EN = {
 '服务': 'Services',
 '方法': 'Method',
 '研究': 'Research',
-'联系我们': 'Contact us',
+'联系我们': 'Contact',
 'KYWOO Studio 首页': 'KYWOO Studio home',
 '主要导航': 'Main navigation',
 '让冷清的空间，': 'Bring quiet places',
