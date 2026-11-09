@@ -1,42 +1,95 @@
-/* Projects grid: filter by direction (数据 / 空间 / 活动) and open a project
-   in a dialog. Each card carries its own full description in a hidden block,
-   so the content is in the page even without this script. */
+/* Case overview: one horizontal row of project cards, current projects first,
+   then past experience. Tabs narrow the row to one group; arrows, drag (mouse),
+   swipe, trackpad and keyboard all move it. Each card opens a dialog built
+   from its own hidden description, so the content is in the page even
+   without this script. */
 
-const section = document.querySelector('#experience');
+const section = document.querySelector('#cases');
 if (section) {
-  const cards = [...section.querySelectorAll('.project-card')];
-  const filters = [...section.querySelectorAll('[data-filter]')];
+  const EN = document.documentElement.lang === 'en';
+  const track = section.querySelector('[data-case-track]');
+  const cards = [...track.querySelectorAll('.project-card')];
+  const tabs = [...section.querySelectorAll('[data-case-filter]')];
   const count = section.querySelector('[data-project-count]');
+  const prev = section.querySelector('[data-case-prev]');
+  const next = section.querySelector('[data-case-next]');
+  const bar = section.querySelector('[data-case-progress]');
   const dialog = section.querySelector('[data-project-dialog]');
   const body = dialog.querySelector('[data-project-dialog-body]');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   let opener = null;
 
-  function filter(dir) {
+  /* ---- groups ---- */
+  function filter(group) {
     let shown = 0;
     cards.forEach(card => {
-      const on = dir === 'all' || card.dataset.dirs.split(' ').includes(dir);
+      const on = group === 'all' || card.dataset.group === group;
       card.hidden = !on;
       if (on) shown++;
     });
-    filters.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === dir)));
-    const label = filters.find(b => b.dataset.filter === dir).textContent;
-    count.textContent = document.documentElement.lang === 'en'
-      ? (dir === 'all' ? `${shown} projects` : `${label}: ${shown} projects`)
-      : (dir === 'all' ? `共 ${shown} 项` : `涉及${label}：${shown} 项`);
+    tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.caseFilter === group)));
+    count.textContent = EN ? `${shown} projects` : `共 ${shown} 项`;
+    track.scrollTo({ left: 0, behavior: 'auto' });
+    update();
   }
-  filters.forEach(b => b.addEventListener('click', () => filter(b.dataset.filter)));
+  tabs.forEach(b => b.addEventListener('click', () => filter(b.dataset.caseFilter)));
+
+  /* ---- moving the row ---- */
+  const step = () => {
+    const card = cards.find(c => !c.hidden);
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 24;
+    return card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
+  };
+  const move = dir => track.scrollBy({ left: dir * step(), behavior: reduce.matches ? 'auto' : 'smooth' });
+  prev.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+
+  function update() {
+    const max = track.scrollWidth - track.clientWidth;
+    const share = Math.max(track.scrollWidth ? track.clientWidth / track.scrollWidth : 1, 0.08);
+    const pos = max > 0 ? track.scrollLeft / max : 0;
+    bar.style.width = `${share * 100}%`;
+    bar.style.transform = `translateX(${pos * (1 / share - 1) * 100}%)`;
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= max - 2;
+  }
+  track.addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+
+  // drag with a mouse; touch and trackpads scroll natively
+  let drag = null, dragged = false;
+  track.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = { x: e.clientX, left: track.scrollLeft };
+    dragged = false;
+  });
+  addEventListener('pointermove', e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x;
+    if (!dragged && Math.abs(dx) > 6) { dragged = true; track.classList.add('is-dragging'); }
+    if (dragged) track.scrollLeft = drag.left - dx;
+  });
+  addEventListener('pointerup', () => {
+    if (!drag) return;
+    drag = null;
+    track.classList.remove('is-dragging');
+  });
+  // a drag should not also open the card it ended on
+  track.addEventListener('click', e => { if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; } }, true);
+  track.addEventListener('dragstart', e => e.preventDefault());
+
   // if a card photo cannot load (e.g. a blocked image host), show the project's title block instead
-  section.querySelectorAll('.project-thumb img').forEach(img => img.addEventListener('error', () => {
+  track.querySelectorAll('.project-thumb > img').forEach(img => img.addEventListener('error', () => {
     const box = img.parentElement, card = img.closest('.project-card');
     box.classList.add('project-thumb-text');
     box.innerHTML = `<b>${card.dataset.title}</b><small>${card.dataset.type}</small>`;
   }, { once: true }));
-  filter('all');
 
+  /* ---- dialog ---- */
   function open(id, from) {
     const card = document.getElementById(id);
     const detail = card?.querySelector('.project-detail');
-    if (!detail) { if (card) location.hash = id; return; }
+    if (!detail) return;
     opener = from || card.querySelector('.project-open');
     body.innerHTML = detail.innerHTML;
     const title = body.querySelector('h3');
@@ -45,28 +98,38 @@ if (section) {
     dialog.querySelector('[data-project-close]').focus();
     history.replaceState(null, '', '#' + id);
   }
-  function close() { dialog.close(); }
+  const close = () => dialog.close();
 
   cards.forEach(card => {
     const btn = card.querySelector('button.project-open');
     if (btn) btn.addEventListener('click', () => open(card.id, btn));
   });
   dialog.querySelector('[data-project-close]').addEventListener('click', close);
-  dialog.addEventListener('click', e => { if (e.target === dialog) close(); });   // backdrop
+  dialog.addEventListener('click', e => {
+    if (e.target === dialog) { close(); return; }                     // backdrop
+    const link = e.target.closest('a[href^="#"]');                    // in-page link: close first, then go
+    if (link) { e.preventDefault(); opener = null; close(); location.hash = link.getAttribute('href'); }
+  });
   dialog.addEventListener('close', () => {
     if (location.hash && document.getElementById(location.hash.slice(1))?.classList.contains('project-card')) {
-      history.replaceState(null, '', location.pathname + location.search + '#experience');
+      history.replaceState(null, '', location.pathname + location.search + '#cases');
     }
     opener?.focus({ preventScroll: true });
   });
 
-  // a shared link to a project (#project-whampoa) opens its dialog
+  /* ---- links: #project-xxx opens a dialog, #cases-current / #cases-past pick a group ---- */
   const fromHash = () => {
     const id = location.hash.slice(1);
+    if (id === 'cases-current' || id === 'cases-past') { filter(id.slice(6)); return; }
     const card = id ? document.getElementById(id) : null;
-    if (card?.classList.contains('project-card') && card.querySelector('.project-detail') && !dialog.open) open(id);
+    if (card?.classList.contains('project-card') && !dialog.open) {
+      filter('all');
+      track.scrollLeft = card.offsetLeft - track.offsetLeft;
+      open(id);
+    }
   };
-  window.addEventListener('hashchange', fromHash);
+  addEventListener('hashchange', fromHash);
+  filter('all');
   fromHash();
 
   window.KywooProjects = { open };
