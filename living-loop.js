@@ -38,50 +38,209 @@ const credits = L([
   'Reference image: Powell Street Festival · GoToVan · <a href="https://commons.wikimedia.org/wiki/File:Powell_Street_Festival_2015_(20217347021).jpg">Source</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · Cropped; not a KYWOO project'
 ]);
 const defaultCredit = root.querySelector('[data-network-credit]').innerHTML;
-const strategies = document.querySelector('#strategies');
-const strategyItems = strategies ? [...strategies.querySelectorAll('.strategy')] : [];
-let pinned = -1, shown = -1, model, paused = false;
-function show(index) {
-  shown = index;
-  root.querySelector('[data-network-state]').dataset.networkState = index < 0 ? 'overview' : index;
-  const c = index < 0 ? overview : content[index];
-  root.querySelector('[data-loop-number]').textContent = c[0];
-  root.querySelector('[data-loop-title]').innerHTML = c[1];
-  root.querySelector('#anchor-detail').textContent = c[2];
-  const d = index < 0 ? overviewDetail : detail[index];
-  root.querySelector('[data-loop-question]').textContent = d[0];
-  root.querySelector('[data-loop-tags]').textContent = d[1];
-  root.querySelector('[data-network-credit]').innerHTML = index < 0 ? defaultCredit : credits[index];
-  root.querySelectorAll('[data-network-image]').forEach(image => image.classList.toggle('is-visible', image.dataset.networkImage === (index < 0 ? 'overview' : String(index))));
-  buttons.forEach((button, i) => {button.setAttribute('aria-pressed', String(pinned === i));button.classList.toggle('is-preview', i === index);});
-  root.querySelector('[data-triangle-overview]').setAttribute('aria-pressed', String(index < 0));
+
+/* ---- the six strategies around the triangle ---- */
+const DIRS = ['data', 'space', 'activity'];
+const dirNames = L(['数据', '空间', '活动'], ['Data', 'Space', 'Activity']);
+const nodes = [...root.querySelectorAll('[data-strategy]')];
+const strategies = [...root.querySelectorAll('[data-strategy-text]')].map(li => ({
+  num: `0${Number(li.dataset.strategyText) + 1}`,
+  title: li.querySelector('h3').textContent,
+  desc: li.querySelector('.strategy-desc').textContent,
+  out: li.querySelector('.strategy-out span').textContent,
+  dirs: li.dataset.dirs.split(' ').map(d => DIRS.indexOf(d))
+}));
+// where each strategy sits: single-direction ones beyond their corner, two-direction ones beyond the edge between them
+const ANGLE = [150, 30, 270, 330, 90, 210];
+const links = root.querySelector('[data-network-links]');
+const SVGNS = 'http://www.w3.org/2000/svg';
+const edgeEls = [0, 1, 2].map(() => links.appendChild(document.createElementNS(SVGNS, 'path')));
+edgeEls.forEach(el => el.setAttribute('class', 'tri-edge'));
+const linkEls = [];
+strategies.forEach((st, si) => st.dirs.forEach(di => {
+  const el = document.createElementNS(SVGNS, 'path');
+  el.setAttribute('class', 'strategy-link');
+  links.append(el);
+  linkEls.push({ el, si, di });
+}));
+
+const OVERVIEW = { kind: 'overview' };
+const same = (a, b) => a.kind === b.kind && a.i === b.i;
+let pinned = OVERVIEW, shown = OVERVIEW, model, paused = false;
+
+function setPanel(number, title, detailText, question, tags) {
+  root.querySelector('[data-loop-number]').textContent = number;
+  root.querySelector('[data-loop-title]').innerHTML = title;
+  root.querySelector('#anchor-detail').textContent = detailText;
+  root.querySelector('[data-loop-question]').textContent = question;
+  root.querySelector('[data-loop-tags]').textContent = tags;
+}
+
+// buttons in the panel that jump to the neighbours of what is shown
+function setNeighbours(label, items) {
+  const box = root.querySelector('[data-loop-strategies]');
+  box.textContent = '';
+  if (label) { const p = document.createElement('p'); p.textContent = label; box.append(p); }
+  items.forEach(({ text, state }) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = text;
+    b.addEventListener('click', () => { pinned = state; show(state); });
+    box.append(b);
+  });
+}
+
+function show(state) {
+  shown = state;
+  const dir = state.kind === 'dir' ? state.i : -1;
+  const st = state.kind === 'strategy' ? strategies[state.i] : null;
+  const image = dir >= 0 ? dir : st ? st.dirs[0] : -1;
+  root.querySelector('[data-network-state]').dataset.networkState = state.kind === 'overview' ? 'overview' : state.kind + '-' + state.i;
+
+  if (dir >= 0) {
+    setPanel(content[dir][0], content[dir][1], content[dir][2], detail[dir][0], detail[dir][1]);
+    setNeighbours(L('对应方法', 'Related strategies'), strategies.map((x, si) => ({ x, si })).filter(({ x }) => x.dirs.includes(dir))
+      .map(({ x, si }) => ({ text: `${x.num} ${x.title}`, state: { kind: 'strategy', i: si } })));
+  } else if (st) {
+    setPanel(L(`方法 ${st.num} / 06`, `Strategy ${st.num} / 06`), st.title, st.desc, L('主要成果：', 'Key outputs: ') + st.out,
+      L('连着：', 'Connects: ') + st.dirs.map(d => dirNames[d]).join(' × '));
+    setNeighbours(L('相连的方向', 'Linked directions'), st.dirs.map(d => ({ text: `${dirNames[d]} ↗`, state: { kind: 'dir', i: d } })));
+  } else {
+    setPanel(overview[0], overview[1], overview[2], overviewDetail[0], overviewDetail[1]);
+    setNeighbours(L('六大方法', 'Six strategies'), strategies.map((x, si) => ({ text: `${x.num} ${x.title}`, state: { kind: 'strategy', i: si } })));
+  }
+
+  root.querySelector('[data-network-credit]').innerHTML = image < 0 ? defaultCredit : credits[image];
+  root.querySelectorAll('[data-network-image]').forEach(img => img.classList.toggle('is-visible', img.dataset.networkImage === (image < 0 ? 'overview' : String(image))));
+
+  // what lights up: the shown item, its neighbours and the links between them
+  const litDirs = dir >= 0 ? [dir] : st ? st.dirs : [];
+  const litStrategies = dir >= 0 ? strategies.map((x, si) => x.dirs.includes(dir) ? si : -1).filter(si => si >= 0) : st ? [state.i] : [];
+  const active = state.kind !== 'overview';
+  buttons.forEach((b, i) => {
+    b.setAttribute('aria-pressed', String(pinned.kind === 'dir' && pinned.i === i));
+    b.classList.toggle('is-preview', dir === i);
+    b.classList.toggle('is-linked', Boolean(st) && litDirs.includes(i));
+    b.classList.toggle('is-dim', active && !litDirs.includes(i));
+  });
+  nodes.forEach((n, si) => {
+    n.setAttribute('aria-pressed', String(pinned.kind === 'strategy' && pinned.i === si));
+    n.classList.toggle('is-preview', Boolean(st) && state.i === si);
+    n.classList.toggle('is-linked', dir >= 0 && litStrategies.includes(si));
+    n.classList.toggle('is-dim', active && !litStrategies.includes(si));
+  });
+  linkEls.forEach(({ el, si, di }) => {
+    const on = active && litStrategies.includes(si) && litDirs.includes(di);
+    el.classList.toggle('is-active', on);
+    el.classList.toggle('is-dim', active && !on);
+  });
+  root.querySelector('[data-triangle-overview]').setAttribute('aria-pressed', String(state.kind === 'overview'));
 
   const link = root.querySelector('[data-network-case]');
-  [link.href, link.textContent] = index === 0
+  [link.href, link.textContent] = dir === 0
     ? ['#site-study', L('看数据化示范 ↓', 'See the data demo ↓')]
-    : ['#strategies', index < 0 ? L('六大方法策略 ↓', 'Six strategies ↓') : L('对应方法策略 ↓', 'Related strategies ↓')];
-
-  // the six strategies below: name the ones linked to this direction and light them up
-  const dir = ['data', 'space', 'activity'][index] || '';
-  const related = strategyItems.filter(item => !dir || item.dataset.dirs.split(' ').includes(dir));
-  root.querySelector('[data-loop-strategies]').textContent = dir
-    ? L('对应方法：', 'Related strategies: ') + related.map(item => `${item.id.slice(-2)} ${item.querySelector('h3').textContent}`).join(' · ')
-    : L('六大方法策略：01–06', 'Six strategies: 01–06');
-  if (strategies) {
-    if (dir) strategies.dataset.activeDir = dir; else delete strategies.dataset.activeDir;
-    strategyItems.forEach(item => item.classList.toggle('is-related', Boolean(dir) && related.includes(item)));
-  }
-  model?.setState(index);
+    : ['#cases', L('看案例 ↓', 'See cases ↓')];
+  model?.setState(dir >= 0 ? dir : st && st.dirs.length === 1 ? st.dirs[0] : -1);
 }
-buttons.forEach((button, index) => {
-  button.addEventListener('pointerenter', event => {if(event.pointerType === 'mouse' && hover.matches)show(index);});
-  button.addEventListener('focus', () => {if(button.matches(':focus-visible'))show(index);});
-  button.addEventListener('blur', () => show(pinned));
-  button.addEventListener('click', () => {pinned = pinned === index ? -1 : index;show(pinned);});
+
+/* ---- geometry: ring positions and the link lines ---- */
+const center = el => { const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; };
+function cornerCentres() {
+  const box = workspace.getBoundingClientRect();
+  const anchors = model?.anchors?.();
+  if (anchors && anchors[0].x) {
+    // resting positions from the 3D scene, so the ring does not drift with the camera
+    return buttons.map((b, i) => {
+      const drop = parseFloat(getComputedStyle(b).getPropertyValue('--node-drop')) || 22;
+      return { x: anchors[i].x, y: anchors[i].y + drop + b.offsetHeight / 2 };
+    });
+  }
+  // no 3D scene (not loaded yet, or WebGL unavailable): place the three corners ourselves
+  const r = Math.min(box.width, box.height) * (box.width < 500 ? .19 : .16);
+  const cx = box.width / 2, cy = box.height / 2;
+  return buttons.map((b, i) => {
+    const a = (90 + i * 120) * Math.PI / 180;
+    const p = { x: cx + r * Math.cos(a), y: cy - r * Math.sin(a) };
+    const drop = parseFloat(getComputedStyle(b).getPropertyValue('--node-drop')) || 22;
+    b.style.left = `${p.x}px`;
+    b.style.top = `${p.y - drop - b.offsetHeight / 2}px`;
+    b.style.bottom = 'auto';
+    return p;
+  });
+}
+let ringCentre = { x: 0, y: 0 }, ringFromScene = false;
+function layoutRing() {
+  const box = workspace.getBoundingClientRect();
+  if (!box.width) return;
+  ringFromScene = Boolean(model?.anchors?.()[0].x);
+  const corners = cornerCentres();
+  const c = { x: (corners[0].x + corners[1].x + corners[2].x) / 3, y: (corners[0].y + corners[1].y + corners[2].y) / 3 };
+  ringCentre = c;
+  const halfW = Math.max(...nodes.map(n => n.offsetWidth)) / 2, halfH = Math.max(...nodes.map(n => n.offsetHeight)) / 2;
+  const footer = 34;
+  const r = Math.min((box.width / 2 - halfW - 6) / Math.cos(Math.PI / 6), c.y - halfH - 4, box.height - footer - c.y - halfH);
+  nodes.forEach((n, si) => {
+    const a = ANGLE[si] * Math.PI / 180;
+    n.style.left = `${c.x + r * Math.cos(a)}px`;
+    n.style.top = `${c.y - r * Math.sin(a)}px`;
+  });
+  drawLinks();
+}
+function curve(a, b) {
+  // bow each line slightly towards the middle of the triangle
+  const m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+  const k = { x: m.x + (ringCentre.x - m.x) * .22, y: m.y + (ringCentre.y - m.y) * .22 };
+  return `M${a.x.toFixed(1)} ${a.y.toFixed(1)}Q${k.x.toFixed(1)} ${k.y.toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
+}
+function drawLinks() {
+  const box = workspace.getBoundingClientRect();
+  links.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
+  const corner = buttons.map(b => { const p = center(b); return { x: p.x - box.left, y: p.y - box.top }; });
+  const ring = nodes.map(n => { const p = center(n); return { x: p.x - box.left, y: p.y - box.top }; });
+  edgeEls.forEach((el, i) => el.setAttribute('d', `M${corner[i].x} ${corner[i].y}L${corner[(i + 1) % 3].x} ${corner[(i + 1) % 3].y}`));
+  linkEls.forEach(({ el, si, di }) => el.setAttribute('d', curve(ring[si], corner[di])));
+}
+// the corners move with the 3D camera, so the lines follow them while the diagram is on screen
+let drawing = false, onScreen = false;
+function loop() {
+  if (!onScreen) { drawing = false; return; }
+  if (!ringFromScene && model?.anchors?.()[0].x) layoutRing(); else drawLinks();
+  requestAnimationFrame(loop);
+}
+new IntersectionObserver(entries => {
+  onScreen = entries[0].isIntersecting;
+  if (onScreen) { layoutRing(); if (!drawing) { drawing = true; requestAnimationFrame(loop); } }
+}).observe(workspace);
+// wait a frame so the 3D scene has measured itself first
+new ResizeObserver(() => requestAnimationFrame(() => requestAnimationFrame(layoutRing))).observe(workspace);
+
+/* ---- input ---- */
+function bind(el, state) {
+  el.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse' && hover.matches) show(state); });
+  el.addEventListener('focus', () => { if (el.matches(':focus-visible')) show(state); });
+  el.addEventListener('blur', () => show(pinned));
+  el.addEventListener('click', () => { pinned = same(pinned, state) ? OVERVIEW : state; show(pinned); });
+}
+buttons.forEach((b, i) => bind(b, { kind: 'dir', i }));
+nodes.forEach((n, si) => {
+  bind(n, { kind: 'strategy', i: si });
+  n.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') show(pinned); });
 });
 workspace.addEventListener('pointerleave', () => show(pinned));
-root.querySelector('[data-triangle-overview]').addEventListener('click', () => {pinned=-1;show(-1);});
-root.addEventListener('keydown', event => {if(event.key === 'Escape'){pinned=-1;show(-1);}});
+root.querySelector('[data-triangle-overview]').addEventListener('click', () => { pinned = OVERVIEW; show(OVERVIEW); });
+root.addEventListener('keydown', event => { if (event.key === 'Escape') { pinned = OVERVIEW; show(OVERVIEW); } });
+
+// links such as #strategy-03 (from "about us") open that strategy in the diagram
+function fromHash() {
+  const m = location.hash.match(/^#strategy-0([1-6])$/);
+  if (!m) return;
+  pinned = { kind: 'strategy', i: Number(m[1]) - 1 };
+  show(pinned);
+  requestAnimationFrame(() => workspace.scrollIntoView({ block: 'center', behavior: reduce.matches ? 'auto' : 'smooth' }));
+}
+addEventListener('hashchange', fromHash);
+show(OVERVIEW);
+fromHash();
 const motion = root.querySelector('[data-network-motion]');
 function updateMotion() {
   root.dataset.motionState = paused || reduce.matches ? 'paused' : 'running';
@@ -93,15 +252,15 @@ function updateMotion() {
 motion.addEventListener('click', () => {paused=!paused;updateMotion();});
 reduce.addEventListener('change', updateMotion);
 updateMotion();
-function updateHint() {root.querySelector('.network-heading > p').textContent = hover.matches ? L('移动鼠标，走近一个方向。', 'Move your mouse towards a direction.') : L('轻点节点，探索一个方向。', 'Tap a node to explore a direction.');}
+function updateHint() {root.querySelector('.network-heading > p').textContent = hover.matches ? L('移动鼠标，走近一个方向或方法。', 'Move towards a direction or a strategy.') : L('轻点三角或外圈的方法，看它们怎样相连。', 'Tap the triangle or a strategy to see how they connect.');}
 hover.addEventListener('change', updateHint);updateHint();
 const observer = new IntersectionObserver(async entries => {
   if(!entries.some(entry=>entry.isIntersecting))return;
   observer.disconnect();
   try {
     const {createNetwork}=await import('./living-loop-scene.js');
-    model=createNetwork(root, reduce, index => {const next=index < 0 ? pinned : index;if(next!==shown)show(next);});
-    model.setState(shown);updateMotion();
+    model=createNetwork(root, reduce, index => {const next=index < 0 ? pinned : {kind:'dir', i:index};if(!same(next,shown))show(next);});
+    model.setState(shown.kind === 'dir' ? shown.i : -1);updateMotion();layoutRing();
   } catch {
     root.dataset.networkRenderer='fallback';
   }
