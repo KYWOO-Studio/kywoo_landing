@@ -1056,11 +1056,7 @@ html[lang="en"] .scroll-statement { max-width: 17em; font-size: clamp(34px, 4.6v
 .cases-head .section-kicker { grid-column: 1 / -1; color: #5c6f66; border-color: rgba(32,62,52,.18); }
 .cases-head h2 { margin: 18px 0 0; font: 600 clamp(36px, 4.1vw, 64px)/1.3 var(--serif); letter-spacing: -.025em; }
 .cases-head > p { margin: 0; font-size: 14px; line-height: 1.85; color: #3d564c; }
-.case-controls { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: clamp(30px, 4vw, 50px) 0 24px; }
-.case-tabs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.case-tabs button { min-height: 42px; padding: 0 20px; border: 1px solid rgba(32,62,52,.28); border-radius: 999px; background: none; color: var(--forest); font: 500 14px/1 var(--sans); cursor: pointer; scroll-margin-top: 140px; }
-.case-tabs button[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: var(--ivory); }
-.case-tabs .project-count { margin-left: 6px; font-size: 13px; color: #5c6f66; }
+.case-controls { display: flex; justify-content: flex-end; align-items: center; gap: 16px; margin: clamp(30px, 4vw, 50px) 0 24px; }
 .case-arrows { display: flex; gap: 8px; }
 .case-arrows button { width: 50px; height: 50px; border: 1px solid rgba(32,62,52,.3); border-radius: 50%; background: none; color: var(--forest); font-size: 19px; cursor: pointer; transition: background .25s, color .25s; }
 .case-arrows button:hover:not(:disabled) { background: var(--forest); color: var(--ivory); }
@@ -1074,13 +1070,13 @@ html[lang="en"] .scroll-statement { max-width: 17em; font-size: clamp(34px, 4.6v
 .case-track .project-kind { font-size: 11.5px; }
 .case-track .project-card[data-group="current"] .project-kind { color: var(--forest); font-weight: 600; }
 .project-thumb.case-photos { margin: 0; }
-.project-thumb .cp-frame { height: 100%; aspect-ratio: auto; border-radius: 0; cursor: inherit; }
+.project-thumb .cp-frame { display: block; height: 100%; aspect-ratio: auto; border-radius: 0; cursor: inherit; }
 .case-progress { position: relative; height: 2px; margin-top: 32px; overflow: hidden; background: rgba(32,62,52,.14); }
 .case-progress span { position: absolute; inset: 0 auto 0 0; width: 20%; background: var(--forest); }
 @media (max-width: 760px) {
   .cases-head { grid-template-columns: 1fr; }
-  .cases-head > p { margin-top: 14px; }
-  .case-arrows { display: none; }
+  .case-controls { display: none; }
+  .case-track { margin-top: 32px; }
   .case-track .project-card { flex-basis: 76vw; }
 }
 
@@ -1229,14 +1225,22 @@ html[lang="en"] .strategy-node { width: 184px; }
 html[lang="en"] .about-summary { max-width: 28em; }
 #about > .section-kicker,
 #approach .network-content > .section-kicker,
+.cases-head > .section-kicker,
+.faq > .section-kicker,
 .about-principles > .about-label { align-items: baseline; font: 600 clamp(22px, 2vw, 30px)/1.3 var(--serif); letter-spacing: .06em; text-transform: none; }
-#about > .section-kicker { color: var(--forest); }
-#approach .network-content > .section-kicker { color: var(--ivory); }
+#about > .section-kicker,
+.cases-head > .section-kicker { color: var(--forest); }
+#approach .network-content > .section-kicker,
+.faq > .section-kicker { color: var(--ivory); }
 .about-principles > .about-label { color: var(--forest); }
 #about > .section-kicker > span,
-#approach .network-content > .section-kicker > span { font: 400 12.5px/1.5 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
-#about > .section-kicker > span { color: #5c6f66; }
-#approach .network-content > .section-kicker > span { color: var(--sage); }
+#approach .network-content > .section-kicker > span,
+.cases-head > .section-kicker > span,
+.faq > .section-kicker > span { font: 400 12.5px/1.5 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+#about > .section-kicker > span,
+.cases-head > .section-kicker > span { color: #5c6f66; }
+#approach .network-content > .section-kicker > span,
+.faq > .section-kicker > span { color: var(--sage); }
 .principle { grid-template-columns: 120px minmax(0, 1.1fr) minmax(0, 1fr); }
 .principle-num { padding-top: 0; font: 600 clamp(40px, 4vw, 64px)/1 var(--serif); letter-spacing: -.02em; color: #8aa396; }
 @media (max-width: 860px) { .principle { grid-template-columns: 1fr; } .principle-num { font-size: 40px; } }
