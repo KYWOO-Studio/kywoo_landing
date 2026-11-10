@@ -1298,3 +1298,7 @@ html[lang="en"] .about-summary { max-width: 28em; }
 
 /* Chinese strategy titles: six characters per line, so they break before 与 (商业成效评估 / 与持续优化). (2026-11-10) */
 html[lang="zh-CN"] .strategy-node strong { max-width: 6.2em; margin-inline: auto; text-wrap: wrap; }
+
+/* Principle links may wrap: the English 03 link ("Commercial Place Renovation & Tactical Interventions ↓") is
+   longer than a 320px screen, and max-content width stretched the column off-screen in Safari. (2026-11-10) */
+.principle-copy .text-link { width: auto; max-width: 100%; }
