@@ -1246,5 +1246,7 @@ html[lang="en"] .about-summary { max-width: 28em; }
 @media (max-width: 860px) { .principle { grid-template-columns: 1fr; } .principle-num { font-size: 40px; } }
 .principle h3 { font-size: clamp(30px, 3.6vw, 54px); text-wrap: balance; }
 
-/* Big statement: break lines only after punctuation so phrases like 在哪里停留 stay whole (2026-11-10) */
-.scroll-statement { word-break: keep-all; line-break: strict; }
+/* Big statement: each Chinese phrase (up to and including its punctuation) is one unbreakable
+   block, so lines break only between phrases. Done with inline-blocks rather than
+   word-break: keep-all, which Safari applied to the whole sentence and widened the page. */
+.scroll-statement .phrase { display: inline-block; }
