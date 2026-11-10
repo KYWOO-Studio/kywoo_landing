@@ -621,7 +621,7 @@ body { font-weight: 400; }
 .network-footer p{font-size:10px;line-height:1.8;color:#d1ded4;max-width:80em;min-height:3.6em}
 .network-footer a{color:#e0ece6;text-decoration:underline;text-underline-offset:3px}
 .network-scope{font-size:10px;line-height:1.8;margin-top:10px;color:#baccc0}
-@media(max-width:1000px){.network-heading h2{font-size:48px}.network-experience{grid-template-columns:1fr}.network-workspace{height:480px}.network-copy{padding-top:35px;border-top:1px solid #cadfd140;min-height:0}.network-copy #anchor-detail{min-height:0}.network-question p{min-height:0}.network-shade{background:linear-gradient(0deg,#102c24fa 0%,#102c24eb 28%,#102c2470 65%,#102c24bb 100%)}}
+@media(max-width:1400px){.network-heading h2{font-size:48px}.network-experience{grid-template-columns:1fr}.network-workspace{height:480px}.network-copy{padding-top:35px;border-top:1px solid #cadfd140;min-height:0}.network-copy #anchor-detail{min-height:0}.network-question p{min-height:0}.network-shade{background:linear-gradient(0deg,#102c24fa 0%,#102c24eb 28%,#102c2470 65%,#102c24bb 100%)}}
 @media(max-width:600px){#approach{padding-top:60px}.network-heading{display:block;margin-top:24px}.network-heading h2{font-size:43px}.network-heading>p{margin-top:22px;font-size:13px}.network-workspace{height:440px;margin-top:8px}.network-node{width:96px;height:96px;padding:0 6px}.network-node strong{font-size:19px}.network-node span{font-size:7px}.network-node small{font-size:9px}.network-workspace-footer{font-size:9px;gap:8px}.network-workspace-footer button{padding:10px 13px;font-size:11px}.network-copy h3{font-size:30px}.network-footer{align-items:flex-start;flex-direction:column;gap:10px}.network-footer p{font-size:10px}.network-footer button{align-self:flex-end}.network-scope{margin-top:12px}}
 @media(prefers-reduced-motion:reduce){.network-background,.network-node{transition:none}.network-background{transform:none}}
 .overture-site:has(.site-placeholder){background:#c4cfc0 url('./assets/method/wulin-data.svg') center/cover no-repeat}
@@ -632,7 +632,7 @@ body { font-weight: 400; }
 .network-copy #anchor-detail{min-height:3.8em;max-width:24em}
 .network-workspace-footer{pointer-events:none}
 .case-story .case-question{margin-bottom:18px}
-@media(max-width:1000px){.network-copy{min-height:0}.network-copy #anchor-detail{min-height:0}}
+@media(max-width:1400px){.network-copy{min-height:0}.network-copy #anchor-detail{min-height:0}}
 #approach[data-motion-state="paused"] .network-background{transition:none;transform:none}
 #approach[data-motion-state="paused"] .network-node{transition:none}
 /* Public geography is a static preview; local research controls are opt-in. */
@@ -1209,7 +1209,7 @@ html[lang="en"] .strategy-node strong { font-size: 13.5px; }
 .strategy-node { width: 168px; padding: 13px 14px 14px; }
 .strategy-node strong { font-size: 15.5px; }
 html[lang="en"] .strategy-node { width: 184px; }
-@media (max-width: 1000px) { #approach .network-experience { grid-template-columns: 1fr; } #approach .network-workspace { height: 720px; } }
+@media (max-width: 1400px) { #approach .network-experience { grid-template-columns: 1fr; } #approach .network-workspace { height: 720px; } }
 @media (max-width: 600px) {
   #approach .network-workspace { height: 520px; }
   #approach .network-node { width: 80px; height: 80px; }
@@ -1260,9 +1260,10 @@ html[lang="en"] .about-summary { max-width: 28em; }
 #approach .strategy-all > summary:focus-visible { outline: 3px solid #e6f6ff; outline-offset: 4px; }
 #approach .strategy-all[open] .strategy-grid { margin-top: 0; padding-bottom: clamp(30px, 4vw, 52px); }
 
-/* Diagram stacked over the panel (tablet/phone): a fixed gap. The old 4% row gap resolved
+/* Diagram stacked over the panel (≤1400px: tablets, laptops, phones; side by side the diagram
+   is too narrow and the outer circles run into the corners): a fixed gap. The old 4% row gap resolved
    only after the grid's height was set, so the panel spilled ~20px onto the credit line. */
-@media (max-width: 1000px) { #approach .network-experience { row-gap: 32px; } }
+@media (max-width: 1400px) { #approach .network-experience { row-gap: 32px; } }
 
 /* Diagram on touch screens (2026-11-10): a card inside the diagram tells what a tap selected (the full panel is
    below, off screen on phones); taps no longer leave the hover colour stuck on a circle. */
@@ -1272,7 +1273,7 @@ html[lang="en"] .about-summary { max-width: 28em; }
   .strategy-node:hover:not(.is-preview):not(.is-linked) { border-color: rgba(200,232,230,.38); background: rgba(16,44,36,.8); color: var(--ivory); box-shadow: none; }
   .strategy-node:hover:not(.is-preview):not(.is-linked) .strategy-node-num { color: var(--blue); }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1400px) {
   #approach .network-readout:not([hidden]) { position: absolute; left: 0; right: 0; bottom: 4px; z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 8px 8px 12px; border: 1px solid rgba(200,232,230,.42); border-radius: 14px; background: rgba(14,40,33,.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
   #approach .network-readout p { margin: 0; }
   #approach .network-readout-title { font: 600 15px/1.4 var(--serif); color: var(--ivory); }
@@ -1284,3 +1285,10 @@ html[lang="en"] .about-summary { max-width: 28em; }
   #approach .network-copy { scroll-margin-top: 84px; }
 }
 @media (max-width: 600px) { #approach .network-workspace { height: 560px; } }
+
+/* Tablets and laptops up to 1400px get the stacked diagram; give it room (820px tall). English strategy labels
+   are long ("Commercial …"), so they are set smaller and wider to stay clear of the corner circles. (2026-11-10) */
+@media (min-width: 601px) and (max-width: 1400px) { #approach .network-workspace { height: 820px; } }
+@media (min-width: 1001px) and (max-width: 1400px) { html[lang="en"] .strategy-node { width: 204px; } }
+@media (min-width: 1401px) { html[lang="en"] .strategy-node { width: 168px; } }
+@media (min-width: 601px) { html[lang="en"] .strategy-node { padding: 9px 10px 10px; } html[lang="en"] .strategy-node strong { font-size: 12px; line-height: 1.3; } }
