@@ -1302,3 +1302,6 @@ html[lang="zh-CN"] .strategy-node strong { max-width: 6.2em; margin-inline: auto
 /* Principle links may wrap: the English 03 link ("Commercial Place Renovation & Tactical Interventions ↓") is
    longer than a 320px screen, and max-content width stretched the column off-screen in Safari. (2026-11-10) */
 .principle-copy .text-link { width: auto; max-width: 100%; }
+
+/* Panel: the strategy view has no tags line (what it connects to is drawn in the diagram). (2026-11-10) */
+.network-tags:empty { display: none; }
