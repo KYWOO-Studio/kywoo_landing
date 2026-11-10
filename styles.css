@@ -1305,3 +1305,6 @@ html[lang="zh-CN"] .strategy-node strong { max-width: 6.2em; margin-inline: auto
 
 /* Panel: the strategy view has no tags line (what it connects to is drawn in the diagram). (2026-11-10) */
 .network-tags:empty { display: none; }
+
+/* Diagram: no caption or credit lines under it (credits are in 素材与披露); only the motion button remains. (2026-11-10) */
+#approach .network-footer { justify-content: flex-end; border-top: 0; }

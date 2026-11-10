@@ -28,16 +28,6 @@ const detail = L([
   ['The question: which spots can hold everyday use and programmed activity?', 'Routes / nodes / use · Space holds activity'],
   ['The question: after a small pilot, how do we record who joined and who stayed?', 'Brand / events / content · Use feeds back into data']
 ]);
-const credits = L([
-  '真实地理：武林银泰周边 · Overture / OpenStreetMap contributors · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">来源与 ODbL 许可</a> · 地理估计，非实测客流',
-  '参考影像：Fuengirola 商场，西班牙 · Michael Gaylard · <a href="https://commons.wikimedia.org/wiki/File:Shopping_Mall_Interior_(48844005991).jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · 已裁切，非 KYWOO 项目',
-  '参考影像：Powell Street Festival · GoToVan · <a href="https://commons.wikimedia.org/wiki/File:Powell_Street_Festival_2015_(20217347021).jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · 已裁切，非 KYWOO 项目'
-], [
-  'Real geography: around Wulin Intime, Hangzhou · Overture / OpenStreetMap contributors · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">Sources and ODbL licence</a> · Geographic estimate, not measured footfall',
-  'Reference image: shopping mall in Fuengirola, Spain · Michael Gaylard · <a href="https://commons.wikimedia.org/wiki/File:Shopping_Mall_Interior_(48844005991).jpg">Source</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · Cropped; not a KYWOO project',
-  'Reference image: Powell Street Festival · GoToVan · <a href="https://commons.wikimedia.org/wiki/File:Powell_Street_Festival_2015_(20217347021).jpg">Source</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · Cropped; not a KYWOO project'
-]);
-const defaultCredit = root.querySelector('[data-network-credit]').innerHTML;
 // phones and tablets: the panel sits below the diagram, so a small card inside the diagram says what a tap selected
 const readout = root.querySelector('[data-network-readout]');
 const readoutPart = name => readout.querySelector(`[data-readout-${name}]`);
@@ -126,7 +116,6 @@ function show(state) {
     readoutPart('sub').textContent = L('连着：', 'Connects: ') + st.dirs.map(d => dirNames[d]).join(' × ');
   }
 
-  root.querySelector('[data-network-credit]').innerHTML = image < 0 ? defaultCredit : credits[image];
   root.querySelectorAll('[data-network-image]').forEach(img => img.classList.toggle('is-visible', img.dataset.networkImage === (image < 0 ? 'overview' : String(image))));
 
   // what lights up: the shown item, its neighbours and the links between them
