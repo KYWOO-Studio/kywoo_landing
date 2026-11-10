@@ -38,6 +38,9 @@ const credits = L([
   'Reference image: Powell Street Festival · GoToVan · <a href="https://commons.wikimedia.org/wiki/File:Powell_Street_Festival_2015_(20217347021).jpg">Source</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · Cropped; not a KYWOO project'
 ]);
 const defaultCredit = root.querySelector('[data-network-credit]').innerHTML;
+// phones and tablets: the panel sits below the diagram, so a small card inside the diagram says what a tap selected
+const readout = root.querySelector('[data-network-readout]');
+const readoutPart = name => readout.querySelector(`[data-readout-${name}]`);
 
 /* ---- the six strategies around the triangle ---- */
 const DIRS = ['data', 'space', 'activity'];
@@ -76,6 +79,25 @@ function setPanel(number, title, detailText, question, tags) {
   root.querySelector('[data-loop-tags]').textContent = tags;
 }
 
+/* A tap on a touch screen acts on finger-lift instead of waiting for the click. iPhone Safari may treat the
+   first tap on these moving, hover-styled buttons as a hover and never send the click; the click that does
+   follow a handled tap is ignored so nothing toggles twice. Mouse and keyboard still use the click. */
+let tapGuard = 0;
+function onTap(el, fn) {
+  let start = null;
+  el.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' && e.isPrimary) start = { x: e.clientX, y: e.clientY, id: e.pointerId }; });
+  el.addEventListener('pointercancel', () => { start = null; });
+  el.addEventListener('pointerup', e => {
+    if (!start || e.pointerId !== start.id) return;
+    const moved = Math.hypot(e.clientX - start.x, e.clientY - start.y) > 12;
+    start = null;
+    if (moved) return;
+    tapGuard = performance.now() + 800;
+    fn();
+  });
+  el.addEventListener('click', () => { if (performance.now() >= tapGuard) fn(); });
+}
+
 // buttons in the panel that jump to the neighbours of what is shown
 function setNeighbours(label, items) {
   const box = root.querySelector('[data-loop-strategies]');
@@ -85,7 +107,7 @@ function setNeighbours(label, items) {
     const b = document.createElement('button');
     b.type = 'button';
     b.textContent = text;
-    b.addEventListener('click', () => { pinned = state; show(state); });
+    onTap(b, () => { pinned = state; show(state); });
     box.append(b);
   });
 }
@@ -108,6 +130,17 @@ function show(state) {
   } else {
     setPanel(overview[0], overview[1], overview[2], overviewDetail[0], overviewDetail[1]);
     setNeighbours(L('六大方法', 'Six strategies'), strategies.map((x, si) => ({ text: `${x.num} ${x.title}`, state: { kind: 'strategy', i: si } })));
+  }
+
+  readout.hidden = !st && dir < 0;
+  if (dir >= 0) {
+    readoutPart('kicker').textContent = content[dir][0];
+    readoutPart('title').textContent = content[dir][1].replace(/<br>/g, EN ? ' ' : '');
+    readoutPart('sub').textContent = L('对应方法：', 'Related: ') + strategies.map((x, si) => x.dirs.includes(dir) ? `${x.num} ${nodes[si].querySelector('small').textContent}` : '').filter(Boolean).join(' · ');
+  } else if (st) {
+    readoutPart('kicker').textContent = st.num;
+    readoutPart('title').textContent = st.title;
+    readoutPart('sub').textContent = L('连着：', 'Connects: ') + st.dirs.map(d => dirNames[d]).join(' × ');
   }
 
   root.querySelector('[data-network-credit]').innerHTML = image < 0 ? defaultCredit : credits[image];
@@ -217,7 +250,7 @@ function bind(el, state) {
   el.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse' && hover.matches) show(state); });
   el.addEventListener('focus', () => { if (el.matches(':focus-visible')) show(state); });
   el.addEventListener('blur', () => show(pinned));
-  el.addEventListener('click', () => { pinned = same(pinned, state) ? OVERVIEW : state; show(pinned); });
+  onTap(el, () => { pinned = same(pinned, state) ? OVERVIEW : state; show(pinned); });
 }
 buttons.forEach((b, i) => bind(b, { kind: 'dir', i }));
 nodes.forEach((n, si) => {
@@ -225,7 +258,10 @@ nodes.forEach((n, si) => {
   n.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') show(pinned); });
 });
 workspace.addEventListener('pointerleave', () => show(pinned));
-root.querySelector('[data-triangle-overview]').addEventListener('click', () => { pinned = OVERVIEW; show(OVERVIEW); });
+onTap(root.querySelector('[data-triangle-overview]'), () => { pinned = OVERVIEW; show(OVERVIEW); });
+const more = readout.querySelector('[data-readout-more]');
+more.textContent = L('看说明 ↓', 'Details ↓');
+more.addEventListener('click', () => root.querySelector('.network-copy').scrollIntoView({ block: 'start', behavior: reduce.matches ? 'auto' : 'smooth' }));
 root.addEventListener('keydown', event => { if (event.key === 'Escape') { pinned = OVERVIEW; show(OVERVIEW); } });
 
 // links such as #strategy-03 (from "about us") open that strategy in the diagram
