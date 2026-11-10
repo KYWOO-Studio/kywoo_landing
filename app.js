@@ -37,6 +37,28 @@ disclosure.addEventListener('click', (event) => {
 });
 disclosure.addEventListener('close', () => document.body.classList.remove('dialog-open'));
 
+// Contact: 微信联系 copies the WeChat ID (falls back to an off-screen textarea, then to showing the ID).
+const wechat = document.querySelector('[data-copy-wechat]');
+if (wechat) {
+  const status = document.querySelector('[data-brief-status]');
+  const id = wechat.dataset.copyWechat;
+  const label = wechat.textContent;
+  let reset = 0;
+  wechat.addEventListener('click', async () => {
+    let ok = false;
+    try { await navigator.clipboard.writeText(id); ok = true; } catch {
+      const t = document.createElement('textarea');
+      t.value = id; t.setAttribute('readonly', ''); t.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      document.body.append(t); t.select(); t.setSelectionRange(0, id.length);
+      try { ok = document.execCommand('copy'); } catch { ok = false; }
+      t.remove();
+    }
+    status.textContent = ok ? L(`已复制微信号 ${id}，打开微信添加好友即可。`, `WeChat ID ${id} copied. Add it in WeChat.`)
+                            : L(`微信号：${id}（请长按复制）`, `WeChat ID: ${id} (press and hold to copy)`);
+    if (ok) { wechat.textContent = L('已复制 ✓', 'Copied ✓'); clearTimeout(reset); reset = setTimeout(() => { wechat.textContent = label; }, 2500); }
+  });
+}
+
 // Contact: copy the conversation outline (merged from the album page). Nothing is sent anywhere.
 const briefButton = document.querySelector('[data-copy-brief]');
 if (briefButton) {

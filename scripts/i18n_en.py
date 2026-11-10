@@ -378,8 +378,8 @@ EN = {
 '商场、公共空间与活动照片为 CC BY 2.0 网上参考影像，作者分别为 Michael Gaylard、ajay_suresh、GoToVan。方法场景下方随当前背景列出来源、许可及裁切说明；不属于 KYWOO 项目，不代表作者、场所或活动方的背书。':
     'The mall, public space and event photos are CC BY 2.0 reference images by Michael Gaylard, ajay_suresh and GoToVan. Source, licence and cropping notes appear under the method scene for the current background. They are not KYWOO projects and imply no endorsement by the photographers, places or organisers.',
 '待补内容': 'Still to come',
-'项目参与角色、团队作品摄影及公司信息仍待补充。项目联络：openkai@kywoo.com。财务计算未连接，页面不会生成回报率或租金增长。':
-    'Project roles, the team\'s own photography and company details are still to be added. Contact: openkai@kywoo.com. No financial calculation is connected; the page does not generate returns or rent growth.',
+'项目参与角色、团队作品摄影及公司信息仍待补充。项目联络：Kai@justopenarch.com。财务计算未连接，页面不会生成回报率或租金增长。':
+    'Project roles, the team\'s own photography and company details are still to be added. Contact: Kai@justopenarch.com. No financial calculation is connected; the page does not generate returns or rent growth.',
 '技术素材': 'Technical credits',
 'Three.js r170，MIT License；部署版通过公共 CDN 加载。': 'Three.js r170, MIT License, loaded from a public CDN.',
 'JavaScript 未启用：3D 与视频以静态内容替代，页面文字仍可阅读。': 'JavaScript is off: 3D and video fall back to static content; all text is still readable.',
@@ -580,4 +580,6 @@ EN = {
     'IDA 国际设计奖': 'the International Design Awards (IDA)',
     '刊载。建筑改造由 UDIA 设计，非 KYWOO 项目。': '. The renovation was designed by UDIA and is not a KYWOO project.',
     '朱家角的两张照片来自 Wikimedia Commons（CC BY-SA 4.0，作者见照片下方），与朱家角研究汇报所用相同。武林银泰的两张照片为该楼改造建成实景，摄影 Terrance Zhang，经 IDA 国际设计奖刊载；建筑改造由 UDIA 设计，非 KYWOO 项目。均非 KYWOO 项目摄影，不代表作者、场所或业主的背书。': 'The two Zhujiajiao photos come from Wikimedia Commons (CC BY-SA 4.0, authors under each photo), the same ones used in the Zhujiajiao study. The two Wulin Intime photos show the completed renovation of the building, photographed by Terrance Zhang and published by the International Design Awards (IDA); the renovation was designed by UDIA and is not a KYWOO project. None is KYWOO project photography or implies endorsement by the authors, places or owners.',
+    '微信联系': 'WeChat',
+    '「联系我们」会打开你的邮件程序，收件人已填好；「微信联系」会复制微信号。本页不收集或提交资料。': '“Contact” opens your email app with our address filled in; “WeChat” copies our WeChat ID. This page does not collect or send anything.',
 }

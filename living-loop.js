@@ -129,7 +129,8 @@ function show(state) {
     setNeighbours(L('相连的方向', 'Linked directions'), st.dirs.map(d => ({ text: `${dirNames[d]} ↗`, state: { kind: 'dir', i: d } })));
   } else {
     setPanel(overview[0], overview[1], overview[2], overviewDetail[0], overviewDetail[1]);
-    setNeighbours(L('六大方法', 'Six strategies'), strategies.map((x, si) => ({ text: `${x.num} ${x.title}`, state: { kind: 'strategy', i: si } })));
+    // the overview lists no strategies here: they are already around the diagram and in 六个主要服务方向 below
+    setNeighbours('', []);
   }
 
   readout.hidden = !st && dir < 0;
