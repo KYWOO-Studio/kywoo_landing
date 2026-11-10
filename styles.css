@@ -1250,3 +1250,16 @@ html[lang="en"] .about-summary { max-width: 28em; }
    block, so lines break only between phrases. Done with inline-blocks rather than
    word-break: keep-all, which Safari applied to the whole sentence and widened the page. */
 .scroll-statement .phrase { display: inline-block; }
+
+/* 六个主要服务方向: centred, larger toggle under the diagram (2026-11-10) */
+#approach .strategy-all { margin-top: clamp(40px, 5vw, 64px); border-bottom: 1px solid rgba(243,240,231,.2); }
+#approach .strategy-all > summary { justify-content: center; gap: 16px; padding: clamp(30px, 3.6vw, 48px) 0; font: 600 clamp(24px, 2.4vw, 36px)/1.3 var(--serif); letter-spacing: .04em; text-align: center; }
+#approach .strategy-all > summary span { display: inline-grid; place-items: center; flex: none; width: 1.5em; height: 1.5em; border: 1px solid rgba(243,240,231,.55); border-radius: 50%; font: 300 .8em/1 var(--sans); transition: transform .25s, background .25s, color .25s; }
+#approach .strategy-all > summary:hover span,
+#approach .strategy-all > summary:focus-visible span { background: var(--ivory); color: var(--forest); }
+#approach .strategy-all > summary:focus-visible { outline: 3px solid #e6f6ff; outline-offset: 4px; }
+#approach .strategy-all[open] .strategy-grid { margin-top: 0; padding-bottom: clamp(30px, 4vw, 52px); }
+
+/* Diagram stacked over the panel (tablet/phone): a fixed gap. The old 4% row gap resolved
+   only after the grid's height was set, so the panel spilled ~20px onto the credit line. */
+@media (max-width: 1000px) { #approach .network-experience { row-gap: 32px; } }
