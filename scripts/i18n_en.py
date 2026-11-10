@@ -580,4 +580,6 @@ EN = {
     'IDA 国际设计奖': 'the International Design Awards (IDA)',
     '刊载。建筑改造由 UDIA 设计，非 KYWOO 项目。': '. The renovation was designed by UDIA and is not a KYWOO project.',
     '朱家角的两张照片来自 Wikimedia Commons（CC BY-SA 4.0，作者见照片下方），与朱家角研究汇报所用相同。武林银泰的两张照片为该楼改造建成实景，摄影 Terrance Zhang，经 IDA 国际设计奖刊载；建筑改造由 UDIA 设计，非 KYWOO 项目。均非 KYWOO 项目摄影，不代表作者、场所或业主的背书。': 'The two Zhujiajiao photos come from Wikimedia Commons (CC BY-SA 4.0, authors under each photo), the same ones used in the Zhujiajiao study. The two Wulin Intime photos show the completed renovation of the building, photographed by Terrance Zhang and published by the International Design Awards (IDA); the renovation was designed by UDIA and is not a KYWOO project. None is KYWOO project photography or implies endorsement by the authors, places or owners.',
+    '微信联系': 'WeChat',
+    '「联系我们」会打开你的邮件程序，收件人已填好；「微信联系」会复制微信号。本页不收集或提交资料。': '“Contact” opens your email app with our address filled in; “WeChat” copies our WeChat ID. This page does not collect or send anything.',
 }
