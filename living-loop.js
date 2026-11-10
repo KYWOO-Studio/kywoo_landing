@@ -43,8 +43,12 @@ const strategies = [...root.querySelectorAll('[data-strategy-text]')].map(li => 
   out: li.querySelector('.strategy-out span').textContent,
   dirs: li.dataset.dirs.split(' ').map(d => DIRS.indexOf(d))
 }));
+// Chinese titles on two lines at a natural point: before 与, except where that leaves a short first line
+const BREAKS = { '城市商业与文旅空间整体规划': 7 };
+const twoLines = t => { const k = BREAKS[t] ?? t.indexOf('与'); return k > 0 ? `${t.slice(0, k)}<br>${t.slice(k)}` : t; };
+if (!EN) nodes.forEach((n, si) => { n.querySelector('strong').innerHTML = twoLines(strategies[si].title); });
 // where each strategy sits: single-direction ones beyond their corner, two-direction ones beyond the edge between them
-const ANGLE = [150, 30, 270, 330, 90, 210];
+const ANGLE = [150, 30, 210, 270, 330, 90];   // 01 data·space, 02 data·activity, 03 space, 04 space·activity, 05 activity, 06 data
 const links = root.querySelector('[data-network-links]');
 const SVGNS = 'http://www.w3.org/2000/svg';
 const edgeEls = [0, 1, 2].map(() => links.appendChild(document.createElementNS(SVGNS, 'path')));
@@ -100,7 +104,7 @@ function show(state) {
   } else if (st) {
     // what it connects to is drawn in the diagram (and named in the phone card), so the panel stops at the outputs
     // long Chinese titles break before 与 (商业场所定位 / 与策略) rather than leaving one character on a line
-    setPanel(L(`方法 ${st.num} / 06`, `Strategy ${st.num} / 06`), EN ? st.title : st.title.replace('与', '<br>与'), st.desc, L('主要成果：', 'Key outputs: ') + st.out, '');
+    setPanel(L(`方法 ${st.num} / 06`, `Strategy ${st.num} / 06`), EN ? st.title : twoLines(st.title), st.desc, L('主要成果：', 'Key outputs: ') + st.out, '');
   } else {
     setPanel(overview[0], overview[1], overview[2], overviewDetail[0], overviewDetail[1]);
   }
