@@ -534,7 +534,7 @@ EN = {
     '设计': 'Design',
     '中心三角：数据 × 空间 × 活动 · 外圈：六大方法': 'Centre: data × space × activity · Around it: six strategies',
     '看案例 ↓': 'See cases ↓',
-    '六大方法全文': 'All six strategies in full',
+    '六个主要服务方向': 'Our six main services',
     '＋': '+',
     '三个方向，六个方法': 'Three directions, six strategies',
     # 2026-11-09: about polish, principles renamed, data demo removed
