@@ -28,16 +28,6 @@ const detail = L([
   ['The question: which spots can hold everyday use and programmed activity?', 'Routes / nodes / use · Space holds activity'],
   ['The question: after a small pilot, how do we record who joined and who stayed?', 'Brand / events / content · Use feeds back into data']
 ]);
-const credits = L([
-  '真实地理：武林银泰周边 · Overture / OpenStreetMap contributors · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">来源与 ODbL 许可</a> · 地理估计，非实测客流',
-  '参考影像：Fuengirola 商场，西班牙 · Michael Gaylard · <a href="https://commons.wikimedia.org/wiki/File:Shopping_Mall_Interior_(48844005991).jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · 已裁切，非 KYWOO 项目',
-  '参考影像：Powell Street Festival · GoToVan · <a href="https://commons.wikimedia.org/wiki/File:Powell_Street_Festival_2015_(20217347021).jpg">来源</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · 已裁切，非 KYWOO 项目'
-], [
-  'Real geography: around Wulin Intime, Hangzhou · Overture / OpenStreetMap contributors · <a href="assets/tiles/wulin-intime/2026-09-23.1/ATTRIBUTION.md">Sources and ODbL licence</a> · Geographic estimate, not measured footfall',
-  'Reference image: shopping mall in Fuengirola, Spain · Michael Gaylard · <a href="https://commons.wikimedia.org/wiki/File:Shopping_Mall_Interior_(48844005991).jpg">Source</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · Cropped; not a KYWOO project',
-  'Reference image: Powell Street Festival · GoToVan · <a href="https://commons.wikimedia.org/wiki/File:Powell_Street_Festival_2015_(20217347021).jpg">Source</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · Cropped; not a KYWOO project'
-]);
-const defaultCredit = root.querySelector('[data-network-credit]').innerHTML;
 // phones and tablets: the panel sits below the diagram, so a small card inside the diagram says what a tap selected
 const readout = root.querySelector('[data-network-readout]');
 const readoutPart = name => readout.querySelector(`[data-readout-${name}]`);
@@ -98,20 +88,6 @@ function onTap(el, fn) {
   el.addEventListener('click', () => { if (performance.now() >= tapGuard) fn(); });
 }
 
-// buttons in the panel that jump to the neighbours of what is shown
-function setNeighbours(label, items) {
-  const box = root.querySelector('[data-loop-strategies]');
-  box.textContent = '';
-  if (label) { const p = document.createElement('p'); p.textContent = label; box.append(p); }
-  items.forEach(({ text, state }) => {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.textContent = text;
-    onTap(b, () => { pinned = state; show(state); });
-    box.append(b);
-  });
-}
-
 function show(state) {
   shown = state;
   const dir = state.kind === 'dir' ? state.i : -1;
@@ -121,16 +97,12 @@ function show(state) {
 
   if (dir >= 0) {
     setPanel(content[dir][0], content[dir][1], content[dir][2], detail[dir][0], detail[dir][1]);
-    setNeighbours(L('对应方法', 'Related strategies'), strategies.map((x, si) => ({ x, si })).filter(({ x }) => x.dirs.includes(dir))
-      .map(({ x, si }) => ({ text: `${x.num} ${x.title}`, state: { kind: 'strategy', i: si } })));
   } else if (st) {
-    setPanel(L(`方法 ${st.num} / 06`, `Strategy ${st.num} / 06`), st.title, st.desc, L('主要成果：', 'Key outputs: ') + st.out,
-      L('连着：', 'Connects: ') + st.dirs.map(d => dirNames[d]).join(' × '));
-    setNeighbours(L('相连的方向', 'Linked directions'), st.dirs.map(d => ({ text: `${dirNames[d]} ↗`, state: { kind: 'dir', i: d } })));
+    // what it connects to is drawn in the diagram (and named in the phone card), so the panel stops at the outputs
+    // long Chinese titles break before 与 (商业场所定位 / 与策略) rather than leaving one character on a line
+    setPanel(L(`方法 ${st.num} / 06`, `Strategy ${st.num} / 06`), EN ? st.title : st.title.replace('与', '<br>与'), st.desc, L('主要成果：', 'Key outputs: ') + st.out, '');
   } else {
     setPanel(overview[0], overview[1], overview[2], overviewDetail[0], overviewDetail[1]);
-    // the overview lists no strategies here: they are already around the diagram and in 六个主要服务方向 below
-    setNeighbours('', []);
   }
 
   readout.hidden = !st && dir < 0;
@@ -144,7 +116,6 @@ function show(state) {
     readoutPart('sub').textContent = L('连着：', 'Connects: ') + st.dirs.map(d => dirNames[d]).join(' × ');
   }
 
-  root.querySelector('[data-network-credit]').innerHTML = image < 0 ? defaultCredit : credits[image];
   root.querySelectorAll('[data-network-image]').forEach(img => img.classList.toggle('is-visible', img.dataset.networkImage === (image < 0 ? 'overview' : String(image))));
 
   // what lights up: the shown item, its neighbours and the links between them
@@ -168,10 +139,6 @@ function show(state) {
     el.classList.toggle('is-active', on);
     el.classList.toggle('is-dim', active && !on);
   });
-  root.querySelector('[data-triangle-overview]').setAttribute('aria-pressed', String(state.kind === 'overview'));
-
-  const link = root.querySelector('[data-network-case]');
-  [link.href, link.textContent] = ['#cases', L('看案例 ↓', 'See cases ↓')];
   model?.setState(dir >= 0 ? dir : st && st.dirs.length === 1 ? st.dirs[0] : -1);
 }
 
@@ -259,10 +226,6 @@ nodes.forEach((n, si) => {
   n.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') show(pinned); });
 });
 workspace.addEventListener('pointerleave', () => show(pinned));
-onTap(root.querySelector('[data-triangle-overview]'), () => { pinned = OVERVIEW; show(OVERVIEW); });
-const more = readout.querySelector('[data-readout-more]');
-more.textContent = L('看说明 ↓', 'Details ↓');
-more.addEventListener('click', () => root.querySelector('.network-copy').scrollIntoView({ block: 'start', behavior: reduce.matches ? 'auto' : 'smooth' }));
 root.addEventListener('keydown', event => { if (event.key === 'Escape') { pinned = OVERVIEW; show(OVERVIEW); } });
 
 // links such as #strategy-03 (from "about us") open that strategy in the diagram

@@ -1302,3 +1302,15 @@ html[lang="zh-CN"] .strategy-node strong { max-width: 6.2em; margin-inline: auto
 /* Principle links may wrap: the English 03 link ("Commercial Place Renovation & Tactical Interventions ↓") is
    longer than a 320px screen, and max-content width stretched the column off-screen in Safari. (2026-11-10) */
 .principle-copy .text-link { width: auto; max-width: 100%; }
+
+/* Panel: the strategy view has no tags line (what it connects to is drawn in the diagram). (2026-11-10) */
+.network-tags:empty { display: none; }
+
+/* Diagram: no caption or credit lines under it (credits are in 素材与披露); only the motion button remains. (2026-11-10) */
+#approach .network-footer { justify-content: flex-end; border-top: 0; }
+
+/* Project dialog: the research report link is a large button (opens in a new tab). (2026-11-10) */
+.report-link { display: inline-flex; align-items: center; gap: 12px; margin: 18px 0 6px; min-height: 54px; padding: 0 28px; border-radius: 999px; background: var(--forest); color: var(--ivory); font: 600 17px/1 var(--sans); letter-spacing: .02em; text-decoration: none; transition: background .2s; }
+.report-link:hover { background: #2f5b4b; }
+.report-link:focus-visible { outline: 3px solid #b9d7e6; outline-offset: 3px; }
+.report-link span { font-size: 1.15em; }

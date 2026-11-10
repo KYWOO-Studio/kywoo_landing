@@ -548,7 +548,7 @@ EN = {
     '跨专业协作': 'Across disciplines',
     '「案例总览」里，「当前项目」朱家角与武林银泰处于前期研究阶段（朱家角研究汇报需访问密码），不是已交付的委托。「过往经验」中，「项目经验」是过往项目介绍，参与角色与项目状态待补充；「JOA 建筑项目」来自 JOA（justopenarch.com），KYWOO 团队成员的参与角色待补充；「城市更新参考」是他人完成的公开案例。图片均非 KYWOO 项目摄影，来源见各项目说明与“素材与披露”。': 'In "Cases", the current projects, Zhujiajiao and Wulin Intime, are at the early research stage (the Zhujiajiao report needs a password); they are not delivered commissions. Under past experience, "Project experience" describes past projects, with roles and status still to be added; "JOA architecture projects" come from JOA (justopenarch.com), with the KYWOO team member\'s role still to be added; "Urban renewal references" are published projects by others. No image is KYWOO project photography; see each project and "Sources and disclosures".',
     '互动图解怎样操作？': 'How does the interactive diagram work?',
-    '移动鼠标可走近三角的一个方向或外圈的一个方法，点击可固定，右侧面板会列出相连的方向或方法；按「返回总览」或 Escape 回到全图。「暂停动效」可停止漂浮和粒子；手机通过点选操作。': 'Move towards a direction of the triangle or a strategy around it; click to pin it, and the panel lists what it connects to. "Back to overview" or Escape returns to the full diagram. "Pause motion" stops the floating and particles; on phones, tap to select.',
+    '移动鼠标可走近三角的一个方向或外圈的一个方法，点击可固定，相连的方向或方法会一起亮起，面板显示说明；再点一次同一个圆或按 Escape 回到全图。「暂停动效」可停止漂浮和粒子；手机通过点选操作。': 'Move towards a direction of the triangle or a strategy around it; click to pin it: what it connects to lights up and the panel explains it. Click the same circle again or press Escape to return to the full diagram. "Pause motion" stops the floating and particles; on phones, tap to select.',
     '「我们做什么」中的 3D 三角为方法图解，不是实测模型。「数据」方向的背景为武林银泰周边的地理示意，依据 Overture Maps／OpenStreetMap 开放数据，非实测客流。': 'The 3D triangle in "What we do" illustrates the method; it is not a measured model. The background for "Data" is a geographic sketch of the area around Wulin Intime, based on open Overture Maps / OpenStreetMap data, not measured footfall.',
     'KYWOO 是一家依靠数据运算的场所营造工作室：我们找出既有城市商业空间、公共空间与古镇文旅空间缺乏人气的原因，并从研究诊断、定位策略、空间设计，到内容活化与成效评估，让它们重新充满活力！': 'KYWOO is a placemaking studio powered by data analysis. We find out why existing urban commercial spaces, public spaces and historic-town destinations lack people, and make them vibrant again through research and diagnosis, positioning, spatial design, programming and impact evaluation!',
     # 2026-11-09: case row reordered, Turku Passage and Logroño Cierzo tower
@@ -582,4 +582,14 @@ EN = {
     '朱家角的两张照片来自 Wikimedia Commons（CC BY-SA 4.0，作者见照片下方），与朱家角研究汇报所用相同。武林银泰的两张照片为该楼改造建成实景，摄影 Terrance Zhang，经 IDA 国际设计奖刊载；建筑改造由 UDIA 设计，非 KYWOO 项目。均非 KYWOO 项目摄影，不代表作者、场所或业主的背书。': 'The two Zhujiajiao photos come from Wikimedia Commons (CC BY-SA 4.0, authors under each photo), the same ones used in the Zhujiajiao study. The two Wulin Intime photos show the completed renovation of the building, photographed by Terrance Zhang and published by the International Design Awards (IDA); the renovation was designed by UDIA and is not a KYWOO project. None is KYWOO project photography or implies endorsement by the authors, places or owners.',
     '微信联系': 'WeChat',
     '「联系我们」会打开你的邮件程序，收件人已填好；「微信联系」会复制微信号。本页不收集或提交资料。': '“Contact” opens your email app with our address filled in; “WeChat” copies our WeChat ID. This page does not collect or send anything.',
+    '「我们做什么」中的 3D 三角为方法图解，不是实测模型。「数据」方向的背景为武林银泰周边的地理示意，依据 Overture Maps／OpenStreetMap 开放数据（': 'The 3D triangle in "What we do" illustrates the method; it is not a measured model. The background for "Data" is a geographic sketch of the area around Wulin Intime, based on open Overture Maps / OpenStreetMap data (',
+    '来源与 ODbL 许可': 'sources and ODbL licence',
+    '），非实测客流。': '), not measured footfall.',
+    '「我们做什么」图解的背景为网上参考影像，均为': 'The background images of the "What we do" diagram are online reference photos, all',
+    '，已裁切：公共空间': ', cropped: public space',
+    'Bryant Park，纽约': 'Bryant Park, New York',
+    '（ajay_suresh）、商场': ' (ajay_suresh); mall',
+    'Fuengirola 商场，西班牙': 'shopping mall in Fuengirola, Spain',
+    '（Michael Gaylard）、活动': ' (Michael Gaylard); activity',
+    '（GoToVan）。不属于 KYWOO 项目，不代表作者、场所或活动方的背书。': ' (GoToVan). None is a KYWOO project or implies endorsement by the authors, places or organisers.',
 }
