@@ -12,17 +12,27 @@ let pieces = [];
 if (statement) {
   const text = statement.textContent.trim();
   statement.setAttribute('aria-label', text);
-  const parts = EN ? text.split(/(\s+)/) : [...text];
   statement.textContent = '';
-  parts.forEach(part => {
-    if (/^\s+$/.test(part)) { statement.append(part); return; }
+  const piece = (part, parent) => {
     const span = document.createElement('span');
     span.className = 'ch';
     span.setAttribute('aria-hidden', 'true');
     span.textContent = part;
-    statement.append(span);
+    parent.append(span);
     pieces.push(span);
-  });
+  };
+  if (EN) {
+    text.split(/(\s+)/).forEach(part => (/^\s+$/.test(part) ? statement.append(part) : piece(part, statement)));
+  } else {
+    // one block per phrase, e.g. 在哪里停留、 — lines then break only between phrases
+    (text.match(/[^，、。！？；：]+[，、。！？；：]*/g) || [text]).forEach(phrase => {
+      const box = document.createElement('span');
+      box.className = 'phrase';
+      box.setAttribute('aria-hidden', 'true');
+      [...phrase].forEach(ch => piece(ch, box));
+      statement.append(box);
+    });
+  }
 }
 
 const heroFrame = document.querySelector('.hero-photos .hero-photo-frame');
