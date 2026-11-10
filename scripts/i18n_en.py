@@ -592,4 +592,7 @@ EN = {
     'Fuengirola 商场，西班牙': 'shopping mall in Fuengirola, Spain',
     '（Michael Gaylard）、活动': ' (Michael Gaylard); activity',
     '（GoToVan）。不属于 KYWOO 项目，不代表作者、场所或活动方的背书。': ' (GoToVan). None is a KYWOO project or implies endorsement by the authors, places or organisers.',
+    '城市商业与文旅空间整体规划': 'Urban Commercial & Cultural Destination Planning',
+    '商业品牌内容策划与场所活化': 'Commercial Brand Programming & Place Activation',
+    '规划': 'Plan',
 }
