@@ -1,0 +1,33 @@
+<view class="net" style="height: {{H}}px;">
+  <image wx:for="{{bgs}}" wx:key="key" class="net-bg {{bgOn === item.key ? 'is-on' : ''}}" src="{{item.src}}" mode="aspectFill" />
+  <view class="net-shade" />
+  <canvas type="2d" id="net-canvas" class="net-canvas" style="width: {{W}}px; height: {{H}}px;" />
+  <view wx:for="{{dirs}}" wx:key="name" class="dir-node {{item.cls}}"
+        style="left: {{item.x}}px; top: {{item.y}}px; width: {{item.size}}px; height: {{item.size}}px;"
+        data-kind="dir" data-i="{{index}}" bindtap="onTap" aria-role="button" aria-label="{{item.name}}：{{item.short}}">
+    <text class="dir-label">{{item.label}}</text>
+    <text class="dir-name serif">{{item.name}}</text>
+    <text class="dir-short">{{item.short}}</text>
+  </view>
+  <view wx:for="{{nodes}}" wx:key="num" class="st-node {{item.cls}}"
+        style="left: {{item.x}}px; top: {{item.y}}px; width: {{item.size}}px; height: {{item.size}}px;"
+        data-kind="strategy" data-i="{{index}}" bindtap="onTap" aria-role="button" aria-label="{{item.num}} {{item.title}}">
+    <text class="st-num">{{item.num}}</text>
+    <text class="st-short serif">{{item.short}}</text>
+  </view>
+</view>
+
+<view class="panel">
+  <text class="panel-index">{{panel.index}}</text>
+  <view class="panel-title serif">
+    <text wx:for="{{panel.titleLines}}" wx:key="*this" class="line">{{item}}</text>
+  </view>
+  <text class="panel-detail">{{panel.detail}}</text>
+  <text class="panel-question">{{panel.question}}</text>
+  <text wx:if="{{panel.tags}}" class="panel-tags">{{panel.tags}}</text>
+  <text wx:if="{{panel.related}}" class="panel-related">{{panel.related}}</text>
+  <view class="panel-foot">
+    <text class="panel-hint">{{hint}}</text>
+    <view class="motion" hover-class="btn-hover" bindtap="toggleMotion" aria-role="button">{{paused ? '继续动效 ▷' : '暂停动效 Ⅱ'}}</view>
+  </view>
+</view>

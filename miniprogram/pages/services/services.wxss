@@ -1,0 +1,16 @@
+.top { background: var(--forest); }
+.top-head { padding-top: 40rpx; padding-bottom: 8rpx; }
+
+.card { padding: 44rpx 0 48rpx; border-bottom: 1rpx solid var(--line); transition: background-color .3s ease; }
+.card-hover { background: var(--paper); }
+.card.is-on { background: var(--paper); margin: 0 -40rpx; padding-left: 40rpx; padding-right: 40rpx; }
+.card-top { display: flex; align-items: center; justify-content: space-between; }
+.card-num { font-size: 60rpx; font-weight: 200; line-height: 1; color: var(--sage); letter-spacing: -.04em; }
+.card.is-on .card-num { color: var(--forest); }
+.card-tri { width: 68rpx; height: 62rpx; }
+.card-title { display: block; margin-top: 20rpx; font-size: 40rpx; line-height: 1.4; }
+.card-en { display: block; margin-top: 6rpx; font-size: 22rpx; letter-spacing: .02em; color: var(--secondary); }
+.card-desc { display: block; margin-top: 18rpx; font-size: 27rpx; line-height: 1.85; color: var(--secondary); }
+.card-out { margin: 20rpx 0 24rpx; padding-top: 16rpx; border-top: 1rpx solid var(--line); font-size: 25rpx; line-height: 1.8; }
+.card-out-label { display: block; font-weight: 600; }
+.card-out-text { color: var(--secondary); }

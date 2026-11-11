@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "KYWOO Studio",
+  "backgroundColorTop": "#203e34",
+  "usingComponents": {
+    "network": "/components/network/network"
+  }
+}

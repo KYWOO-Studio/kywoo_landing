@@ -27,6 +27,10 @@
 - 页头右上角 `EN` / `中文` 互相切换，页脚 Contact 栏也有入口；`<head>` 里用 hreflang 标出两个版本。
 - 各脚本按 `<html lang>` 显示自己的界面文字（轮播按钮、筛选计数、地图说明、方法网络说明等）。
 
+## 微信小程序（`miniprogram/`）
+
+网站的原生小程序版，四个标签页：首页、服务（三角图解）、案例、联系，另有案例详情与素材与披露。文字与照片由 `python3 scripts/build-mp.py` 从 `index.html` 生成，网站改了内容后运行一次即可同步；用法、上线前需要的资质与待补项见 `miniprogram/README.md`。`.vercelignore` 让这个文件夹不随网站发布。
+
 ## 本地预览
 
 ```sh

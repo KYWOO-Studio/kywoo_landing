@@ -1,0 +1,39 @@
+<import src="../../templates/parts.wxml" />
+
+<block wx:if="{{item}}">
+  <swiper class="photos" circular autoplay="{{item.photos.length > 1}}" interval="4500" indicator-dots="{{item.photos.length > 1}}"
+          indicator-color="rgba(243, 240, 231, .45)" indicator-active-color="#f3f0e7">
+    <swiper-item wx:for="{{item.photos}}" wx:key="src">
+      <image class="photo" src="{{item.src}}" mode="aspectFill" aria-label="{{item.alt}}" />
+    </swiper-item>
+  </swiper>
+  <text class="caption gutter photo-caption">{{item.caption}}</text>
+
+  <view class="body gutter">
+    <view class="meta">
+      <text class="kind">{{item.kind}}</text>
+      <template is="dirs" data="{{flags: flags}}" />
+    </view>
+    <text class="name serif">{{item.name}}</text>
+    <text class="sub serif">{{item.sub}}</text>
+    <text wx:for="{{item.body}}" wx:for-item="p" wx:key="*this" class="para">{{p}}</text>
+    <text wx:if="{{item.by}}" class="by">{{item.by}}</text>
+
+    <view class="links">
+      <block wx:for="{{item.links}}" wx:for-item="l" wx:key="url">
+        <view wx:if="{{l.primary}}" class="btn btn-primary report" hover-class="btn-hover" data-url="{{l.url}}" bindtap="openLink" aria-role="button">{{l.label}} ↗</view>
+        <view wx:else class="text-link" hover-class="btn-hover" data-url="{{l.url}}" bindtap="openLink" aria-role="link">{{l.label}} ↗</view>
+      </block>
+    </view>
+    <text wx:if="{{item.note}}" class="note">{{item.note}}</text>
+
+    <view class="actions">
+      <button class="btn btn-ghost" open-type="share" hover-class="btn-hover">分享给朋友</button>
+      <view class="btn btn-ghost" hover-class="btn-hover" bindtap="toContact" aria-role="button">联系我们</view>
+    </view>
+    <view class="next" hover-class="btn-hover" bindtap="toNext" aria-role="link">
+      <text class="next-label">下一个项目</text>
+      <text class="next-name serif">{{next.name}} →</text>
+    </view>
+  </view>
+</block>

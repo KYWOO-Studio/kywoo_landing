@@ -1,0 +1,8 @@
+<view class="gutter wrap">
+  <text class="kicker-line">SOURCES / SCOPE / GAPS</text>
+  <text class="title serif">{{notes.title}}</text>
+  <view wx:for="{{notes.sections}}" wx:key="title" class="sec">
+    <text class="sec-title serif">{{item.title}}</text>
+    <text class="sec-body" user-select>{{item.body}}</text>
+  </view>
+</view>

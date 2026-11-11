@@ -1,0 +1,28 @@
+.hero { padding-top: 56rpx; padding-bottom: 64rpx; background: var(--forest); color: var(--ivory); }
+.hero-title { margin-top: 40rpx; }
+.intro { display: block; margin-top: 24rpx; font-size: 28rpx; line-height: 1.85; opacity: .85; }
+.buttons { display: flex; gap: 18rpx; margin-top: 44rpx; }
+.buttons .btn { flex: 1; padding: 0 16rpx; }
+.btn-light { background: var(--ivory); color: var(--forest); }
+.btn-outline { color: var(--ivory); box-shadow: inset 0 0 0 2rpx rgba(243, 240, 231, .7); }
+.ids { margin-top: 30rpx; }
+.id-row { display: flex; gap: 24rpx; padding: 12rpx 0; font-size: 26rpx; border-top: 1rpx solid rgba(243, 240, 231, .16); }
+.id-label { opacity: .6; flex-shrink: 0; }
+.id-value { letter-spacing: .02em; }
+
+.brief { margin-top: 56rpx; padding: 34rpx 36rpx 30rpx; background: var(--paper); border-radius: 8rpx; }
+.brief-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14rpx; }
+.brief-title { font-size: 32rpx; }
+.brief-copy { font-size: 24rpx; padding: 8rpx 0; border-bottom: 2rpx solid currentColor; line-height: 1.3; }
+.brief-line { display: block; padding: 14rpx 0; border-bottom: 1rpx dashed var(--line); font-size: 26rpx; color: var(--secondary); }
+.note { display: block; margin-top: 22rpx; font-size: 22rpx; line-height: 1.75; color: var(--secondary); }
+
+.faq { margin-top: 56rpx; border-top: 1rpx solid var(--line); }
+.faq-item { border-bottom: 1rpx solid var(--line); }
+.faq-q { display: flex; align-items: baseline; gap: 22rpx; padding: 32rpx 0; }
+.faq-num { font-size: 22rpx; color: var(--secondary); letter-spacing: .06em; }
+.faq-text { flex: 1; font-size: 31rpx; line-height: 1.5; }
+.faq-sign { font-size: 36rpx; line-height: 1; width: 36rpx; text-align: center; }
+.faq-a { display: block; padding: 0 0 34rpx 58rpx; font-size: 27rpx; line-height: 1.85; color: var(--secondary); }
+
+.notes-link { margin: 48rpx 0 90rpx; }
