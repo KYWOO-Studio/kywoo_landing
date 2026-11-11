@@ -137,6 +137,15 @@ NOTES_REPLACE = {  # title: (new title, old words, new words)
 JOA_LOADED = ['，图片由 JOA 网站直接加载', '，由该网站直接加载']
 NOTES_DROP = {'技术素材'}
 
+# photos only the mini program shows (team-provided, 2026-11-11)
+MP_CASE_PHOTOS = {  # case id: extra photos after the site's own
+    'columbia-circle': [{'path': 'assets/projects/columbia-circle-entrance.jpg', 'alt': '上海上生·新所：夜晚入口的发光字与雕塑'}],
+}
+# the West Lake still is not in the package, so the first screen shows 上生·新所 in its place
+MP_HERO_ADD = [{'path': 'assets/projects/columbia-circle-night.jpg', 'alt': '上海上生·新所：夜晚泳池两侧拱廊里的餐饮与人群',
+                'caption': '上海上生·新所，上海 · 照片由团队提供，摄影署名待补'}]
+MP_HERO_NOTE = ('、杭州西湖边街景（LayG Traveller / Pexels 视频截图，非武林银泰现场）', '、上海上生·新所（照片由团队提供，摄影署名待补）')
+
 
 # ---------- read the site ----------
 
@@ -189,6 +198,12 @@ hero = {
 hero_remote = [s for s in hero['slides'] if not s['src'].startswith('/images/')]
 hero['slides'] = [s for s in hero['slides'] if s['src'].startswith('/images/')]
 need(hero['slides'], 'hero photos inside the package')
+hero_added = False
+if hero_remote and any('西湖' in s['caption'] for s in hero_remote):
+    for add in MP_HERO_ADD:
+        hero['slides'].append({'src': resize(os.path.join(ROOT, add['path']), os.path.splitext(os.path.basename(add['path']))[0], 960, 68),
+                               'alt': add['alt'], 'caption': add['caption']})
+        hero_added = True
 
 # about
 about_el = soup.select_one('#about')
@@ -345,6 +360,9 @@ for art in cs.select('.project-card'):
     body = det.select_one('.project-detail-body')
     thumbs = card.select('.project-thumb img')
     photos = [{'src': photo(img), 'alt': img.get('alt', '')} for img in thumbs]
+    for extra in MP_CASE_PHOTOS.get(art['id'].replace('project-', ''), []):
+        photos.append({'src': resize(os.path.join(ROOT, extra['path']), os.path.splitext(os.path.basename(extra['path']))[0], 720, 68),
+                       'alt': extra['alt']})
     links = []
     for a in body.select('a'):
         links.append({'label': text(a).replace('↗', '').strip(), 'url': a['href'],
@@ -408,6 +426,10 @@ for sec in dl.select('.disclosure-body section'):
     if title in NOTES_DROP:
         continue
     body = text(sec.select_one('p'))
+    if title == '首屏照片' and hero_added:
+        if MP_HERO_NOTE[0] not in body:
+            problems.append('disclosure wording changed: 首屏照片')
+        body = body.replace(*MP_HERO_NOTE)
     if title in NOTES_REPLACE:
         new_title, a, b = NOTES_REPLACE[title]
         if a not in body:

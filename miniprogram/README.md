@@ -34,13 +34,13 @@ python3 scripts/build-mp.py
 - **图解**：二维 canvas 绘制（三角、连线、流动的点），不用 Three.js；只在看得见且未暂停时运行。
 - **字体**：标题用手机自带的宋体/衬线字体，没有时用系统黑体。网站的思源宋体可以在有了自己的 HTTPS 域名后，在 `app.js` 的 `SERIF_FONT_URL` 填上字体地址加载。
 
-## 还在外部网站的 8 张照片
+## 照片
 
-首屏的朱家角、西湖两张（Pexels），朱家角案例两张（朱家角汇报站），JOA 四个项目各一张（justopenarch.com）。首屏只用已打包的照片，所以这两张暂时不出现；案例的 6 张仍从原网站加载，国内网络下可能打不开（尤其是 vercel.app），打不开时显示深绿色的项目名方块。把原图按下列文件名放进 `images/remote/`，再运行 `build-mp.py`，就会压缩后打包进小程序：
+全部照片都打包在小程序里（主包约 1.3 MB，限制 2 MB），国内网络下不依赖外部网站。网站上从外部加载的照片，原图放在 `images/remote/`（不上传，只供 `build-mp.py` 压缩）：首屏朱家角（Pexels）、朱家角案例两张、JOA 四个项目各一张，2026-11-11 由团队提供。
 
-`hero-zhujiajiao.jpg`、`hero-westlake.jpg`、`zhujiajiao-canal.jpg`、`zhujiajiao-bridge.jpg`、`joa-foshan.jpg`、`joa-turku.jpg`、`joa-nanjing.jpg`、`joa-tartu.jpg`
+只有首屏的杭州西湖边街景（Pexels 视频截图）还没有原图，所以小程序首屏用上海上生·新所夜景代替它，「素材与披露」的首屏说明同步改写；把原图存为 `images/remote/hero-westlake.jpg` 再运行脚本，就会恢复成和网站一样。上生·新所详情页另加了一张入口夜景（`assets/projects/columbia-circle-entrance.jpg`，团队提供，摄影署名待补），网站上没有。这两处写在脚本的 `MP_HERO_ADD`、`MP_CASE_PHOTOS` 里。
 
-`images/remote/` 本身不会上传（`project.config.json` 的 `packOptions`）。全部打包后主包约 1.4 MB，在 2 MB 限制内。
+照片打不开时（例如以后改回外部地址）：首屏跳过，案例卡片显示深绿色项目名方块，详情页去掉那张。
 
 ## 在微信开发者工具里打开
 

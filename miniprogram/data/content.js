@@ -17,6 +17,16 @@ module.exports = {
     "src": "/images/seoullo-7017.jpg",
     "alt": "首尔路 7017 步行花园上来往与停留的人群",
     "caption": "首尔路 7017，首尔 · 原设计 MVRDV · 照片由团队提供，摄影署名待补"
+   },
+   {
+    "src": "/images/hero-zhujiajiao.jpg",
+    "alt": "朱家角古镇石拱桥上的游人",
+    "caption": "朱家角古镇 · 摄影 Yudi Ding / Pexels"
+   },
+   {
+    "src": "/images/columbia-circle-night.jpg",
+    "alt": "上海上生·新所：夜晚泳池两侧拱廊里的餐饮与人群",
+    "caption": "上海上生·新所，上海 · 照片由团队提供，摄影署名待补"
    }
   ]
  },
@@ -314,11 +324,11 @@ module.exports = {
     "more": "查看项目 →",
     "photos": [
      {
-      "src": "https://kywoo-zhujiajiao.vercel.app/media/canal.jpg",
+      "src": "/images/zhujiajiao-canal.jpg",
       "alt": "朱家角古镇河道"
      },
      {
-      "src": "https://kywoo-zhujiajiao.vercel.app/media/bridge.jpg",
+      "src": "/images/zhujiajiao-bridge.jpg",
       "alt": "朱家角放生桥"
      }
     ],
@@ -420,6 +430,10 @@ module.exports = {
      {
       "src": "/images/columbia-circle-night.jpg",
       "alt": "上海上生·新所：夜晚泳池两侧拱廊里的餐饮与人群"
+     },
+     {
+      "src": "/images/columbia-circle-entrance.jpg",
+      "alt": "上海上生·新所：夜晚入口的发光字与雕塑"
      }
     ],
     "position": "center",
@@ -449,7 +463,7 @@ module.exports = {
     "more": "查看项目 →",
     "photos": [
      {
-      "src": "https://www.justopenarch.com/wp-content/uploads/2022/12/foshan-hongwang-hq-12.jpg",
+      "src": "/images/joa-foshan.jpg",
       "alt": "佛山宏旺总部方案图"
      }
     ],
@@ -466,7 +480,7 @@ module.exports = {
       "primary": false
      }
     ],
-    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充，图片由 JOA 网站直接加载。"
+    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充。"
    },
    {
     "id": "joa-turku",
@@ -481,7 +495,7 @@ module.exports = {
     "more": "查看项目 →",
     "photos": [
      {
-      "src": "https://www.justopenarch.com/wp-content/uploads/2024/09/plan-museum7-s.jpg",
+      "src": "/images/joa-turku.jpg",
       "alt": "图尔库 Passage 博物馆方案图"
      }
     ],
@@ -513,7 +527,7 @@ module.exports = {
     "more": "查看项目 →",
     "photos": [
      {
-      "src": "https://www.justopenarch.com/wp-content/uploads/2022/12/head-2-scaled.jpg",
+      "src": "/images/joa-nanjing.jpg",
       "alt": "南京文化中心方案图"
      }
     ],
@@ -530,7 +544,7 @@ module.exports = {
       "primary": false
      }
     ],
-    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充，图片由 JOA 网站直接加载。"
+    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充。"
    },
    {
     "id": "joa-tartu",
@@ -545,7 +559,7 @@ module.exports = {
     "more": "查看项目 →",
     "photos": [
      {
-      "src": "https://www.justopenarch.com/wp-content/uploads/2023/11/tartu.jpg",
+      "src": "/images/joa-tartu.jpg",
       "alt": "塔尔图市中心文化中心方案图"
      }
     ],
@@ -562,7 +576,7 @@ module.exports = {
       "primary": false
      }
     ],
-    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充，图片由 JOA 网站直接加载。"
+    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充。"
    },
    {
     "id": "joa-logrono",
@@ -721,7 +735,7 @@ module.exports = {
    },
    {
     "title": "首屏照片",
-    "body": "首屏轮播的是有人气的场所：首尔路 7017（原设计 MVRDV，照片由团队提供，摄影署名待补）、朱家角古镇（Yudi Ding / Pexels）、杭州西湖边街景（LayG Traveller / Pexels 视频截图，非武林银泰现场）。均非 KYWOO 项目摄影，不代表作者、场所或设计方的背书。"
+    "body": "首屏轮播的是有人气的场所：首尔路 7017（原设计 MVRDV，照片由团队提供，摄影署名待补）、朱家角古镇（Yudi Ding / Pexels）、上海上生·新所（照片由团队提供，摄影署名待补）。均非 KYWOO 项目摄影，不代表作者、场所或设计方的背书。"
    },
    {
     "title": "公开范围",
@@ -737,7 +751,7 @@ module.exports = {
    },
    {
     "title": "JOA 建筑项目",
-    "body": "JOA 建筑项目的方案图与资料来自 justopenarch.com 各项目页，由该网站直接加载；KYWOO 团队成员的参与角色待补充，正式使用前需确认授权。"
+    "body": "JOA 建筑项目的方案图与资料来自 justopenarch.com 各项目页；KYWOO 团队成员的参与角色待补充，正式使用前需确认授权。"
    },
    {
     "title": "案例照片",
