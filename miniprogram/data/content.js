@@ -17,16 +17,6 @@ module.exports = {
     "src": "/images/seoullo-7017.jpg",
     "alt": "首尔路 7017 步行花园上来往与停留的人群",
     "caption": "首尔路 7017，首尔 · 原设计 MVRDV · 照片由团队提供，摄影署名待补"
-   },
-   {
-    "src": "https://images.pexels.com/photos/38003117/pexels-photo-38003117.jpeg?auto=compress&cs=tinysrgb&w=1920",
-    "alt": "朱家角古镇石拱桥上的游人",
-    "caption": "朱家角古镇 · 摄影 Yudi Ding / Pexels"
-   },
-   {
-    "src": "https://images.pexels.com/videos/40138161/pictures/preview-0.jpg",
-    "alt": "杭州西湖边热闹的街景",
-    "caption": "杭州西湖边街景 · LayG Traveller / Pexels 视频截图 · 非武林银泰现场"
    }
   ]
  },

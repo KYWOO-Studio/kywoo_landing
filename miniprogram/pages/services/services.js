@@ -38,6 +38,10 @@ Component({
       }
       this.show(i);
     },
+    onPageScroll(e) {
+      if (!this.net) this.net = this.selectComponent('#network');
+      if (this.net) this.net.setScroll(e.scrollTop);
+    },
     onNetworkChange(e) {
       const { kind, i } = e.detail;
       this.setData({ selected: kind === 'strategy' ? i : -1 });

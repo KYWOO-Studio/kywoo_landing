@@ -17,6 +17,11 @@ Component({
       this.setData({ item, flags: A.dirFlags(item.dirs), next: { id: next.id, name: next.name } });
       wx.setNavigationBarTitle({ title: item.name });
     },
+    onImgError(e) {
+      const i = Number(e.currentTarget.dataset.i);
+      const photos = this.data.item.photos.filter((_, k) => k !== i);
+      this.setData({ 'item.photos': photos });
+    },
     openLink(e) {
       A.openLink(e.currentTarget.dataset.url);
     },

@@ -1,10 +1,11 @@
 <import src="../../templates/parts.wxml" />
 
 <block wx:if="{{item}}">
-  <swiper class="photos" circular autoplay="{{item.photos.length > 1}}" interval="4500" indicator-dots="{{item.photos.length > 1}}"
+  <view wx:if="{{!item.photos.length}}" class="photos photos-ph"><text class="serif">{{item.name}}</text></view>
+  <swiper wx:else class="photos" circular autoplay="{{item.photos.length > 1}}" interval="4500" indicator-dots="{{item.photos.length > 1}}"
           indicator-color="rgba(243, 240, 231, .45)" indicator-active-color="#f3f0e7">
     <swiper-item wx:for="{{item.photos}}" wx:key="src">
-      <image class="photo" src="{{item.src}}" mode="aspectFill" aria-label="{{item.alt}}" />
+      <image class="photo" src="{{item.src}}" mode="aspectFill" aria-label="{{item.alt}}" data-i="{{index}}" binderror="onImgError" />
     </swiper-item>
   </swiper>
   <text class="caption gutter photo-caption">{{item.caption}}</text>

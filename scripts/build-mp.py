@@ -184,7 +184,11 @@ hero = {
     'slides': [{'src': photo(img, 960, 68), 'alt': img.get('alt', ''), 'caption': img.get('data-caption', '')}
                for img in hero_el.select('img.cp-slide')],
 }
-need(hero['slides'], 'hero photos')
+# the first screen only shows photos inside the package: a remote photo that does not load
+# (often the case in mainland China) would leave the whole screen empty
+hero_remote = [s for s in hero['slides'] if not s['src'].startswith('/images/')]
+hero['slides'] = [s for s in hero['slides'] if s['src'].startswith('/images/')]
+need(hero['slides'], 'hero photos inside the package')
 
 # about
 about_el = soup.select_one('#about')
@@ -449,3 +453,5 @@ if remote_missing:
     print('Still loaded from other websites (put a copy in miniprogram/images/remote/ to bundle it):')
     for name, src in remote_missing:
         print('  %s.jpg  <-  %s' % (name, src))
+if hero_remote:
+    print('Left out of the first screen until bundled: %d photo(s).' % len(hero_remote))

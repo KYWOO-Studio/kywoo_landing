@@ -25,17 +25,17 @@ Component({
         if (m && m.top) this.setData({ nav: { top: m.top, height: m.height } });
       } catch (e) { /* keep defaults */ }
     },
-    onReady() {
-      this.io = this.createIntersectionObserver();
-      this.io.relativeToViewport({ bottom: -80 }).observe('.statement', (res) => {
-        if (res.intersectionRatio > 0) {
-          this.setData({ statementIn: true });
-          this.io.disconnect();
-        }
-      });
-    },
-    onUnload() {
-      if (this.io) this.io.disconnect();
+    // the statement's phrases come in once the band is on screen (checked at most every 150 ms)
+    onPageScroll() {
+      if (this.data.statementIn || this.checking) return;
+      this.checking = true;
+      setTimeout(() => {
+        this.createSelectorQuery().select('.statement').boundingClientRect((r) => {
+          this.checking = false;
+          const h = (wx.getWindowInfo ? wx.getWindowInfo() : wx.getSystemInfoSync()).windowHeight;
+          if (r && r.top < h - 60) this.setData({ statementIn: true });
+        }).exec();
+      }, 150);
     },
     onSlide(e) {
       this.setData({ slide: e.detail.current });

@@ -36,7 +36,7 @@ python3 scripts/build-mp.py
 
 ## 还在外部网站的 8 张照片
 
-首屏的朱家角、西湖两张（Pexels），朱家角案例两张（朱家角汇报站），JOA 四个项目各一张（justopenarch.com），目前仍从原网站加载，国内网络下可能打不开（尤其是 vercel.app）。把原图按下列文件名放进 `images/remote/`，再运行 `build-mp.py`，就会压缩后打包进小程序：
+首屏的朱家角、西湖两张（Pexels），朱家角案例两张（朱家角汇报站），JOA 四个项目各一张（justopenarch.com）。首屏只用已打包的照片，所以这两张暂时不出现；案例的 6 张仍从原网站加载，国内网络下可能打不开（尤其是 vercel.app），打不开时显示深绿色的项目名方块。把原图按下列文件名放进 `images/remote/`，再运行 `build-mp.py`，就会压缩后打包进小程序：
 
 `hero-zhujiajiao.jpg`、`hero-westlake.jpg`、`zhujiajiao-canal.jpg`、`zhujiajiao-bridge.jpg`、`joa-foshan.jpg`、`joa-turku.jpg`、`joa-nanjing.jpg`、`joa-tartu.jpg`
 
@@ -45,7 +45,7 @@ python3 scripts/build-mp.py
 ## 在微信开发者工具里打开
 
 1. 安装「微信开发者工具」，导入本文件夹 `miniprogram/`。
-2. 没有 AppID 时可先用测试号：在开发者工具里选「测试号」，或到微信公众平台申请小程序测试号，把 AppID 填进 `project.config.json` 的 `appid`（现在是 `touristappid`，只能在电脑上模拟）。测试号可以「预览」扫码在手机上看。
+2. `project.config.json` 的 `appid` 现在是 KYWOO 的小程序测试号（`wx06bb74bd9f74acb5`），可以「预览」扫码在手机上看。正式注册小程序后换成正式 AppID。AppSecret 用不到，不要放进代码。
 3. 正式上线需要：公司主体注册小程序 → 微信认证 → 小程序备案 → 上传代码 → 提交审核 → 发布。类目可选「商务服务 > 设计」之类（以公众平台当前类目为准）。
 
 ## 已做的检查

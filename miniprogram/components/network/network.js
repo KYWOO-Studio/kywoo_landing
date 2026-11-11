@@ -51,15 +51,9 @@ Component({
     },
     ready() {
       this.initCanvas();
-      this.io = this.createIntersectionObserver();
-      this.io.relativeToViewport().observe('.net', (res) => {
-        this.visible = res.intersectionRatio > 0;
-        this.kick();
-      });
     },
     detached() {
       this.stop();
-      if (this.io) this.io.disconnect();
     },
   },
   pageLifetimes: {
@@ -150,6 +144,13 @@ Component({
       const i = Number(e.currentTarget.dataset.i);
       // a second tap on the same circle goes back to the overview
       this.apply(this.state.kind === kind && this.state.i === i ? OVERVIEW : { kind, i }, true);
+    },
+    // for the page: the animation stops while the diagram is scrolled out of view
+    setScroll(scrollTop) {
+      const visible = scrollTop < this.g.H + 60;
+      if (visible === this.visible) return;
+      this.visible = visible;
+      if (visible) this.kick(); else this.stop();
     },
     // for the page: choose a service (-1 for the overview)
     select(kind, i) {

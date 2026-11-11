@@ -1,5 +1,6 @@
 .photos { width: 100%; height: 520rpx; background: var(--paper); }
 .photo { width: 100%; height: 100%; }
+.photos-ph { display: flex; align-items: center; justify-content: center; background: var(--forest); color: var(--ivory); font-size: 52rpx; }
 .photo-caption { margin-top: 16rpx; }
 
 .body { padding-top: 40rpx; padding-bottom: 90rpx; display: flex; flex-direction: column; }

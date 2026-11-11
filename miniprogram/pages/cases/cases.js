@@ -23,6 +23,13 @@ Component({
       const f = e.currentTarget.dataset.f;
       this.setData({ filter: f, shown: f === 'all' ? ITEMS : ITEMS.filter((c) => c.group === f) });
     },
+    onImgError(e) {
+      const id = e.currentTarget.dataset.id;
+      const src = ITEMS.find((c) => c.id === id);
+      if (src) src.failed = true;
+      const i = this.data.shown.findIndex((c) => c.id === id);
+      if (i >= 0) this.setData({ [`shown[${i}].failed`]: true });
+    },
     open(e) {
       wx.navigateTo({ url: `/pages/case/case?id=${e.currentTarget.dataset.id}` });
     },

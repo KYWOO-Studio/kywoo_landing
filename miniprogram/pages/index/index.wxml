@@ -20,7 +20,7 @@
   </view>
   <view class="hero-bar gutter">
     <text class="hero-caption">{{hero.slides[slide].caption}}</text>
-    <view class="hero-dots">
+    <view wx:if="{{hero.slides.length > 1}}" class="hero-dots">
       <view wx:for="{{hero.slides}}" wx:key="src" class="hero-dot {{index === slide ? 'is-on' : ''}}" data-i="{{index}}" bindtap="goSlide" aria-role="button" aria-label="第 {{index + 1}} 张照片" />
     </view>
   </view>
