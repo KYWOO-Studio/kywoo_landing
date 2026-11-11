@@ -9,12 +9,19 @@ function dirFlags(dirs) {
   return DIR_KEYS.map((k) => ({ key: k, name: DIR_NAMES[k], on: keys.indexOf(k) >= 0 }));
 }
 
+// Writing the clipboard is a privacy interface: it works once 剪切板 is declared in the
+// mini program's 用户隐私保护指引 and the visitor agrees. If it is refused, show the text instead.
+function showInstead(title, text) {
+  wx.showModal({ title, content: text, showCancel: false, confirmText: '知道了', confirmColor: '#203e34' });
+}
+
 function copy(text, done) {
   wx.setClipboardData({
     data: text,
     success: () => {
       if (done) wx.showToast({ title: done, icon: 'none', duration: 2200 });
     },
+    fail: () => showInstead('未能复制，请手动记下', text),
   });
 }
 
@@ -32,6 +39,7 @@ function openLink(url) {
         confirmColor: '#203e34',
       });
     },
+    fail: () => showInstead('请在浏览器中打开', url),
   });
 }
 
