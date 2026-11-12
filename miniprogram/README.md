@@ -45,7 +45,7 @@ python3 scripts/build-mp.py
 ## 在微信开发者工具里打开
 
 1. 安装「微信开发者工具」，导入本文件夹 `miniprogram/`。
-2. `project.config.json` 的 `appid` 现在是 KYWOO 的小程序测试号（`wx06bb74bd9f74acb5`），可以「预览」扫码在手机上看。正式注册小程序后换成正式 AppID。AppSecret 用不到，不要放进代码。
+2. `project.config.json` 的 `appid` 是 KYWOO 正式小程序「KYWOO商业场所营造」的 AppID（`wxb8359cdf7e7fc6f1`）。AppSecret 用不到，不要放进代码。
 3. 正式上线需要：公司主体注册小程序 → 微信认证 → 小程序备案 → 上传代码 → 提交审核 → 发布。类目可选「商务服务 > 设计」之类（以公众平台当前类目为准）。
 
 ## 已做的检查
