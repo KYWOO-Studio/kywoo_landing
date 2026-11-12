@@ -10,7 +10,7 @@
   <view class="hero-shade" />
   <view class="hero-top gutter" style="padding-top: {{nav.top}}px; height: {{nav.height}}px;">
     <view class="wordmark" style="height: {{nav.height}}px;">
-      <text class="wm-name">KYWOO</text><text class="wm-studio">STUDIO</text>
+      <image class="wm-logo" src="/images/logo/kywoo-ivory.png" mode="heightFix" aria-label="KYWOO" /><text class="wm-studio">STUDIO</text>
     </view>
   </view>
   <view class="hero-content gutter">
@@ -72,7 +72,7 @@
 
 <!-- footer -->
 <view class="footer gutter">
-  <view class="wordmark footer-wordmark"><text class="wm-name">KYWOO</text><text class="wm-studio">STUDIO</text></view>
+  <view class="wordmark footer-wordmark"><image class="wm-logo" src="/images/logo/kywoo-forest.png" mode="heightFix" aria-label="KYWOO" /><text class="wm-studio">STUDIO</text></view>
   <text class="footer-slogan">{{footer.slogan}}</text>
   <view class="footer-links">
     <text class="text-link" hover-class="btn-hover" bindtap="toNotes">素材与披露 →</text>

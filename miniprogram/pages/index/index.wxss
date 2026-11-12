@@ -7,10 +7,10 @@
   pointer-events: none;
 }
 .hero-top { position: absolute; top: 0; left: 0; right: 0; pointer-events: none; }
-.wordmark { display: flex; align-items: baseline; gap: 10rpx; }
-.hero-top .wordmark { align-items: center; }
-.wm-name { font-family: Arial, Helvetica, sans-serif; font-size: 40rpx; font-weight: 800; letter-spacing: -.06em; line-height: 1; }
-.wm-studio { font-size: 18rpx; letter-spacing: .24em; line-height: 1; opacity: .8; }
+/* the KYWOO wordmark (方案 1: K built from the 数据 / 空间 / 活动 triangle) */
+.wordmark { display: flex; align-items: center; gap: 14rpx; }
+.wm-logo { display: block; height: 34rpx; width: 186rpx; }
+.wm-studio { font-size: 17rpx; letter-spacing: .24em; line-height: 1; opacity: .8; }
 
 .hero-content { position: absolute; left: 0; right: 0; bottom: 150rpx; pointer-events: none; }
 .hero-eyebrow { display: block; font-size: 19rpx; letter-spacing: .14em; line-height: 1.6; opacity: .82; }
@@ -67,6 +67,7 @@
 /* footer */
 .footer { padding-top: 70rpx; padding-bottom: 70rpx; display: flex; flex-direction: column; }
 .footer-wordmark { color: var(--forest); }
+.footer-wordmark .wm-logo { height: 44rpx; width: 241rpx; }
 .footer-slogan { margin-top: 18rpx; font-size: 24rpx; letter-spacing: .08em; color: var(--secondary); }
 .footer-links { display: flex; gap: 48rpx; margin-top: 36rpx; }
 .footer-copy { margin-top: 48rpx; font-size: 21rpx; color: var(--secondary); letter-spacing: .08em; }
