@@ -34,6 +34,9 @@ p, h1, h2, h3 { margin: 0; }
 .wordmark { width: max-content; display: inline-flex; align-items: flex-end; gap: 9px; line-height: 1; }
 .wordmark span { font-family: Arial, Helvetica, sans-serif; font-size: 25px; font-weight: 800; letter-spacing: -.065em; }
 .wordmark small { font: 8px/1 var(--mono); letter-spacing: .18em; margin-bottom: 2px; }
+/* new logo (2026-11-12): the K is the 数据 / 空间 / 活动 triangle; sized by the span's font-size */
+.wordmark span { display: block; }
+.wordmark-logo { display: block; height: .72em; width: auto; aspect-ratio: 548 / 100; overflow: visible; }
 .main-nav { display: flex; gap: clamp(24px, 3.5vw, 60px); font-size: 13px; letter-spacing: .08em; }
 .main-nav a { position: relative; padding: 10px 0; }
 .main-nav a::after { content: ""; position: absolute; height: 1px; left: 0; right: 100%; bottom: 4px; background: currentColor; transition: right .35s var(--ease); }
@@ -1314,3 +1317,6 @@ html[lang="zh-CN"] .strategy-node strong { white-space: nowrap; }
 .report-link:hover { background: #2f5b4b; }
 .report-link:focus-visible { outline: 3px solid #b9d7e6; outline-offset: 3px; }
 .report-link span { font-size: 1.15em; }
+
+/* new logo (2026-11-12): STUDIO sits on the letters' baseline */
+.wordmark small, .footer-wordmark small { margin-bottom: 0; }
