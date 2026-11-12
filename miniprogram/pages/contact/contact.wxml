@@ -1,0 +1,39 @@
+<import src="../../templates/parts.wxml" />
+
+<view class="hero gutter">
+  <template is="kicker" data="{{title: c.kicker, sub: c.kickerSub, dark: true}}" />
+  <template is="lines" data="{{lines: c.titleLines, cls: 'display serif hero-title'}}" />
+  <text class="intro">{{c.intro}}</text>
+  <view class="buttons">
+    <view class="btn btn-light" hover-class="btn-hover" bindtap="copyEmail" aria-role="button">复制邮箱</view>
+    <view class="btn btn-outline" hover-class="btn-hover" bindtap="copyWechat" aria-role="button">复制微信号</view>
+  </view>
+  <view class="ids">
+    <view class="id-row"><text class="id-label">邮箱</text><text class="id-value" user-select>{{c.email}}</text></view>
+    <view class="id-row"><text class="id-label">微信</text><text class="id-value" user-select>{{c.wechat}}</text></view>
+  </view>
+</view>
+
+<view class="gutter">
+  <view class="brief">
+    <view class="brief-head">
+      <text class="brief-title serif">{{c.brief.title}}</text>
+      <text class="brief-copy" hover-class="btn-hover" bindtap="copyBrief" aria-role="button">复制提纲</text>
+    </view>
+    <text wx:for="{{c.brief.lines}}" wx:key="*this" class="brief-line">{{item}}</text>
+  </view>
+  <text class="note">{{c.note}}</text>
+
+  <view class="faq">
+    <view wx:for="{{c.faq}}" wx:key="num" class="faq-item {{open[index] ? 'is-open' : ''}}">
+      <view class="faq-q" data-i="{{index}}" bindtap="toggle" aria-role="button" aria-expanded="{{open[index]}}">
+        <text class="faq-num">{{item.num}}</text>
+        <text class="faq-text serif">{{item.q}}</text>
+        <text class="faq-sign">{{open[index] ? '−' : '+'}}</text>
+      </view>
+      <text wx:if="{{open[index]}}" class="faq-a">{{item.a}}</text>
+    </view>
+  </view>
+
+  <view class="notes-link text-link" hover-class="btn-hover" bindtap="toNotes">素材与披露 →</view>
+</view>

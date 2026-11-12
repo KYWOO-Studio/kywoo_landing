@@ -1,0 +1,26 @@
+<import src="../../templates/parts.wxml" />
+
+<view class="top">
+  <view class="gutter top-head">
+    <template is="kicker" data="{{title: kicker, sub: kickerSub, dark: true}}" />
+  </view>
+  <network id="network" bind:change="onNetworkChange" />
+</view>
+
+<view class="section gutter">
+  <template is="kicker" data="{{title: listTitle, sub: '轻点一项，在图解中查看'}}" />
+  <view wx:for="{{cards}}" wx:key="num" class="card {{selected === index ? 'is-on' : ''}}" hover-class="card-hover" data-i="{{index}}" bindtap="pick">
+    <view class="card-top">
+      <text class="card-num">{{item.num}}</text>
+      <image class="card-tri" src="{{item.icon}}" mode="aspectFit" />
+    </view>
+    <text class="card-title serif">{{item.title}}</text>
+    <text class="card-en">{{item.en}}</text>
+    <text class="card-desc">{{item.desc}}</text>
+    <view class="card-out">
+      <text class="card-out-label">{{item.outLabel}}</text>
+      <text class="card-out-text">{{item.out}}</text>
+    </view>
+    <template is="dirs" data="{{flags: item.flags}}" />
+  </view>
+</view>

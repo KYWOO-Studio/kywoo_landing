@@ -1,0 +1,27 @@
+<import src="../../templates/parts.wxml" />
+
+<view class="head gutter">
+  <template is="kicker" data="{{title: kicker, sub: kickerSub}}" />
+  <template is="lines" data="{{lines: titleLines, cls: 'display serif head-title'}}" />
+  <view class="seg" aria-role="tablist">
+    <view wx:for="{{filters}}" wx:key="key" class="seg-item {{filter === item.key ? 'is-on' : ''}}" data-f="{{item.key}}" bindtap="setFilter" aria-role="tab" aria-selected="{{filter === item.key}}">
+      {{item.label}} <text class="seg-n">{{item.n}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="list gutter">
+  <view wx:for="{{shown}}" wx:key="id" class="case" hover-class="case-hover" data-id="{{item.id}}" bindtap="open">
+    <view class="case-thumb">
+      <image wx:if="{{!item.failed}}" class="case-img" src="{{item.thumb}}" mode="aspectFill" lazy-load aria-label="{{item.photos[0].alt}}" data-id="{{item.id}}" binderror="onImgError" />
+      <view wx:else class="case-ph"><text class="case-ph-name serif">{{item.name}}</text><text class="case-ph-note">图片暂时无法显示</text></view>
+    </view>
+    <view class="case-meta">
+      <text class="case-kind">{{item.kind}}</text>
+      <template is="dirs" data="{{flags: item.flags}}" />
+    </view>
+    <text class="case-name serif">{{item.name}}</text>
+    <text class="case-sub">{{item.sub}}</text>
+    <text class="case-more">{{item.more}}</text>
+  </view>
+</view>

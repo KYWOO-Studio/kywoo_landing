@@ -1,0 +1,21 @@
+<!-- 数据 / 空间 / 活动 pills: data="{{flags: [...]}}" from utils/actions dirFlags -->
+<template name="dirs">
+  <view class="dirs" aria-label="涉及方向">
+    <text wx:for="{{flags}}" wx:key="key" class="dir {{item.on ? '' : 'is-off'}}">{{item.name}}</text>
+  </view>
+</template>
+
+<!-- section heading with a rule: data="{{title, sub, dark}}" -->
+<template name="kicker">
+  <view class="kicker {{dark ? 'on-dark' : ''}}">
+    <text class="kicker-title serif">{{title}}</text>
+    <text wx:if="{{sub}}" class="kicker-sub">{{sub}}</text>
+  </view>
+</template>
+
+<!-- multi-line heading: data="{{lines, cls}}" -->
+<template name="lines">
+  <view class="{{cls}}">
+    <text wx:for="{{lines}}" wx:key="*this" class="line">{{item}}</text>
+  </view>
+</template>

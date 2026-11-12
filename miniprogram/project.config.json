@@ -1,0 +1,24 @@
+{
+  "description": "KYWOO Studio 小程序。内容由 scripts/build-mp.py 从网站生成。",
+  "projectname": "kywoo-studio",
+  "appid": "wx06bb74bd9f74acb5",
+  "compileType": "miniprogram",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": true,
+    "lazyloadPlaceholderEnable": false,
+    "ignoreUploadUnusedFiles": true
+  },
+  "packOptions": {
+    "ignore": [
+      { "type": "folder", "value": "images/remote" },
+      { "type": "file", "value": "README.md" }
+    ],
+    "include": []
+  },
+  "condition": {},
+  "editorSetting": { "tabIndent": "insertSpaces", "tabSize": 2 }
+}
