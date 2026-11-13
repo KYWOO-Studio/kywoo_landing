@@ -1,7 +1,7 @@
 {
   "description": "KYWOO Studio 小程序。内容由 scripts/build-mp.py 从网站生成。",
   "projectname": "kywoo-studio",
-  "appid": "wx06bb74bd9f74acb5",
+  "appid": "wxb8359cdf7e7fc6f1",
   "compileType": "miniprogram",
   "setting": {
     "es6": true,
