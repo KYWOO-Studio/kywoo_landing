@@ -1320,3 +1320,7 @@ html[lang="zh-CN"] .strategy-node strong { white-space: nowrap; }
 
 /* new logo (2026-11-12): STUDIO sits on the letters' baseline */
 .wordmark small, .footer-wordmark small { margin-bottom: 0; }
+
+/* User-supplied project gallery: show the entire photographs without cropping. */
+.project-dialog .project-photo-gallery img { max-height: none; height: auto; object-fit: contain; }
+.project-dialog .project-photo-gallery img + img { margin-top: 12px; }
