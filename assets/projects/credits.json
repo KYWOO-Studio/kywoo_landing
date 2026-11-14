@@ -70,18 +70,30 @@
  {
   "id": "zhujiajiao",
   "images": [
-   "https://kywoo-zhujiajiao.vercel.app/media/canal.jpg",
-   "https://kywoo-zhujiajiao.vercel.app/media/bridge.jpg"
+   "assets/projects/zhujiajiao-cover.jpg",
+   "assets/projects/zhujiajiao-waterfront.jpg",
+   "assets/projects/zhujiajiao-street.jpg",
+   "assets/projects/zhujiajiao-canal-life.jpg"
   ],
-  "imageSource": [
-   "https://commons.wikimedia.org/wiki/File:1_zhujiajiao_ancient_water_town_2023.jpg",
-   "https://commons.wikimedia.org/wiki/File:Shanghai_Zhujiajiao_Fangsheng_Bridge_03.jpg"
-  ],
-  "imageCredit": [
-   "Chensiyuan · CC BY-SA 4.0",
-   "KQuhen · CC BY-SA 4.0"
-  ],
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-  "note": "Loaded from the Zhujiajiao presentation deployment (1280px Commons thumbnails re-encoded at build time, see its media/media.json). Copy into this repo when the files can be downloaded."
+  "imageSource": "User-provided attachments, 2026-11-14",
+  "imageCredit": "Photographer credits pending",
+  "licenseUrl": null,
+  "note": "Original JPEG bytes retained. Cover is overall attachment 4. No claim of authorship or public license.",
+  "previousSources": {
+   "images": [
+    "https://kywoo-zhujiajiao.vercel.app/media/canal.jpg",
+    "https://kywoo-zhujiajiao.vercel.app/media/bridge.jpg"
+   ],
+   "imageSource": [
+    "https://commons.wikimedia.org/wiki/File:1_zhujiajiao_ancient_water_town_2023.jpg",
+    "https://commons.wikimedia.org/wiki/File:Shanghai_Zhujiajiao_Fangsheng_Bridge_03.jpg"
+   ],
+   "imageCredit": [
+    "Chensiyuan · CC BY-SA 4.0",
+    "KQuhen · CC BY-SA 4.0"
+   ],
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "note": "Loaded from the Zhujiajiao presentation deployment (1280px Commons thumbnails re-encoded at build time, see its media/media.json). Copy into this repo when the files can be downloaded."
+  }
  }
 ]
