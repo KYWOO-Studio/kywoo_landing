@@ -214,6 +214,15 @@ about = {
     'summary': need(text(about_el.select_one('.about-summary')), 'about summary'),
 }
 
+# Homepage metrics use the same source and wording as the website.
+numbers_el = soup.select_one('#practice-numbers')
+numbers = {'title': need(text(numbers_el.select_one('h2')), 'numbers title'),
+           'items': [{'label': text(m.select_one('dt')), 'value': text(m.select_one('.practice-number')),
+                      'unit': text(m.select_one('.practice-unit')), 'note': text(m.select_one('.practice-metric-note'))}
+                     for m in numbers_el.select('.practice-metric')],
+           'scope': text(numbers_el.select_one('.practice-numbers-scope'))}
+need(len(numbers['items']) == 3 or None, 'three homepage metrics')
+
 # what we do: the triangle and the six services
 ap = soup.select_one('#approach')
 ap_kick = ap.select_one('.section-kicker')
@@ -359,7 +368,13 @@ for art in cs.select('.project-card'):
     det = art.select_one('.project-detail')
     body = det.select_one('.project-detail-body')
     thumbs = card.select('.project-thumb img')
-    photos = [{'src': photo(img), 'alt': img.get('alt', '')} for img in thumbs]
+    photos = []
+    seen_photos = set()
+    for img in list(thumbs) + det.select('.project-photo-gallery img'):
+        src = photo(img)
+        if src not in seen_photos:
+            photos.append({'src': src, 'alt': img.get('alt', '')})
+            seen_photos.add(src)
     for extra in MP_CASE_PHOTOS.get(art['id'].replace('project-', ''), []):
         photos.append({'src': resize(os.path.join(ROOT, extra['path']), os.path.splitext(os.path.basename(extra['path']))[0], 720, 68),
                        'alt': extra['alt']})
@@ -448,7 +463,7 @@ if not any(n.startswith('joa-') for n, _ in remote_missing):
 
 data = {
     'brand': {'name': 'KYWOO', 'studio': 'STUDIO', 'shareTitle': 'KYWOO Studio — ' + ''.join(hero['titleLines'])},
-    'hero': hero, 'about': about, 'approach': approach, 'principles': principles,
+    'hero': hero, 'about': about, 'numbers': numbers, 'approach': approach, 'principles': principles,
     'statement': statement, 'cases': cases, 'contact': contact, 'footer': footer, 'notes': notes,
     'text': {'linkCopied': MP_TEXT['link-copied']},
 }
