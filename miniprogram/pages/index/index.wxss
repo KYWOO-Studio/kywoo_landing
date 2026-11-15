@@ -81,3 +81,9 @@
 .metric-unit { font-size: 32rpx; margin-left: 12rpx; }
 .metric-note,.metric-scope { font-size: 22rpx; opacity: .75; }
 .metric-scope { margin-top: 24rpx; }
+
+.metric-value { display: inline-block; transform-origin: center; }
+.metric-flipping { animation: metric-flip .24s ease-out infinite; }
+@keyframes metric-flip { from { transform: perspective(500px) rotateX(-18deg) translateY(3rpx); opacity: .75; } to { transform: perspective(500px) rotateX(0) translateY(0); opacity: 1; } }
+.metric-motion-button { margin: 24rpx 0 0; padding: 8rpx 0; background: transparent; color: inherit; font-size: 24rpx; text-align: left; text-decoration: underline; }
+.metric-motion-button::after { border: 0; }
