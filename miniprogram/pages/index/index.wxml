@@ -37,10 +37,11 @@
   <text class="numbers-title serif">{{numbers.title}}</text>
   <view wx:for="{{numbers.items}}" wx:key="label" class="practice-metric">
     <text class="metric-label">{{item.label}}</text>
-    <view><text class="metric-value">{{item.value}}</text><text class="metric-unit">{{item.unit}}</text></view>
+    <view><text class="metric-value {{metricsAnimating ? 'metric-flipping' : ''}}" aria-label="{{item.value}}">{{metricValues[index]}}</text><text class="metric-unit">{{item.unit}}</text></view>
     <text class="metric-note">{{item.note}}</text>
   </view>
   <text class="metric-scope">{{numbers.scope}}</text>
+  <button wx:if="{{!metricsReduced}}" class="metric-motion-button" bindtap="reduceMetrics">减少数字动态效果</button>
 </view>
 
 <!-- the other three tabs -->
