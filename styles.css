@@ -1346,3 +1346,9 @@ html[lang="zh-CN"] .strategy-node strong { white-space: nowrap; }
 }
 
 .practice-number-long { font-size: clamp(40px, 20cqw, 108px); }
+
+
+.practice-number { display: inline-block; transform-origin: center; }
+.number-flipping { animation: metric-flip .24s ease-out infinite; }
+@keyframes metric-flip { from { transform: perspective(500px) rotateX(-18deg) translateY(.045em); opacity: .75; } to { transform: perspective(500px) rotateX(0) translateY(0); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .number-flipping { animation: none; } }
