@@ -75,3 +75,37 @@ if (briefButton) {
     }
   });
 }
+
+// One-shot, viewport-triggered practice counters. Static HTML remains the fallback.
+(() => {
+  const section = document.querySelector('#practice-numbers');
+  if (!section) return;
+  const nodes = [...section.querySelectorAll('.practice-number')];
+  const finals = nodes.map(n => n.textContent);
+  const targets = finals.map(v => Number(v.replace(/,/g, '')));
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let observer, frame, started = false;
+  function finish() {
+    cancelAnimationFrame(frame);
+    nodes.forEach((n, i) => { n.textContent = finals[i]; n.classList.remove('number-flipping'); });
+    if (observer) observer.disconnect();
+  }
+  if (motion.matches || !('IntersectionObserver' in window)) return;
+  nodes.forEach((n, i) => { n.setAttribute('aria-label', finals[i]); n.textContent = '0'; });
+  observer = new IntersectionObserver(entries => {
+    if (started || !entries.some(e => e.isIntersecting)) return;
+    started = true;
+    observer.disconnect();
+    const begin = performance.now();
+    nodes.forEach(n => n.classList.add('number-flipping'));
+    const tick = now => {
+      const p = Math.min(1, (now - begin) / 1600);
+      nodes.forEach((n, i) => { n.textContent = Math.round(targets[i] * (1 - Math.pow(1 - p, 3))).toLocaleString('en-US'); });
+      if (p < 1 && !motion.matches) frame = requestAnimationFrame(tick); else finish();
+    };
+    frame = requestAnimationFrame(tick);
+  }, { threshold: 0.15 });
+  observer.observe(section);
+  motion.addEventListener('change', e => { if (e.matches) finish(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && started) finish(); });
+})();
