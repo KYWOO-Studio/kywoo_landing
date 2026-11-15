@@ -5,6 +5,7 @@ Component({
   data: {
     hero: C.hero,
     about: C.about,
+    numbers: C.numbers,
     principles: C.principles,
     statement: C.statement,
     footer: C.footer,
