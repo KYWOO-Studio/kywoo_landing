@@ -32,6 +32,18 @@
   <text class="about-summary serif">{{about.summary}}</text>
 </view>
 
+<!-- Owner-verified practice metrics, generated from the website -->
+<view class="practice-numbers section gutter">
+  <text class="numbers-title serif">{{numbers.title}}</text>
+  <view wx:for="{{numbers.items}}" wx:key="label" class="practice-metric">
+    <text class="metric-label">{{item.label}}</text>
+    <view><text class="metric-value {{metricsAnimating ? 'metric-flipping' : ''}}" aria-label="{{item.value}}">{{metricValues[index]}}</text><text class="metric-unit">{{item.unit}}</text></view>
+    <text class="metric-note">{{item.note}}</text>
+  </view>
+  <text class="metric-scope">{{numbers.scope}}</text>
+  <button wx:if="{{!metricsReduced}}" class="metric-motion-button" bindtap="reduceMetrics">减少数字动态效果</button>
+</view>
+
 <!-- the other three tabs -->
 <view class="entries gutter">
   <view wx:for="{{entries}}" wx:key="tab" class="entry" hover-class="btn-hover" data-tab="{{item.tab}}" bindtap="toTab">

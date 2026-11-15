@@ -19,9 +19,9 @@ module.exports = {
     "caption": "首尔路 7017，首尔 · 原设计 MVRDV · 照片由团队提供，摄影署名待补"
    },
    {
-    "src": "/images/hero-zhujiajiao.jpg",
-    "alt": "朱家角古镇石拱桥上的游人",
-    "caption": "朱家角古镇 · 摄影 Yudi Ding / Pexels"
+    "src": "/images/zhujiajiao-cover.jpg",
+    "alt": "朱家角放生桥与河道鸟瞰",
+    "caption": "朱家角 · 用户提供照片，摄影署名待补"
    },
    {
     "src": "/images/columbia-circle-night.jpg",
@@ -34,6 +34,30 @@ module.exports = {
   "kicker": "关于我们",
   "kickerSub": "KYWOO STUDIO",
   "summary": "KYWOO 是一家依靠数据运算的场所营造工作室：我们找出既有城市商业空间、公共空间与古镇文旅空间缺乏人气的原因，并从研究诊断、定位策略、空间设计，到内容活化与成效评估，让它们重新充满活力！"
+ },
+ "numbers": {
+  "title": "让经验，被看见。",
+  "items": [
+   {
+    "label": "运营服务项目",
+    "value": "46",
+    "unit": "个",
+    "note": "运营与服务的项目总数"
+   },
+   {
+    "label": "建筑面积",
+    "value": "356,593",
+    "unit": "m²",
+    "note": "参与项目建筑面积总计"
+   },
+   {
+    "label": "项目参与人数",
+    "value": "5,500",
+    "unit": "万",
+    "note": "项目参与人数总计"
+   }
+  ],
+  "scope": "数据由 KYWOO 团队核算确认。"
  },
  "approach": {
   "kicker": "我们做什么",
@@ -324,16 +348,24 @@ module.exports = {
     "more": "查看项目 →",
     "photos": [
      {
-      "src": "/images/zhujiajiao-canal.jpg",
-      "alt": "朱家角古镇河道"
+      "src": "/images/zhujiajiao-cover.jpg",
+      "alt": "朱家角放生桥与河道鸟瞰"
      },
      {
-      "src": "/images/zhujiajiao-bridge.jpg",
-      "alt": "朱家角放生桥"
+      "src": "/images/zhujiajiao-waterfront.jpg",
+      "alt": "朱家角水岸暮色"
+     },
+     {
+      "src": "/images/zhujiajiao-street.jpg",
+      "alt": "用户提供的街巷照片"
+     },
+     {
+      "src": "/images/zhujiajiao-canal-life.jpg",
+      "alt": "朱家角河岸街巷与游船"
      }
     ],
     "position": "center",
-    "caption": "照片：Chensiyuan（古镇河道）、KQuhen（放生桥）/ Wikimedia Commons，CC BY-SA 4.0，已缩放。非 KYWOO 项目摄影。",
+    "caption": "照片由用户提供，摄影署名待补；仅作场所展示，不表示 KYWOO 已实施项目。",
     "body": [
      "读懂街巷与节点，讨论活动选点。"
     ],
@@ -609,58 +641,6 @@ module.exports = {
      }
     ],
     "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充。"
-   },
-   {
-    "id": "wong-tai-sin",
-    "group": "past",
-    "kind": "项目经验",
-    "dirs": [
-     "data",
-     "space",
-     "activity"
-    ],
-    "name": "黄大仙中心",
-    "sub": "商业资产提升与品牌重塑",
-    "more": "查看项目 →",
-    "photos": [
-     {
-      "src": "/images/wong-tai-sin.jpg",
-      "alt": "黄大仙中心北馆外观（2015年）"
-     }
-    ],
-    "position": "top",
-    "caption": "场所背景照片 · 2015年 · Pp0912 · CC BY-SA 3.0 · 来源 · 许可",
-    "body": [
-     "从既有商场研究与品牌重塑出发，整合内部布局、建筑立面及设施更新，重新建立商场的场所形象与使用体验。通过设计、招标及施工阶段的协调，将资产提升策略转化为具体空间改善。"
-    ],
-    "by": "",
-    "links": [],
-    "note": "参与角色与项目状态待补充；照片为公开授权的场所背景照片，非团队作品摄影。"
-   },
-   {
-    "id": "grand-lisboa",
-    "group": "past",
-    "kind": "项目经验",
-    "dirs": [
-     "space"
-    ],
-    "name": "澳门新葡京",
-    "sub": "既有酒店空间更新",
-    "more": "查看项目 →",
-    "photos": [
-     {
-      "src": "/images/grand-lisboa.jpg",
-      "alt": "澳门新葡京酒店外观"
-     }
-    ],
-    "position": "center",
-    "caption": "场所背景照片 · variationblogr · CC BY 2.0 · 来源 · 许可",
-    "body": [
-     "以既有酒店的空间更新为切入点，探索延续场所特色与提升宾客体验的设计方向，为酒店资产注入新的吸引力。"
-    ],
-    "by": "",
-    "links": [],
-    "note": "参与角色与项目状态待补充；照片为公开授权的场所背景照片，非团队作品摄影。"
    }
   ]
  },
@@ -735,7 +715,7 @@ module.exports = {
    },
    {
     "title": "首屏照片",
-    "body": "首屏轮播的是有人气的场所：首尔路 7017（原设计 MVRDV，照片由团队提供，摄影署名待补）、朱家角古镇（Yudi Ding / Pexels）、上海上生·新所（照片由团队提供，摄影署名待补）。均非 KYWOO 项目摄影，不代表作者、场所或设计方的背书。"
+    "body": "首屏轮播的是有人气的场所：首尔路 7017（原设计 MVRDV，照片由团队提供，摄影署名待补）、朱家角古镇（用户提供照片，摄影署名待补）、上海上生·新所（照片由团队提供，摄影署名待补）。均非 KYWOO 项目摄影，不代表作者、场所或设计方的背书。"
    },
    {
     "title": "公开范围",
@@ -743,7 +723,7 @@ module.exports = {
    },
    {
     "title": "项目经验与参考",
-    "body": "「项目经验」为过往项目介绍，参与角色与项目状态待补充；「城市更新参考」为他人完成的公开案例。首尔路 7017 与上海上生·新所的照片由团队提供，摄影署名待补；黄大仙中心与澳门新葡京的照片来自 Wikimedia Commons，均为公开授权的场所背景照片（作者与许可列在各项目照片下方，记录见 assets/projects/credits.json）。以上照片均非 KYWOO 作品摄影，不代表作者、场所或业主的背书。页面不展示个人姓名、照片或履历。"
+    "body": "「项目经验」为过往项目介绍，参与角色与项目状态待补充；「城市更新参考」为他人完成的公开案例。首尔路 7017 与上海上生·新所的照片由团队提供，摄影署名待补。以上照片均非 KYWOO 作品摄影，不代表作者、场所或业主的背书。页面不展示个人姓名、照片或履历。"
    },
    {
     "title": "关于我们配图",
@@ -755,7 +735,7 @@ module.exports = {
    },
    {
     "title": "案例照片",
-    "body": "朱家角的两张照片来自 Wikimedia Commons（CC BY-SA 4.0，作者见照片下方），与朱家角研究汇报所用相同。武林银泰的两张照片为该楼改造建成实景，摄影 Terrance Zhang，经 IDA 国际设计奖刊载；建筑改造由 UDIA 设计，非 KYWOO 项目。均非 KYWOO 项目摄影，不代表作者、场所或业主的背书。"
+    "body": "朱家角的四张照片由用户提供，摄影署名待补，封面为放生桥与河道鸟瞰。武林银泰的两张照片为该楼改造建成实景，摄影 Terrance Zhang，经 IDA 国际设计奖刊载；建筑改造由 UDIA 设计，非 KYWOO 项目。均非 KYWOO 项目摄影，不代表作者、场所或业主的背书。"
    },
    {
     "title": "参考照片",
