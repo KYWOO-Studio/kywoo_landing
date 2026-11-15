@@ -1324,3 +1324,25 @@ html[lang="zh-CN"] .strategy-node strong { white-space: nowrap; }
 /* User-supplied project gallery: show the entire photographs without cropping. */
 .project-dialog .project-photo-gallery img { max-height: none; height: auto; object-fit: contain; }
 .project-dialog .project-photo-gallery img + img { margin-top: 12px; }
+
+/* Original KYWOO numbers band: explicit scope, no invented counters. */
+.practice-numbers { background: var(--forest); color: var(--ivory); padding-top: clamp(52px, 7vw, 104px); padding-bottom: clamp(40px, 5vw, 76px); }
+.practice-numbers-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+.practice-numbers-heading .section-kicker { color: var(--sage); margin: 0; }
+.practice-numbers h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 3vw, 44px); }
+.practice-numbers-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 5vw, 72px); margin: clamp(40px, 6vw, 88px) 0 32px; }
+.practice-metric { container-type: inline-size; min-width: 0; border-top: 1px solid rgba(243,240,231,.3); padding-top: 20px; display: flex; flex-direction: column; }
+.practice-metric dt { font-size: 15px; letter-spacing: .03em; }
+.practice-metric dd:not(.practice-metric-note) { margin: 16px 0 20px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; min-height: clamp(78px, 9vw, 138px); }
+.practice-number { font-family: Arial, Helvetica, sans-serif; font-variant-numeric: tabular-nums; font-size: clamp(48px, 24cqw, 132px); letter-spacing: -.07em; line-height: .95; }
+.practice-unit { font-size: 13px; }
+.practice-pending { font-family: var(--serif); font-size: clamp(32px, 4vw, 56px); font-weight: 400; line-height: 1.3; color: var(--sage); }
+.practice-metric-note { margin: 0; font-size: 12px; line-height: 1.6; color: var(--sage); }
+.practice-numbers-scope { max-width: 76ch; font-size: 12px; line-height: 1.8; color: var(--sage); }
+@media (max-width: 600px) {
+  .practice-numbers-grid { grid-template-columns: 1fr; gap: 28px; }
+  .practice-metric dd:not(.practice-metric-note) { min-height: 0; margin-bottom: 12px; }
+  .practice-metric.is-pending dd:not(.practice-metric-note) { margin-top: 12px; }
+}
+
+.practice-number-long { font-size: clamp(40px, 20cqw, 108px); }
