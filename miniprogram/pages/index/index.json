@@ -1,5 +1,5 @@
 {
   "navigationStyle": "custom",
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {"network": "../../components/network/network"}
 }
