@@ -437,7 +437,7 @@ module.exports = {
     "body": [
      "将首尔站旁的既有高架道路转化为步行花园，通过绿化、停留节点与多处楼梯、升降机及步行连桥，重新连接周边街区。项目呈现既有基础设施如何转化为日常公共空间，连接步行、休憩与城市活动。"
     ],
-    "by": "原设计：MVRDV",
+    "by": "",
     "links": [
      {
       "label": "MVRDV 项目资料",
@@ -445,7 +445,7 @@ module.exports = {
       "primary": false
      }
     ],
-    "note": "他人完成的公开案例，用来说明思路，不是 KYWOO 的项目。"
+    "note": "由KYWOO成员参与项目"
    },
    {
     "id": "columbia-circle",
@@ -481,7 +481,7 @@ module.exports = {
       "primary": false
      }
     ],
-    "note": "他人完成的公开案例，用来说明思路，不是 KYWOO 的项目。"
+    "note": "由KYWOO成员参与项目"
    },
    {
     "id": "joa-foshan",
@@ -512,7 +512,7 @@ module.exports = {
       "primary": false
      }
     ],
-    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充。"
+    "note": "JOA属于KYWOO团队内部的空间设计团队，来自JOA（justopenarch.com)的建筑项目"
    },
    {
     "id": "joa-turku",
@@ -544,7 +544,7 @@ module.exports = {
       "primary": false
      }
     ],
-    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充。"
+    "note": "JOA属于KYWOO团队内部的空间设计团队，来自JOA（justopenarch.com)的建筑项目"
    },
    {
     "id": "joa-nanjing",
@@ -576,7 +576,7 @@ module.exports = {
       "primary": false
      }
     ],
-    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充。"
+    "note": "JOA属于KYWOO团队内部的空间设计团队，来自JOA（justopenarch.com)的建筑项目"
    },
    {
     "id": "joa-tartu",
@@ -608,7 +608,7 @@ module.exports = {
       "primary": false
      }
     ],
-    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充。"
+    "note": "JOA属于KYWOO团队内部的空间设计团队，来自JOA（justopenarch.com)的建筑项目"
    },
    {
     "id": "joa-logrono",
@@ -640,7 +640,7 @@ module.exports = {
       "primary": false
      }
     ],
-    "note": "来自 JOA（justopenarch.com）的建筑项目；KYWOO 团队成员的参与角色待补充。"
+    "note": "JOA属于KYWOO团队内部的空间设计团队，来自JOA（justopenarch.com)的建筑项目"
    }
   ]
  },
@@ -678,7 +678,7 @@ module.exports = {
    {
     "num": "03",
     "q": "页面上哪些是真实项目？",
-    "a": "「案例总览」里，「当前项目」朱家角与武林银泰处于前期研究阶段（朱家角研究汇报需访问密码），不是已交付的委托。「过往经验」中，「项目经验」是过往项目介绍，参与角色与项目状态待补充；「JOA 建筑项目」来自 JOA（justopenarch.com），KYWOO 团队成员的参与角色待补充；「城市更新参考」是他人完成的公开案例。图片均非 KYWOO 项目摄影，来源见各项目说明与“素材与披露”。"
+    "a": "「案例总览」里，「当前项目」朱家角与武林银泰处于前期研究阶段（朱家角研究汇报需访问密码），不是已交付的委托。「过往经验」中，「项目经验」是过往项目介绍，参与角色与项目状态待补充；「JOA 建筑项目」来自 JOA（justopenarch.com），KYWOO 团队成员的参与角色待补充；「城市更新参考」中的首尔路 7017 与上海上生·新所为由KYWOO成员参与项目。图片均非 KYWOO 项目摄影，来源见各项目说明与“素材与披露”。"
    },
    {
     "num": "04",
@@ -723,7 +723,7 @@ module.exports = {
    },
    {
     "title": "项目经验与参考",
-    "body": "「项目经验」为过往项目介绍，参与角色与项目状态待补充；「城市更新参考」为他人完成的公开案例。首尔路 7017 与上海上生·新所的照片由团队提供，摄影署名待补。以上照片均非 KYWOO 作品摄影，不代表作者、场所或业主的背书。页面不展示个人姓名、照片或履历。"
+    "body": "「项目经验」为过往项目介绍，参与角色与项目状态待补充；「城市更新参考」中的首尔路 7017 与上海上生·新所为由KYWOO成员参与项目。首尔路 7017 与上海上生·新所的照片由团队提供，摄影署名待补。以上照片均非 KYWOO 作品摄影，不代表作者、场所或业主的背书。页面不展示个人姓名、照片或履历。"
    },
    {
     "title": "关于我们配图",

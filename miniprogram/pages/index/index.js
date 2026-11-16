@@ -4,6 +4,8 @@ const A = require('../../utils/actions.js');
 Component({
   data: {
     hero: C.hero,
+    approach: C.approach,
+    principlesOpen: false,
     about: C.about,
     numbers: C.numbers,
     metricValues: C.numbers.items.map(() => '0'),
@@ -13,7 +15,6 @@ Component({
     statement: C.statement,
     footer: C.footer,
     entries: [
-      { tab: 'services', title: C.approach.kicker, sub: C.approach.kickerSub },
       { tab: 'cases', title: C.cases.kicker, sub: C.cases.kickerSub },
       { tab: 'contact', title: C.contact.kicker, sub: C.contact.kickerSub },
     ],
@@ -81,6 +82,7 @@ Component({
         }).exec();
       }, 150);
     },
+    togglePrinciples() { this.setData({ principlesOpen: !this.data.principlesOpen }); },
     onSlide(e) {
       this.setData({ slide: e.detail.current });
     },

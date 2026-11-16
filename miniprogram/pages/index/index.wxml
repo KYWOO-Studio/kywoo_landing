@@ -44,10 +44,16 @@
   <button wx:if="{{!metricsReduced}}" class="metric-motion-button" bindtap="reduceMetrics">减少数字动态效果</button>
 </view>
 
-<!-- the other three tabs -->
+<!-- The same interactive diagram as the services tab, open on the home page. -->
+<view class="home-network">
+  <view class="gutter"><template is="kicker" data="{{title: approach.kicker, sub: approach.kickerSub, dark: true}}" /></view>
+  <network id="home-network" />
+</view>
+
+<!-- entries to cases and contact -->
 <view class="entries gutter">
   <view wx:for="{{entries}}" wx:key="tab" class="entry" hover-class="btn-hover" data-tab="{{item.tab}}" bindtap="toTab">
-    <text class="entry-num">0{{index + 1}}</text>
+    <text class="entry-num">0{{index + 2}}</text>
     <view class="entry-text">
       <text class="entry-title serif">{{item.title}}</text>
       <text class="entry-sub">{{item.sub}}</text>
@@ -57,7 +63,12 @@
 </view>
 
 <!-- principles -->
-<view class="principles">
+<view class="gutter">
+  <button class="principles-toggle entry" bindtap="togglePrinciples" aria-expanded="{{principlesOpen}}" aria-controls="home-principles">
+    <text class="entry-num">04</text><text class="entry-title serif">{{principles.label}}</text><text class="entry-arrow">{{principlesOpen ? '−' : '＋'}}</text>
+  </button>
+</view>
+<view wx:if="{{principlesOpen}}" id="home-principles" class="principles">
   <image class="principles-img" src="{{principles.image.src}}" mode="widthFix" lazy-load aria-label="{{principles.image.alt}}" />
   <text class="caption gutter principles-caption">{{principles.image.caption}}</text>
   <view class="gutter">
